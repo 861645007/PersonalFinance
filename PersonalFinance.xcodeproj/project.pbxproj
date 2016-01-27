@@ -15,6 +15,14 @@
 		7A7EB3B71C58F07F009AD0A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B51C58F07F009AD0A7 /* LaunchScreen.storyboard */; };
 		7A7EB3C21C58F07F009AD0A7 /* PersonalFinanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3C11C58F07F009AD0A7 /* PersonalFinanceTests.swift */; };
 		7A7EB3CD1C58F07F009AD0A7 /* PersonalFinanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3CC1C58F07F009AD0A7 /* PersonalFinanceUITests.swift */; };
+		7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3DB1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld */; };
+		7A7EB3E71C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E31C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift */; };
+		7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E41C58F672009AD0A7 /* SingleCustom.swift */; };
+		7A7EB3E91C58F672009AD0A7 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E51C58F672009AD0A7 /* Category+CoreDataProperties.swift */; };
+		7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E61C58F672009AD0A7 /* Category.swift */; };
+		7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */; };
+		7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */; };
+		7A7EB3F31C58F6E8009AD0A7 /* GategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3F21C58F6E8009AD0A7 /* GategoryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +57,14 @@
 		7A7EB3C81C58F07F009AD0A7 /* PersonalFinanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalFinanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7EB3CC1C58F07F009AD0A7 /* PersonalFinanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFinanceUITests.swift; sourceTree = "<group>"; };
 		7A7EB3CE1C58F07F009AD0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A7EB3DC1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
+		7A7EB3E31C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SingleCustom+CoreDataProperties.swift"; path = "CoreData/Model/SingleCustom+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A7EB3E41C58F672009AD0A7 /* SingleCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustom.swift; path = CoreData/Model/SingleCustom.swift; sourceTree = "<group>"; };
+		7A7EB3E51C58F672009AD0A7 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "CoreData/Model/Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A7EB3E61C58F672009AD0A7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = CoreData/Model/Category.swift; sourceTree = "<group>"; };
+		7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreData/CoreDataStack.swift; sourceTree = "<group>"; };
+		7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustomService.swift; path = CoreData/SingleCustomService.swift; sourceTree = "<group>"; };
+		7A7EB3F21C58F6E8009AD0A7 /* GategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GategoryService.swift; path = CoreData/GategoryService.swift; sourceTree = "<group>"; };
 		88A9160AED56E19E43EE5900 /* Pods-PersonalFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalFinance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -112,6 +128,7 @@
 		7A7EB3AB1C58F07F009AD0A7 /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				7A7EB3DA1C58F4C6009AD0A7 /* CoreData */,
 				7A7EB3AC1C58F07F009AD0A7 /* AppDelegate.swift */,
 				7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */,
 				7A7EB3B01C58F07F009AD0A7 /* Main.storyboard */,
@@ -138,6 +155,37 @@
 				7A7EB3CE1C58F07F009AD0A7 /* Info.plist */,
 			);
 			path = PersonalFinanceUITests;
+			sourceTree = "<group>";
+		};
+		7A7EB3DA1C58F4C6009AD0A7 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7A7EB3ED1C58F68F009AD0A7 /* Service */,
+				7A7EB3DE1C58F5F0009AD0A7 /* Model */,
+				7A7EB3DB1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		7A7EB3DE1C58F5F0009AD0A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A7EB3E31C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift */,
+				7A7EB3E41C58F672009AD0A7 /* SingleCustom.swift */,
+				7A7EB3E51C58F672009AD0A7 /* Category+CoreDataProperties.swift */,
+				7A7EB3E61C58F672009AD0A7 /* Category.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		7A7EB3ED1C58F68F009AD0A7 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */,
+				7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */,
+				7A7EB3F21C58F6E8009AD0A7 /* GategoryService.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		F20E35BAF41E71FDCF259D73 /* Pods */ = {
@@ -331,8 +379,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A7EB3E71C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift in Sources */,
+				7A7EB3E91C58F672009AD0A7 /* Category+CoreDataProperties.swift in Sources */,
+				7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */,
 				7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
+				7A7EB3F31C58F6E8009AD0A7 /* GategoryService.swift in Sources */,
+				7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */,
+				7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */,
+				7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */,
+				7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +636,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7A7EB3DB1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7A7EB3DC1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodel */,
+			);
+			currentVersion = 7A7EB3DC1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodel */;
+			path = PersonalFinance.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7A7EB3A11C58F07F009AD0A7 /* Project object */;
 }
