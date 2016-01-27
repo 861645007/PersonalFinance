@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		485E306904A58D511271EE80 /* Pods_PersonalFinance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */; };
 		7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3AC1C58F07F009AD0A7 /* AppDelegate.swift */; };
 		7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */; };
 		7A7EB3B21C58F07F009AD0A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B01C58F07F009AD0A7 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03C71E5029CBF1E652AAF0CD /* Pods-PersonalFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance.release.xcconfig"; sourceTree = "<group>"; };
 		7A7EB3A91C58F07F009AD0A7 /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7EB3AC1C58F07F009AD0A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,8 @@
 		7A7EB3C81C58F07F009AD0A7 /* PersonalFinanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalFinanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7EB3CC1C58F07F009AD0A7 /* PersonalFinanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFinanceUITests.swift; sourceTree = "<group>"; };
 		7A7EB3CE1C58F07F009AD0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88A9160AED56E19E43EE5900 /* Pods-PersonalFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance.debug.xcconfig"; sourceTree = "<group>"; };
+		E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalFinance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485E306904A58D511271EE80 /* Pods_PersonalFinance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49070AD2C4C610F6A62F52DB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7A7EB3A01C58F07F009AD0A7 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +94,8 @@
 				7A7EB3C01C58F07F009AD0A7 /* PersonalFinanceTests */,
 				7A7EB3CB1C58F07F009AD0A7 /* PersonalFinanceUITests */,
 				7A7EB3AA1C58F07F009AD0A7 /* Products */,
+				F20E35BAF41E71FDCF259D73 /* Pods */,
+				49070AD2C4C610F6A62F52DB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +140,15 @@
 			path = PersonalFinanceUITests;
 			sourceTree = "<group>";
 		};
+		F20E35BAF41E71FDCF259D73 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88A9160AED56E19E43EE5900 /* Pods-PersonalFinance.debug.xcconfig */,
+				03C71E5029CBF1E652AAF0CD /* Pods-PersonalFinance.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A7EB3D11C58F07F009AD0A7 /* Build configuration list for PBXNativeTarget "PersonalFinance" */;
 			buildPhases = (
+				1340BBE671C8D93A3B0A894C /* Check Pods Manifest.lock */,
 				7A7EB3A51C58F07F009AD0A7 /* Sources */,
 				7A7EB3A61C58F07F009AD0A7 /* Frameworks */,
 				7A7EB3A71C58F07F009AD0A7 /* Resources */,
+				4FC8A7159CBF54A83780CE31 /* Embed Pods Frameworks */,
+				474EB2C8EDEEF65D61CFA93B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1340BBE671C8D93A3B0A894C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		474EB2C8EDEEF65D61CFA93B /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FC8A7159CBF54A83780CE31 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7A7EB3A51C58F07F009AD0A7 /* Sources */ = {
@@ -395,6 +470,7 @@
 		};
 		7A7EB3D21C58F07F009AD0A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88A9160AED56E19E43EE5900 /* Pods-PersonalFinance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
@@ -406,6 +482,7 @@
 		};
 		7A7EB3D31C58F07F009AD0A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03C71E5029CBF1E652AAF0CD /* Pods-PersonalFinance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
@@ -482,6 +559,7 @@
 				7A7EB3D31C58F07F009AD0A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A7EB3D41C58F07F009AD0A7 /* Build configuration list for PBXNativeTarget "PersonalFinanceTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +568,7 @@
 				7A7EB3D61C58F07F009AD0A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A7EB3D71C58F07F009AD0A7 /* Build configuration list for PBXNativeTarget "PersonalFinanceUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +577,7 @@
 				7A7EB3D91C58F07F009AD0A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
