@@ -18,6 +18,7 @@ PODS:
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
   - Spring (1.0.3)
+  - Timepiece (0.4.2)
 
 DEPENDENCIES:
   - Bugtags
@@ -26,6 +27,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 4.0.4-alpha-4)
   - SDWebImage (~> 3.7.4)
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+  - Timepiece
 
 EXTERNAL SOURCES:
   Spring:
@@ -45,5 +47,6 @@ SPEC CHECKSUMS:
   Result: caef80340451e1f07492fa1e89117f83613bce24
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
 
 COCOAPODS: 0.39.0

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Timepiece
 
 class ViewController: UIViewController {
 

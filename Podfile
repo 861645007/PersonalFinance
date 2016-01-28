@@ -17,6 +17,10 @@ target "PersonalFinance" do
 	pod 'DZNEmptyDataSet', '~> 1.7.3'
 # 动画效果
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+# NSDate 操作工具
+	pod "Timepiece"
+
+
 
 end
 
