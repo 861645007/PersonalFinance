@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Onboard.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PersonalFinance.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +52,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0225CD7B959D05AAD266250DC071B447</key>
+		<key>030DAA50592E8F83FF2CD19F7ACD5FCE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,27 +67,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>33F895550B2DADF8DF3A172DDC16FD48</key>
+		<key>38725F8DD399F11F738CCB2042095226</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>742DE9249BC89AE07F496540CFB2A3AB</key>
+		<key>705BE6AEDF11ABDD5D9BB8BF51343EFB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8070276D60D7D28A5ED8ED5B3D0ED712</key>
+		<key>8F6D48CF08C7356C4541E41F23047228</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C517BB312674C75EF99B3937DAEC29D0</key>
+		<key>B61D4818C5B1D5F42B0967E2B5B765A9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F6B42AD050D121F672126F50C38F034B</key>
+		<key>D7FF48F3092783E4E42B336F0DEF2D1A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F056D4BC8637735475366604D8687354</key>
 		<dict>
 			<key>primary</key>
 			<true/>

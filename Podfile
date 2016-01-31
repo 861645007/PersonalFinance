@@ -19,6 +19,8 @@ target "PersonalFinance" do
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
 # NSDate 操作工具
 	pod "Timepiece"
+# 引导页
+	pod 'Onboard'
 
 
 

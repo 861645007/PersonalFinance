@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 配置 bugtags（bug管理系统）
+        Bugtags.startWithAppKey("58fb2b81336829c7824f538b55545ad3", invocationEvent: BTGInvocationEventBubble)
+        
+        // 初始化基础数据 和 加载引导页面
+        let sharedBaseInfo = BaseInfo.sharedBaseInfo
+        if !sharedBaseInfo.gainOnBoardSymbol() {
+            sharedBaseInfo.saveOnBoardSymbol()
+            sharedBaseInfo.initDataWhenFirstUse()
+            self.gotoOnBoardVC()
+        }
+        
+        
         return true
     }
 
@@ -44,6 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         coreDataStock.saveContext()
     }
 
+    // 跳转至 引导页
+    func gotoOnBoardVC() {
+        self.window?.rootViewController = OnBoardPageManager.onBoardPageManager.configOnboardVC()
+    }
+    
 
 }
 
