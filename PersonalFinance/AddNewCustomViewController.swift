@@ -9,6 +9,8 @@
 import UIKit
 
 class AddNewCustomViewController: UIViewController {
+    
+    var addNewCustomVM: AddNewCustomViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,3 +35,9 @@ class AddNewCustomViewController: UIViewController {
     */
 
 }
+
+
+
+
+
+

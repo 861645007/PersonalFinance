@@ -3,3 +3,4 @@
 //
 
 #import <Bugtags/Bugtags.h>
+#import "TYWaveProgressView.h"

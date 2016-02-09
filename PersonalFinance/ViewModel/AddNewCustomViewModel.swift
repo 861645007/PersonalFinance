@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+enum CustomOperationStatus {
+    case AddNewCustom
+    case LookCustomDetail
+    case EditCustomDetail
+}
+
+class AddNewCustomViewModel: NSObject {
+    
+    override init() {
+        super.init()
+    }
+}

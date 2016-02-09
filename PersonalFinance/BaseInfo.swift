@@ -43,11 +43,11 @@ class BaseInfo: NSObject {
     // MARK: - 每月支出
     func saveMonthExpense(value: NSNumber) {
         let totalExpense = value.doubleValue + self.gainMonthExpense().doubleValue
-        self.saveMoneyInfo(totalExpense, key: "MonthBudget")
+        self.saveMoneyInfo(totalExpense, key: "MonthExpense")
     }
     
     func gainMonthExpense() ->NSNumber {
-        return NSNumber(double: self.getMoneyInfo("MonthBudget"))
+        return NSNumber(double: self.getMoneyInfo("MonthExpense"))
     }
     
     // MARK: - 每日支出

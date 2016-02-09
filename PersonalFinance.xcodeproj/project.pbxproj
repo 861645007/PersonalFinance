@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		485E306904A58D511271EE80 /* Pods_PersonalFinance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */; };
+		7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */; };
+		7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */; };
 		7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC51C5C780900BEE1B8 /* DateExtension.swift */; };
 		7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */; };
 		7A614FCC1C5C853600BEE1B8 /* BaseInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */; };
@@ -31,6 +33,9 @@
 		7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */; };
 		7ACEF5121C5A39F500EF2200 /* SingleCustomServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */; };
 		7ACEF5161C5A3A2B00EF2200 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */; };
+		7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073671C5DA75200221F17 /* TYWaterWaveView.m */; };
+		7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073691C5DA75200221F17 /* TYWaveProgressView.m */; };
+		7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF0736D1C5DA8AB00221F17 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		03C71E5029CBF1E652AAF0CD /* Pods-PersonalFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance.release.xcconfig"; sourceTree = "<group>"; };
+		7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCustomViewController.swift; sourceTree = "<group>"; };
+		7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewCustomViewModel.swift; path = ViewModel/AddNewCustomViewModel.swift; sourceTree = "<group>"; };
 		7A614FC51C5C780900BEE1B8 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfo.swift; sourceTree = "<group>"; };
 		7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoTest.swift; sourceTree = "<group>"; };
@@ -82,6 +89,11 @@
 		7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleCustomServiceTest.swift; sourceTree = "<group>"; };
 		7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
 		7AF0735C1C5D9CCE00221F17 /* PersonalFinance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalFinance-Bridging-Header.h"; sourceTree = "<group>"; };
+		7AF073661C5DA75200221F17 /* TYWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYWaterWaveView.h; path = TYWaveProgressView/TYWaterWaveView.h; sourceTree = "<group>"; };
+		7AF073671C5DA75200221F17 /* TYWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYWaterWaveView.m; path = TYWaveProgressView/TYWaterWaveView.m; sourceTree = "<group>"; };
+		7AF073681C5DA75200221F17 /* TYWaveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYWaveProgressView.h; path = TYWaveProgressView/TYWaveProgressView.h; sourceTree = "<group>"; };
+		7AF073691C5DA75200221F17 /* TYWaveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYWaveProgressView.m; path = TYWaveProgressView/TYWaveProgressView.m; sourceTree = "<group>"; };
+		7AF0736D1C5DA8AB00221F17 /* MainViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = ViewModel/MainViewModel.swift; sourceTree = "<group>"; };
 		88A9160AED56E19E43EE5900 /* Pods-PersonalFinance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance.debug.xcconfig"; sourceTree = "<group>"; };
 		E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalFinance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -128,9 +140,26 @@
 			name = OnBoard;
 			sourceTree = "<group>";
 		};
+		7A41680F1C60615200145EA1 /* Add New Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */,
+			);
+			name = "Add New Custom";
+			sourceTree = "<group>";
+		};
+		7A4168101C60616F00145EA1 /* Add New Custom */ = {
+			isa = PBXGroup;
+			children = (
+				7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */,
+			);
+			name = "Add New Custom";
+			sourceTree = "<group>";
+		};
 		7A614FC31C5C77D700BEE1B8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7A614FC71C5C796F00BEE1B8 /* Base Info */,
 				7A244C011C5CE33200B46CC9 /* OnBoard */,
 				7ACEF50A1C5A33A400EF2200 /* RACSwift */,
 				7A614FC41C5C77E100BEE1B8 /* Extension */,
@@ -187,12 +216,13 @@
 		7A7EB3AB1C58F07F009AD0A7 /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
-				7A614FC71C5C796F00BEE1B8 /* Base Info */,
+				7AF073611C5D9D8700221F17 /* ViewModel */,
+				7AF073601C5D9D7B00221F17 /* View Controller */,
 				7A7EB3DA1C58F4C6009AD0A7 /* Core Data */,
 				7A7EB3AC1C58F07F009AD0A7 /* AppDelegate.swift */,
-				7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */,
 				7A7EB3B01C58F07F009AD0A7 /* Main.storyboard */,
 				7A7EB3B31C58F07F009AD0A7 /* Assets.xcassets */,
+				7AF073621C5DA72800221F17 /* Function */,
 				7A614FC31C5C77D700BEE1B8 /* Other */,
 				7ACEF50F1C5A398500EF2200 /* Resource */,
 			);
@@ -276,6 +306,59 @@
 				7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */,
 			);
 			name = ServiceTest;
+			sourceTree = "<group>";
+		};
+		7AF073601C5D9D7B00221F17 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A41680F1C60615200145EA1 /* Add New Custom */,
+				7AF0736F1C5DA8B000221F17 /* Main View Controller */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		7AF073611C5D9D8700221F17 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				7A4168101C60616F00145EA1 /* Add New Custom */,
+				7AF0736C1C5DA88800221F17 /* Main View Model */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		7AF073621C5DA72800221F17 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				7AF073651C5DA74900221F17 /* TYWaveProgressView */,
+			);
+			name = Function;
+			sourceTree = "<group>";
+		};
+		7AF073651C5DA74900221F17 /* TYWaveProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				7AF073661C5DA75200221F17 /* TYWaterWaveView.h */,
+				7AF073671C5DA75200221F17 /* TYWaterWaveView.m */,
+				7AF073681C5DA75200221F17 /* TYWaveProgressView.h */,
+				7AF073691C5DA75200221F17 /* TYWaveProgressView.m */,
+			);
+			name = TYWaveProgressView;
+			sourceTree = "<group>";
+		};
+		7AF0736C1C5DA88800221F17 /* Main View Model */ = {
+			isa = PBXGroup;
+			children = (
+				7AF0736D1C5DA8AB00221F17 /* MainViewModel.swift */,
+			);
+			name = "Main View Model";
+			sourceTree = "<group>";
+		};
+		7AF0736F1C5DA8B000221F17 /* Main View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */,
+			);
+			name = "Main View Controller";
 			sourceTree = "<group>";
 		};
 		F20E35BAF41E71FDCF259D73 /* Pods */ = {
@@ -480,11 +563,16 @@
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A7EB3F31C58F6E8009AD0A7 /* GategoryService.swift in Sources */,
+				7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */,
 				7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */,
 				7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */,
+				7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */,
+				7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */,
 				7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */,
+				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,
 				7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */,
 				7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */,
+				7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
