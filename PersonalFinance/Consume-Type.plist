@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Cus-Other</key>
+	<string>一般</string>
+	<key>Cus-Dinner</key>
+	<string>餐饮</string>
+	<key>Cus-Shopping</key>
+	<string>购物</string>
+	<key>Cus-Daily</key>
+	<string>日常用品</string>
+	<key>Cus-Drink</key>
+	<string>酒水饮料</string>
+	<key>Cus-Amusement</key>
+	<string>娱乐</string>
+	<key>Cus-Recharge</key>
+	<string>充值</string>
+	<key>Cus-Family</key>
+	<string>家庭</string>
+	<key>Cus-Cosmetic</key>
+	<string>化妆品</string>
+	<key>Cus-Study</key>
+	<string>学习</string>
+	<key>Cus-Health</key>
+	<string>医疗</string>
+	<key>Cus-Traffic</key>
+	<string>交通</string>
+	<key>Cus-Digit</key>
+	<string>数码产品</string>
+</dict>
+</plist>

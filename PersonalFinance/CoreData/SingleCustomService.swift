@@ -9,10 +9,17 @@
 import Foundation
 import CoreData
 
+private let sharedInstance = SingleCustomService()
+
 class SingleCustomService {
     
     let managedObjectConext: NSManagedObjectContext!
     let coreDataStack: CoreDataStack!
+    
+    // 设置 单例
+    class var sharedSingleCustomService: SingleCustomService {
+        return sharedInstance
+    }
     
     init() {
         coreDataStack = CoreDataStack()

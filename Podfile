@@ -21,6 +21,8 @@ target "PersonalFinance" do
 	pod "Timepiece"
 # 引导页
 	pod 'Onboard'
+# 数字键盘
+	pod 'MMNumberKeyboard'
 
 
 

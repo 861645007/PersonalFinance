@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		485E306904A58D511271EE80 /* Pods_PersonalFinance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */; };
+		7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644261C6B05BA00FAE828 /* Consume-Type.plist */; };
+		7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */; };
+		7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */; };
 		7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */; };
 		7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */; };
+		7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */; };
 		7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC51C5C780900BEE1B8 /* DateExtension.swift */; };
 		7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */; };
 		7A614FCC1C5C853600BEE1B8 /* BaseInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */; };
@@ -27,7 +31,9 @@
 		7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E61C58F672009AD0A7 /* Category.swift */; };
 		7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */; };
 		7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */; };
-		7A7EB3F31C58F6E8009AD0A7 /* GategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3F21C58F6E8009AD0A7 /* GategoryService.swift */; };
+		7ABC84B41C6B243F001156BF /* CustomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B31C6B243F001156BF /* CustomType.swift */; };
+		7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B51C6B24CC001156BF /* CategoryService.swift */; };
+		7ABC84BA1C6B28E9001156BF /* CategoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */; };
 		7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */; };
 		7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50B1C5A340600EF2200 /* RAC.swift */; };
 		7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */; };
@@ -57,8 +63,12 @@
 
 /* Begin PBXFileReference section */
 		03C71E5029CBF1E652AAF0CD /* Pods-PersonalFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance.release.xcconfig"; sourceTree = "<group>"; };
+		7A0644261C6B05BA00FAE828 /* Consume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Consume-Type.plist"; sourceTree = "<group>"; };
+		7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewComsume-Type.plist"; sourceTree = "<group>"; };
+		7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCustomViewController.swift; sourceTree = "<group>"; };
 		7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewCustomViewModel.swift; path = ViewModel/AddNewCustomViewModel.swift; sourceTree = "<group>"; };
+		7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatePlist.swift; sourceTree = "<group>"; };
 		7A614FC51C5C780900BEE1B8 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfo.swift; sourceTree = "<group>"; };
 		7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoTest.swift; sourceTree = "<group>"; };
@@ -82,7 +92,9 @@
 		7A7EB3E61C58F672009AD0A7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = CoreData/Model/Category.swift; sourceTree = "<group>"; };
 		7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreData/CoreDataStack.swift; sourceTree = "<group>"; };
 		7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustomService.swift; path = CoreData/SingleCustomService.swift; sourceTree = "<group>"; };
-		7A7EB3F21C58F6E8009AD0A7 /* GategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GategoryService.swift; path = CoreData/GategoryService.swift; sourceTree = "<group>"; };
+		7ABC84B31C6B243F001156BF /* CustomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomType.swift; sourceTree = "<group>"; };
+		7ABC84B51C6B24CC001156BF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryService.swift; path = CoreData/CategoryService.swift; sourceTree = "<group>"; };
+		7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryServiceTest.swift; sourceTree = "<group>"; };
 		7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardPageManager.swift; sourceTree = "<group>"; };
 		7ACEF50B1C5A340600EF2200 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustomRecord.swift; path = CoreData/SingleCustomRecord.swift; sourceTree = "<group>"; };
@@ -144,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */,
+				7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */,
 			);
 			name = "Add New Custom";
 			sourceTree = "<group>";
@@ -156,9 +169,18 @@
 			name = "Add New Custom";
 			sourceTree = "<group>";
 		};
+		7A47B8561C6B3AE500F63D9A /* Operate Plist */ = {
+			isa = PBXGroup;
+			children = (
+				7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */,
+			);
+			name = "Operate Plist";
+			sourceTree = "<group>";
+		};
 		7A614FC31C5C77D700BEE1B8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7A47B8561C6B3AE500F63D9A /* Operate Plist */,
 				7A614FC71C5C796F00BEE1B8 /* Base Info */,
 				7A244C011C5CE33200B46CC9 /* OnBoard */,
 				7ACEF50A1C5A33A400EF2200 /* RACSwift */,
@@ -256,6 +278,7 @@
 				7A7EB3DE1C58F5F0009AD0A7 /* Model */,
 				7A7EB3DB1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld */,
 				7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */,
+				7ABC84B31C6B243F001156BF /* CustomType.swift */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -276,7 +299,7 @@
 			children = (
 				7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */,
 				7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */,
-				7A7EB3F21C58F6E8009AD0A7 /* GategoryService.swift */,
+				7ABC84B51C6B24CC001156BF /* CategoryService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -295,6 +318,8 @@
 				7AF0735C1C5D9CCE00221F17 /* PersonalFinance-Bridging-Header.h */,
 				7A7EB3B51C58F07F009AD0A7 /* LaunchScreen.storyboard */,
 				7A7EB3B81C58F07F009AD0A7 /* Info.plist */,
+				7A0644261C6B05BA00FAE828 /* Consume-Type.plist */,
+				7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -304,6 +329,7 @@
 			children = (
 				7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */,
 				7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */,
+				7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */,
 			);
 			name = ServiceTest;
 			sourceTree = "<group>";
@@ -479,6 +505,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A7EB3B71C58F07F009AD0A7 /* LaunchScreen.storyboard in Resources */,
+				7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */,
+				7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */,
 				7A7EB3B41C58F07F009AD0A7 /* Assets.xcassets in Resources */,
 				7A7EB3B21C58F07F009AD0A7 /* Main.storyboard in Resources */,
 			);
@@ -555,16 +583,19 @@
 			files = (
 				7A7EB3E71C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift in Sources */,
 				7A7EB3E91C58F672009AD0A7 /* Category+CoreDataProperties.swift in Sources */,
+				7ABC84B41C6B243F001156BF /* CustomType.swift in Sources */,
+				7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */,
 				7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */,
+				7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */,
 				7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */,
 				7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */,
 				7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */,
 				7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
-				7A7EB3F31C58F6E8009AD0A7 /* GategoryService.swift in Sources */,
 				7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */,
 				7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */,
+				7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */,
 				7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */,
 				7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */,
 				7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */,
@@ -584,6 +615,7 @@
 				7ACEF5161C5A3A2B00EF2200 /* CoreDataTest.swift in Sources */,
 				7ACEF5121C5A39F500EF2200 /* SingleCustomServiceTest.swift in Sources */,
 				7A7EB3C21C58F07F009AD0A7 /* PersonalFinanceTests.swift in Sources */,
+				7ABC84BA1C6B28E9001156BF /* CategoryServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

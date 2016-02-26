@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/Timepiece/Sources/NSDate+Timepiece.swift"
-            timestampString = "475686815.704761"
+            filePath = "PersonalFinance/PrepareNotifationViewAboveKeyboard.swift"
+            timestampString = "477305510.02198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "change(year:month:day:hour:minute:second:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "notifationOperation(_:keyboardY:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

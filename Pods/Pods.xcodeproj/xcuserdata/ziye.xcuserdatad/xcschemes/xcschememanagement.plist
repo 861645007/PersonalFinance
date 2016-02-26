@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MMNumberKeyboard.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Onboard.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,11 +57,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>030DAA50592E8F83FF2CD19F7ACD5FCE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>16FB872D0D2D4BA0F378AB34D47CF95F</key>
 		<dict>
 			<key>primary</key>
@@ -67,22 +67,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>38725F8DD399F11F738CCB2042095226</key>
+		<key>57993867426CC13F6AA92169041A332D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>705BE6AEDF11ABDD5D9BB8BF51343EFB</key>
+		<key>5EC2561C616C701F33DFF7511714A709</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F6D48CF08C7356C4541E41F23047228</key>
+		<key>61B187DCFD33EF345F642FC9B1EA9FAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B61D4818C5B1D5F42B0967E2B5B765A9</key>
+		<key>61E223A2D32BAE32F69B894E6C56567A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9BA7357DFEF7576EFF55AE5DAC631BE8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7DAED5FE958EC9EA0A3ABCE3428AA71</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,7 +102,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F056D4BC8637735475366604D8687354</key>
+		<key>F036C6F4DF44634267644B75E8AFE86A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

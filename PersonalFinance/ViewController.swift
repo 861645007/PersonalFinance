@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Timepiece
 
 class ViewController: UIViewController {
     
@@ -24,8 +25,7 @@ class ViewController: UIViewController {
         
         // 配置水波纹数据
         self.configureWaveProgress(mainVM.gainMonthExpense(), percent: mainVM.configureWavePercent())
-        waterBGView.addSubview(waterWaveView)
-
+        waterBGView.addSubview(waterWaveView)       
     }
     
     override func viewDidAppear(animated: Bool) {

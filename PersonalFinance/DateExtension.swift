@@ -71,4 +71,15 @@ extension NSDate {
             return false
         }
     }
+    
+    /**
+     改变时间至 当前时区的时间
+     
+     - returns: 返回一个当前时间的时间
+     */
+    func tolocalTime() -> NSDate {
+        let tz = NSTimeZone.localTimeZone()
+        let seconds: NSInteger = tz.secondsFromGMTForDate(self)
+        return NSDate(timeInterval: Double(seconds), sinceDate: self)
+    }
 }

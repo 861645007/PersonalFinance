@@ -49,31 +49,31 @@ class BaseInfoTest: XCTestCase {
         XCTAssert(budget1 == 18.0, "saveMonthBudget Can't Unit Test")
     }
     
-    func testGainMonthExpense() {
-        baseInfo.saveMonthExpense(12.0)
-        let monthExpense = baseInfo.gainMonthExpense()
-        
-        XCTAssert(monthExpense == 12.0, "saveMonthExpense Can't Unit Test")
-        
-        baseInfo.saveMonthExpense(18.0)
-        
-        let monthExpense2 = baseInfo.gainMonthExpense()
-        
-        XCTAssert(monthExpense2 == 18.0, "saveMonthExpense Can't Unit Test")
-    }
-    
-    func testGainDayExpense() {
-        baseInfo.saveDayExpense(12.0)
-        let dayExpense = baseInfo.gainDayExpense()
-        
-        XCTAssert(dayExpense == 12.0, "saveDayExpense Can't Unit Test")
-        
-        baseInfo.saveDayExpense(18.0)
-        
-        let dayExpense2 = baseInfo.gainDayExpense()
-        
-        XCTAssert(dayExpense2 == 18.0, "saveDayExpense Can't Unit Test")
-    }
+//    func testGainMonthExpense() {
+//        baseInfo.saveMonthExpense(12.0)
+//        let monthExpense = baseInfo.gainMonthExpense()
+//        
+//        XCTAssert(monthExpense == 12.0, "saveMonthExpense Can't Unit Test")
+//        
+//        baseInfo.saveMonthExpense(18.0)
+//        
+//        let monthExpense2 = baseInfo.gainMonthExpense()
+//        
+//        XCTAssert(monthExpense2 == 18.0, "saveMonthExpense Can't Unit Test")
+//    }
+//    
+//    func testGainDayExpense() {
+//        baseInfo.saveDayExpense(12.0)
+//        let dayExpense = baseInfo.gainDayExpense()
+//        
+//        XCTAssert(dayExpense == 12.0, "saveDayExpense Can't Unit Test")
+//        
+//        baseInfo.saveDayExpense(18.0)
+//        
+//        let dayExpense2 = baseInfo.gainDayExpense()
+//        
+//        XCTAssert(dayExpense2 == 18.0, "saveDayExpense Can't Unit Test")
+//    }
     
     func testGainNewExpense() {
         baseInfo.saveNewExpense(13.0)
