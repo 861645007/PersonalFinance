@@ -88,9 +88,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PersonalFinance/DZNEmptyDataSet.framework"
   install_framework "Pods-PersonalFinance/MMNumberKeyboard.framework"
   install_framework "Pods-PersonalFinance/Onboard.framework"
+  install_framework "Pods-PersonalFinance/PDTSimpleCalendar.framework"
   install_framework "Pods-PersonalFinance/ReactiveCocoa.framework"
   install_framework "Pods-PersonalFinance/Result.framework"
   install_framework "Pods-PersonalFinance/SDWebImage.framework"
+  install_framework "Pods-PersonalFinance/SimpleAlert.framework"
   install_framework "Pods-PersonalFinance/Spring.framework"
   install_framework "Pods-PersonalFinance/Timepiece.framework"
 fi
@@ -99,9 +101,11 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PersonalFinance/DZNEmptyDataSet.framework"
   install_framework "Pods-PersonalFinance/MMNumberKeyboard.framework"
   install_framework "Pods-PersonalFinance/Onboard.framework"
+  install_framework "Pods-PersonalFinance/PDTSimpleCalendar.framework"
   install_framework "Pods-PersonalFinance/ReactiveCocoa.framework"
   install_framework "Pods-PersonalFinance/Result.framework"
   install_framework "Pods-PersonalFinance/SDWebImage.framework"
+  install_framework "Pods-PersonalFinance/SimpleAlert.framework"
   install_framework "Pods-PersonalFinance/Spring.framework"
   install_framework "Pods-PersonalFinance/Timepiece.framework"
 fi

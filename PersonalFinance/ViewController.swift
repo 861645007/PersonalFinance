@@ -14,8 +14,10 @@ class ViewController: UIViewController {
     var mainVM: MainViewModel!
     
     // 水波纹 本月消费 示意图
-    var waterWaveView: TYWaveProgressView!
-    @IBOutlet weak var waterBGView: UIView!
+    @IBOutlet weak var waterWaveView: TYWaveProgressView!
+    
+    @IBOutlet weak var todayExpenseLabel: UILabel!
+    @IBOutlet weak var monthExpenseLabel: UILabel!
     
 
     override func viewDidLoad() {
@@ -24,8 +26,21 @@ class ViewController: UIViewController {
         mainVM = MainViewModel()
         
         // 配置水波纹数据
-        self.configureWaveProgress(mainVM.gainMonthExpense(), percent: mainVM.configureWavePercent())
-        waterBGView.addSubview(waterWaveView)       
+        self.configureWaveProgress(mainVM.gainMonthExpense(), percent: self.mainVM.configureWavePercent())        
+
+        // 设置导航栏透明
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.translucent = true
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.todayExpenseLabel.text = "今日消费：\(mainVM.gainDayExpense())"
+        self.monthExpenseLabel.text = "本月消费：\(mainVM.gainMonthExpense())"
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -40,42 +55,24 @@ class ViewController: UIViewController {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     // 配置波浪小球
     func configureWaveProgress(number: Double, percent: CGFloat) {
-        waterWaveView = TYWaveProgressView(frame: CGRectMake(0, 0, 180, 180))
         waterWaveView.waveViewMargin = UIEdgeInsetsMake(10, 10, 10, 10)
         waterWaveView.backgroundImageView?.image = UIImage(named: "bg_tk_003")
         
         // 设置 现实的数值
         waterWaveView.numberLabel?.text = "\(number)"
-        waterWaveView.numberLabel?.textColor = UIColor.whiteColor()
+        waterWaveView.numberLabel?.font = UIFont.systemFontOfSize(20)
+        waterWaveView.numberLabel.textColor = UIColor.whiteColor()
 
         // 设置 %
-        waterWaveView.unitLabel?.text = "%"
-        waterWaveView.unitLabel?.textColor = UIColor.whiteColor()
+        waterWaveView.unitLabel.text = "%"
+        waterWaveView.unitLabel.font = UIFont(name: "systemFont", size: 18.0)
+        waterWaveView.unitLabel.textColor = UIColor.whiteColor()
         
         // 设置 显示的条目
         waterWaveView.explainLabel?.text = "已消费"
+        waterWaveView.explainLabel.font = UIFont.boldSystemFontOfSize(20.0)
         waterWaveView.explainLabel?.textColor = UIColor.whiteColor()
         
         // 设置 百分比

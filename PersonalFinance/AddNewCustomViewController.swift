@@ -9,17 +9,27 @@
 import UIKit
 import ReactiveCocoa
 import MMNumberKeyboard
+import PDTSimpleCalendar
+import SimpleAlert
 
 class AddNewCustomViewController: UIViewController {
     
     @IBOutlet weak var customTypeCollectionView: UICollectionView!
     @IBOutlet weak var numberTextField: UITextField!
+    @IBOutlet weak var categoryImage: UIImageView!
+    
+    
+    var consumeDate: NSDate = NSDate()
+    var consumeCategoryID: Int32 = 0
+    var pdtCalendar: PDTSimpleCalendarViewController?
     
     
     var addNewCustomVM: AddNewCustomViewModel!
     var keyboardView: UIView!
+    var selectTimeBtn: UIButton!
+    var commentBtn: UIButton!
     
-    
+    var commentString: String? = ""
     
 
     override func viewDidLoad() {
@@ -36,6 +46,17 @@ class AddNewCustomViewController: UIViewController {
         self.keyboardView = self.createCustonKeyBoardView()
         self.prepareKeyboardNotifation()
         self.view.addSubview(self.keyboardView)
+        
+        // 配置初始化 category 数据
+        self.addNewCustomVM.gainAllConsumeType()
+        self.changeConsumeCategoryInfo(self.addNewCustomVM.gainCategoryWithCusOther()!)
+    }
+    
+    // 配置 category 数据
+    func changeConsumeCategoryInfo(consumeCategory: ConsumeCategory) {
+        self.categoryImage.image = UIImage(data: (consumeCategory.iconData)!)
+        self.consumeCategoryID = consumeCategory.id
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -85,21 +106,20 @@ class AddNewCustomViewController: UIViewController {
         self.numberTextField.inputView = keyboard
     }
     
-    // 创建一个键盘上方的 View
+    // MARK: - 创建一个键盘上方的 View
     func createCustonKeyBoardView() ->UIView {
         let customView: UIView = UIView(frame: CGRectMake(0, UIScreen.mainScreen().bounds.height - 40, UIScreen.mainScreen().bounds.width, 40))
         customView.backgroundColor = UIColor.whiteColor()
         
-        let selectTimeBtn = UIButton(frame: CGRectMake(10, 5, 80, 30))
-        selectTimeBtn.setTitle("改时间", forState: .Normal)
-        selectTimeBtn.addTarget(self, action: "selectTime", forControlEvents: .TouchUpInside)
+        selectTimeBtn = UIButton(frame: CGRectMake(10, 5, 80, 30))
+        selectTimeBtn.setTitle(self.addNewCustomVM.gainToday(), forState: .Normal)
+        selectTimeBtn.addTarget(self, action: #selector(selectTime), forControlEvents: .TouchUpInside)
         self.setButtonStyleOfKeyboard(selectTimeBtn)
         customView.addSubview(selectTimeBtn)
         
-        
-        let commentBtn = UIButton(frame: CGRectMake(100, 5, 80, 30))
+        commentBtn = UIButton(frame: CGRectMake(100, 5, 80, 30))
         commentBtn.setTitle("写备注", forState: .Normal)
-        commentBtn.addTarget(self, action: "noteDownComment", forControlEvents: .TouchUpInside)
+        commentBtn.addTarget(self, action: #selector(noteDownComment), forControlEvents: .TouchUpInside)
         self.setButtonStyleOfKeyboard(commentBtn)
         customView.addSubview(commentBtn)
 
@@ -107,11 +127,11 @@ class AddNewCustomViewController: UIViewController {
     }
     
     func selectTime() {
-        print("点击了一下")
+        self.gotoSimpleCalender()
     }
     
     func noteDownComment() {
-        
+        self.createPopView()
     }
     
     
@@ -129,8 +149,8 @@ class AddNewCustomViewController: UIViewController {
     
     // MARK: - 为键盘上方的 View 配置操作
     func prepareKeyboardNotifation() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeKeyboardShowNotifation:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeKeyboardHideNotifation:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeKeyboardShowNotifation(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeKeyboardHideNotifation(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
     
     func changeKeyboardShowNotifation(notification: NSNotification) {
@@ -165,21 +185,92 @@ class AddNewCustomViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    // MARK: - 配置时间选择器
+    
+    // 跳转时间选择器
+    func gotoSimpleCalender() {
+        
+        // 首先创建一个时间选择器
+        if (pdtCalendar == nil) {
+            pdtCalendar = PDTSimpleCalendarViewController()
+            pdtCalendar?.delegate = self
+            pdtCalendar?.weekdayHeaderEnabled = true
+            pdtCalendar?.weekdayTextType = .VeryShort
+            
+            pdtCalendar?.title = "选择时间"
+            pdtCalendar?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Done, target: self, action: #selector(selectDateDone))
+        }
+        
+        // 实现跳转
+        self.navigationController?.pushViewController(pdtCalendar!, animated: true)
+    }
+    
+    // 关闭 时间选择器
+    func selectDateDone() {
+        // 返回原界面
+        pdtCalendar?.navigationController?.popViewControllerAnimated(true)
+        // 获取所选择的时间
+        let time = "\(consumeDate.month)月\(consumeDate.day)日"
+        self.selectTimeBtn.setTitle(time, forState: .Normal)
+    }
+
+    // MARK: - 配置一个弹出框    
+    func createPopView() {
+        // 创建一个自定义的view
+        let cusView = UIView(frame: CGRectMake(0, 0, 270, 100))
+        cusView.backgroundColor = UIColor.whiteColor()
+        
+        let nameLabel = UILabel(frame: CGRectMake(0, 8, 270, 20))
+        nameLabel.text = "备注"
+        nameLabel.textAlignment = .Center
+        nameLabel.font = UIFont.systemFontOfSize(20)
+        cusView.addSubview(nameLabel)
+        
+        let textView: UITextView = UITextView(frame: CGRectMake(8, 30, 270 - 16, 64))
+        textView.text = commentString
+        textView.backgroundColor = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
+        textView.layer.masksToBounds = true
+        textView.layer.cornerRadius = 5.0
+        textView.becomeFirstResponder()
+        cusView.addSubview(textView)
+        
+        let alert = SimpleAlert.Controller(view: cusView, style: .Alert)
+        
+        alert.addAction(SimpleAlert.Action(title: "取消", style: .Destructive){ action in
+            
+        })
+        
+        alert.addAction(SimpleAlert.Action(title: "确定", style: .OK) { action in
+            if textView.text != "" {
+                self.commentString = textView.text
+                self.commentBtn.setTitle("已有备注", forState: .Normal)
+                self.commentBtn.layer.borderColor = UIColor.blueColor().CGColor
+            }else {
+                self.commentBtn.setTitle("写备注", forState: .Normal)
+                self.commentBtn.layer.borderColor = UIColor.grayColor().CGColor
+            }
+        })
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 }
 
-
+// MARK: - UICollectionViewDelegate 协议
 extension AddNewCustomViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-        
-        
-        print("section: \(indexPath.section), row: (\(indexPath.row))")
-        
+        if indexPath.row == (self.addNewCustomVM.consumeTypeArr?.count)! - 1 {
+            return
+        }else {
+            let category = self.addNewCustomVM.consumeTypeArr![indexPath.row]
+            self.changeConsumeCategoryInfo(category)
+        }
     }
     
 }
 
+// MARK: - UICollectionViewDataSource 协议
 extension AddNewCustomViewController: UICollectionViewDataSource {
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return addNewCustomVM.consumeTypeArr!.count
     }
@@ -193,10 +284,37 @@ extension AddNewCustomViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - MMNumberKeyboardDelegate 协议
 extension AddNewCustomViewController: MMNumberKeyboardDelegate {
     func numberKeyboardShouldReturn(numberKeyboard: MMNumberKeyboard!) -> Bool {
+        
+        // 按下返回键操作
+        // 首先判断 金额是否为0，为0 不能保存
+        if self.numberTextField.text == "￥0.00" {
+            TopAlert().createFailureTopAlert("金额不能为 0", parentView: self.view)
+            return false
+        }
+        
+        // 获取消费金额
+        let numberText = numberTextField.text
+        let numberStr = numberText?.substringFromIndex((numberText?.startIndex.advancedBy(1))!)
+        let money: Double = Double(numberStr!)!
+        
+        // 保存数据
+        self.addNewCustomVM.saveNewConsume(consumeCategoryID, photo: NSData(), comment: commentString!, money: money, time: consumeDate)
+        
+        // 返回主页面
+        self.navigationController?.popViewControllerAnimated(true)
+        
         return true
     }
+    
 }
 
+
+extension AddNewCustomViewController: PDTSimpleCalendarViewDelegate {
+    func simpleCalendarViewController(controller: PDTSimpleCalendarViewController!, didSelectDate date: NSDate!) {
+        consumeDate = date.tolocalTime()
+    }
+}
 

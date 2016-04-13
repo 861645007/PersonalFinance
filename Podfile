@@ -23,6 +23,10 @@ target "PersonalFinance" do
 	pod 'Onboard'
 # 数字键盘
 	pod 'MMNumberKeyboard'
+# 时间选择器
+	pod 'PDTSimpleCalendar', '~> 0.9.1'
+# 一个可自定义的弹出框
+	pod "SimpleAlert"
 
 
 

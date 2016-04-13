@@ -36,15 +36,7 @@ class CategoryService {
         category.iconData = iconData
         
         self.coreDataStack.saveContext()
-    }
-    
-    func createAddType() -> Category {
-        let addCategory: Category = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: self.managedObjectConext) as! Category
-        addCategory.name = "新增"
-        addCategory.iconData = UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)
-        
-        return addCategory
-    }
+    }    
     
     // MARK: - 查询
     /**

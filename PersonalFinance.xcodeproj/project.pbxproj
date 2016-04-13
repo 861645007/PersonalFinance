@@ -11,12 +11,22 @@
 		7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644261C6B05BA00FAE828 /* Consume-Type.plist */; };
 		7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */; };
 		7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */; };
+		7A24ED181CBB6BDE0000404F /* ConsumeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24ED171CBB6BDE0000404F /* ConsumeCategory.swift */; };
 		7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */; };
 		7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */; };
+		7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */; };
+		7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F561CB77D3400324267 /* ChartViewModel.swift */; };
+		7A444F5B1CB77D5D00324267 /* ChartDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */; };
 		7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */; };
 		7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC51C5C780900BEE1B8 /* DateExtension.swift */; };
 		7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */; };
 		7A614FCC1C5C853600BEE1B8 /* BaseInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */; };
+		7A7376BC1CBB7F810038BB3E /* TopAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376BB1CBB7F810038BB3E /* TopAlert.swift */; };
+		7A7376BF1CBB80200038BB3E /* MozTopAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376BE1CBB80200038BB3E /* MozTopAlertView.m */; };
+		7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376C11CBB80350038BB3E /* FAImageView.m */; };
+		7A7376C81CBB80350038BB3E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A7376C21CBB80350038BB3E /* FontAwesome.ttf */; };
+		7A7376C91CBB80350038BB3E /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376C41CBB80350038BB3E /* NSString+FontAwesome.m */; };
+		7A7376CA1CBB80350038BB3E /* UIFont+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376C61CBB80350038BB3E /* UIFont+FontAwesome.m */; };
 		7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3AC1C58F07F009AD0A7 /* AppDelegate.swift */; };
 		7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */; };
 		7A7EB3B21C58F07F009AD0A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B01C58F07F009AD0A7 /* Main.storyboard */; };
@@ -31,7 +41,7 @@
 		7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E61C58F672009AD0A7 /* Category.swift */; };
 		7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */; };
 		7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */; };
-		7ABC84B41C6B243F001156BF /* CustomType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B31C6B243F001156BF /* CustomType.swift */; };
+		7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */; };
 		7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B51C6B24CC001156BF /* CategoryService.swift */; };
 		7ABC84BA1C6B28E9001156BF /* CategoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */; };
 		7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */; };
@@ -39,6 +49,10 @@
 		7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */; };
 		7ACEF5121C5A39F500EF2200 /* SingleCustomServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */; };
 		7ACEF5161C5A3A2B00EF2200 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */; };
+		7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */; };
+		7AEE21151CB6222300BC9985 /* FinanceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE21141CB6222300BC9985 /* FinanceListViewController.swift */; };
+		7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE21181CB622A400BC9985 /* ChartViewController.swift */; };
+		7AEE211B1CB622B200BC9985 /* ChartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE211A1CB622B200BC9985 /* ChartDetailViewController.swift */; };
 		7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073671C5DA75200221F17 /* TYWaterWaveView.m */; };
 		7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073691C5DA75200221F17 /* TYWaveProgressView.m */; };
 		7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF0736D1C5DA8AB00221F17 /* MainViewModel.swift */; };
@@ -66,12 +80,26 @@
 		7A0644261C6B05BA00FAE828 /* Consume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Consume-Type.plist"; sourceTree = "<group>"; };
 		7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewComsume-Type.plist"; sourceTree = "<group>"; };
 		7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A24ED171CBB6BDE0000404F /* ConsumeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsumeCategory.swift; path = CoreData/ConsumeCategory.swift; sourceTree = "<group>"; };
 		7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCustomViewController.swift; sourceTree = "<group>"; };
 		7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewCustomViewModel.swift; path = ViewModel/AddNewCustomViewModel.swift; sourceTree = "<group>"; };
+		7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanceOfCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		7A444F561CB77D3400324267 /* ChartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartViewModel.swift; path = ViewModel/ChartViewModel.swift; sourceTree = "<group>"; };
+		7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartDetailViewModel.swift; path = ViewModel/ChartDetailViewModel.swift; sourceTree = "<group>"; };
 		7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatePlist.swift; sourceTree = "<group>"; };
 		7A614FC51C5C780900BEE1B8 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfo.swift; sourceTree = "<group>"; };
 		7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoTest.swift; sourceTree = "<group>"; };
+		7A7376BB1CBB7F810038BB3E /* TopAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlert.swift; sourceTree = "<group>"; };
+		7A7376BD1CBB80200038BB3E /* MozTopAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MozTopAlertView.h; path = TopAlertView/MozTopAlertView.h; sourceTree = "<group>"; };
+		7A7376BE1CBB80200038BB3E /* MozTopAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MozTopAlertView.m; path = TopAlertView/MozTopAlertView.m; sourceTree = "<group>"; };
+		7A7376C01CBB80350038BB3E /* FAImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FAImageView.h; path = TopAlertView/fontawesome/FAImageView.h; sourceTree = "<group>"; };
+		7A7376C11CBB80350038BB3E /* FAImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FAImageView.m; path = TopAlertView/fontawesome/FAImageView.m; sourceTree = "<group>"; };
+		7A7376C21CBB80350038BB3E /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = TopAlertView/fontawesome/FontAwesome.ttf; sourceTree = "<group>"; };
+		7A7376C31CBB80350038BB3E /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FontAwesome.h"; path = "TopAlertView/fontawesome/NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		7A7376C41CBB80350038BB3E /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FontAwesome.m"; path = "TopAlertView/fontawesome/NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		7A7376C51CBB80350038BB3E /* UIFont+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIFont+FontAwesome.h"; path = "TopAlertView/fontawesome/UIFont+FontAwesome.h"; sourceTree = "<group>"; };
+		7A7376C61CBB80350038BB3E /* UIFont+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIFont+FontAwesome.m"; path = "TopAlertView/fontawesome/UIFont+FontAwesome.m"; sourceTree = "<group>"; };
 		7A7EB3A91C58F07F009AD0A7 /* PersonalFinance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A7EB3AC1C58F07F009AD0A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +120,7 @@
 		7A7EB3E61C58F672009AD0A7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = CoreData/Model/Category.swift; sourceTree = "<group>"; };
 		7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreData/CoreDataStack.swift; sourceTree = "<group>"; };
 		7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustomService.swift; path = CoreData/SingleCustomService.swift; sourceTree = "<group>"; };
-		7ABC84B31C6B243F001156BF /* CustomType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomType.swift; sourceTree = "<group>"; };
+		7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinanceOfCategory.swift; path = CoreData/FinanceOfCategory.swift; sourceTree = "<group>"; };
 		7ABC84B51C6B24CC001156BF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryService.swift; path = CoreData/CategoryService.swift; sourceTree = "<group>"; };
 		7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryServiceTest.swift; sourceTree = "<group>"; };
 		7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardPageManager.swift; sourceTree = "<group>"; };
@@ -100,6 +128,10 @@
 		7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustomRecord.swift; path = CoreData/SingleCustomRecord.swift; sourceTree = "<group>"; };
 		7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleCustomServiceTest.swift; sourceTree = "<group>"; };
 		7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
+		7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataInfoExtension.swift; sourceTree = "<group>"; };
+		7AEE21141CB6222300BC9985 /* FinanceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanceListViewController.swift; sourceTree = "<group>"; };
+		7AEE21181CB622A400BC9985 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		7AEE211A1CB622B200BC9985 /* ChartDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDetailViewController.swift; sourceTree = "<group>"; };
 		7AF0735C1C5D9CCE00221F17 /* PersonalFinance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalFinance-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AF073661C5DA75200221F17 /* TYWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYWaterWaveView.h; path = TYWaveProgressView/TYWaterWaveView.h; sourceTree = "<group>"; };
 		7AF073671C5DA75200221F17 /* TYWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYWaterWaveView.m; path = TYWaveProgressView/TYWaterWaveView.m; sourceTree = "<group>"; };
@@ -169,6 +201,23 @@
 			name = "Add New Custom";
 			sourceTree = "<group>";
 		};
+		7A444F541CB77D0000324267 /* Chart View Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A444F561CB77D3400324267 /* ChartViewModel.swift */,
+				7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */,
+			);
+			name = "Chart View Model";
+			sourceTree = "<group>";
+		};
+		7A444F551CB77D0D00324267 /* Chart Detail View Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */,
+			);
+			name = "Chart Detail View Model";
+			sourceTree = "<group>";
+		};
 		7A47B8561C6B3AE500F63D9A /* Operate Plist */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				7A614FC51C5C780900BEE1B8 /* DateExtension.swift */,
+				7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -211,6 +261,31 @@
 				7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */,
 			);
 			name = BaseInfoTest;
+			sourceTree = "<group>";
+		};
+		7A7376CB1CBB803C0038BB3E /* font */ = {
+			isa = PBXGroup;
+			children = (
+				7A7376C01CBB80350038BB3E /* FAImageView.h */,
+				7A7376C11CBB80350038BB3E /* FAImageView.m */,
+				7A7376C21CBB80350038BB3E /* FontAwesome.ttf */,
+				7A7376C31CBB80350038BB3E /* NSString+FontAwesome.h */,
+				7A7376C41CBB80350038BB3E /* NSString+FontAwesome.m */,
+				7A7376C51CBB80350038BB3E /* UIFont+FontAwesome.h */,
+				7A7376C61CBB80350038BB3E /* UIFont+FontAwesome.m */,
+			);
+			name = font;
+			sourceTree = "<group>";
+		};
+		7A7376CC1CBB80530038BB3E /* TopAlert */ = {
+			isa = PBXGroup;
+			children = (
+				7A7376CB1CBB803C0038BB3E /* font */,
+				7A7376BD1CBB80200038BB3E /* MozTopAlertView.h */,
+				7A7376BE1CBB80200038BB3E /* MozTopAlertView.m */,
+				7A7376BB1CBB7F810038BB3E /* TopAlert.swift */,
+			);
+			name = TopAlert;
 			sourceTree = "<group>";
 		};
 		7A7EB3A01C58F07F009AD0A7 = {
@@ -238,9 +313,9 @@
 		7A7EB3AB1C58F07F009AD0A7 /* PersonalFinance */ = {
 			isa = PBXGroup;
 			children = (
+				7A7EB3DA1C58F4C6009AD0A7 /* Core Data */,
 				7AF073611C5D9D8700221F17 /* ViewModel */,
 				7AF073601C5D9D7B00221F17 /* View Controller */,
-				7A7EB3DA1C58F4C6009AD0A7 /* Core Data */,
 				7A7EB3AC1C58F07F009AD0A7 /* AppDelegate.swift */,
 				7A7EB3B01C58F07F009AD0A7 /* Main.storyboard */,
 				7A7EB3B31C58F07F009AD0A7 /* Assets.xcassets */,
@@ -278,7 +353,7 @@
 				7A7EB3DE1C58F5F0009AD0A7 /* Model */,
 				7A7EB3DB1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld */,
 				7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */,
-				7ABC84B31C6B243F001156BF /* CustomType.swift */,
+				7A24ED171CBB6BDE0000404F /* ConsumeCategory.swift */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -334,9 +409,37 @@
 			name = ServiceTest;
 			sourceTree = "<group>";
 		};
+		7AEE21131CB621DC00BC9985 /* Finance List View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7AEE21141CB6222300BC9985 /* FinanceListViewController.swift */,
+			);
+			name = "Finance List View Controller";
+			sourceTree = "<group>";
+		};
+		7AEE21161CB6224F00BC9985 /* Chart View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7AEE21181CB622A400BC9985 /* ChartViewController.swift */,
+				7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */,
+			);
+			name = "Chart View Controller";
+			sourceTree = "<group>";
+		};
+		7AEE21171CB6227800BC9985 /* Chart Detail View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7AEE211A1CB622B200BC9985 /* ChartDetailViewController.swift */,
+			);
+			name = "Chart Detail View Controller";
+			sourceTree = "<group>";
+		};
 		7AF073601C5D9D7B00221F17 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7AEE21171CB6227800BC9985 /* Chart Detail View Controller */,
+				7AEE21161CB6224F00BC9985 /* Chart View Controller */,
+				7AEE21131CB621DC00BC9985 /* Finance List View Controller */,
 				7A41680F1C60615200145EA1 /* Add New Custom */,
 				7AF0736F1C5DA8B000221F17 /* Main View Controller */,
 			);
@@ -346,6 +449,8 @@
 		7AF073611C5D9D8700221F17 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7A444F551CB77D0D00324267 /* Chart Detail View Model */,
+				7A444F541CB77D0000324267 /* Chart View Model */,
 				7A4168101C60616F00145EA1 /* Add New Custom */,
 				7AF0736C1C5DA88800221F17 /* Main View Model */,
 			);
@@ -355,6 +460,7 @@
 		7AF073621C5DA72800221F17 /* Function */ = {
 			isa = PBXGroup;
 			children = (
+				7A7376CC1CBB80530038BB3E /* TopAlert */,
 				7AF073651C5DA74900221F17 /* TYWaveProgressView */,
 			);
 			name = Function;
@@ -509,6 +615,7 @@
 				7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */,
 				7A7EB3B41C58F07F009AD0A7 /* Assets.xcassets in Resources */,
 				7A7EB3B21C58F07F009AD0A7 /* Main.storyboard in Resources */,
+				7A7376C81CBB80350038BB3E /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,27 +689,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A7EB3E71C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift in Sources */,
+				7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */,
 				7A7EB3E91C58F672009AD0A7 /* Category+CoreDataProperties.swift in Sources */,
-				7ABC84B41C6B243F001156BF /* CustomType.swift in Sources */,
 				7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */,
 				7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */,
 				7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */,
 				7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */,
 				7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */,
 				7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */,
+				7A7376BC1CBB7F810038BB3E /* TopAlert.swift in Sources */,
 				7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */,
+				7A24ED181CBB6BDE0000404F /* ConsumeCategory.swift in Sources */,
+				7A444F5B1CB77D5D00324267 /* ChartDetailViewModel.swift in Sources */,
+				7AEE211B1CB622B200BC9985 /* ChartDetailViewController.swift in Sources */,
+				7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
+				7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */,
+				7A7376CA1CBB80350038BB3E /* UIFont+FontAwesome.m in Sources */,
 				7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */,
 				7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */,
 				7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */,
 				7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */,
 				7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */,
+				7A7376BF1CBB80200038BB3E /* MozTopAlertView.m in Sources */,
+				7AEE21151CB6222300BC9985 /* FinanceListViewController.swift in Sources */,
 				7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */,
+				7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */,
+				7A7376C91CBB80350038BB3E /* NSString+FontAwesome.m in Sources */,
 				7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */,
 				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,
 				7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */,
+				7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */,
 				7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */,
+				7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */,
 				7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

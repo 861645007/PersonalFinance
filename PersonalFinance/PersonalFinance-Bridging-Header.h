@@ -4,3 +4,6 @@
 
 #import <Bugtags/Bugtags.h>
 #import "TYWaveProgressView.h"
+
+// 头部提示框
+#import "MozTopAlertView.h"

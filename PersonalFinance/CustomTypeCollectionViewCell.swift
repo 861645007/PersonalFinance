@@ -13,7 +13,7 @@ class CustomTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var consumeImageView: UIImageView!
     @IBOutlet weak var consumeTypeLabel: UILabel!
     
-    func prepareCollectionCell(category: Category) {
+    func prepareCollectionCell(category: ConsumeCategory) {
         self.consumeImageView.image = UIImage(data: category.iconData!)
         self.consumeTypeLabel.text = category.name
     }

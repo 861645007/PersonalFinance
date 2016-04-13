@@ -41,7 +41,7 @@ class BaseInfo: NSObject {
     
     
     // MARK: - 每月支出
-    func saveMonthExpense(value: NSNumber) {
+    func addMonthExpense(value: NSNumber) {
         let totalExpense = value.doubleValue + self.gainMonthExpense().doubleValue
         self.saveMoneyInfo(totalExpense, key: "MonthExpense")
     }
@@ -51,7 +51,7 @@ class BaseInfo: NSObject {
     }
     
     // MARK: - 每日支出
-    func saveDayExpense(value: NSNumber) {
+    func addDayExpense(value: NSNumber) {
         let totalExpense = value.doubleValue + self.gainDayExpense().doubleValue
         self.saveMoneyInfo(totalExpense, key: "DayExpense")
     }
@@ -68,11 +68,11 @@ class BaseInfo: NSObject {
     */
     func judgeTimeWhenFirstUseInEveryDay(date: NSDate) {
         if !self.isCurrentMonth(date) {
-            self.saveMonthExpense(0.0)
-            self.saveDayExpense(0.0)
+            self.addMonthExpense(0.0)
+            self.addDayExpense(0.0)
         }else {
             if !self.isToday(date) {
-                self.saveDayExpense(0.0)
+                self.addDayExpense(0.0)
             }
         }
     }
@@ -82,9 +82,9 @@ class BaseInfo: NSObject {
      当第一次进入应用的时候初始化各项基本数据
      */
     func initDataWhenFirstUse() {
-        self.saveDayExpense(0.0)
+        self.addDayExpense(0.0)
         self.saveMonthBudget(0.0)
-        self.saveMonthExpense(0.0)
+        self.addMonthExpense(0.0)
         self.saveNewExpense(0.0)
         self.saveTime(NSDate())
     }

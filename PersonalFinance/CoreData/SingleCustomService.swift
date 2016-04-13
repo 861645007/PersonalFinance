@@ -27,13 +27,13 @@ class SingleCustomService {
     }
     
     // MARK: - 新增消费记录
-    func addNewSingleCustom(category: Int32, photo: NSData, comment: String, money: Int32, time: NSDate) {
+    func addNewSingleCustom(category: Int32, photo: NSData, comment: String, money: Double, time: NSDate) {
         let singleCustom: SingleCustom = NSEntityDescription.insertNewObjectForEntityForName("SingleCustom", inManagedObjectContext: self.managedObjectConext) as! SingleCustom
         
         singleCustom.category = NSNumber(int: category)
         singleCustom.photo    = photo
         singleCustom.comment  = comment
-        singleCustom.money    = NSNumber(int: money)
+        singleCustom.money    = NSNumber(double: money)
         singleCustom.time     = time
         
         self.coreDataStack.saveContext()
@@ -47,17 +47,22 @@ class SingleCustomService {
     
     - returns: 一年的消费记录
     */
-    func fetchCustomWithTrendChart(date: NSDate) ->[SingleCustom] {
+    func fetchFinanceWithYearTrendChart(date: NSDate) ->[SingleCustom] {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
-    /**
-    获取 环形图 的数据
-    
-    - returns: 一个 SingleCustom 的实例数据
-    */
-    func fetchCustomForCircularDiagram(date: NSDate) ->[SingleCustom] {
+    func fetchFinanceWithMonthTrendChart(date: NSDate) -> [SingleCustom] {
         return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
+    }
+    
+    /**
+    获取一个月的 环形图 的数据(按 Category 组分类)
+    
+    - returns: 一个 SingleCustom数组 的实例数据
+    */
+    func fetchFinanceWithPieChart(date: NSDate) ->NSFetchedResultsController {
+        let predicate = NSPredicate(format: "time >= %@ AND time <= %@", date.monthBegin(), date.monthEnd())
+        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "category", cacheName: "CategoryCache")
     }
     
     /**
@@ -70,18 +75,16 @@ class SingleCustomService {
      */
     private func fetchCustomWithRangeDate(dateBegin :NSDate, dateEnd: NSDate) ->[SingleCustom] {
         let predicate = NSPredicate(format: "time >= %@ AND time <= %@", dateBegin, dateEnd)
-        let fetchRequest = self.gainFetchRequestForChart(predicate, group: ["Category"])
+        let fetchRequest = self.gainFetchRequest(predicate)
         return self.executeFetchRequest(fetchRequest)
     }
     
     // 获取一个 NSFetchRequest 实例
-    private func gainFetchRequestForChart(predicate: NSPredicate, group: [String]) ->NSFetchRequest {
+    private func gainFetchRequest(predicate: NSPredicate) ->NSFetchRequest {
         let fetchRequest = NSFetchRequest(entityName: "SingleCustom")
         
         fetchRequest.predicate = predicate
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "Time", ascending: true)]
-        // 让查询结果按 组 分类
-        fetchRequest.propertiesToGroupBy = group
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "time", ascending: true)]
         
         return fetchRequest
     }
@@ -106,11 +109,11 @@ class SingleCustomService {
     
     - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
     */
-    func fetchCustomRecordWithToday() ->NSFetchedResultsController {
+    func fetchConsumeRecordWithToday() ->NSFetchedResultsController {
         let today = NSDate()
         let predicate = NSPredicate(format: "time >= %@ AND time <= %@", today.dayBegin(), today.dayEnd())
 
-        return self.fetchCustomWithFetchedResult(predicate, cacheName: "TodayCustom")
+        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "TodayCustom")
     }
     
     /**
@@ -118,22 +121,18 @@ class SingleCustomService {
 
      - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
      */
-    func fetchCustomRecordWithCurrentMonth() ->NSFetchedResultsController {
+    func fetchConsumeRecordWithCurrentMonth() ->NSFetchedResultsController {
         let today = NSDate()
         let predicate = NSPredicate(format: "time >= %@ AND time <= %@", today.monthBegin(), today.monthEnd())
         
-        return self.fetchCustomWithFetchedResult(predicate, cacheName: "MonthCustom")
+        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "MonthCustom")
     }
     
     
-    private func fetchCustomWithFetchedResult(predicate: NSPredicate, cacheName: String) ->NSFetchedResultsController {
-        let fetchRequest = NSFetchRequest(entityName: "SingleCustom")
+    private func fetchConsumeWithFetchedResult(predicate: NSPredicate, sectionName: String, cacheName: String) ->NSFetchedResultsController {
+        let fetchRequest = self.gainFetchRequest(predicate)
         
-        fetchRequest.predicate = predicate
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "Time", ascending: true)]
-        
-        
-        let fetchedResult = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectConext, sectionNameKeyPath: "Time", cacheName: cacheName)
+        let fetchedResult = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectConext, sectionNameKeyPath: sectionName, cacheName: cacheName)
         
         do {
             try fetchedResult.performFetch()

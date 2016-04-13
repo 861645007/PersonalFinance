@@ -1,9 +1,12 @@
 PODS:
-  - Bugtags (1.1.7)
-  - Charts (2.1.6)
+  - Bugtags (1.2.4)
+  - Charts (2.2.4):
+    - Charts/Core (= 2.2.4)
+  - Charts/Core (2.2.4)
   - DZNEmptyDataSet (1.7.3)
-  - MMNumberKeyboard (0.1.4)
-  - Onboard (2.1.7)
+  - MMNumberKeyboard (0.1.5)
+  - Onboard (2.1.9)
+  - PDTSimpleCalendar (0.9.1)
   - ReactiveCocoa (4.0.4-alpha-4):
     - ReactiveCocoa/UI (= 4.0.4-alpha-4)
     - Result (~> 1.0)
@@ -15,10 +18,11 @@ PODS:
   - ReactiveCocoa/UI (4.0.4-alpha-4):
     - ReactiveCocoa/Core
     - Result (~> 1.0)
-  - Result (1.0.1)
+  - Result (1.0.2)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - SimpleAlert (1.3.1)
   - Spring (1.0.3)
   - Timepiece (0.4.2)
 
@@ -28,8 +32,10 @@ DEPENDENCIES:
   - DZNEmptyDataSet (~> 1.7.3)
   - MMNumberKeyboard
   - Onboard
+  - PDTSimpleCalendar (~> 0.9.1)
   - ReactiveCocoa (~> 4.0.4-alpha-4)
   - SDWebImage (~> 3.7.4)
+  - SimpleAlert
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
   - Timepiece
 
@@ -44,14 +50,16 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
-  Bugtags: 5522fa54c5a4db1d45a3fff3dd9def69e7172ee1
-  Charts: 5e1e5ac23898e5b09d226a2fc3e9d86bc281937e
+  Bugtags: 4dc91ed7fd5edea46f411c0603777d89016089e8
+  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
-  MMNumberKeyboard: 417cbf2626a946e3bbbc60f8e4bd175dae4e69f4
-  Onboard: 87648089e1b76d13b4f5bf8f7a1cdb144092f0af
+  MMNumberKeyboard: 12da79571d08aca21566534a74726c5469aed29a
+  Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
+  PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
   ReactiveCocoa: e459ea92099447802df20c4735e31e8139b06094
-  Result: caef80340451e1f07492fa1e89117f83613bce24
+  Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SimpleAlert: 05215ee656e1da1428998e76a76bb153a16c7a21
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
 
