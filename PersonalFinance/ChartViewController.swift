@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import DZNEmptyDataSet
 
 class ChartViewController: UIViewController {
 
@@ -23,6 +24,7 @@ class ChartViewController: UIViewController {
     
     
     // 控制视图 实例变量
+    @IBOutlet weak var categoryTableView: UITableView!    
     @IBOutlet weak var pageControl: UIPageControl!
     
     // 饼图部分
@@ -56,7 +58,14 @@ class ChartViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        createPieChart(self.chartVM.gainCategoryNamesWithPie(), values: self.chartVM.gainCategoryRatioWithPie(), money: self.chartVM.gainTotalExpense())
+        // 创建环形图
+        self.preparePieChartWithCategory(self.chartVM.currentMonthWithCategory!)
+        
+        // 创建每月消费走势图
+        createMonthTrendChart(self.chartVM.months, values: self.chartVM.consumeMonthTrendArr)
+        
+        // 去除 tableView 多余的分割线
+        self.categoryTableView.tableFooterView = UIView()
         
     }
 
@@ -80,11 +89,15 @@ class ChartViewController: UIViewController {
     
 
     @IBAction func clickCategoryArrowLeft(sender: AnyObject) {
-        
+        let newDate = self.chartVM.gainDateForPreMonthWithCategory()
+        self.chartVM.setConsumeCategoryArrWithDate(newDate)
+        self.preparePieChartWithCategory(newDate)
     }
 
     @IBAction func clickCategoryArrowRight(sender: AnyObject) {
-        
+        let newDate = self.chartVM.gainDateForNextMonthWithCategory()
+        self.chartVM.setConsumeCategoryArrWithDate(newDate)
+        self.preparePieChartWithCategory(newDate)
     }
     
     @IBAction func clickMonthArrowLeft(sender: AnyObject) {
@@ -106,6 +119,24 @@ class ChartViewController: UIViewController {
     
     
     // MARK: - 创建环形图
+    // 配置 创建环形图操作
+    func preparePieChartWithCategory(date: NSDate) {
+        // 创建环形图
+        if self.chartVM.gainTotalExpense() == 0 {
+            createPieChart([], values: [], money: self.chartVM.gainTotalExpense())
+            categoryChartView.alpha = 0.0
+        }else {
+            categoryChartView.alpha = 1.0
+            createPieChart(self.chartVM.gainCategoryNamesWithPie(), values: self.chartVM.gainCategoryRatioWithPie(), money: self.chartVM.gainTotalExpense())
+        }
+        
+        // 更新时间
+        self.categoryCurrentTime.text = "\(date.year)年\(date.month)月"
+        // 创建完图标后刷新数据
+        categoryTableView.reloadData()
+    }
+    
+    // 创建一个环形图
     func createPieChart(dataPoints: [String], values: [Double], money: Double) {
         let dataEntries: [ChartDataEntry] = self.chartVM.createDataEntries(dataPoints, values: values)
 
@@ -116,6 +147,8 @@ class ChartViewController: UIViewController {
         pieChartDataSet.colors = self.chartVM.setColorWithPie()
         
         categoryChartView.data = pieChartData
+        
+        categoryChartView.descriptionText = ""
         
         // 设置动画
         categoryChartView.animate(xAxisDuration: 1.4, easingOption: .EaseOutBack)
@@ -139,7 +172,86 @@ class ChartViewController: UIViewController {
         
         yearChartView.data = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
     }
-    
-    
-
 }
+
+// MARK: - UIScrollView 操作协议
+extension ChartViewController: UIScrollViewDelegate {
+   
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        //通过scrollView内容的偏移计算当前显示的是第几页
+        let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        //设置pageController的当前页
+        pageControl.currentPage = page
+    }
+}
+
+// MARK: - TableView 数据源协议
+extension ChartViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.chartVM.gainNumberOfSection()
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("FinanceCategory") as! FinanceOfCategoryTableViewCell
+        
+        cell.prepareCollectionCell(self.chartVM.gainFinanceCategoryAtIndex(indexPath))
+        
+        return cell;
+    }
+}
+
+
+// MARK: - TableView 操作协议
+extension ChartViewController: UITableViewDelegate {
+    
+}
+
+
+
+// MARK: - DZNEmptyDataSetSource 数据源协议
+extension ChartViewController: DZNEmptyDataSetSource {
+    // 设置图片
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "saveMoney")
+    }
+    
+    // 设置文字
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let attribute = [NSFontAttributeName: UIFont.systemFontOfSize(18.0),
+                         NSForegroundColorAttributeName: UIColor.grayColor()]
+        return NSAttributedString(string: "本月尚未记账", attributes: attribute)
+    }
+    
+    func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
+        let animation: CABasicAnimation = CABasicAnimation(keyPath: "transform")
+        
+        animation.fromValue = NSValue.init(CATransform3D: CATransform3DIdentity)
+        animation.toValue = NSValue.init(CATransform3D: CATransform3DMakeRotation(CGFloat(M_PI_2), 0.0, 0.0, 1.0))
+        
+        animation.duration = 0.25
+        animation.cumulative = true
+        animation.repeatCount = MAXFLOAT
+        
+        return animation
+    }
+    
+}
+
+// MARK: - DZNEmptyDataSetDelegate 操作协议
+extension ChartViewController: DZNEmptyDataSetDelegate {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+

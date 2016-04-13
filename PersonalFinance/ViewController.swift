@@ -58,7 +58,7 @@ class ViewController: UIViewController {
     // 配置波浪小球
     func configureWaveProgress(number: Double, percent: CGFloat) {
         waterWaveView.waveViewMargin = UIEdgeInsetsMake(10, 10, 10, 10)
-        waterWaveView.backgroundImageView?.image = UIImage(named: "bg_tk_003")
+        waterWaveView.backgroundImageView?.image = UIImage(named: "bg_tk")
         
         // 设置 现实的数值
         waterWaveView.numberLabel?.text = "\(number)"
@@ -77,6 +77,8 @@ class ViewController: UIViewController {
         
         // 设置 百分比
         waterWaveView.percent = percent
+        
+//        waterWaveView
         
         // 开始波浪波动
         waterWaveView.startWave()

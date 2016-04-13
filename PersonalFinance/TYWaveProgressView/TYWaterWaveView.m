@@ -71,8 +71,8 @@
 {
     waterWaveHeight = self.frame.size.height/2;
     waterWaveWidth  = self.frame.size.width;
-    _firstWaveColor = [UIColor colorWithRed:223/255.0 green:83/255.0 blue:64/255.0 alpha:1];
-    _secondWaveColor = [UIColor colorWithRed:236/255.0f green:90/255.0f blue:66/255.0f alpha:1];
+    _firstWaveColor = [UIColor colorWithRed:49/255.0 green:53/255.0 blue:98/255.0 alpha:1];
+    _secondWaveColor = [UIColor colorWithRed:55/255.0f green:60/255.0f blue:105/255.0f alpha:1];
     
     waveGrowth = 0.85;
     waveSpeed = 0.4/M_PI;

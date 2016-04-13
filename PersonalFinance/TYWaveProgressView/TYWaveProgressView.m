@@ -107,7 +107,7 @@
     CGFloat viewWidth = CGRectGetWidth(self.frame);
     
     _backgroundImageView.frame = self.bounds;
-    
+   
     _waterWaveView.frame = CGRectMake(_waveViewMargin.left, _waveViewMargin.top, viewWidth-_waveViewMargin.left-_waveViewMargin.right, viewHeight - _waveViewMargin.top - _waveViewMargin.bottom);
     
     _waterWaveView.layer.cornerRadius = MIN(CGRectGetHeight(_waterWaveView.frame)/2, CGRectGetWidth(_waterWaveView.frame)/2);

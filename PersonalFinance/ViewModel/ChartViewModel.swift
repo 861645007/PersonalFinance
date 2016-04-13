@@ -17,8 +17,19 @@ class ChartViewModel: NSObject {
     var baseInfo: BaseInfo!
     
     var consumeTypeArr: [ConsumeCategory]?
+    
+    var currentMonthWithCategory: NSDate?
+    var currentYearWithTrend: NSDate?
+    
+    // MARK: - 图形部分变量
         /// 饼图数据的专用
     var consumeCategoryArr: [FinanceOfCategory]?
+    var consumeMonthTrendArr: [Double] = []
+    var consumeWeekTrendArr: [Double] = []
+    
+    let months:[String] = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+    let weeks: [String] = ["第一周", "第二周", "第三周", "第四周"]
+    
     
     override init() {
         super.init()
@@ -27,15 +38,26 @@ class ChartViewModel: NSObject {
         categoryService = CategoryService.sharedCategoryService
         singleConsumeService = SingleCustomService.sharedSingleCustomService
         
+        // 变量处理
+        currentYearWithTrend = NSDate().change(day: 1, hour: 1)
+        currentMonthWithCategory = NSDate().change(day: 1, hour: 1)
+        
         // 获取 category 的数据
         self.gainAllConsumeType()
         
-        self.gainDataWithCategory(NSDate())
+        self.setConsumeCategoryArrWithDate(NSDate())
+        
+        consumeMonthTrendArr = self.gainDataWithMonthTrend(NSDate())
     }
     
     
     
     // MARK: - 数据解析
+    func setConsumeCategoryArrWithDate(date: NSDate) {
+        // 按 category 分组 进行数据获取
+        self.gainDataWithCategory(date)
+    }
+    
     /**
      按 category 分组 进行数据获取
      
@@ -44,7 +66,7 @@ class ChartViewModel: NSObject {
     func gainDataWithCategory(date: NSDate) {
         consumeCategoryArr = []
         
-        let consumeArr:NSFetchedResultsController = singleConsumeService.fetchFinanceWithPieChart(date)
+        let consumeArr:NSFetchedResultsController = singleConsumeService.fetchConsumeWithPieChart(date)
         for section: NSFetchedResultsSectionInfo in consumeArr.sections! {
             // 获取 当前 消费类型
             var consumeCategory: ConsumeCategory!
@@ -53,41 +75,57 @@ class ChartViewModel: NSObject {
                     consumeCategory = consumeC
                 }
             }
+            
             // 获取当前分类的金额
             var moneyOfCategory: Double = 0
             
             for consume: SingleCustom in section.objects as! [SingleCustom] {
                 moneyOfCategory += (consume.money?.doubleValue)!
-                print(consume.money)
             }
-            // 获取消费的比例
-            let ratio: Double = moneyOfCategory / baseInfo.gainMonthExpense().doubleValue
             
-            consumeCategoryArr?.append(FinanceOfCategory(iconData: consumeCategory.iconData!, name: consumeCategory.name!, ratio: ratio, money: moneyOfCategory))
+            consumeCategoryArr!.append(FinanceOfCategory(iconData: consumeCategory.iconData!, name: consumeCategory.name!, ratio: 0.0, money: moneyOfCategory))
+        }
+        
+        // 获取消费的比例
+        let monthExpense = self.gainTotalExpense()
+        for financeCategory: FinanceOfCategory in consumeCategoryArr! {
+            financeCategory.categoryRatio = financeCategory.categoryMoney / monthExpense
         }
     }
-        
     
+        
     /**
-     获取 所有的 Consume-Category
+     获取指定一年内的每月消费总额
+     
+     - parameter date: 这一年的随便一天（一般为当前时间）
+     
+     - returns: 每月消费总额
      */
-    func gainAllConsumeType() {
-        consumeTypeArr = []
-        
-        // 判断表里是否有数据，没有就先存入
-        if categoryService.gainCategoryCount() == 0 {
-            self.initializeConsumeType()
+    func gainDataWithMonthTrend(date: NSDate) -> [Double] {
+        var monthExpenseList: [Double] = []
+        for i in 0..<12 {
+            let newDate = NSDate.date(year: date.year, month: i + 1, day: 1, hour: 1, minute: 1, second: 1)
+            
+            let consumeMonthList = singleConsumeService.fetchConsumeWithMonthTrendChart(newDate)
+            
+            var monthExpense = 0.0
+            for singleConsume: SingleCustom in consumeMonthList {
+                monthExpense += (singleConsume.money?.doubleValue)!
+            }
+            
+            monthExpenseList.append(monthExpense)
         }
-        
-        // 获取数据，并转换为 常规 数据类型（非Core Data中的存储类型）
-        let consumeList = categoryService.fetchAllCustomType()
-        
-        for category: Category in consumeList {
-            let consumeType = ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
-            consumeTypeArr?.append(consumeType)
-        }
-        consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
-        
+        return monthExpenseList
+    }
+    
+    
+    // MARK: - TableView 数据
+    func gainNumberOfSection() -> Int {
+        return (self.consumeCategoryArr?.count)!
+    }
+    
+    func gainFinanceCategoryAtIndex(indexPath: NSIndexPath) -> FinanceOfCategory {
+        return self.consumeCategoryArr![indexPath.row]
     }
     
     
@@ -107,8 +145,28 @@ class ChartViewModel: NSObject {
     
     // MARK: - 环形图
     
+    func gainDateForPreMonthWithCategory() -> NSDate {
+        currentMonthWithCategory = currentMonthWithCategory?.change(month: currentMonthWithCategory!.month - 1)
+        return currentMonthWithCategory!
+    }
+    
+    func gainDateForNextMonthWithCategory() -> NSDate {
+        currentMonthWithCategory = currentMonthWithCategory?.change(month: currentMonthWithCategory!.month + 1)
+        return currentMonthWithCategory!
+    }
+    
+    /**
+     获取当月总消费额
+     
+     - returns: 当月总消费额
+     */
     func gainTotalExpense() ->Double {
-        return baseInfo.gainMonthExpense().doubleValue
+        var monthExpense = 0.0
+        
+        for financeCategory: FinanceOfCategory in consumeCategoryArr! {
+            monthExpense += financeCategory.categoryMoney
+        }
+        return monthExpense
     }
     
     // 获取 各项名称
@@ -183,6 +241,28 @@ class ChartViewModel: NSObject {
     
     
     // MARK: - 私有函数
+    
+    /**
+     获取 所有的 Consume-Category
+     */
+    private func gainAllConsumeType() {
+        consumeTypeArr = []
+        
+        // 判断表里是否有数据，没有就先存入
+        if categoryService.gainCategoryCount() == 0 {
+            self.initializeConsumeType()
+        }
+        
+        // 获取数据，并转换为 常规 数据类型（非Core Data中的存储类型）
+        let consumeList = categoryService.fetchAllCustomType()
+        
+        for category: Category in consumeList {
+            let consumeType = ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
+            consumeTypeArr?.append(consumeType)
+        }
+        consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
+        
+    }
     
     /**
      向 CoreData 里存入 预存入的数据

@@ -15,4 +15,10 @@ extension Double {
         numberFormat.maximumFractionDigits = 2
         return numberFormat.stringFromNumber(NSNumber(double: self))!
     }
+    
+    
+    
+    
+    
+    
 }

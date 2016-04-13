@@ -47,11 +47,11 @@ class SingleCustomService {
     
     - returns: 一年的消费记录
     */
-    func fetchFinanceWithYearTrendChart(date: NSDate) ->[SingleCustom] {
+    func fetchConsumeWithYearTrendChart(date: NSDate) ->[SingleCustom] {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
-    func fetchFinanceWithMonthTrendChart(date: NSDate) -> [SingleCustom] {
+    func fetchConsumeWithMonthTrendChart(date: NSDate) -> [SingleCustom] {
         return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
     }
     
@@ -60,9 +60,53 @@ class SingleCustomService {
     
     - returns: 一个 SingleCustom数组 的实例数据
     */
-    func fetchFinanceWithPieChart(date: NSDate) ->NSFetchedResultsController {
-        let predicate = NSPredicate(format: "time >= %@ AND time <= %@", date.monthBegin(), date.monthEnd())
+    func fetchConsumeWithPieChart(date: NSDate) ->NSFetchedResultsController {
+        let predicate = self.createPredicateWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
         return self.fetchConsumeWithFetchedResult(predicate, sectionName: "category", cacheName: "CategoryCache")
+    }
+    
+    
+    // MARK: 消费列表使用的查询数据
+    
+    /**
+    查询今天的所有消费记录
+    
+    - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
+    */
+    func fetchConsumeRecordWithToday() ->NSFetchedResultsController {
+        let today = NSDate()
+        let predicate = self.createPredicateWithRangeDate(today.dayBegin(), dateEnd: today.dayEnd())
+
+        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "TodayCustom")
+    }
+    
+    /**
+     查询当月的所有消费记录
+
+     - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
+     */
+    func fetchConsumeRecordWithCurrentMonth() ->NSFetchedResultsController {
+        let today = NSDate()
+        let predicate = self.createPredicateWithRangeDate(today.monthBegin(), dateEnd: today.monthEnd())
+        
+        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "MonthCustom")
+    }
+    
+    
+    
+    
+    // MARK: - 私有函数
+    
+    /**
+     按时间段创建一个正则表达式
+     
+     - parameter dateBegin: 开始时间
+     - parameter dateEnd:   结束时间
+     
+     - returns: 正则表达式
+     */
+    private func createPredicateWithRangeDate(dateBegin :NSDate, dateEnd: NSDate) -> NSPredicate {
+        return NSPredicate(format: "time >= %@ AND time <= %@", dateBegin, dateEnd)
     }
     
     /**
@@ -74,7 +118,7 @@ class SingleCustomService {
      - returns: 一段时间内的 消费记录
      */
     private func fetchCustomWithRangeDate(dateBegin :NSDate, dateEnd: NSDate) ->[SingleCustom] {
-        let predicate = NSPredicate(format: "time >= %@ AND time <= %@", dateBegin, dateEnd)
+        let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
         let fetchRequest = self.gainFetchRequest(predicate)
         return self.executeFetchRequest(fetchRequest)
     }
@@ -101,34 +145,16 @@ class SingleCustomService {
             abort()
         }
     }
-    
-    // MARK: 消费列表使用的查询数据
-    
-    /**
-    查询今天的所有消费记录
-    
-    - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
-    */
-    func fetchConsumeRecordWithToday() ->NSFetchedResultsController {
-        let today = NSDate()
-        let predicate = NSPredicate(format: "time >= %@ AND time <= %@", today.dayBegin(), today.dayEnd())
 
-        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "TodayCustom")
-    }
-    
     /**
-     查询当月的所有消费记录
-
-     - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
+     用 NSFetchedResultsController 方式获取
+     
+     - parameter predicate:   正则白哦大事
+     - parameter sectionName: 分组名
+     - parameter cacheName:   缓存名称
+     
+     - returns: 返回一个 NSFetchedResultsController 的实例
      */
-    func fetchConsumeRecordWithCurrentMonth() ->NSFetchedResultsController {
-        let today = NSDate()
-        let predicate = NSPredicate(format: "time >= %@ AND time <= %@", today.monthBegin(), today.monthEnd())
-        
-        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "MonthCustom")
-    }
-    
-    
     private func fetchConsumeWithFetchedResult(predicate: NSPredicate, sectionName: String, cacheName: String) ->NSFetchedResultsController {
         let fetchRequest = self.gainFetchRequest(predicate)
         

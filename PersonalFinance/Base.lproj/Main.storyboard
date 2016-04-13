@@ -24,13 +24,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5o4-MG-zbf" customClass="TYWaveProgressView">
-                                <rect key="frame" x="90" y="72" width="420" height="420"/>
+                                <rect key="frame" x="70" y="72" width="440" height="440"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="5o4-MG-zbf" secondAttribute="height" multiplier="1:1" id="xBm-9n-slW"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOc-LR-A0C">
-                                <rect key="frame" x="20" y="508" width="560" height="55"/>
+                                <rect key="frame" x="20" y="528" width="560" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="wDH-C9-6Kt"/>
                                 </constraints>
@@ -40,27 +40,27 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记一笔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2v-EB-TeQ">
-                                <rect key="frame" x="258" y="519" width="84" height="34"/>
+                                <rect key="frame" x="258" y="539" width="84" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vtt-ub-LkN">
-                                <rect key="frame" x="20" y="579" width="560" height="55"/>
+                                <rect key="frame" x="20" y="599" width="560" height="55"/>
                                 <state key="normal" image="todayConsumeBtn"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrJ-HL-AtD">
-                                <rect key="frame" x="244" y="590" width="112" height="34"/>
+                                <rect key="frame" x="244" y="610" width="112" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlD-o6-gRa">
-                                <rect key="frame" x="20" y="653" width="560" height="55"/>
+                                <rect key="frame" x="20" y="673" width="560" height="55"/>
                                 <state key="normal" image="monthConsumeBtn"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeA-TX-ftU">
-                                <rect key="frame" x="246" y="664" width="108" height="33"/>
+                                <rect key="frame" x="246" y="684" width="108" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -90,7 +90,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="5o4-MG-zbf" secondAttribute="trailing" constant="70" id="rSP-Rn-cYK"/>
                             <constraint firstItem="Vtt-ub-LkN" firstAttribute="leading" secondItem="cOc-LR-A0C" secondAttribute="leading" id="s3m-bk-r7c"/>
                             <constraint firstItem="cOc-LR-A0C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yvt-5S-VWO"/>
-                            <constraint firstItem="5o4-MG-zbf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="70" id="zZM-NJ-1Os"/>
+                            <constraint firstItem="5o4-MG-zbf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="zZM-NJ-1Os"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aVp-90-3fH">
@@ -218,7 +218,7 @@
             </objects>
             <point key="canvasLocation" x="2356" y="366"/>
         </scene>
-        <!--Chart View Controller-->
+        <!--Empty Data Set Delegate-->
         <scene sceneID="HKN-rA-hsn">
             <objects>
                 <viewController storyboardIdentifier="ChartViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RF3-ga-HDM" customClass="ChartViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
@@ -239,43 +239,60 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZV-G5-bEX">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PA4-QY-4Cz">
-                                                        <rect key="frame" x="230" y="28" width="25" height="25"/>
-                                                        <state key="normal" image="arrow-left"/>
-                                                        <connections>
-                                                            <action selector="clickCategoryArrowLeft:" destination="RF3-ga-HDM" eventType="touchUpInside" id="KQY-vv-O50"/>
-                                                        </connections>
-                                                    </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年12月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5az-99-xK1">
-                                                        <rect key="frame" x="255" y="30" width="90" height="21"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luP-vD-il0">
-                                                        <rect key="frame" x="345" y="28" width="25" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="U3F-qs-dWf"/>
-                                                            <constraint firstAttribute="width" constant="25" id="Win-Et-Whq"/>
-                                                        </constraints>
-                                                        <state key="normal" image="arrow-right"/>
-                                                        <connections>
-                                                            <action selector="clickCategoryArrowRight:" destination="RF3-ga-HDM" eventType="touchUpInside" id="4oM-Zb-Jh3"/>
-                                                        </connections>
-                                                    </button>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-Xa-H5S" customClass="PieChartView" customModule="Charts">
-                                                        <rect key="frame" x="120" y="61" width="360" height="360"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" secondItem="HWa-Xa-H5S" secondAttribute="height" multiplier="1:1" id="mmz-so-eoU"/>
-                                                        </constraints>
-                                                    </view>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8iP-ab-5wD">
-                                                        <rect key="frame" x="0.0" y="421" width="600" height="115"/>
+                                                        <rect key="frame" x="0.0" y="29" width="600" height="507"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <view key="tableHeaderView" contentMode="scaleToFill" id="spM-Og-ZJq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="600" height="341"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PA4-QY-4Cz">
+                                                                    <rect key="frame" x="228" y="8" width="25" height="25"/>
+                                                                    <state key="normal" image="arrow-left"/>
+                                                                    <connections>
+                                                                        <action selector="clickCategoryArrowLeft:" destination="RF3-ga-HDM" eventType="touchUpInside" id="KQY-vv-O50"/>
+                                                                    </connections>
+                                                                </button>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年12月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5az-99-xK1">
+                                                                    <rect key="frame" x="255" y="10" width="90" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-Xa-H5S" customClass="PieChartView" customModule="Charts">
+                                                                    <rect key="frame" x="0.0" y="41" width="600" height="292"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </view>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="luP-vD-il0">
+                                                                    <rect key="frame" x="347" y="8" width="25" height="25"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="25" id="U3F-qs-dWf"/>
+                                                                        <constraint firstAttribute="width" constant="25" id="Win-Et-Whq"/>
+                                                                    </constraints>
+                                                                    <state key="normal" image="arrow-right"/>
+                                                                    <connections>
+                                                                        <action selector="clickCategoryArrowRight:" destination="RF3-ga-HDM" eventType="touchUpInside" id="4oM-Zb-Jh3"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="5az-99-xK1" firstAttribute="centerX" secondItem="spM-Og-ZJq" secondAttribute="centerX" id="5qh-uE-gaR"/>
+                                                                <constraint firstAttribute="bottom" secondItem="HWa-Xa-H5S" secondAttribute="bottom" constant="8" id="AlT-Io-5HS"/>
+                                                                <constraint firstItem="5az-99-xK1" firstAttribute="leading" secondItem="PA4-QY-4Cz" secondAttribute="trailing" constant="2" id="LI9-dG-bPM"/>
+                                                                <constraint firstItem="PA4-QY-4Cz" firstAttribute="height" secondItem="luP-vD-il0" secondAttribute="height" id="Ssu-nA-ZSF"/>
+                                                                <constraint firstItem="HWa-Xa-H5S" firstAttribute="leading" secondItem="spM-Og-ZJq" secondAttribute="leading" id="VJp-U0-fpY"/>
+                                                                <constraint firstAttribute="trailing" secondItem="HWa-Xa-H5S" secondAttribute="trailing" id="XZ6-vE-Yoz"/>
+                                                                <constraint firstItem="luP-vD-il0" firstAttribute="centerY" secondItem="5az-99-xK1" secondAttribute="centerY" id="YG8-BE-mbY"/>
+                                                                <constraint firstItem="HWa-Xa-H5S" firstAttribute="top" secondItem="luP-vD-il0" secondAttribute="bottom" constant="8" id="fUM-1W-P7r"/>
+                                                                <constraint firstItem="5az-99-xK1" firstAttribute="top" secondItem="spM-Og-ZJq" secondAttribute="top" constant="10" id="pxO-4z-mNk"/>
+                                                                <constraint firstItem="luP-vD-il0" firstAttribute="leading" secondItem="5az-99-xK1" secondAttribute="trailing" constant="2" id="w7P-3j-eG2"/>
+                                                                <constraint firstItem="PA4-QY-4Cz" firstAttribute="centerY" secondItem="5az-99-xK1" secondAttribute="centerY" id="ydI-V9-yPT"/>
+                                                                <constraint firstItem="PA4-QY-4Cz" firstAttribute="width" secondItem="luP-vD-il0" secondAttribute="width" id="zn5-jp-qLF"/>
+                                                            </constraints>
+                                                        </view>
                                                         <prototypes>
-                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wnK-K0-TVe" customClass="FinanceOfCategoryTableViewCell" customModule="PersonalFinance" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FinanceCategory" id="wnK-K0-TVe" customClass="FinanceOfCategoryTableViewCell" customModule="PersonalFinance" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="369" width="600" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wnK-K0-TVe" id="yB7-qz-X7f">
                                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -326,24 +343,19 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="RF3-ga-HDM" id="OPc-Gv-a8x"/>
+                                                            <outlet property="delegate" destination="RF3-ga-HDM" id="8N1-yx-owD"/>
+                                                            <outlet property="emptyDataSetDelegate" destination="RF3-ga-HDM" id="rLo-OZ-ctU"/>
+                                                            <outlet property="emptyDataSetSource" destination="RF3-ga-HDM" id="FQ7-qm-8pX"/>
+                                                        </connections>
                                                     </tableView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="HWa-Xa-H5S" firstAttribute="width" secondItem="fZV-G5-bEX" secondAttribute="width" multiplier="0.6" id="0V2-E5-K84"/>
-                                                    <constraint firstItem="5az-99-xK1" firstAttribute="top" secondItem="fZV-G5-bEX" secondAttribute="top" constant="30" id="4ox-pt-Kjb"/>
-                                                    <constraint firstItem="luP-vD-il0" firstAttribute="centerY" secondItem="5az-99-xK1" secondAttribute="centerY" id="5hU-eE-kcB"/>
-                                                    <constraint firstItem="PA4-QY-4Cz" firstAttribute="width" secondItem="luP-vD-il0" secondAttribute="width" id="6wk-Jt-qHL"/>
-                                                    <constraint firstItem="8iP-ab-5wD" firstAttribute="leading" secondItem="fZV-G5-bEX" secondAttribute="leading" id="Dpj-RB-juO"/>
-                                                    <constraint firstItem="5az-99-xK1" firstAttribute="leading" secondItem="PA4-QY-4Cz" secondAttribute="trailing" id="Gf7-8T-GtW"/>
-                                                    <constraint firstItem="5az-99-xK1" firstAttribute="centerX" secondItem="fZV-G5-bEX" secondAttribute="centerX" id="Jgr-xw-koV"/>
-                                                    <constraint firstItem="PA4-QY-4Cz" firstAttribute="height" secondItem="luP-vD-il0" secondAttribute="height" id="VIX-JZ-QoW"/>
-                                                    <constraint firstItem="HWa-Xa-H5S" firstAttribute="centerX" secondItem="fZV-G5-bEX" secondAttribute="centerX" id="Wfm-ch-7Tn"/>
-                                                    <constraint firstItem="luP-vD-il0" firstAttribute="leading" secondItem="5az-99-xK1" secondAttribute="trailing" id="ZNo-Xc-lVV"/>
-                                                    <constraint firstAttribute="trailing" secondItem="8iP-ab-5wD" secondAttribute="trailing" id="cpk-Xb-LsB"/>
-                                                    <constraint firstItem="HWa-Xa-H5S" firstAttribute="top" secondItem="5az-99-xK1" secondAttribute="bottom" constant="10" id="dYu-Em-rUy"/>
-                                                    <constraint firstAttribute="bottom" secondItem="8iP-ab-5wD" secondAttribute="bottom" id="nR2-Ue-6mg"/>
-                                                    <constraint firstItem="8iP-ab-5wD" firstAttribute="top" secondItem="HWa-Xa-H5S" secondAttribute="bottom" id="qXB-WI-eaL"/>
-                                                    <constraint firstItem="PA4-QY-4Cz" firstAttribute="centerY" secondItem="5az-99-xK1" secondAttribute="centerY" id="uIc-Pe-me9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8iP-ab-5wD" secondAttribute="trailing" id="B1e-4s-ZjZ"/>
+                                                    <constraint firstItem="8iP-ab-5wD" firstAttribute="leading" secondItem="fZV-G5-bEX" secondAttribute="leading" id="JMr-gG-b58"/>
+                                                    <constraint firstItem="8iP-ab-5wD" firstAttribute="top" secondItem="fZV-G5-bEX" secondAttribute="top" constant="29" id="Z76-KM-JVH"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8iP-ab-5wD" secondAttribute="bottom" id="ieA-Nt-2q4"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvW-ge-dGZ">
@@ -480,9 +492,12 @@
                                     <constraint firstItem="Gxf-x7-RNX" firstAttribute="top" secondItem="wwu-op-hy9" secondAttribute="top" id="WsJ-YX-yfQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Gxf-x7-RNX" secondAttribute="trailing" id="qxC-27-9fU"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="RF3-ga-HDM" id="f0a-Bi-7J1"/>
+                                </connections>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-2G-zcG">
-                                <rect key="frame" x="280" y="64" width="39" height="37"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-2G-zcG">
+                                <rect key="frame" x="288" y="64" width="23" height="37"/>
                             </pageControl>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mr2-kI-FR0">
                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -506,6 +521,7 @@
                         <outlet property="categoryArrowRight" destination="luP-vD-il0" id="rBP-0H-uLS"/>
                         <outlet property="categoryChartView" destination="HWa-Xa-H5S" id="CdB-bM-72d"/>
                         <outlet property="categoryCurrentTime" destination="5az-99-xK1" id="plo-vT-mSH"/>
+                        <outlet property="categoryTableView" destination="8iP-ab-5wD" id="aX5-mS-KWK"/>
                         <outlet property="monthArrowLeft" destination="22u-a8-Mg4" id="QPh-Co-NAP"/>
                         <outlet property="monthArrowRight" destination="4nq-Cb-zuo" id="GOo-1o-2fM"/>
                         <outlet property="monthChartView" destination="dXo-Ve-82G" id="8wM-EA-L83"/>

@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/CoreData/SingleCustomService.swift"
-            timestampString = "482138081.125487"
+            timestampString = "482211059.534246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "fetchConsumeWithFetchedResult(_:sectionName:cacheName:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "65"
             endingLineNumber = "65"
-            landmarkName = "fetchFinanceWithPieChart(_:)"
+            landmarkName = "fetchConsumeWithPieChart(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,13 +105,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PersonalFinance/CoreData/SingleCustomService.swift"
-            timestampString = "482138165.811945"
+            filePath = "PersonalFinance/TYWaveProgressView/TYWaveProgressView.m"
+            timestampString = "482220433.503381"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "gainFetchRequest(_:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "-addBackgroudImageView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

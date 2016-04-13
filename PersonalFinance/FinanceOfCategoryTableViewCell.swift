@@ -26,5 +26,13 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
+    func prepareCollectionCell(financeCategory: FinanceOfCategory) {
+        self.categoryIcon.image = UIImage(data: financeCategory.iconData!)
+        self.categoryRatio.text = (financeCategory.categoryRatio * 100).convertToStrWithTwoFractionDigits() + "%"
+        self.categoryName.text = financeCategory.categoryName
+        self.categoryMoney.text = financeCategory.categoryMoney.convertToStrWithTwoFractionDigits()
+    }
 
 }
