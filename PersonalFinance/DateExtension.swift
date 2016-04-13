@@ -49,8 +49,8 @@ extension NSDate {
      
      - returns: 是返回true，不是返回false
      */
-    func isInThisDay(date: NSDate) ->Bool {
-        if self < date.beginningOfDay && self < date.endOfDay {
+    func isThisDay(date: NSDate) ->Bool {
+        if date.beginningOfDay < self && self < date.endOfDay {
             return true
         }else {
             return false
@@ -65,7 +65,7 @@ extension NSDate {
      - returns: 是返回true，不是返回false
      */
     func isInThisMonth(date: NSDate) ->Bool {
-        if self < date.beginningOfMonth && self < date.endOfMonth {
+        if date.beginningOfMonth < self && self < date.endOfMonth {
             return true
         }else {
             return false

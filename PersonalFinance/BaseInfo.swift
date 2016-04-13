@@ -46,6 +46,10 @@ class BaseInfo: NSObject {
         self.saveMoneyInfo(totalExpense, key: "MonthExpense")
     }
     
+    func saveNewMonthExpense() {
+        saveMoneyInfo(0.0, key: "MonthExpense")
+    }
+    
     func gainMonthExpense() ->NSNumber {
         return NSNumber(double: self.getMoneyInfo("MonthExpense"))
     }
@@ -54,6 +58,10 @@ class BaseInfo: NSObject {
     func addDayExpense(value: NSNumber) {
         let totalExpense = value.doubleValue + self.gainDayExpense().doubleValue
         self.saveMoneyInfo(totalExpense, key: "DayExpense")
+    }
+    
+    func saveNewDayExpense() {
+        self.saveMoneyInfo(0.0, key: "DayExpense")
     }
     
     func gainDayExpense() ->NSNumber {
@@ -68,11 +76,13 @@ class BaseInfo: NSObject {
     */
     func judgeTimeWhenFirstUseInEveryDay(date: NSDate) {
         if !self.isCurrentMonth(date) {
-            self.addMonthExpense(0.0)
-            self.addDayExpense(0.0)
+            self.saveNewDayExpense()
+            self.saveNewMonthExpense()
+            self.saveTime(date)
         }else {
             if !self.isToday(date) {
-                self.addDayExpense(0.0)
+                self.saveNewDayExpense()
+                self.saveTime(date)
             }
         }
     }
@@ -111,7 +121,7 @@ extension BaseInfo {
     }
     
     func isToday(date: NSDate) ->Bool {
-        if date.isInThisDay(self.gainTime()) {
+        if date.isThisDay(self.gainTime()) {
             return true
         }else {
             return false

@@ -11,7 +11,7 @@ import Timepiece
 
 class ViewController: UIViewController {
     
-    var mainVM: MainViewModel!
+    var mainVM: MainViewModel! = MainViewModel()
     
     // 水波纹 本月消费 示意图
     @IBOutlet weak var waterWaveView: TYWaveProgressView!
@@ -23,7 +23,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        mainVM = MainViewModel()
         
         // 配置水波纹数据
         self.configureWaveProgress(mainVM.gainMonthExpense(), percent: self.mainVM.configureWavePercent())        
@@ -51,6 +50,12 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // 修改导航栏返回键的文字
+        let backItem: UIBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = backItem
     }
     
     

@@ -57,6 +57,7 @@ class ChartViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.title = "报表"
         
         // 创建环形图
         self.preparePieChartWithCategory(self.chartVM.currentMonthWithCategory!)
@@ -243,13 +244,6 @@ extension ChartViewController: DZNEmptyDataSetSource {
 extension ChartViewController: DZNEmptyDataSetDelegate {
     
 }
-
-
-
-
-
-
-
 
 
 

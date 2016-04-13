@@ -458,7 +458,6 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" red="1" green="0.082969299240928773" blue="0.15492667528662774" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="yyK-W6-m6B" secondAttribute="bottom" id="55p-dq-lWS"/>
                                                     <constraint firstAttribute="trailing" secondItem="zyI-bo-wlT" secondAttribute="trailing" id="5ze-4p-bIr"/>
@@ -471,7 +470,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="lvW-ge-dGZ" firstAttribute="leading" secondItem="fZV-G5-bEX" secondAttribute="trailing" id="0WM-F4-YFp"/>
                                             <constraint firstAttribute="trailing" secondItem="lvW-ge-dGZ" secondAttribute="trailing" id="6Nc-9S-a2H"/>
