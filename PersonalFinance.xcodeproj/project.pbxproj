@@ -44,6 +44,8 @@
 		7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */; };
 		7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B51C6B24CC001156BF /* CategoryService.swift */; };
 		7ABC84BA1C6B28E9001156BF /* CategoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */; };
+		7ABCA7E11CBE8A5D008973E0 /* DayConsumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */; };
+		7ABCA7E61CBE8B4D008973E0 /* DayConsumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */; };
 		7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */; };
 		7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50B1C5A340600EF2200 /* RAC.swift */; };
 		7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */; };
@@ -123,6 +125,8 @@
 		7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinanceOfCategory.swift; path = CoreData/FinanceOfCategory.swift; sourceTree = "<group>"; };
 		7ABC84B51C6B24CC001156BF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryService.swift; path = CoreData/CategoryService.swift; sourceTree = "<group>"; };
 		7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryServiceTest.swift; sourceTree = "<group>"; };
+		7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayConsumeViewController.swift; sourceTree = "<group>"; };
+		7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeViewModel.swift; path = ViewModel/DayConsumeViewModel.swift; sourceTree = "<group>"; };
 		7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardPageManager.swift; sourceTree = "<group>"; };
 		7ACEF50B1C5A340600EF2200 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		7ACEF50D1C5A36D700EF2200 /* SingleCustomRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustomRecord.swift; path = CoreData/SingleCustomRecord.swift; sourceTree = "<group>"; };
@@ -379,6 +383,22 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
+		7ABCA7DF1CBE8A10008973E0 /* DayConsume VIew Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */,
+			);
+			name = "DayConsume VIew Controller";
+			sourceTree = "<group>";
+		};
+		7ABCA7E21CBE8B09008973E0 /* Day Consume */ = {
+			isa = PBXGroup;
+			children = (
+				7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */,
+			);
+			name = "Day Consume";
+			sourceTree = "<group>";
+		};
 		7ACEF50A1C5A33A400EF2200 /* RACSwift */ = {
 			isa = PBXGroup;
 			children = (
@@ -480,6 +500,7 @@
 		7AF0736C1C5DA88800221F17 /* Main View Model */ = {
 			isa = PBXGroup;
 			children = (
+				7ABCA7E21CBE8B09008973E0 /* Day Consume */,
 				7AF0736D1C5DA8AB00221F17 /* MainViewModel.swift */,
 			);
 			name = "Main View Model";
@@ -488,6 +509,7 @@
 		7AF0736F1C5DA8B000221F17 /* Main View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7ABCA7DF1CBE8A10008973E0 /* DayConsume VIew Controller */,
 				7A7EB3AE1C58F07F009AD0A7 /* ViewController.swift */,
 			);
 			name = "Main View Controller";
@@ -710,6 +732,7 @@
 				7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */,
 				7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */,
 				7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */,
+				7ABCA7E61CBE8B4D008973E0 /* DayConsumeViewModel.swift in Sources */,
 				7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */,
 				7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */,
 				7A7376BF1CBB80200038BB3E /* MozTopAlertView.m in Sources */,
@@ -721,6 +744,7 @@
 				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,
 				7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */,
 				7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */,
+				7ABCA7E11CBE8A5D008973E0 /* DayConsumeViewController.swift in Sources */,
 				7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */,
 				7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */,
 				7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */,

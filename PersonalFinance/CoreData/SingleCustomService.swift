@@ -43,7 +43,7 @@ class SingleCustomService {
     /**
     按年查询 一年的消费记录
     
-    - parameter date: 日期
+    - parameter date: 一年中的任意日期
     
     - returns: 一年的消费记录
     */
@@ -51,6 +51,13 @@ class SingleCustomService {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
+    /**
+     按月查询 一个月的消费记录
+     
+     - parameter date: 一个月中的任意日期
+     
+     - returns: 一个月的消费记录
+     */
     func fetchConsumeWithMonthTrendChart(date: NSDate) -> [SingleCustom] {
         return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
     }
@@ -74,8 +81,7 @@ class SingleCustomService {
     - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
     */
     func fetchConsumeRecordWithToday() ->NSFetchedResultsController {
-        let today = NSDate()
-        let predicate = self.createPredicateWithRangeDate(today.dayBegin(), dateEnd: today.dayEnd())
+        let predicate = self.createPredicateWithRangeDate(NSDate().dayBegin(), dateEnd: NSDate().dayEnd())
 
         return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "TodayCustom")
     }

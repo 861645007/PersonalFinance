@@ -45,9 +45,9 @@ class ChartViewModel: NSObject {
         // 获取 category 的数据
         self.gainAllConsumeType()
         
-        self.setConsumeCategoryArrWithDate(NSDate())
+        self.setConsumeCategoryArrWithDate(currentYearWithTrend!)
         
-        consumeMonthTrendArr = self.gainDataWithMonthTrend(NSDate())
+        self.setConsumeMonthTrendArrWithDate(currentMonthWithCategory!)
     }
     
     
@@ -59,64 +59,14 @@ class ChartViewModel: NSObject {
     }
     
     /**
-     按 category 分组 进行数据获取
+     设置指定时间的每月数据数组 consumeMonthTrendArr的数据值
      
-     - parameter date: 所需要数据的月份
+     - parameter date: 指定的时间
      */
-    func gainDataWithCategory(date: NSDate) {
-        consumeCategoryArr = []
-        
-        let consumeArr:NSFetchedResultsController = singleConsumeService.fetchConsumeWithPieChart(date)
-        for section: NSFetchedResultsSectionInfo in consumeArr.sections! {
-            // 获取 当前 消费类型
-            var consumeCategory: ConsumeCategory!
-            for consumeC: ConsumeCategory in consumeTypeArr! {
-                if consumeC.id == Int32(section.name) {
-                    consumeCategory = consumeC
-                }
-            }
-            
-            // 获取当前分类的金额
-            var moneyOfCategory: Double = 0
-            
-            for consume: SingleCustom in section.objects as! [SingleCustom] {
-                moneyOfCategory += (consume.money?.doubleValue)!
-            }
-            
-            consumeCategoryArr!.append(FinanceOfCategory(iconData: consumeCategory.iconData!, name: consumeCategory.name!, ratio: 0.0, money: moneyOfCategory))
-        }
-        
-        // 获取消费的比例
-        let monthExpense = self.gainTotalExpense()
-        for financeCategory: FinanceOfCategory in consumeCategoryArr! {
-            financeCategory.categoryRatio = financeCategory.categoryMoney / monthExpense
-        }
+    func setConsumeMonthTrendArrWithDate(date: NSDate) {
+        consumeMonthTrendArr = self.gainDataWithMonthTrend(date)
     }
     
-        
-    /**
-     获取指定一年内的每月消费总额
-     
-     - parameter date: 这一年的随便一天（一般为当前时间）
-     
-     - returns: 每月消费总额
-     */
-    func gainDataWithMonthTrend(date: NSDate) -> [Double] {
-        var monthExpenseList: [Double] = []
-        for i in 0..<12 {
-            let newDate = NSDate.date(year: date.year, month: i + 1, day: 1, hour: 1, minute: 1, second: 1)
-            
-            let consumeMonthList = singleConsumeService.fetchConsumeWithMonthTrendChart(newDate)
-            
-            var monthExpense = 0.0
-            for singleConsume: SingleCustom in consumeMonthList {
-                monthExpense += (singleConsume.money?.doubleValue)!
-            }
-            
-            monthExpenseList.append(monthExpense)
-        }
-        return monthExpenseList
-    }
     
     
     // MARK: - TableView 数据
@@ -219,6 +169,15 @@ class ChartViewModel: NSObject {
     }
     
     // MARK: - 走势图
+    func gainDateForPreYearTrend() ->NSDate {
+        currentYearWithTrend = currentYearWithTrend?.change(year: currentYearWithTrend!.year - 1)
+        return currentYearWithTrend!
+    }
+    
+    func gainDateForNextYearTrend() ->NSDate {
+        currentYearWithTrend = currentYearWithTrend?.change(year: currentYearWithTrend!.year + 1)
+        return currentYearWithTrend!
+    }
     
     // 创建 走势图上点和图 的颜色
     func createGradientRef(pointColorStr: String, chartColorStr: String) -> CGGradientRef {
@@ -241,6 +200,69 @@ class ChartViewModel: NSObject {
     
     
     // MARK: - 私有函数
+    
+    /**
+     按 category 分组 进行数据获取
+     
+     - parameter date: 所需要数据的月份
+     */
+    private func gainDataWithCategory(date: NSDate) {
+        consumeCategoryArr = []
+        
+        let consumeArr:NSFetchedResultsController = singleConsumeService.fetchConsumeWithPieChart(date)
+        for section: NSFetchedResultsSectionInfo in consumeArr.sections! {
+            // 获取 当前 消费类型
+            var consumeCategory: ConsumeCategory!
+            for consumeC: ConsumeCategory in consumeTypeArr! {
+                if consumeC.id == Int32(section.name) {
+                    consumeCategory = consumeC
+                }
+            }
+            
+            // 获取当前分类的金额
+            var moneyOfCategory: Double = 0
+            
+            for consume: SingleCustom in section.objects as! [SingleCustom] {
+                moneyOfCategory += (consume.money?.doubleValue)!
+            }
+            
+            consumeCategoryArr!.append(FinanceOfCategory(iconData: consumeCategory.iconData!, name: consumeCategory.name!, ratio: 0.0, money: moneyOfCategory))
+        }
+        
+        // 获取消费的比例
+        let monthExpense = self.gainTotalExpense()
+        for financeCategory: FinanceOfCategory in consumeCategoryArr! {
+            financeCategory.categoryRatio = financeCategory.categoryMoney / monthExpense
+        }
+    }
+    
+    
+    
+    
+    /**
+     获取指定一年内的每月消费总额
+     
+     - parameter date: 这一年的随便一天（一般为当前时间）
+     
+     - returns: 每月消费总额
+     */
+    private func gainDataWithMonthTrend(date: NSDate) -> [Double] {
+        var monthExpenseList: [Double] = []
+        for i in 0..<12 {
+            let newDate = NSDate.date(year: date.year, month: i + 1, day: 1, hour: 1, minute: 1, second: 1)
+            
+            let consumeMonthList = singleConsumeService.fetchConsumeWithMonthTrendChart(newDate)
+            
+            var monthExpense = 0.0
+            for singleConsume: SingleCustom in consumeMonthList {
+                monthExpense += (singleConsume.money?.doubleValue)!
+            }
+            
+            monthExpenseList.append(monthExpense)
+        }
+        return monthExpenseList
+    }
+
     
     /**
      获取 所有的 Consume-Category

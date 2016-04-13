@@ -33,12 +33,13 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var categoryArrowRight: UIButton!
     @IBOutlet weak var categoryChartView: PieChartView!
     
-    // 走势图部分
+    // 走势图部分：以一个月的四周作为走势图
     @IBOutlet weak var monthCurrentTime: UILabel!
     @IBOutlet weak var monthArrowRight: UIButton!
     @IBOutlet weak var monthArrowLeft: UIButton!
     @IBOutlet weak var monthChartView: LineChartView!
     
+    // 以一年的12个月作为走势图
     @IBOutlet weak var yearCurrentTime: UILabel!
     @IBOutlet weak var yearArrowLeft: UIButton!
     @IBOutlet weak var yearArrowRight: UIButton!
@@ -63,7 +64,7 @@ class ChartViewController: UIViewController {
         self.preparePieChartWithCategory(self.chartVM.currentMonthWithCategory!)
         
         // 创建每月消费走势图
-        createMonthTrendChart(self.chartVM.months, values: self.chartVM.consumeMonthTrendArr)
+        prepareYearTrendChart(self.chartVM.currentYearWithTrend!)
         
         // 去除 tableView 多余的分割线
         self.categoryTableView.tableFooterView = UIView()
@@ -110,11 +111,15 @@ class ChartViewController: UIViewController {
     }
     
     @IBAction func clickYearArrowLeft(sender: AnyObject) {
-        
+        let newDate = self.chartVM.gainDateForPreYearTrend()
+        self.chartVM.setConsumeMonthTrendArrWithDate(newDate)
+        prepareYearTrendChart(newDate)
     }
     
     @IBAction func clickYearArrowRight(sender: AnyObject) {
-        
+        let newDate = self.chartVM.gainDateForNextYearTrend()
+        self.chartVM.setConsumeMonthTrendArrWithDate(newDate)
+        prepareYearTrendChart(newDate)        
     }
     
     
@@ -160,16 +165,31 @@ class ChartViewController: UIViewController {
     
     // MARK: - 创建 走势图
     
-    // 创建每月消费走势图
+    // 创建一个月的每周消费走势图
     func createMonthTrendChart(dataPoints: [String], values: [Double]) {
         let lineChartDataSet = self.chartVM.createLineChartDataSet("月消费走势图", dataEntries: self.chartVM.createDataEntries(dataPoints, values: values), gradient: self.chartVM.createGradientRef("#00ff0000", chartColorStr: "#ffff0000"))
         
         monthChartView.data = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
     }
     
-    // 创建年消费走势图
+    // 创建一年的每月消费走势图
+    
+    func prepareYearTrendChart(date: NSDate) {
+        
+        // 如果当年每月的消费记录中最大值为0， 说明当年未记录消费，则隐藏数据
+        if self.chartVM.consumeMonthTrendArr.maxElement() == 0.0 {
+            yearChartView.data = nil
+        }else {
+            createYearTrendChart(self.chartVM.months, values: self.chartVM.consumeMonthTrendArr)
+        }
+        
+        self.yearCurrentTime.text = "\(date.year)年"
+    }
+    
     func createYearTrendChart(dataPoints: [String], values: [Double]) {
         let lineChartDataSet = self.chartVM.createLineChartDataSet("年消费走势图", dataEntries: self.chartVM.createDataEntries(dataPoints, values: values), gradient: self.chartVM.createGradientRef("#00ff0000", chartColorStr: "#ffff0000"))
+        
+        yearChartView.noDataText = "本年度尚未记录消费情况"
         
         yearChartView.data = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
     }
@@ -206,7 +226,9 @@ extension ChartViewController: UITableViewDataSource {
 
 // MARK: - TableView 操作协议
 extension ChartViewController: UITableViewDelegate {
-    
+    func tableView(tableView: UITableView, didselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
 }
 
 
