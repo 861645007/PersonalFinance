@@ -65,7 +65,7 @@ class SingleCustomService {
     /**
     获取一个月的 环形图 的数据(按 Category 组分类)
     
-    - returns: 一个 SingleCustom数组 的实例数据
+    - returns: 一个 NSFetchedResultsController 的实例数据
     */
     func fetchConsumeWithPieChart(date: NSDate) ->NSFetchedResultsController {
         let predicate = self.createPredicateWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
@@ -80,10 +80,8 @@ class SingleCustomService {
     
     - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
     */
-    func fetchConsumeRecordWithToday() ->NSFetchedResultsController {
-        let predicate = self.createPredicateWithRangeDate(NSDate().dayBegin(), dateEnd: NSDate().dayEnd())
-
-        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "TodayCustom")
+    func fetchConsumeRecordWithToday() ->[SingleCustom] {
+        return self.fetchCustomWithRangeDate(NSDate().dayBegin(), dateEnd: NSDate().dayEnd())
     }
     
     /**
@@ -91,14 +89,9 @@ class SingleCustomService {
 
      - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
      */
-    func fetchConsumeRecordWithCurrentMonth() ->NSFetchedResultsController {
-        let today = NSDate()
-        let predicate = self.createPredicateWithRangeDate(today.monthBegin(), dateEnd: today.monthEnd())
-        
-        return self.fetchConsumeWithFetchedResult(predicate, sectionName: "time", cacheName: "MonthCustom")
+    func fetchConsumeRecordWithCurrentMonth() ->[SingleCustom] {
+        return self.fetchCustomWithRangeDate(NSDate().monthBegin(), dateEnd: NSDate())
     }
-    
-    
     
     
     // MARK: - 私有函数
@@ -123,7 +116,7 @@ class SingleCustomService {
      
      - returns: 一段时间内的 消费记录
      */
-    private func fetchCustomWithRangeDate(dateBegin :NSDate, dateEnd: NSDate) ->[SingleCustom] {
+    private func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->[SingleCustom] {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
         let fetchRequest = self.gainFetchRequest(predicate)
         return self.executeFetchRequest(fetchRequest)

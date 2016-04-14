@@ -283,7 +283,6 @@ class ChartViewModel: NSObject {
             consumeTypeArr?.append(consumeType)
         }
         consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
-        
     }
     
     /**

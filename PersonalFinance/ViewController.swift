@@ -36,9 +36,9 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.todayExpenseLabel.text = "今日消费：\(mainVM.gainDayExpense())"
-        self.monthExpenseLabel.text = "本月消费：\(mainVM.gainMonthExpense())"
+
+        self.todayExpenseLabel.text = "今日消费：￥\(mainVM.gainDayExpense().convertToStrWithTwoFractionDigits())"
+        self.monthExpenseLabel.text = "本月消费：￥\(mainVM.gainMonthExpense().convertToStrWithTwoFractionDigits())"
         
     }
     

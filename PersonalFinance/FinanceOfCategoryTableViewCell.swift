@@ -28,11 +28,17 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
     }
     
     
-    func prepareCollectionCell(financeCategory: FinanceOfCategory) {
-        self.categoryIcon.image = UIImage(data: financeCategory.iconData!)
+    func prepareCollectionCellForChartView(financeCategory: FinanceOfCategory) {
         self.categoryRatio.text = (financeCategory.categoryRatio * 100).convertToStrWithTwoFractionDigits() + "%"
         self.categoryName.text = financeCategory.categoryName
-        self.categoryMoney.text = financeCategory.categoryMoney.convertToStrWithTwoFractionDigits()
+        self.categoryMoney.text = "￥" + financeCategory.categoryMoney.convertToStrWithTwoFractionDigits()
+        self.categoryIcon.image = UIImage(data: financeCategory.iconData!)
+    }
+    
+    func prepareCollectionCellForDayConsumeView(financeCategory: FinanceOfCategory) {
+        self.categoryName.text = financeCategory.categoryName
+        self.categoryMoney.text = "￥" + financeCategory.categoryMoney.convertToStrWithTwoFractionDigits()
+        self.categoryIcon.image = UIImage(data: financeCategory.iconData!)
     }
 
 }

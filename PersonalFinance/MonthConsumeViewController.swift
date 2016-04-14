@@ -1,43 +1,33 @@
 //
-//  DayConsumeViewController.swift
+//  MonthConsumeViewController.swift
 //  PersonalFinance
 //
-//  Created by 子叶 on 16/4/13.
+//  Created by 子叶 on 16/4/14.
 //  Copyright © 2016年 王焕强. All rights reserved.
 //
 
 import UIKit
 import DZNEmptyDataSet
 
-class DayConsumeViewController: UIViewController {
-
+class MonthConsumeViewController: UIViewController {
+    
+    var monthConsumeVM: MonthConsumeViewModel = MonthConsumeViewModel()
+    
     @IBOutlet weak var totalMoneyLabel: UILabel!    
-    @IBOutlet weak var dayConsumeTableView: UITableView!
-    
-    let dayConsumeVM: DayConsumeViewModel = DayConsumeViewModel()
-    
-    
-    
+    @IBOutlet weak var monthConsumeTableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "今日消费"        
+        self.title = "本月消费"
+        
     }
 
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        self.dayConsumeVM.initData()
-
-        self.totalMoneyLabel.text = "￥\(self.dayConsumeVM.dayConsumeMoney.convertToStrWithTwoFractionDigits())"
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
     
 
     /*
@@ -53,22 +43,24 @@ class DayConsumeViewController: UIViewController {
 }
 
 
-extension DayConsumeViewController: UITableViewDataSource {
+
+
+extension MonthConsumeViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dayConsumeVM.numberOfItemsInSection()
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("DayConsumeCell") as! FinanceOfCategoryTableViewCell
+        let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("MonthConsumeCell") as! FinanceOfCategoryTableViewCell
         
-        cell.prepareCollectionCellForDayConsumeView(self.dayConsumeVM.consumeInfoAtIndex(indexPath.row))
+//        cell.prepareCollectionCellForDayConsumeView(self.dayConsumeVM.consumeInfoAtIndex(indexPath.row))
         
         return cell
     }
 }
 
 
-extension DayConsumeViewController: UITableViewDelegate {
+extension MonthConsumeViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didselectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -77,7 +69,7 @@ extension DayConsumeViewController: UITableViewDelegate {
 
 
 // MARK: - DZNEmptyDataSetSource 数据源协议
-extension DayConsumeViewController: DZNEmptyDataSetSource {
+extension MonthConsumeViewController: DZNEmptyDataSetSource {
     // 设置图片
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "saveMoney")
@@ -87,7 +79,7 @@ extension DayConsumeViewController: DZNEmptyDataSetSource {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let attribute = [NSFontAttributeName: UIFont.systemFontOfSize(18.0),
                          NSForegroundColorAttributeName: UIColor.grayColor()]
-        return NSAttributedString(string: "今日尚未记账", attributes: attribute)
+        return NSAttributedString(string: "本月尚未记账", attributes: attribute)
     }
     
     func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
@@ -106,27 +98,27 @@ extension DayConsumeViewController: DZNEmptyDataSetSource {
     func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
         let attribute = [NSForegroundColorAttributeName: UIColor(red:0, green:0.53, blue:0.7, alpha:1),
                          NSFontAttributeName: UIFont.systemFontOfSize(20.0)]
-        return NSAttributedString(string: "今日首记", attributes: attribute)
+        return NSAttributedString(string: "本月首记", attributes: attribute)
     }
-    
-    
     
     
 }
 
 // MARK: - DZNEmptyDataSetDelegate 操作协议
-extension DayConsumeViewController: DZNEmptyDataSetDelegate {
+extension MonthConsumeViewController: DZNEmptyDataSetDelegate {
     func emptyDataSetShouldAnimateImageView(scrollView: UIScrollView!) -> Bool {
         return true
     }
     
     func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
         let addNewConsumeVC: AddNewCustomViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController
-        
-        
         self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
         
     }
 }
+
+
+
+
 
 

@@ -11,27 +11,27 @@ import Timepiece
 
 extension NSDate {
     func yearBegin() ->NSDate {
-        return self.beginningOfYear
+        return self.beginningOfYear.tolocalTime()
     }
     
     func yearEnd() ->NSDate {
-        return self.endOfYear
+        return self.endOfYear.tolocalTime()
     }
     
     func monthBegin() ->NSDate {
-        return self.beginningOfMonth
+        return self.beginningOfMonth.tolocalTime()
     }
     
     func monthEnd() ->NSDate {
-        return self.endOfMonth
+        return self.endOfMonth.tolocalTime()
     }
     
     func dayBegin() ->NSDate {
-        return self.beginningOfDay
+        return self.beginningOfDay.tolocalTime()
     }
     
     func dayEnd() ->NSDate {
-        return self.endOfDay
+        return self.endOfDay.tolocalTime()
     }
     
     func isLaterWithNewTime(newTime: NSDate) ->Bool {
@@ -50,7 +50,7 @@ extension NSDate {
      - returns: 是返回true，不是返回false
      */
     func isThisDay(date: NSDate) ->Bool {
-        if date.beginningOfDay < self && self < date.endOfDay {
+        if date.dayBegin() < self && self < date.dayEnd() {
             return true
         }else {
             return false
@@ -65,7 +65,7 @@ extension NSDate {
      - returns: 是返回true，不是返回false
      */
     func isInThisMonth(date: NSDate) ->Bool {
-        if date.beginningOfMonth < self && self < date.endOfMonth {
+        if date.monthBegin() < self && self < date.monthEnd() {
             return true
         }else {
             return false

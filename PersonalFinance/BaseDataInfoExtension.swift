@@ -12,6 +12,7 @@ extension Double {
     func convertToStrWithTwoFractionDigits() -> String {
         let numberFormat = NSNumberFormatter()
         numberFormat.numberStyle = .DecimalStyle
+        numberFormat.minimumFractionDigits = 2
         numberFormat.maximumFractionDigits = 2
         return numberFormat.stringFromNumber(NSNumber(double: self))!
     }

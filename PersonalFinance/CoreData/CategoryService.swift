@@ -45,11 +45,17 @@ class CategoryService {
     - returns: 返回 Category 表中的所有数据
     */
     func fetchAllCustomType() ->[Category] {
-        return self.gainCustomType(nil)
+        return self.gainConsumeCategory(nil)
     }
     
+    
+    func fetchConsumeCategoryWithId(id: NSNumber) -> Category {
+        return self.gainConsumeCategory(NSPredicate(format: "id == %@", id))[0]
+    }
+    
+    
     // 查询 Category 表
-    func gainCustomType(predicate: NSPredicate?) ->[Category] {
+    private func gainConsumeCategory(predicate: NSPredicate?) ->[Category] {
         let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: "Category")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
@@ -85,7 +91,7 @@ class CategoryService {
     // 修改
     func modifyCustomType(id: NSNumber, newName: String) {
         let predicate: NSPredicate = NSPredicate(format: "id == %@", id)
-        let category = self.gainCustomType(predicate).first
+        let category = self.gainConsumeCategory(predicate).first
         
         category?.name = newName
         

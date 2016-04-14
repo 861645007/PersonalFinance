@@ -217,7 +217,7 @@ extension ChartViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("FinanceCategory") as! FinanceOfCategoryTableViewCell
         
-        cell.prepareCollectionCell(self.chartVM.gainFinanceCategoryAtIndex(indexPath))
+        cell.prepareCollectionCellForChartView(self.chartVM.gainFinanceCategoryAtIndex(indexPath))
         
         return cell;
     }
@@ -264,7 +264,9 @@ extension ChartViewController: DZNEmptyDataSetSource {
 
 // MARK: - DZNEmptyDataSetDelegate 操作协议
 extension ChartViewController: DZNEmptyDataSetDelegate {
-    
+    func emptyDataSetShouldAnimateImageView(scrollView: UIScrollView!) -> Bool {
+        return true
+    }
 }
 
 
