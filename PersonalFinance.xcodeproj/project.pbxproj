@@ -14,6 +14,9 @@
 		7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */; };
 		7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */; };
 		7A24ED181CBB6BDE0000404F /* ConsumeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24ED171CBB6BDE0000404F /* ConsumeCategory.swift */; };
+		7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */; };
+		7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */; };
+		7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */; };
 		7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */; };
 		7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */; };
 		7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */; };
@@ -87,6 +90,9 @@
 		7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewComsume-Type.plist"; sourceTree = "<group>"; };
 		7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A24ED171CBB6BDE0000404F /* ConsumeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsumeCategory.swift; path = CoreData/ConsumeCategory.swift; sourceTree = "<group>"; };
+		7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeInfo.swift; path = CoreData/Model/DayConsumeInfo.swift; sourceTree = "<group>"; };
+		7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
 		7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCustomViewController.swift; sourceTree = "<group>"; };
 		7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewCustomViewModel.swift; path = ViewModel/AddNewCustomViewModel.swift; sourceTree = "<group>"; };
 		7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanceOfCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				7A01C1251CBFC2F200D3EC90 /* MonthConsumeViewModel.swift */,
+				7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */,
 			);
 			name = "Month Consume";
 			sourceTree = "<group>";
@@ -206,6 +213,22 @@
 				7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */,
 			);
 			name = OnBoard;
+			sourceTree = "<group>";
+		};
+		7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */,
+			);
+			name = "Setting View Controller";
+			sourceTree = "<group>";
+		};
+		7A2B3ECE1CC0A87600D751D5 /* Setting  View Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */,
+			);
+			name = "Setting  View Model";
 			sourceTree = "<group>";
 		};
 		7A41680F1C60615200145EA1 /* Add New Custom */ = {
@@ -477,6 +500,7 @@
 		7AF073601C5D9D7B00221F17 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */,
 				7AEE21171CB6227800BC9985 /* Chart Detail View Controller */,
 				7AEE21161CB6224F00BC9985 /* Chart View Controller */,
 				7AEE21131CB621DC00BC9985 /* Finance List View Controller */,
@@ -489,6 +513,7 @@
 		7AF073611C5D9D8700221F17 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7A2B3ECE1CC0A87600D751D5 /* Setting  View Model */,
 				7A444F551CB77D0D00324267 /* Chart Detail View Model */,
 				7A444F541CB77D0000324267 /* Chart View Model */,
 				7A4168101C60616F00145EA1 /* Add New Custom */,
@@ -732,15 +757,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */,
 				7A01C1211CBF3F6500D3EC90 /* MonthConsumeViewController.swift in Sources */,
 				7A7EB3E71C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift in Sources */,
 				7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */,
 				7A7EB3E91C58F672009AD0A7 /* Category+CoreDataProperties.swift in Sources */,
 				7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */,
+				7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */,
 				7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */,
 				7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */,
 				7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */,
 				7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */,
+				7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */,
 				7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */,
 				7A7376BC1CBB7F810038BB3E /* TopAlert.swift in Sources */,
 				7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */,

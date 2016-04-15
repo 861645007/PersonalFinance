@@ -23,6 +23,13 @@ class MonthConsumeViewController: UIViewController {
         self.title = "本月消费"
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.monthConsumeVM.initData()
+        
+        self.totalMoneyLabel.text = "￥\(self.monthConsumeVM.monthConsumeMoney.convertToStrWithTwoFractionDigits())"
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,17 +53,39 @@ class MonthConsumeViewController: UIViewController {
 
 
 extension MonthConsumeViewController: UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.monthConsumeVM.numberOfSections()
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.monthConsumeVM.numberOfCellsInSection(section)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("MonthConsumeCell") as! FinanceOfCategoryTableViewCell
         
-//        cell.prepareCollectionCellForDayConsumeView(self.dayConsumeVM.consumeInfoAtIndex(indexPath.row))
+        cell.prepareCollectionCellForDayConsumeView(self.monthConsumeVM.conusmeInfoAtIndexPath(indexPath))
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headView: UIView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, 25))
+        headView.backgroundColor = UIColor.whiteColor()
+        
+        let dayLabel: UILabel = UILabel(frame: CGRectMake(20, 2, 100, 21))
+        dayLabel.text = self.monthConsumeVM.titleWithTimeForSection(section)
+        
+        headView.addSubview(dayLabel)
+        
+        let moneyLabel: UILabel = UILabel(frame: CGRectMake(self.view.bounds.size.width - 120, 2, 100, 21))
+        moneyLabel.text = self.monthConsumeVM.titleWithMoneyForSection(section)
+        
+        headView.addSubview(moneyLabel)
+        
+        return headView
+    }
+    
 }
 
 
