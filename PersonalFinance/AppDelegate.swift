@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VENTouchLock
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 配置 bugtags（bug管理系统）
         Bugtags.startWithAppKey("58fb2b81336829c7824f538b55545ad3", invocationEvent: BTGInvocationEventBubble)
+        
+        // 配置密码锁
+        let infoDictionary = NSBundle.mainBundle().infoDictionary        
+        VENTouchLock.sharedInstance().setKeychainService("testService", keychainAccount: (infoDictionary!["CFBundleDisplayName"] as! String), touchIDReason: "通过Home键验证已有的手机指纹", passcodeAttemptLimit: 5, splashViewControllerClass: object_getClass(SampleSplashViewController()))
         
         // 初始化基础数据 和 加载引导页面
         let sharedBaseInfo = BaseInfo.sharedBaseInfo

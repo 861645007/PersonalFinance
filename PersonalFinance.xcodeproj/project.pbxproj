@@ -17,6 +17,11 @@
 		7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */; };
 		7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */; };
 		7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */; };
+		7A2B3ED61CC0C55E00D751D5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED51CC0C55E00D751D5 /* SettingTableViewCell.swift */; };
+		7A2B3ED81CC0C5E400D751D5 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED71CC0C5E400D751D5 /* SettingModel.swift */; };
+		7A2B3F041CC11FF100D751D5 /* SampleSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3F021CC11FF100D751D5 /* SampleSplashViewController.swift */; };
+		7A2B3F051CC11FF100D751D5 /* SampleSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2B3F031CC11FF100D751D5 /* SampleSplashViewController.xib */; };
+		7A2B3F081CC1240500D751D5 /* PasscodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3F071CC1240500D751D5 /* PasscodeOperation.swift */; };
 		7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */; };
 		7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */; };
 		7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */; };
@@ -93,6 +98,11 @@
 		7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeInfo.swift; path = CoreData/Model/DayConsumeInfo.swift; sourceTree = "<group>"; };
 		7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
+		7A2B3ED51CC0C55E00D751D5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		7A2B3ED71CC0C5E400D751D5 /* SettingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingModel.swift; path = ViewModel/SettingModel.swift; sourceTree = "<group>"; };
+		7A2B3F021CC11FF100D751D5 /* SampleSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSplashViewController.swift; sourceTree = "<group>"; };
+		7A2B3F031CC11FF100D751D5 /* SampleSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleSplashViewController.xib; sourceTree = "<group>"; };
+		7A2B3F071CC1240500D751D5 /* PasscodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeOperation.swift; sourceTree = "<group>"; };
 		7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewCustomViewController.swift; sourceTree = "<group>"; };
 		7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewCustomViewModel.swift; path = ViewModel/AddNewCustomViewModel.swift; sourceTree = "<group>"; };
 		7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanceOfCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -218,7 +228,9 @@
 		7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7A2B3F011CC11EE100D751D5 /* Passcode View Controller */,
 				7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */,
+				7A2B3ED51CC0C55E00D751D5 /* SettingTableViewCell.swift */,
 			);
 			name = "Setting View Controller";
 			sourceTree = "<group>";
@@ -227,8 +239,26 @@
 			isa = PBXGroup;
 			children = (
 				7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */,
+				7A2B3ED71CC0C5E400D751D5 /* SettingModel.swift */,
 			);
 			name = "Setting  View Model";
+			sourceTree = "<group>";
+		};
+		7A2B3F011CC11EE100D751D5 /* Passcode View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A2B3F021CC11FF100D751D5 /* SampleSplashViewController.swift */,
+				7A2B3F031CC11FF100D751D5 /* SampleSplashViewController.xib */,
+			);
+			name = "Passcode View Controller";
+			sourceTree = "<group>";
+		};
+		7A2B3F061CC123DD00D751D5 /* Passcode Operation */ = {
+			isa = PBXGroup;
+			children = (
+				7A2B3F071CC1240500D751D5 /* PasscodeOperation.swift */,
+			);
+			name = "Passcode Operation";
 			sourceTree = "<group>";
 		};
 		7A41680F1C60615200145EA1 /* Add New Custom */ = {
@@ -276,6 +306,7 @@
 		7A614FC31C5C77D700BEE1B8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7A2B3F061CC123DD00D751D5 /* Passcode Operation */,
 				7A47B8561C6B3AE500F63D9A /* Operate Plist */,
 				7A614FC71C5C796F00BEE1B8 /* Base Info */,
 				7A244C011C5CE33200B46CC9 /* OnBoard */,
@@ -679,6 +710,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A2B3F051CC11FF100D751D5 /* SampleSplashViewController.xib in Resources */,
 				7A7EB3B71C58F07F009AD0A7 /* LaunchScreen.storyboard in Resources */,
 				7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */,
 				7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */,
@@ -774,11 +806,14 @@
 				7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */,
 				7A24ED181CBB6BDE0000404F /* ConsumeCategory.swift in Sources */,
 				7A444F5B1CB77D5D00324267 /* ChartDetailViewModel.swift in Sources */,
+				7A2B3F081CC1240500D751D5 /* PasscodeOperation.swift in Sources */,
 				7AEE211B1CB622B200BC9985 /* ChartDetailViewController.swift in Sources */,
 				7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */,
+				7A2B3F041CC11FF100D751D5 /* SampleSplashViewController.swift in Sources */,
+				7A2B3ED61CC0C55E00D751D5 /* SettingTableViewCell.swift in Sources */,
 				7A7376CA1CBB80350038BB3E /* UIFont+FontAwesome.m in Sources */,
 				7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */,
 				7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */,
@@ -791,6 +826,7 @@
 				7AEE21151CB6222300BC9985 /* FinanceListViewController.swift in Sources */,
 				7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */,
 				7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */,
+				7A2B3ED81CC0C5E400D751D5 /* SettingModel.swift in Sources */,
 				7A7376C91CBB80350038BB3E /* NSString+FontAwesome.m in Sources */,
 				7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */,
 				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,

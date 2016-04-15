@@ -24,7 +24,10 @@ PODS:
   - SDWebImage/Core (3.7.5)
   - SimpleAlert (1.3.1)
   - Spring (1.0.3)
+  - SSKeychain (1.4.0)
   - Timepiece (0.4.2)
+  - VENTouchLock (1.11.0):
+    - SSKeychain (~> 1.0)
 
 DEPENDENCIES:
   - Bugtags
@@ -38,6 +41,7 @@ DEPENDENCIES:
   - SimpleAlert
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
   - Timepiece
+  - VENTouchLock (~> 1.11.0)
 
 EXTERNAL SOURCES:
   Spring:
@@ -61,6 +65,8 @@ SPEC CHECKSUMS:
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SimpleAlert: 05215ee656e1da1428998e76a76bb153a16c7a21
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
+  SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
   Timepiece: cf53bb908bf542acc0e3d5f69cabfed869df4ebd
+  VENTouchLock: f3145d6fbff243d6692dfb1107b88db06dc216c9
 
 COCOAPODS: 0.39.0

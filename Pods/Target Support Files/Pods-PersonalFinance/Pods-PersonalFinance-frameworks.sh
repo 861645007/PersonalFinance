@@ -92,9 +92,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PersonalFinance/ReactiveCocoa.framework"
   install_framework "Pods-PersonalFinance/Result.framework"
   install_framework "Pods-PersonalFinance/SDWebImage.framework"
+  install_framework "Pods-PersonalFinance/SSKeychain.framework"
   install_framework "Pods-PersonalFinance/SimpleAlert.framework"
   install_framework "Pods-PersonalFinance/Spring.framework"
   install_framework "Pods-PersonalFinance/Timepiece.framework"
+  install_framework "Pods-PersonalFinance/VENTouchLock.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PersonalFinance/Charts.framework"
@@ -105,7 +107,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PersonalFinance/ReactiveCocoa.framework"
   install_framework "Pods-PersonalFinance/Result.framework"
   install_framework "Pods-PersonalFinance/SDWebImage.framework"
+  install_framework "Pods-PersonalFinance/SSKeychain.framework"
   install_framework "Pods-PersonalFinance/SimpleAlert.framework"
   install_framework "Pods-PersonalFinance/Spring.framework"
   install_framework "Pods-PersonalFinance/Timepiece.framework"
+  install_framework "Pods-PersonalFinance/VENTouchLock.framework"
 fi

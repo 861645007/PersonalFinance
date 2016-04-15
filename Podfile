@@ -27,7 +27,8 @@ target "PersonalFinance" do
 	pod 'PDTSimpleCalendar', '~> 0.9.1'
 # 一个可自定义的弹出框
 	pod "SimpleAlert"
-
+# 密码锁
+	pod 'VENTouchLock', '~> 1.11.0'
 
 
 end

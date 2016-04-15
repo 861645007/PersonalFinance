@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9E5C1D3C0791F2E0AE192111'
+               BlueprintIdentifier = 'CFFF6C7A06575262D2985A51'
                BlueprintName = 'Pods-PersonalFinance'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_PersonalFinance.framework'>

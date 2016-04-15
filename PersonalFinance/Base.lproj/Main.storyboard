@@ -102,6 +102,9 @@
                     <navigationItem key="navigationItem" id="aVp-90-3fH">
                         <barButtonItem key="leftBarButtonItem" image="setting" id="qo1-nS-bRU">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="CS0-89-gTt" kind="show" identifier="GotoSettingViewController" id="Xbv-1p-zWz"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="iconfont-chart" id="fqY-MG-rQB">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -743,6 +746,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5g-f9-caZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2356" y="1928"/>
+        </scene>
+        <!--设置-->
+        <scene sceneID="kDX-lF-yVH">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CS0-89-gTt" customClass="SettingViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hcf-Kw-7yD"/>
+                        <viewControllerLayoutGuide type="bottom" id="Imx-8x-qTQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="O8R-rX-liT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="o1v-2i-47k">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SettingCell" id="6t0-zo-40Z" customClass="SettingTableViewCell" customModule="PersonalFinance" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6t0-zo-40Z" id="Edn-6N-T7f">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zm4-d1-pWC">
+                                                    <rect key="frame" x="16" y="7" width="29" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="zm4-d1-pWC" secondAttribute="height" multiplier="1:1" id="z1E-Fd-XYF"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHT-sS-JrX">
+                                                    <rect key="frame" x="64" y="11" width="44" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zm4-d1-pWC" firstAttribute="leading" secondItem="Edn-6N-T7f" secondAttribute="leadingMargin" constant="8" id="OPO-iz-6LO"/>
+                                                <constraint firstItem="zm4-d1-pWC" firstAttribute="top" secondItem="Edn-6N-T7f" secondAttribute="topMargin" constant="-1" id="OcJ-x1-V29"/>
+                                                <constraint firstItem="zm4-d1-pWC" firstAttribute="bottom" secondItem="Edn-6N-T7f" secondAttribute="bottomMargin" constant="1" id="WBg-hV-wOc"/>
+                                                <constraint firstItem="ZHT-sS-JrX" firstAttribute="leading" secondItem="zm4-d1-pWC" secondAttribute="trailing" constant="19" id="otl-Hm-R53"/>
+                                                <constraint firstItem="ZHT-sS-JrX" firstAttribute="centerY" secondItem="zm4-d1-pWC" secondAttribute="centerY" id="toJ-NX-Jat"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="settingImageView" destination="zm4-d1-pWC" id="vmL-CZ-O7R"/>
+                                            <outlet property="settingNameLabel" destination="ZHT-sS-JrX" id="edE-bX-yWE"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="CS0-89-gTt" id="ReA-Bf-PUm"/>
+                                    <outlet property="delegate" destination="CS0-89-gTt" id="f2D-DQ-QIP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Imx-8x-qTQ" firstAttribute="top" secondItem="o1v-2i-47k" secondAttribute="bottom" id="6bo-uk-k1C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="o1v-2i-47k" secondAttribute="trailing" constant="-20" id="fkt-JZ-OWV"/>
+                            <constraint firstItem="o1v-2i-47k" firstAttribute="top" secondItem="Hcf-Kw-7yD" secondAttribute="bottom" constant="-64" id="gLg-43-lHV"/>
+                            <constraint firstItem="o1v-2i-47k" firstAttribute="leading" secondItem="O8R-rX-liT" secondAttribute="leadingMargin" constant="-20" id="tn7-hk-zjK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="设置" id="sAx-G4-uJ8"/>
+                    <connections>
+                        <outlet property="settingTableView" destination="o1v-2i-47k" id="UP2-wd-28K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ego-sZ-qi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2356" y="2697"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JQh-90-0Rk">

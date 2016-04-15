@@ -10,10 +10,16 @@ import UIKit
 
 class SettingViewController: UIViewController {
 
+    var settingVM: SettingViewModel = SettingViewModel()
+    
+    @IBOutlet weak var settingTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        settingTableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +38,35 @@ class SettingViewController: UIViewController {
     }
     */
 
+}
+
+
+extension SettingViewController: UITableViewDataSource {
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return self.settingVM.numberOfSection()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.settingVM.numberOfItemsInSection(section)
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: SettingTableViewCell = tableView.dequeueReusableCellWithIdentifier("SettingCell") as! SettingTableViewCell
+        
+        cell.prepareCollectionCell(self.settingVM.titleAtIndexPath(indexPath))
+        
+        return cell
+    }
+}
+
+
+extension SettingViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didselectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+        
+    
+    
 }
