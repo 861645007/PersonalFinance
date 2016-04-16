@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/ViewModel/AddNewCustomViewModel.swift"
-            timestampString = "482128354.570848"
+            timestampString = "482503702.601357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "gainAllConsumeType()"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/ViewModel/AddNewCustomViewModel.swift"
-            timestampString = "482128376.593086"
+            timestampString = "482503702.601357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "gainAllConsumeType()"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/ViewModel/AddNewCustomViewModel.swift"
-            timestampString = "482128777.415063"
+            timestampString = "482503702.601357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "saveNewConsume(_:photo:comment:money:time:)"
             landmarkType = "5">
          </BreakpointContent>

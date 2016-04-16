@@ -24,9 +24,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // 配置水波纹数据
-        self.configureWaveProgress(mainVM.gainMonthExpense(), percent: self.mainVM.configureWavePercent())        
-
         // 设置导航栏透明
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -39,6 +36,9 @@ class ViewController: UIViewController {
 
         self.todayExpenseLabel.text = "今日消费：￥\(mainVM.gainDayExpense().convertToStrWithTwoFractionDigits())"
         self.monthExpenseLabel.text = "本月消费：￥\(mainVM.gainMonthExpense().convertToStrWithTwoFractionDigits())"
+        
+        // 配置水波纹数据
+        self.configureWaveProgress(mainVM.gainMonthExpense(), percent: self.mainVM.configureWavePercent())
         
     }
     
@@ -66,8 +66,8 @@ class ViewController: UIViewController {
         waterWaveView.backgroundImageView?.image = UIImage(named: "bg_tk")
         
         // 设置 现实的数值
-        waterWaveView.numberLabel?.text = "\(number)"
-        waterWaveView.numberLabel?.font = UIFont.systemFontOfSize(20)
+        waterWaveView.numberLabel?.text = "\(Int(percent * 100))"
+        waterWaveView.numberLabel?.font = UIFont.systemFontOfSize(55)
         waterWaveView.numberLabel.textColor = UIColor.whiteColor()
 
         // 设置 %
@@ -76,14 +76,12 @@ class ViewController: UIViewController {
         waterWaveView.unitLabel.textColor = UIColor.whiteColor()
         
         // 设置 显示的条目
-        waterWaveView.explainLabel?.text = "已消费"
+        waterWaveView.explainLabel?.text = "已消费:￥\(number)"
         waterWaveView.explainLabel.font = UIFont.boldSystemFontOfSize(20.0)
         waterWaveView.explainLabel?.textColor = UIColor.whiteColor()
         
         // 设置 百分比
         waterWaveView.percent = percent
-        
-//        waterWaveView
         
         // 开始波浪波动
         waterWaveView.startWave()

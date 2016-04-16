@@ -47,8 +47,12 @@ class PasscodeOperation: NSObject {
     }
     
     func deletePasscode(vc: UIViewController, handler: (Void -> Void)) {
-        VENTouchLock.sharedInstance().deletePasscode()
-        handler()
+        vc.showSystemAlertWithTwoBtn("确定删除密码?", msg: "如果您删除了密码，您的财务隐私将得不到很好地保护！", cancelHandler: { (action) in
+                // 不做操作
+            }) { (action) in
+                VENTouchLock.sharedInstance().deletePasscode()
+                handler()
+        }
     }
     
     

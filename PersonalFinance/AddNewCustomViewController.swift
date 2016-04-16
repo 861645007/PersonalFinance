@@ -234,6 +234,8 @@ class AddNewCustomViewController: UIViewController {
         textView.becomeFirstResponder()
         cusView.addSubview(textView)
         
+//        self.showCustomViewAlert(cusView, cancelTitle: "", oKTitle: <#T##String#>, cancelHandler: <#T##((SimpleAlert.Action!) -> Void)?##((SimpleAlert.Action!) -> Void)?##(SimpleAlert.Action!) -> Void#>, okHandler: <#T##((SimpleAlert.Action!) -> Void)?##((SimpleAlert.Action!) -> Void)?##(SimpleAlert.Action!) -> Void#>)
+        
         let alert = SimpleAlert.Controller(view: cusView, style: .Alert)
         
         alert.addAction(SimpleAlert.Action(title: "取消", style: .Destructive){ action in
