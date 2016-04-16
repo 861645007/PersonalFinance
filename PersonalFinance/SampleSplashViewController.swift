@@ -15,7 +15,8 @@ class SampleSplashViewController: VENTouchLockSplashViewController {
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: "SampleSplashViewController", bundle: nil)
         
-        self.didFinishWithSuccess = { (success: Bool, unlockType: VENTouchLockSplashViewControllerUnlockType) in
+        
+        self.didFinishWithSuccess = {[weak self] (success: Bool, unlockType: VENTouchLockSplashViewControllerUnlockType) in
             if success {
                 var logString = "Sample App Unlocked ";
                 switch unlockType {
@@ -34,7 +35,7 @@ class SampleSplashViewController: VENTouchLockSplashViewController {
                 alert.addAction(SimpleAlert.Action(title: "确定", style: .OK){ action in
                     
                     })
-                self.presentViewController(alert, animated: true, completion: nil)
+                self!.presentViewController(alert, animated: true, completion: nil)
             }
         }
         

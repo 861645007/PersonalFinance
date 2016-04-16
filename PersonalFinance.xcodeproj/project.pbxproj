@@ -13,12 +13,12 @@
 		7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644261C6B05BA00FAE828 /* Consume-Type.plist */; };
 		7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */; };
 		7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */; };
+		7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */; };
 		7A24ED181CBB6BDE0000404F /* ConsumeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A24ED171CBB6BDE0000404F /* ConsumeCategory.swift */; };
 		7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */; };
 		7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */; };
 		7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */; };
 		7A2B3ED61CC0C55E00D751D5 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED51CC0C55E00D751D5 /* SettingTableViewCell.swift */; };
-		7A2B3ED81CC0C5E400D751D5 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED71CC0C5E400D751D5 /* SettingModel.swift */; };
 		7A2B3F041CC11FF100D751D5 /* SampleSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3F021CC11FF100D751D5 /* SampleSplashViewController.swift */; };
 		7A2B3F051CC11FF100D751D5 /* SampleSplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2B3F031CC11FF100D751D5 /* SampleSplashViewController.xib */; };
 		7A2B3F081CC1240500D751D5 /* PasscodeOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3F071CC1240500D751D5 /* PasscodeOperation.swift */; };
@@ -94,12 +94,12 @@
 		7A0644261C6B05BA00FAE828 /* Consume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Consume-Type.plist"; sourceTree = "<group>"; };
 		7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewComsume-Type.plist"; sourceTree = "<group>"; };
 		7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		7A24ED171CBB6BDE0000404F /* ConsumeCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConsumeCategory.swift; path = CoreData/ConsumeCategory.swift; sourceTree = "<group>"; };
 		7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeInfo.swift; path = CoreData/Model/DayConsumeInfo.swift; sourceTree = "<group>"; };
 		7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
 		7A2B3ED51CC0C55E00D751D5 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		7A2B3ED71CC0C5E400D751D5 /* SettingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingModel.swift; path = ViewModel/SettingModel.swift; sourceTree = "<group>"; };
 		7A2B3F021CC11FF100D751D5 /* SampleSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleSplashViewController.swift; sourceTree = "<group>"; };
 		7A2B3F031CC11FF100D751D5 /* SampleSplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SampleSplashViewController.xib; sourceTree = "<group>"; };
 		7A2B3F071CC1240500D751D5 /* PasscodeOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeOperation.swift; sourceTree = "<group>"; };
@@ -239,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */,
-				7A2B3ED71CC0C5E400D751D5 /* SettingModel.swift */,
 			);
 			name = "Setting  View Model";
 			sourceTree = "<group>";
@@ -321,6 +320,7 @@
 			children = (
 				7A614FC51C5C780900BEE1B8 /* DateExtension.swift */,
 				7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */,
+				7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -615,6 +615,7 @@
 				7A7EB3A71C58F07F009AD0A7 /* Resources */,
 				4FC8A7159CBF54A83780CE31 /* Embed Pods Frameworks */,
 				474EB2C8EDEEF65D61CFA93B /* Copy Pods Resources */,
+				7A1800231CC20D280092AEC8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -673,7 +674,7 @@
 				TargetAttributes = {
 					7A7EB3A81C58F07F009AD0A7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = ESV52K77D5;
+						DevelopmentTeam = EYK6J4JA87;
 					};
 					7A7EB3BC1C58F07F009AD0A7 = {
 						CreatedOnToolsVersion = 7.2;
@@ -782,6 +783,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7A1800231CC20D280092AEC8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e4c25b01bb57b919a9e340d50e1312232401ec00 fd32cc426a4ca29df8d025953988d65748ad93fb75c39ec26cb51c334b497a67";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -809,6 +823,7 @@
 				7A2B3F081CC1240500D751D5 /* PasscodeOperation.swift in Sources */,
 				7AEE211B1CB622B200BC9985 /* ChartDetailViewController.swift in Sources */,
 				7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */,
+				7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */,
@@ -826,7 +841,6 @@
 				7AEE21151CB6222300BC9985 /* FinanceListViewController.swift in Sources */,
 				7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */,
 				7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */,
-				7A2B3ED81CC0C5E400D751D5 /* SettingModel.swift in Sources */,
 				7A7376C91CBB80350038BB3E /* NSString+FontAwesome.m in Sources */,
 				7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */,
 				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,
@@ -984,6 +998,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanghuanqiang.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1002,6 +1017,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wanghuanqiang.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";

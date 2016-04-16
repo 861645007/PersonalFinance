@@ -22,6 +22,7 @@ class MonthConsumeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "本月消费"
         
+        monthConsumeTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(animated: Bool) {

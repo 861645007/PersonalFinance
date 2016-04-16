@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import VENTouchLock
 
 class SettingViewController: UIViewController {
 
     var settingVM: SettingViewModel = SettingViewModel()
+    var passcodeOperation: PasscodeOperation = PasscodeOperation.sharedPasscodeOperation
+    
     
     @IBOutlet weak var settingTableView: UITableView!
     
@@ -20,6 +23,7 @@ class SettingViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         settingTableView.tableFooterView = UIView()
+        self.settingTableView.allowsSelection = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,11 +66,29 @@ extension SettingViewController: UITableViewDataSource {
 
 
 extension SettingViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didselectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                // 判断密码锁是否存在，存在就删除，不存在就设置
+                if self.passcodeOperation.hasPasscodeExist() {
+                    self.passcodeOperation.deletePasscode(self, handler: { [weak self] in
+                        self!.settingVM.setSettingData()
+                        self!.settingTableView.reloadData()
+                    })
+                }else {
+                    self.passcodeOperation.setPasscode(self, handler: { [weak self] in
+                        self!.settingVM.setSettingData()
+                        self!.settingTableView.reloadData()
+                    })
+                }
+                
+            }
+        }
+        
+    }
     
     
 }

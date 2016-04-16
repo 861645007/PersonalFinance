@@ -8,6 +8,8 @@
 
 import UIKit
 import VENTouchLock
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,12 +20,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        // 配置 bugtags（bug管理系统）
-        Bugtags.startWithAppKey("58fb2b81336829c7824f538b55545ad3", invocationEvent: BTGInvocationEventBubble)
+        // 配置 Fabric, Crashlytics
+        Fabric.with([Crashlytics.self])
         
         // 配置密码锁
-        let infoDictionary = NSBundle.mainBundle().infoDictionary        
-        VENTouchLock.sharedInstance().setKeychainService("testService", keychainAccount: (infoDictionary!["CFBundleDisplayName"] as! String), touchIDReason: "通过Home键验证已有的手机指纹", passcodeAttemptLimit: 5, splashViewControllerClass: object_getClass(SampleSplashViewController()))
+        let infoDictionary = NSBundle.mainBundle().infoDictionary
+        
+        VENTouchLock.sharedInstance().setKeychainService("com.wanghuanqiang.PersonalFinance", keychainAccount: (infoDictionary!["CFBundleDisplayName"] as! String), touchIDReason: "通过Home键验证已有的手机指纹", passcodeAttemptLimit: 10, splashViewControllerClass: SampleSplashViewController().classForCoder)
         
         // 初始化基础数据 和 加载引导页面
         let sharedBaseInfo = BaseInfo.sharedBaseInfo
@@ -48,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
         coreDataStock.saveContext()
     }
 

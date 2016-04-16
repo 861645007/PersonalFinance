@@ -3,11 +3,6 @@
 //
 
 
-// 密码锁
-//#import "VENTouchLock.h"
-
-#import <Bugtags/Bugtags.h>
-
 #import "TYWaveProgressView.h"
 
 // 头部提示框

@@ -800,7 +800,7 @@
                                 <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="CS0-89-gTt" id="ReA-Bf-PUm"/>
-                                    <outlet property="delegate" destination="CS0-89-gTt" id="f2D-DQ-QIP"/>
+                                    <outlet property="delegate" destination="CS0-89-gTt" id="erj-W0-aPo"/>
                                 </connections>
                             </tableView>
                         </subviews>

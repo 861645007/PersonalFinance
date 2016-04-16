@@ -8,7 +8,8 @@ target "PersonalFinance" do
 # 图表
 	pod 'Charts'
 # bug 管理 
-	pod 'Bugtags'  
+	pod 'Fabric'
+	pod 'Crashlytics' 
 # ReactiveCocoa
 	pod 'ReactiveCocoa', '~> 4.0.4-alpha-4'
 # 网络图片操作

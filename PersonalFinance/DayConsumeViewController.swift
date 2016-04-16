@@ -22,7 +22,8 @@ class DayConsumeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "今日消费"        
+        self.title = "今日消费"
+        dayConsumeTableView.tableFooterView = UIView()
     }
 
     override func viewWillAppear(animated: Bool) {
