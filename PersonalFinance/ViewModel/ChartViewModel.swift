@@ -222,7 +222,7 @@ class ChartViewModel: NSObject {
             // 获取当前分类的金额
             var moneyOfCategory: Double = 0
             
-            for consume: SingleCustom in section.objects as! [SingleCustom] {
+            for consume: SingleConsume in section.objects as! [SingleConsume] {
                 moneyOfCategory += (consume.money?.doubleValue)!
             }
             
@@ -254,7 +254,7 @@ class ChartViewModel: NSObject {
             let consumeMonthList = singleConsumeService.fetchConsumeWithMonthTrendChart(newDate)
             
             var monthExpense = 0.0
-            for singleConsume: SingleCustom in consumeMonthList {
+            for singleConsume: SingleConsume in consumeMonthList {
                 monthExpense += (singleConsume.money?.doubleValue)!
             }
             

@@ -28,7 +28,7 @@ class SingleCustomService {
     
     // MARK: - 新增消费记录
     func addNewSingleCustom(category: Int32, photo: NSData, comment: String, money: Double, time: NSDate) {
-        let singleCustom: SingleCustom = NSEntityDescription.insertNewObjectForEntityForName("SingleCustom", inManagedObjectContext: self.managedObjectConext) as! SingleCustom
+        let singleCustom: SingleConsume = NSEntityDescription.insertNewObjectForEntityForName("SingleConsume", inManagedObjectContext: self.managedObjectConext) as! SingleConsume
         
         singleCustom.category = NSNumber(int: category)
         singleCustom.photo    = photo
@@ -47,7 +47,7 @@ class SingleCustomService {
     
     - returns: 一年的消费记录
     */
-    func fetchConsumeWithYearTrendChart(date: NSDate) ->[SingleCustom] {
+    func fetchConsumeWithYearTrendChart(date: NSDate) ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
@@ -58,7 +58,7 @@ class SingleCustomService {
      
      - returns: 一个月的消费记录
      */
-    func fetchConsumeWithMonthTrendChart(date: NSDate) -> [SingleCustom] {
+    func fetchConsumeWithMonthTrendChart(date: NSDate) -> [SingleConsume] {
         return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
     }
     
@@ -80,7 +80,7 @@ class SingleCustomService {
     
     - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
     */
-    func fetchConsumeRecordWithToday() ->[SingleCustom] {
+    func fetchConsumeRecordWithToday() ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(NSDate().dayBegin(), dateEnd: NSDate().dayEnd())
     }
     
@@ -89,7 +89,7 @@ class SingleCustomService {
 
      - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
      */
-    func fetchConsumeRecordWithCurrentMonth() ->[SingleCustom] {
+    func fetchConsumeRecordWithCurrentMonth() ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(NSDate().monthBegin(), dateEnd: NSDate())
     }
     
@@ -116,7 +116,7 @@ class SingleCustomService {
      
      - returns: 一段时间内的 消费记录
      */
-    private func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->[SingleCustom] {
+    private func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->[SingleConsume] {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
         let fetchRequest = self.gainFetchRequest(predicate)
         return self.executeFetchRequest(fetchRequest)
@@ -134,9 +134,9 @@ class SingleCustomService {
     
     
     // 用 managedObjectConext 做查询
-    private func executeFetchRequest(fetchRequest: NSFetchRequest) ->[SingleCustom] {
+    private func executeFetchRequest(fetchRequest: NSFetchRequest) ->[SingleConsume] {
         do {
-            let result = try self.managedObjectConext.executeFetchRequest(fetchRequest) as! [SingleCustom]
+            let result = try self.managedObjectConext.executeFetchRequest(fetchRequest) as! [SingleConsume]
             
             return result
         }catch let error as NSError {
@@ -170,13 +170,13 @@ class SingleCustomService {
     }
     
     // MARK: - 修改消费记录
-    func modifyCustomRecord(newSingleCustom: SingleCustom) {
+    func modifyCustomRecord(newSingleCustom: SingleConsume) {
         let fetchRequest = NSFetchRequest(entityName: "SingleCustom")
         
         fetchRequest.predicate = NSPredicate(format: "id == %@", newSingleCustom.id!)
         
         do {
-            let singleCustom = (try self.managedObjectConext.executeFetchRequest(fetchRequest) as! [SingleCustom]).first!
+            let singleCustom = (try self.managedObjectConext.executeFetchRequest(fetchRequest) as! [SingleConsume]).first!
             singleCustom.category = newSingleCustom.id
             singleCustom.photo    = newSingleCustom.photo
             singleCustom.comment  = newSingleCustom.comment

@@ -1,8 +1,8 @@
 //
-//  SingleCustom+CoreDataProperties.swift
+//  SingleConsume+CoreDataProperties.swift
 //  PersonalFinance
 //
-//  Created by ziye on 16/1/27.
+//  Created by 子叶 on 16/4/17.
 //  Copyright © 2016年 王焕强. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -12,13 +12,14 @@
 import Foundation
 import CoreData
 
-extension SingleCustom {
+extension SingleConsume {
 
-    @NSManaged var id: NSNumber?
     @NSManaged var category: NSNumber?
-    @NSManaged var photo: NSData?
     @NSManaged var comment: String?
+    @NSManaged var id: NSNumber?
     @NSManaged var money: NSNumber?
+    @NSManaged var photo: NSData?
     @NSManaged var time: NSDate?
+    @NSManaged var consumeCategory: Category?
 
 }

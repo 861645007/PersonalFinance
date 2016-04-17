@@ -53,10 +53,10 @@ class DayConsumeViewModel: NSObject {
      - returns: 今日所有的消费信息
      */
     private func gainDayConsumeInfo() ->[FinanceOfCategory] {
-        let todaySingleConsumeWithFetchArr:[SingleCustom] = singleConsumeService.fetchConsumeRecordWithToday()
+        let todaySingleConsumeWithFetchArr:[SingleConsume] = singleConsumeService.fetchConsumeRecordWithToday()
         var newDayConsumeArr: [FinanceOfCategory] = []
         
-        for singleConsume: SingleCustom in todaySingleConsumeWithFetchArr {
+        for singleConsume: SingleConsume in todaySingleConsumeWithFetchArr {
             let category: Category = categoryService.fetchConsumeCategoryWithId(singleConsume.category!)
             
             newDayConsumeArr.append(FinanceOfCategory(iconData: category.iconData!, name: category.name!, ratio: 0.0, money: Double(singleConsume.money!)))

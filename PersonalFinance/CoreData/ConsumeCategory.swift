@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConsumeCategory: NSObject {
+class ConsumeCategoryee: NSObject {
     var id: Int32
     var name: String?
     var iconData: NSData?

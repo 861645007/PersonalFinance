@@ -65,12 +65,12 @@ class MonthConsumeViewModel: NSObject {
      - returns: 今日所有的消费信息
      */
     private func gainMonthConsumeInfo() ->[DayConsumeInfo] {
-        let monthSingleConsumeWithFetchArr:[SingleCustom] = singleConsumeService.fetchConsumeRecordWithCurrentMonth()
+        let monthSingleConsumeWithFetchArr:[SingleConsume] = singleConsumeService.fetchConsumeRecordWithCurrentMonth()
         var newMonthConsumeArr: [DayConsumeInfo] = []
         
         var dayConsumeInfo: DayConsumeInfo = DayConsumeInfo()
         
-        for singleConsume: SingleCustom in monthSingleConsumeWithFetchArr {
+        for singleConsume: SingleConsume in monthSingleConsumeWithFetchArr {
             // 判断 当前消费的时间 是否已经属于当前正在循环的日期（比如当前正在循环的日期为4月1日，当前消费日期为4月1日3点）
             // 若是，则直接把 当前消费信息加入到当前正在循环的日期的数组中；若不是，则进行一定处理
             if dayConsumeInfo.dateStr != "\(singleConsume.time!.month)月\(singleConsume.time!.day)日" {

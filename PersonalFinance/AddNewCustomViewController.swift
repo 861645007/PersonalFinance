@@ -12,6 +12,19 @@ import MMNumberKeyboard
 import PDTSimpleCalendar
 import SimpleAlert
 
+// ConsumeCategory 结构体
+struct ConsumeCategory {
+    var id: Int32
+    var name: String?
+    var iconData: NSData?
+    
+    init(id: Int32, name: String, icon: NSData) {
+        self.id = id
+        self.name = name
+        self.iconData = icon
+    }
+}
+
 class AddNewCustomViewController: UIViewController {
     
     @IBOutlet weak var customTypeCollectionView: UICollectionView!

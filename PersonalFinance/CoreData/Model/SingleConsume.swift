@@ -1,16 +1,16 @@
 //
-//  SingleCustom.swift
+//  SingleConsume.swift
 //  PersonalFinance
 //
-//  Created by ziye on 16/1/27.
+//  Created by 子叶 on 16/4/17.
 //  Copyright © 2016年 王焕强. All rights reserved.
 //
 
 import Foundation
 import CoreData
 
-
-class SingleCustom: NSManagedObject {
+@objc(SingleConsume)
+class SingleConsume: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
 

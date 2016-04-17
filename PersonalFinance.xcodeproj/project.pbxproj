@@ -46,12 +46,12 @@
 		7A7EB3C21C58F07F009AD0A7 /* PersonalFinanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3C11C58F07F009AD0A7 /* PersonalFinanceTests.swift */; };
 		7A7EB3CD1C58F07F009AD0A7 /* PersonalFinanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3CC1C58F07F009AD0A7 /* PersonalFinanceUITests.swift */; };
 		7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3DB1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld */; };
-		7A7EB3E71C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E31C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift */; };
-		7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E41C58F672009AD0A7 /* SingleCustom.swift */; };
-		7A7EB3E91C58F672009AD0A7 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E51C58F672009AD0A7 /* Category+CoreDataProperties.swift */; };
-		7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3E61C58F672009AD0A7 /* Category.swift */; };
 		7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */; };
 		7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */; };
+		7A92C4691CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4651CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift */; };
+		7A92C46A1CC3C6E50035CF0A /* SingleConsume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4661CC3C6E50035CF0A /* SingleConsume.swift */; };
+		7A92C46B1CC3C6E50035CF0A /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4671CC3C6E50035CF0A /* Category+CoreDataProperties.swift */; };
+		7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4681CC3C6E50035CF0A /* Category.swift */; };
 		7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */; };
 		7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B51C6B24CC001156BF /* CategoryService.swift */; };
 		7ABC84BA1C6B28E9001156BF /* CategoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */; };
@@ -138,12 +138,12 @@
 		7A7EB3CC1C58F07F009AD0A7 /* PersonalFinanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFinanceUITests.swift; sourceTree = "<group>"; };
 		7A7EB3CE1C58F07F009AD0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A7EB3DC1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
-		7A7EB3E31C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SingleCustom+CoreDataProperties.swift"; path = "CoreData/Model/SingleCustom+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7A7EB3E41C58F672009AD0A7 /* SingleCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustom.swift; path = CoreData/Model/SingleCustom.swift; sourceTree = "<group>"; };
-		7A7EB3E51C58F672009AD0A7 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "CoreData/Model/Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7A7EB3E61C58F672009AD0A7 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = CoreData/Model/Category.swift; sourceTree = "<group>"; };
 		7A7EB3EB1C58F68B009AD0A7 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = CoreData/CoreDataStack.swift; sourceTree = "<group>"; };
 		7A7EB3F01C58F6C3009AD0A7 /* SingleCustomService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleCustomService.swift; path = CoreData/SingleCustomService.swift; sourceTree = "<group>"; };
+		7A92C4651CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SingleConsume+CoreDataProperties.swift"; path = "CoreData/Model/SingleConsume+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A92C4661CC3C6E50035CF0A /* SingleConsume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleConsume.swift; path = CoreData/Model/SingleConsume.swift; sourceTree = "<group>"; };
+		7A92C4671CC3C6E50035CF0A /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "CoreData/Model/Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7A92C4681CC3C6E50035CF0A /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = CoreData/Model/Category.swift; sourceTree = "<group>"; };
 		7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinanceOfCategory.swift; path = CoreData/FinanceOfCategory.swift; sourceTree = "<group>"; };
 		7ABC84B51C6B24CC001156BF /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryService.swift; path = CoreData/CategoryService.swift; sourceTree = "<group>"; };
 		7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryServiceTest.swift; sourceTree = "<group>"; };
@@ -442,10 +442,10 @@
 		7A7EB3DE1C58F5F0009AD0A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7A7EB3E31C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift */,
-				7A7EB3E41C58F672009AD0A7 /* SingleCustom.swift */,
-				7A7EB3E51C58F672009AD0A7 /* Category+CoreDataProperties.swift */,
-				7A7EB3E61C58F672009AD0A7 /* Category.swift */,
+				7A92C4651CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift */,
+				7A92C4661CC3C6E50035CF0A /* SingleConsume.swift */,
+				7A92C4671CC3C6E50035CF0A /* Category+CoreDataProperties.swift */,
+				7A92C4681CC3C6E50035CF0A /* Category.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -808,14 +808,13 @@
 			files = (
 				7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */,
 				7A01C1211CBF3F6500D3EC90 /* MonthConsumeViewController.swift in Sources */,
-				7A7EB3E71C58F672009AD0A7 /* SingleCustom+CoreDataProperties.swift in Sources */,
 				7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */,
-				7A7EB3E91C58F672009AD0A7 /* Category+CoreDataProperties.swift in Sources */,
 				7ABC84B61C6B24CC001156BF /* CategoryService.swift in Sources */,
 				7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */,
 				7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */,
 				7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */,
 				7ACEF50E1C5A36D700EF2200 /* SingleCustomRecord.swift in Sources */,
+				7A92C46A1CC3C6E50035CF0A /* SingleConsume.swift in Sources */,
 				7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */,
 				7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */,
 				7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */,
@@ -826,16 +825,17 @@
 				7A2B3F081CC1240500D751D5 /* PasscodeOperation.swift in Sources */,
 				7AEE211B1CB622B200BC9985 /* ChartDetailViewController.swift in Sources */,
 				7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */,
+				7A92C46B1CC3C6E50035CF0A /* Category+CoreDataProperties.swift in Sources */,
 				7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
+				7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */,
 				7A7D35B81CC2668D00E2A389 /* DealMoneyFormat.swift in Sources */,
 				7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */,
 				7A2B3F041CC11FF100D751D5 /* SampleSplashViewController.swift in Sources */,
 				7A2B3ED61CC0C55E00D751D5 /* SettingTableViewCell.swift in Sources */,
 				7A7376CA1CBB80350038BB3E /* UIFont+FontAwesome.m in Sources */,
 				7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */,
-				7A7EB3E81C58F672009AD0A7 /* SingleCustom.swift in Sources */,
 				7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */,
 				7ABCA7E61CBE8B4D008973E0 /* DayConsumeViewModel.swift in Sources */,
 				7A7EB3F11C58F6C3009AD0A7 /* SingleCustomService.swift in Sources */,
@@ -846,7 +846,6 @@
 				7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */,
 				7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */,
 				7A7376C91CBB80350038BB3E /* NSString+FontAwesome.m in Sources */,
-				7A7EB3EA1C58F672009AD0A7 /* Category.swift in Sources */,
 				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,
 				7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */,
 				7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */,
@@ -854,6 +853,7 @@
 				7A7EB3EC1C58F68B009AD0A7 /* CoreDataStack.swift in Sources */,
 				7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */,
 				7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */,
+				7A92C4691CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,10 +2,24 @@ PODS:
   - Charts (2.2.4):
     - Charts/Core (= 2.2.4)
   - Charts/Core (2.2.4)
+  - CocoaLumberjack (2.2.0):
+    - CocoaLumberjack/Default (= 2.2.0)
+    - CocoaLumberjack/Extensions (= 2.2.0)
+  - CocoaLumberjack/Core (2.2.0)
+  - CocoaLumberjack/Default (2.2.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.2.0):
+    - CocoaLumberjack/Default
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.7.3)
   - Fabric (1.6.7)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/CocoaLumberjack (2.3.2):
+    - CocoaLumberjack (~> 2.0)
+    - MagicalRecord/Core
+  - MagicalRecord/Core (2.3.2)
   - MMNumberKeyboard (0.1.5)
   - Onboard (2.1.9)
   - PDTSimpleCalendar (0.9.1)
@@ -36,6 +50,8 @@ DEPENDENCIES:
   - Crashlytics
   - DZNEmptyDataSet (~> 1.7.3)
   - Fabric
+  - MagicalRecord
+  - MagicalRecord/CocoaLumberjack
   - MMNumberKeyboard
   - Onboard
   - PDTSimpleCalendar (~> 0.9.1)
@@ -58,9 +74,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
+  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   MMNumberKeyboard: 12da79571d08aca21566534a74726c5469aed29a
   Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2

@@ -12,6 +12,9 @@ target "PersonalFinance" do
 	pod 'Crashlytics' 
 # ReactiveCocoa
 	pod 'ReactiveCocoa', '~> 4.0.4-alpha-4'
+# Core Data
+	pod 'MagicalRecord'
+	pod 'MagicalRecord/CocoaLumberjack'
 # 网络图片操作
 	pod 'SDWebImage', '~> 3.7.4'
 # 空页面视图填充
