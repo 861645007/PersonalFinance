@@ -255,7 +255,6 @@ extension ChartViewController: DZNEmptyDataSetSource {
         
         animation.duration = 0.25
         animation.cumulative = true
-        animation.repeatCount = MAXFLOAT
         
         return animation
     }

@@ -89,7 +89,9 @@ class MonthConsumeViewModel: NSObject {
         }
         
         // 把最后一个消费信息加入到数组中
-        newMonthConsumeArr.append(dayConsumeInfo)
+        if dayConsumeInfo.dayConsumeArr?.count != 0 {
+            newMonthConsumeArr.append(dayConsumeInfo)
+        }        
         
         return newMonthConsumeArr
     }

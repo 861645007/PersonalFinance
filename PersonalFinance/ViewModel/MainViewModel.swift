@@ -39,6 +39,10 @@ class MainViewModel: NSObject {
      - returns: 波浪小球的百分比
      */
     func configureWavePercent() -> CGFloat {
+        if self.gainMonthBudget() == 0.0 {
+            return 0.0
+        }
+        
         return CGFloat(self.gainMonthExpense() / self.gainMonthBudget())
     }
     

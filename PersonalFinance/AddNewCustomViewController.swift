@@ -102,6 +102,7 @@ class AddNewCustomViewController: UIViewController {
         let keyboard = MMNumberKeyboard(frame: CGRectZero)
         keyboard.allowsDecimalPoint = true
         keyboard.delegate = self
+        keyboard.returnKeyTitle = "完成一笔"
         
         self.numberTextField.inputView = keyboard
     }
@@ -234,25 +235,18 @@ class AddNewCustomViewController: UIViewController {
         textView.becomeFirstResponder()
         cusView.addSubview(textView)
         
-//        self.showCustomViewAlert(cusView, cancelTitle: "", oKTitle: <#T##String#>, cancelHandler: <#T##((SimpleAlert.Action!) -> Void)?##((SimpleAlert.Action!) -> Void)?##(SimpleAlert.Action!) -> Void#>, okHandler: <#T##((SimpleAlert.Action!) -> Void)?##((SimpleAlert.Action!) -> Void)?##(SimpleAlert.Action!) -> Void#>)
-        
-        let alert = SimpleAlert.Controller(view: cusView, style: .Alert)
-        
-        alert.addAction(SimpleAlert.Action(title: "取消", style: .Destructive){ action in
-            
-        })
-        
-        alert.addAction(SimpleAlert.Action(title: "确定", style: .OK) { action in
+        // 弹出自定义视图
+        self.showCustomViewAlert(cusView, cancelTitle: "取消", oKTitle: "确定", cancelHandler: nil) {
+            [weak self] (action) in
             if textView.text != "" {
-                self.commentString = textView.text
-                self.commentBtn.setTitle("已有备注", forState: .Normal)
-                self.commentBtn.layer.borderColor = UIColor.blueColor().CGColor
+                self!.commentString = textView.text
+                self!.commentBtn.setTitle("已有备注", forState: .Normal)
+                self!.commentBtn.layer.borderColor = UIColor.blueColor().CGColor
             }else {
-                self.commentBtn.setTitle("写备注", forState: .Normal)
-                self.commentBtn.layer.borderColor = UIColor.grayColor().CGColor
+                self!.commentBtn.setTitle("写备注", forState: .Normal)
+                self!.commentBtn.layer.borderColor = UIColor.grayColor().CGColor
             }
-        })
-        self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 }
 
