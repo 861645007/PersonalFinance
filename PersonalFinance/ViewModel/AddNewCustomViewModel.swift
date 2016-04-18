@@ -35,7 +35,7 @@ class AddNewCustomViewModel: NSObject {
         consumeTypeArr = []
         
         // 获取数据，并转换为 常规 数据类型（非Core Data中的存储类型）
-        let consumeList = Category.fetchAllConsumeCategory()
+        let consumeList = Category.fetchAllConsumeCategoryWithUsed()
         
         for category: Category in consumeList {
             let consumeType = ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)

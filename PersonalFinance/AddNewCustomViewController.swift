@@ -44,6 +44,8 @@ class AddNewCustomViewController: UIViewController {
     
     var commentString: String? = ""
     
+    var lastPosition: Int = 0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +56,7 @@ class AddNewCustomViewController: UIViewController {
         // 设置键盘
         self.createNumberKeyBoard()
         self.filterInput()
-
+        
         // 添加键盘上方的自定义View
         self.keyboardView = self.createCustonKeyBoardView()
         self.prepareKeyboardNotifation()
@@ -63,6 +65,9 @@ class AddNewCustomViewController: UIViewController {
         // 配置初始化 category 数据
         self.addNewCustomVM.gainAllConsumeType()
         self.changeConsumeCategoryInfo(self.addNewCustomVM.gainCategoryWithCusOther()!)
+        
+        // 配置 UICollectionView 的滚动
+        self.customTypeCollectionView.alwaysBounceVertical = true
     }
     
     // 配置 category 数据
@@ -75,8 +80,9 @@ class AddNewCustomViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.addNewCustomVM.gainAllConsumeType()
         self.numberTextField.becomeFirstResponder()
+        self.addNewCustomVM.gainAllConsumeType()
+        self.customTypeCollectionView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -268,12 +274,35 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         if indexPath.row == (self.addNewCustomVM.consumeTypeArr?.count)! - 1 {
+            
+            let addNewConsumeCategoryVC = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewConsumeCategoryViewController")
+            
+            addNewConsumeCategoryVC?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+            
+            self.navigationController?.pushViewController(addNewConsumeCategoryVC!, animated: true)
             return
         }else {
             let category = self.addNewCustomVM.consumeTypeArr![indexPath.row]
             self.changeConsumeCategoryInfo(category)
         }
     }
+    
+    
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let currentPostion: Int = Int(scrollView.contentOffset.y);
+        if (currentPostion - lastPosition > 25) {
+            // 上滑
+            lastPosition = currentPostion;
+            self.numberTextField.resignFirstResponder()
+            
+        }else if (lastPosition - currentPostion > 25) {
+            // 下滑
+            lastPosition = currentPostion;
+//            self.numberTextField.becomeFirstResponder()
+        }
+    }
+    
     
 }
 
@@ -295,9 +324,9 @@ extension AddNewCustomViewController: UICollectionViewDataSource {
 
 // MARK: - MMNumberKeyboardDelegate 协议
 extension AddNewCustomViewController: MMNumberKeyboardDelegate {
+    
+    // 按下返回键操作
     func numberKeyboardShouldReturn(numberKeyboard: MMNumberKeyboard!) -> Bool {
-        
-        // 按下返回键操作
         // 首先判断 金额是否为0，为0 不能保存
         if self.numberTextField.text == "￥0.00" {
             TopAlert().createFailureTopAlert("金额不能为 0", parentView: self.view)
@@ -314,10 +343,8 @@ extension AddNewCustomViewController: MMNumberKeyboardDelegate {
         
         // 返回主页面
         self.navigationController?.popViewControllerAnimated(true)
-        
         return true
     }
-    
 }
 
 

@@ -35,10 +35,10 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
         self.categoryIcon.image = UIImage(data: financeCategory.iconData!)
     }
     
-    func prepareCollectionCellForDayConsumeView(financeCategory: FinanceOfCategory) {
-        self.categoryName.text = financeCategory.categoryName
-        self.categoryMoney.text = "￥" + financeCategory.categoryMoney.convertToStrWithTwoFractionDigits()
-        self.categoryIcon.image = UIImage(data: financeCategory.iconData!)
+    func prepareCollectionCellForDayConsumeView(consume: SingleConsume) {
+        self.categoryName.text = consume.consumeCategory?.name
+        self.categoryMoney.text = "￥" + (consume.money?.doubleValue.convertToStrWithTwoFractionDigits())!
+        self.categoryIcon.image = UIImage(data: (consume.consumeCategory?.iconData)!)
     }
 
 }

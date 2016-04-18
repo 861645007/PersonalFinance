@@ -11,7 +11,7 @@ import UIKit
 class DayConsumeViewModel: NSObject {
     
     // VC 使用的变量
-    var dayConsumeArr: [FinanceOfCategory]?
+    var dayConsumeArr: [SingleConsume]?
     var dayConsumeMoney: Double = 0.0
     
     override init() {
@@ -34,7 +34,7 @@ class DayConsumeViewModel: NSObject {
         return (self.dayConsumeArr?.count)!
     }
     
-    func consumeInfoAtIndex(index: NSInteger) -> FinanceOfCategory {
+    func consumeInfoAtIndex(index: NSInteger) -> SingleConsume {
         return dayConsumeArr![index]
     }
     
@@ -45,23 +45,15 @@ class DayConsumeViewModel: NSObject {
      
      - returns: 今日所有的消费信息
      */
-    private func gainDayConsumeInfo() ->[FinanceOfCategory] {
-        let todaySingleConsumeWithFetchArr:[SingleConsume] = SingleConsume.fetchConsumeRecordWithToday()
-        var newDayConsumeArr: [FinanceOfCategory] = []
-        
-        for singleConsume: SingleConsume in todaySingleConsumeWithFetchArr {
-            
-            newDayConsumeArr.append(FinanceOfCategory(iconData: singleConsume.consumeCategory!.iconData!, name: singleConsume.consumeCategory!.name!, ratio: 0.0, money: Double(singleConsume.money!)))
-        }
-    
-        return newDayConsumeArr
+    private func gainDayConsumeInfo() ->[SingleConsume] {    
+        return SingleConsume.fetchConsumeRecordWithToday()
     }
     
     
     private func gainDayConsumeMoney() -> Double {
         var money = 0.0
-        for singleConsume: FinanceOfCategory in dayConsumeArr! {
-            money += singleConsume.categoryMoney
+        for singleConsume: SingleConsume in dayConsumeArr! {
+            money += singleConsume.money!.doubleValue
         }
         return money
     }

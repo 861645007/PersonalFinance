@@ -11,9 +11,12 @@
 		7A01C1211CBF3F6500D3EC90 /* MonthConsumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01C1201CBF3F6500D3EC90 /* MonthConsumeViewController.swift */; };
 		7A01C1261CBFC2F200D3EC90 /* MonthConsumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A01C1251CBFC2F200D3EC90 /* MonthConsumeViewModel.swift */; };
 		7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644261C6B05BA00FAE828 /* Consume-Type.plist */; };
-		7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */; };
+		7A0644291C6B05DC00FAE828 /* NewConsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */; };
 		7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */; };
 		7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */; };
+		7A2136E91CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */; };
+		7A2136EB1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */; };
+		7A2136ED1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136EC1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift */; };
 		7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */; };
 		7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */; };
 		7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */; };
@@ -87,9 +90,12 @@
 		7A01C1201CBF3F6500D3EC90 /* MonthConsumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthConsumeViewController.swift; sourceTree = "<group>"; };
 		7A01C1251CBFC2F200D3EC90 /* MonthConsumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthConsumeViewModel.swift; path = ViewModel/MonthConsumeViewModel.swift; sourceTree = "<group>"; };
 		7A0644261C6B05BA00FAE828 /* Consume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Consume-Type.plist"; sourceTree = "<group>"; };
-		7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewComsume-Type.plist"; sourceTree = "<group>"; };
+		7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewConsume-Type.plist"; sourceTree = "<group>"; };
 		7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewConsumeCategoryViewModel.swift; path = ViewModel/AddNewConsumeCategoryViewModel.swift; sourceTree = "<group>"; };
+		7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewConsumeCategoryViewController.swift; sourceTree = "<group>"; };
+		7A2136EC1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewConsumeCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeInfo.swift; path = CoreData/Model/DayConsumeInfo.swift; sourceTree = "<group>"; };
 		7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
@@ -207,6 +213,23 @@
 			name = "Month Consume";
 			sourceTree = "<group>";
 		};
+		7A2136E41CC4CDE2000737CF /* Add New Category View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */,
+				7A2136EC1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift */,
+			);
+			name = "Add New Category View Controller";
+			sourceTree = "<group>";
+		};
+		7A2136E71CC4CE27000737CF /* Add New Category */ = {
+			isa = PBXGroup;
+			children = (
+				7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */,
+			);
+			name = "Add New Category";
+			sourceTree = "<group>";
+		};
 		7A244C011C5CE33200B46CC9 /* OnBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,13 +273,13 @@
 			name = "Passcode Operation";
 			sourceTree = "<group>";
 		};
-		7A41680F1C60615200145EA1 /* Add New Custom */ = {
+		7A41680F1C60615200145EA1 /* Add New Consume View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				7A4168111C60619200145EA1 /* AddNewCustomViewController.swift */,
 				7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */,
 			);
-			name = "Add New Custom";
+			name = "Add New Consume View Controller";
 			sourceTree = "<group>";
 		};
 		7A4168101C60616F00145EA1 /* Add New Custom */ = {
@@ -466,7 +489,7 @@
 				7A7EB3B51C58F07F009AD0A7 /* LaunchScreen.storyboard */,
 				7A7EB3B81C58F07F009AD0A7 /* Info.plist */,
 				7A0644261C6B05BA00FAE828 /* Consume-Type.plist */,
-				7A0644281C6B05DC00FAE828 /* NewComsume-Type.plist */,
+				7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -504,7 +527,8 @@
 				7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */,
 				7AEE21171CB6227800BC9985 /* Chart Detail View Controller */,
 				7AEE21161CB6224F00BC9985 /* Chart View Controller */,
-				7A41680F1C60615200145EA1 /* Add New Custom */,
+				7A2136E41CC4CDE2000737CF /* Add New Category View Controller */,
+				7A41680F1C60615200145EA1 /* Add New Consume View Controller */,
 				7AF0736F1C5DA8B000221F17 /* Main View Controller */,
 			);
 			name = "View Controller";
@@ -516,6 +540,7 @@
 				7A2B3ECE1CC0A87600D751D5 /* Setting  View Model */,
 				7A444F551CB77D0D00324267 /* Chart Detail View Model */,
 				7A444F541CB77D0000324267 /* Chart View Model */,
+				7A2136E71CC4CE27000737CF /* Add New Category */,
 				7A4168101C60616F00145EA1 /* Add New Custom */,
 				7AF0736C1C5DA88800221F17 /* Main View Model */,
 			);
@@ -683,7 +708,7 @@
 				7A2B3F051CC11FF100D751D5 /* SampleSplashViewController.xib in Resources */,
 				7A7EB3B71C58F07F009AD0A7 /* LaunchScreen.storyboard in Resources */,
 				7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */,
-				7A0644291C6B05DC00FAE828 /* NewComsume-Type.plist in Resources */,
+				7A0644291C6B05DC00FAE828 /* NewConsume-Type.plist in Resources */,
 				7A7EB3B41C58F07F009AD0A7 /* Assets.xcassets in Resources */,
 				7A7EB3B21C58F07F009AD0A7 /* Main.storyboard in Resources */,
 				7A7376C81CBB80350038BB3E /* FontAwesome.ttf in Resources */,
@@ -794,6 +819,7 @@
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */,
 				7A7D35B81CC2668D00E2A389 /* DealMoneyFormat.swift in Sources */,
+				7A2136EB1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift in Sources */,
 				7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */,
 				7A2B3F041CC11FF100D751D5 /* SampleSplashViewController.swift in Sources */,
 				7A2B3ED61CC0C55E00D751D5 /* SettingTableViewCell.swift in Sources */,
@@ -805,10 +831,12 @@
 				7A01C1261CBFC2F200D3EC90 /* MonthConsumeViewModel.swift in Sources */,
 				7A7376BF1CBB80200038BB3E /* MozTopAlertView.m in Sources */,
 				7A4168121C60619200145EA1 /* AddNewCustomViewController.swift in Sources */,
+				7A2136ED1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift in Sources */,
 				7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */,
 				7A7376C91CBB80350038BB3E /* NSString+FontAwesome.m in Sources */,
 				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,
 				7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */,
+				7A2136E91CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift in Sources */,
 				7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */,
 				7ABCA7E11CBE8A5D008973E0 /* DayConsumeViewController.swift in Sources */,
 				7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */,
@@ -961,6 +989,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

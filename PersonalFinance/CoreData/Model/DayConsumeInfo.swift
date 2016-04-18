@@ -11,23 +11,23 @@ import UIKit
 class DayConsumeInfo: NSObject {
     
     var dateStr: String = ""
-    var dayConsumeArr: [FinanceOfCategory]?
+    var dayConsumeArr: [SingleConsume]?
     var dayExpense: Double = 0.0
     
     override init() {
         self.dayConsumeArr = []
     }
     
-    init(date: String, consume: [FinanceOfCategory], money: Double) {
+    init(date: String, consumeArr: [SingleConsume], money: Double) {
         super.init()
         
         self.dateStr = date
-        self.dayConsumeArr = consume
+        self.dayConsumeArr = consumeArr
         self.dayExpense = money
     }
     
-    func setDayConsumeInfoArr(financeCategory: FinanceOfCategory) {
-        self.dayConsumeArr?.append(financeCategory)
+    func setDayConsumeInfoArr(consume: SingleConsume) {
+        self.dayConsumeArr?.append(consume)
     }
     
     func addDayExpense(money: Double) {

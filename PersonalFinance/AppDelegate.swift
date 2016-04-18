@@ -44,8 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // 判断所存的时间是不是今天（新的一天），不是的话，进行操作
-        sharedBaseInfo.judgeTimeWhenFirstUseInEveryDay(NSDate())
-        
+        sharedBaseInfo.judgeTimeWhenFirstUseInEveryDay(NSDate())        
         
         return true
     }

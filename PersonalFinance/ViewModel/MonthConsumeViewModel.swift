@@ -36,7 +36,7 @@ class MonthConsumeViewModel: NSObject {
     }
     
     
-    func conusmeInfoAtIndexPath(indexPath: NSIndexPath) -> FinanceOfCategory {
+    func conusmeInfoAtIndexPath(indexPath: NSIndexPath) -> SingleConsume {
         return monthConsumeArr![indexPath.section].dayConsumeArr![indexPath.row]
     }
     
@@ -52,7 +52,7 @@ class MonthConsumeViewModel: NSObject {
     // MARK: - 私有函数
     
     /**
-     获取今日所有的消费信息，并转化为 [[String: [FinanceOfCategory]]] （section：cells）数组（即 tableView 直接可用）
+     获取今日所有的消费信息，并转化为 [[String: [SingleConsume]]] （section：cells）数组（即 tableView 直接可用）
      
      - returns: 今日所有的消费信息
      */
@@ -75,7 +75,7 @@ class MonthConsumeViewModel: NSObject {
                 dayConsumeInfo.dateStr = "\(singleConsume.time!.month)月\(singleConsume.time!.day)日"
             }
             
-            dayConsumeInfo.setDayConsumeInfoArr(FinanceOfCategory(iconData: singleConsume.consumeCategory!.iconData!, name: singleConsume.consumeCategory!.name!, ratio: 0.0, money: Double(singleConsume.money!)))
+            dayConsumeInfo.setDayConsumeInfoArr(singleConsume)
             dayConsumeInfo.addDayExpense(singleConsume.money!.doubleValue)
         }
         
