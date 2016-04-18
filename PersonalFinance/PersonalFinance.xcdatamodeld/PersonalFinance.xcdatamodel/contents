@@ -16,7 +16,7 @@
         <relationship name="consumeCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="singleConsume" inverseEntity="Category" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-36" positionY="9" width="128" height="103"/>
-        <element name="SingleConsume" positionX="-308" positionY="-27" width="128" height="148"/>
+        <element name="Category" positionX="-36" positionY="9" width="128" height="105"/>
+        <element name="SingleConsume" positionX="-308" positionY="-27" width="128" height="150"/>
     </elements>
 </model>

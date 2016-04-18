@@ -10,20 +10,12 @@ import UIKit
 import CoreData
 
 class MonthConsumeViewModel: NSObject {
-
-    // 私有变量
-    var singleConsumeService: SingleCustomService!
-    var categoryService: CategoryService!
-    
     // VC 使用的变量
     var monthConsumeArr: [DayConsumeInfo]?
     var monthConsumeMoney: Double = 0.0
     
     override init() {
         super.init()
-        
-        singleConsumeService = SingleCustomService.sharedSingleCustomService
-        categoryService = CategoryService.sharedCategoryService
 
         self.initData()
     }
@@ -65,7 +57,7 @@ class MonthConsumeViewModel: NSObject {
      - returns: 今日所有的消费信息
      */
     private func gainMonthConsumeInfo() ->[DayConsumeInfo] {
-        let monthSingleConsumeWithFetchArr:[SingleConsume] = singleConsumeService.fetchConsumeRecordWithCurrentMonth()
+        let monthSingleConsumeWithFetchArr:[SingleConsume] = SingleConsume.fetchConsumeRecordWithCurrentMonth()
         var newMonthConsumeArr: [DayConsumeInfo] = []
         
         var dayConsumeInfo: DayConsumeInfo = DayConsumeInfo()
@@ -83,8 +75,7 @@ class MonthConsumeViewModel: NSObject {
                 dayConsumeInfo.dateStr = "\(singleConsume.time!.month)月\(singleConsume.time!.day)日"
             }
             
-            let category: Category = categoryService.fetchConsumeCategoryWithId(singleConsume.category!)
-            dayConsumeInfo.setDayConsumeInfoArr(FinanceOfCategory(iconData: category.iconData!, name: category.name!, ratio: 0.0, money: Double(singleConsume.money!)))
+            dayConsumeInfo.setDayConsumeInfoArr(FinanceOfCategory(iconData: singleConsume.consumeCategory!.iconData!, name: singleConsume.consumeCategory!.name!, ratio: 0.0, money: Double(singleConsume.money!)))
             dayConsumeInfo.addDayExpense(singleConsume.money!.doubleValue)
         }
         

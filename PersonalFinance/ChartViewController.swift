@@ -190,6 +190,7 @@ class ChartViewController: UIViewController {
         let lineChartDataSet = self.chartVM.createLineChartDataSet("年消费走势图", dataEntries: self.chartVM.createDataEntries(dataPoints, values: values), gradient: self.chartVM.createGradientRef("#00ff0000", chartColorStr: "#ffff0000"))
         
         yearChartView.noDataText = "本年度尚未记录消费情况"
+        yearChartView.descriptionText = ""
         
         yearChartView.data = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
     }

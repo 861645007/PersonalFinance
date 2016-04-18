@@ -12,8 +12,6 @@ import CoreData
 
 class ChartViewModel: NSObject {
 
-    var singleConsumeService: SingleCustomService!
-    var categoryService: CategoryService!
     var baseInfo: BaseInfo!
     
     var consumeTypeArr: [ConsumeCategory]?
@@ -35,8 +33,6 @@ class ChartViewModel: NSObject {
         super.init()
         
         baseInfo = BaseInfo.sharedBaseInfo
-        categoryService = CategoryService.sharedCategoryService
-        singleConsumeService = SingleCustomService.sharedSingleCustomService
         
         // 变量处理
         currentYearWithTrend = NSDate().change(day: 1, hour: 1)
@@ -209,13 +205,14 @@ class ChartViewModel: NSObject {
     private func gainDataWithCategory(date: NSDate) {
         consumeCategoryArr = []
         
-        let consumeArr:NSFetchedResultsController = singleConsumeService.fetchConsumeWithPieChart(date)
+        let consumeArr:NSFetchedResultsController = SingleConsume.fetchConsumeWithPieChart(date)
         for section: NSFetchedResultsSectionInfo in consumeArr.sections! {
             // 获取 当前 消费类型
             var consumeCategory: ConsumeCategory!
             for consumeC: ConsumeCategory in consumeTypeArr! {
                 if consumeC.id == Int32(section.name) {
                     consumeCategory = consumeC
+                    break
                 }
             }
             
@@ -251,7 +248,7 @@ class ChartViewModel: NSObject {
         for i in 0..<12 {
             let newDate = NSDate.date(year: date.year, month: i + 1, day: 1, hour: 1, minute: 1, second: 1)
             
-            let consumeMonthList = singleConsumeService.fetchConsumeWithMonthTrendChart(newDate)
+            let consumeMonthList = SingleConsume.fetchConsumeWithMonthTrendChart(newDate)
             
             var monthExpense = 0.0
             for singleConsume: SingleConsume in consumeMonthList {
@@ -270,32 +267,14 @@ class ChartViewModel: NSObject {
     private func gainAllConsumeType() {
         consumeTypeArr = []
         
-        // 判断表里是否有数据，没有就先存入
-        if categoryService.gainCategoryCount() == 0 {
-            self.initializeConsumeType()
-        }
-        
         // 获取数据，并转换为 常规 数据类型（非Core Data中的存储类型）
-        let consumeList = categoryService.fetchAllCustomType()
+        let consumeList = Category.fetchAllConsumeCategory()
         
         for category: Category in consumeList {
             let consumeType = ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
             consumeTypeArr?.append(consumeType)
         }
         consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
-    }
-    
-    /**
-     向 CoreData 里存入 预存入的数据
-     */
-    private func initializeConsumeType() {
-        // 获取预备文件里的数据
-        let plistDic = OperatePlist().gainDataWithFileName("Consume-Type")
-        
-        // 循环插入数据
-        for (iconName, name) in plistDic {
-            categoryService.insertNewCustomCategory(name, iconData: UIImagePNGRepresentation(UIImage(named: iconName)!)!)
-        }
     }
     
 }

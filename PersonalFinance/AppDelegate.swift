@@ -11,14 +11,18 @@ import VENTouchLock
 import Fabric
 import Crashlytics
 
+import MagicalRecord
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    lazy var coreDataStock: CoreDataStack = CoreDataStack()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 配置 Core Data
+        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance")
         
         // 配置 Fabric, Crashlytics
         Fabric.with([Crashlytics.self])
@@ -33,6 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !sharedBaseInfo.gainOnBoardSymbol() {
             sharedBaseInfo.saveOnBoardSymbol()
             sharedBaseInfo.initDataWhenFirstUse()
+            
+            Category.initializeConsumeCategory()
+            
             self.gotoOnBoardVC()
         }
         
@@ -51,7 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        coreDataStock.saveContext()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -64,7 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        coreDataStock.saveContext()
     }
 
     // 跳转至 引导页

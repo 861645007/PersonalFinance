@@ -17,22 +17,6 @@ class MainViewModel: NSObject {
         baseInfo = BaseInfo.sharedBaseInfo
     }
     
-    
-    // 配置本月消费查询
-
-    
-    // 配置最新消费查询
-
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
     /**
      配置波浪小球的百分比
      
