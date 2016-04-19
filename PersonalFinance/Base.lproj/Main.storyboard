@@ -24,13 +24,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5o4-MG-zbf" customClass="TYWaveProgressView">
-                                <rect key="frame" x="70" y="72" width="440" height="440"/>
+                                <rect key="frame" x="100" y="72" width="400" height="400"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="FjD-uT-JRQ"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="400" id="g6k-yu-Trd"/>
                                     <constraint firstAttribute="width" secondItem="5o4-MG-zbf" secondAttribute="height" multiplier="1:1" id="xBm-9n-slW"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOc-LR-A0C">
-                                <rect key="frame" x="20" y="532" width="560" height="45"/>
+                                <rect key="frame" x="20" y="492" width="560" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="wDH-C9-6Kt"/>
                                 </constraints>
@@ -40,33 +42,33 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记一笔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2v-EB-TeQ">
-                                <rect key="frame" x="264" y="540" width="72" height="29"/>
+                                <rect key="frame" x="264" y="500" width="72" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vtt-ub-LkN">
-                                <rect key="frame" x="20" y="593" width="560" height="45"/>
+                                <rect key="frame" x="20" y="553" width="560" height="45"/>
                                 <state key="normal" image="todayConsumeBtn"/>
                                 <connections>
                                     <segue destination="Ogs-qd-VKy" kind="show" id="aFN-fR-w08"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrJ-HL-AtD">
-                                <rect key="frame" x="252" y="601" width="96" height="29"/>
+                                <rect key="frame" x="252" y="561" width="96" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlD-o6-gRa">
-                                <rect key="frame" x="20" y="657" width="560" height="45"/>
+                                <rect key="frame" x="20" y="617" width="560" height="45"/>
                                 <state key="normal" image="monthConsumeBtn"/>
                                 <connections>
                                     <segue destination="FmP-92-JnA" kind="show" id="UQm-1D-RE5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月消费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeA-TX-ftU">
-                                <rect key="frame" x="252" y="665" width="96" height="29"/>
+                                <rect key="frame" x="252" y="625" width="96" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -83,6 +85,7 @@
                             <constraint firstItem="Vtt-ub-LkN" firstAttribute="height" secondItem="cOc-LR-A0C" secondAttribute="height" id="N4w-ec-Jsh"/>
                             <constraint firstItem="c2v-EB-TeQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N9o-bh-EQl"/>
                             <constraint firstItem="jlD-o6-gRa" firstAttribute="top" secondItem="Vtt-ub-LkN" secondAttribute="bottom" constant="19" id="NIj-7h-dy0"/>
+                            <constraint firstItem="5o4-MG-zbf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P74-jD-7yJ"/>
                             <constraint firstItem="Vtt-ub-LkN" firstAttribute="top" secondItem="cOc-LR-A0C" secondAttribute="bottom" constant="16" id="QUH-yU-RD5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ukf-d7-u5t" secondAttribute="trailing" constant="-20" id="SzN-az-Plc"/>
                             <constraint firstItem="5o4-MG-zbf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="TAM-Xo-Gk2"/>
@@ -93,10 +96,10 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ukf-d7-u5t" secondAttribute="bottom" id="dDp-wJ-jCz"/>
                             <constraint firstItem="jlD-o6-gRa" firstAttribute="leading" secondItem="cOc-LR-A0C" secondAttribute="leading" id="iI3-E0-Liw"/>
                             <constraint firstItem="ukf-d7-u5t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="jKa-cs-M8a"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5o4-MG-zbf" secondAttribute="trailing" constant="70" id="rSP-Rn-cYK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5o4-MG-zbf" secondAttribute="trailing" priority="750" constant="50" id="rSP-Rn-cYK"/>
                             <constraint firstItem="Vtt-ub-LkN" firstAttribute="leading" secondItem="cOc-LR-A0C" secondAttribute="leading" id="s3m-bk-r7c"/>
                             <constraint firstItem="cOc-LR-A0C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="yvt-5S-VWO"/>
-                            <constraint firstItem="5o4-MG-zbf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="zZM-NJ-1Os"/>
+                            <constraint firstItem="5o4-MG-zbf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" priority="750" constant="50" id="zZM-NJ-1Os"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aVp-90-3fH">
@@ -114,7 +117,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="monthConsumeBtn" destination="jlD-o6-gRa" id="WTk-hT-H1L"/>
                         <outlet property="monthExpenseLabel" destination="BeA-TX-ftU" id="ghB-iP-KWM"/>
+                        <outlet property="recordConsumeBtn" destination="cOc-LR-A0C" id="H5N-50-eP6"/>
+                        <outlet property="todayConsumeBtn" destination="Vtt-ub-LkN" id="PP2-yc-ntr"/>
                         <outlet property="todayExpenseLabel" destination="PrJ-HL-AtD" id="Bdx-Az-caG"/>
                         <outlet property="waterWaveView" destination="5o4-MG-zbf" id="ZyQ-0a-A99"/>
                     </connections>
@@ -907,9 +913,9 @@
         <image name="arrow-left" width="1024" height="1024"/>
         <image name="arrow-right" width="1024" height="1024"/>
         <image name="iconfont-chart" width="30" height="30"/>
-        <image name="monthConsumeBtn" width="550" height="80"/>
-        <image name="recordConsumeBtn" width="550" height="80"/>
+        <image name="monthConsumeBtn" width="1024" height="50"/>
+        <image name="recordConsumeBtn" width="1024" height="50"/>
         <image name="setting" width="30" height="30"/>
-        <image name="todayConsumeBtn" width="550" height="80"/>
+        <image name="todayConsumeBtn" width="1024" height="50"/>
     </resources>
 </document>

@@ -68,6 +68,9 @@ class AddNewCustomViewController: UIViewController {
         
         // 配置 UICollectionView 的滚动
         self.customTypeCollectionView.alwaysBounceVertical = true
+        
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
     }
     
     // 配置 category 数据
@@ -276,9 +279,7 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
         if indexPath.row == (self.addNewCustomVM.consumeTypeArr?.count)! - 1 {
             
             let addNewConsumeCategoryVC = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewConsumeCategoryViewController")
-            
-            addNewConsumeCategoryVC?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
-            
+
             self.navigationController?.pushViewController(addNewConsumeCategoryVC!, animated: true)
             return
         }else {

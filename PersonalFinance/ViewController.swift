@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var todayExpenseLabel: UILabel!
     @IBOutlet weak var monthExpenseLabel: UILabel!
     
+    @IBOutlet weak var recordConsumeBtn: UIButton!
+    @IBOutlet weak var todayConsumeBtn: UIButton!
+    @IBOutlet weak var monthConsumeBtn: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,10 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.translucent = true
         
+        // 设置三个按钮圆角
+        self.setBtnCornerRadius(self.recordConsumeBtn)
+        self.setBtnCornerRadius(self.todayConsumeBtn)
+        self.setBtnCornerRadius(self.monthConsumeBtn)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -58,7 +65,11 @@ class ViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backItem
     }
     
-    
+    // 设置按钮圆角
+    func setBtnCornerRadius(btn: UIButton) {
+        btn.layer.masksToBounds = true
+        btn.layer.cornerRadius = (btn.frame.height / 2)
+    }
     
     // 配置波浪小球
     func configureWaveProgress(number: Double, percent: CGFloat) {
