@@ -96,6 +96,7 @@
 		7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewConsumeCategoryViewModel.swift; path = ViewModel/AddNewConsumeCategoryViewModel.swift; sourceTree = "<group>"; };
 		7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewConsumeCategoryViewController.swift; sourceTree = "<group>"; };
 		7A2136EC1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewConsumeCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A2136F01CC517EA000737CF /* PersonalFinance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PersonalFinance.entitlements; sourceTree = "<group>"; };
 		7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeInfo.swift; path = CoreData/Model/DayConsumeInfo.swift; sourceTree = "<group>"; };
 		7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
@@ -485,6 +486,7 @@
 		7ACEF50F1C5A398500EF2200 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				7A2136F01CC517EA000737CF /* PersonalFinance.entitlements */,
 				7AF0735C1C5D9CCE00221F17 /* PersonalFinance-Bridging-Header.h */,
 				7A7EB3B51C58F07F009AD0A7 /* LaunchScreen.storyboard */,
 				7A7EB3B81C58F07F009AD0A7 /* Info.plist */,
@@ -669,6 +671,11 @@
 					7A7EB3A81C58F07F009AD0A7 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = EYK6J4JA87;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					7A7EB3BC1C58F07F009AD0A7 = {
 						CreatedOnToolsVersion = 7.2;
@@ -987,17 +994,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PersonalFinance/PersonalFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wanghuanqiang.PersonalFinance;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huanqiang.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PersonalFinance/PersonalFinance-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1007,15 +1016,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = PersonalFinance/PersonalFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wanghuanqiang.PersonalFinance;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huanqiang.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PersonalFinance/PersonalFinance-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

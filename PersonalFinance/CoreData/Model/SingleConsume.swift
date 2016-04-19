@@ -21,7 +21,7 @@ class SingleConsume: NSManagedObject {
         singleConsume.photo    = photo
         singleConsume.comment  = comment
         singleConsume.money    = NSNumber(double: money)
-        singleConsume.time     = time
+        singleConsume.time     = time.tolocalTime()
         singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(int: category))
         
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()

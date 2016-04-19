@@ -22,7 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // 配置 Core Data
-        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance")
+        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance.sqlite")
+        
+        
+        var magicalRecordSetupFinished = false
+        MagicalRecord.setupCoreDataStackWithiCloudContainer("iCloud.com.huanqiang.PersonalFinance", contentNameKey: nil, localStoreNamed: "PersonalFinance.sqlite", cloudStorePathComponent: nil) {
+            magicalRecordSetupFinished = true
+        }
+        while !magicalRecordSetupFinished {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
+        }
+        
+//        MagicalRecord.setupCoreDataStackWithiCloudContainer("iCloud.com.huanqiang.PersonalFinance", localStoreNamed: "PersonalFinance.sqlite")
+        
         
         // 配置 Fabric, Crashlytics
         Fabric.with([Crashlytics.self])
