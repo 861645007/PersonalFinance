@@ -132,7 +132,7 @@
         <!--Add New Custom View Controller-->
         <scene sceneID="A5B-kx-M4j">
             <objects>
-                <viewController storyboardIdentifier="AddNewCustomViewController" id="xCE-0d-mza" customClass="AddNewCustomViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddNewCustomViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xCE-0d-mza" customClass="AddNewCustomViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pyt-bW-ibl"/>
                         <viewControllerLayoutGuide type="bottom" id="Icz-Gj-Gyj"/>

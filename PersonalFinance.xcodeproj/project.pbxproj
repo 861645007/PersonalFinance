@@ -31,6 +31,14 @@
 		7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F561CB77D3400324267 /* ChartViewModel.swift */; };
 		7A444F5B1CB77D5D00324267 /* ChartDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */; };
 		7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */; };
+		7A47C0A41CC8BA210003F25A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A47C0A31CC8BA210003F25A /* NotificationCenter.framework */; };
+		7A47C0A71CC8BA210003F25A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47C0A61CC8BA210003F25A /* TodayViewController.swift */; };
+		7A47C0AA1CC8BA210003F25A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A47C0A81CC8BA210003F25A /* MainInterface.storyboard */; };
+		7A47C0AE1CC8BA210003F25A /* PersonalFinanceTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A47C0A21CC8BA210003F25A /* PersonalFinanceTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7A47C0B51CC8BB5A0003F25A /* ShareWithGroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47C0B41CC8BB5A0003F25A /* ShareWithGroupOperation.swift */; };
+		7A47C0B61CC8BCCE0003F25A /* ShareWithGroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47C0B41CC8BB5A0003F25A /* ShareWithGroupOperation.swift */; };
+		7A47C0B71CC8C1E20003F25A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B31C58F07F009AD0A7 /* Assets.xcassets */; };
+		7A47C1081CC8FAF80003F25A /* BaseDataInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */; };
 		7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC51C5C780900BEE1B8 /* DateExtension.swift */; };
 		7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */; };
 		7A614FCC1C5C853600BEE1B8 /* BaseInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */; };
@@ -70,6 +78,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7A47C0AC1CC8BA210003F25A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A7EB3A11C58F07F009AD0A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A47C0A11CC8BA210003F25A;
+			remoteInfo = PersonalFinanceTodayWidget;
+		};
 		7A7EB3BE1C58F07F009AD0A7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7A7EB3A11C58F07F009AD0A7 /* Project object */;
@@ -85,6 +100,20 @@
 			remoteInfo = PersonalFinance;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7A47C0B21CC8BA210003F25A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7A47C0AE1CC8BA210003F25A /* PersonalFinanceTodayWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		03C71E5029CBF1E652AAF0CD /* Pods-PersonalFinance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinance.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinance/Pods-PersonalFinance.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,6 +142,13 @@
 		7A444F561CB77D3400324267 /* ChartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartViewModel.swift; path = ViewModel/ChartViewModel.swift; sourceTree = "<group>"; };
 		7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartDetailViewModel.swift; path = ViewModel/ChartDetailViewModel.swift; sourceTree = "<group>"; };
 		7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatePlist.swift; sourceTree = "<group>"; };
+		7A47C0A21CC8BA210003F25A /* PersonalFinanceTodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalFinanceTodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A47C0A31CC8BA210003F25A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		7A47C0A61CC8BA210003F25A /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		7A47C0A91CC8BA210003F25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		7A47C0AB1CC8BA210003F25A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A47C0B31CC8BADC0003F25A /* PersonalFinanceTodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PersonalFinanceTodayWidget.entitlements; sourceTree = "<group>"; };
+		7A47C0B41CC8BB5A0003F25A /* ShareWithGroupOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareWithGroupOperation.swift; sourceTree = "<group>"; };
 		7A614FC51C5C780900BEE1B8 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfo.swift; sourceTree = "<group>"; };
 		7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoTest.swift; sourceTree = "<group>"; };
@@ -167,6 +203,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7A47C09F1CC8BA210003F25A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A47C0A41CC8BA210003F25A /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7EB3A61C58F07F009AD0A7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -196,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				E9A6407F11259AC7F87C24BD /* Pods_PersonalFinance.framework */,
+				7A47C0A31CC8BA210003F25A /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -329,6 +374,17 @@
 			name = "Operate Plist";
 			sourceTree = "<group>";
 		};
+		7A47C0A51CC8BA210003F25A /* PersonalFinanceTodayWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7A47C0B31CC8BADC0003F25A /* PersonalFinanceTodayWidget.entitlements */,
+				7A47C0A61CC8BA210003F25A /* TodayViewController.swift */,
+				7A47C0A81CC8BA210003F25A /* MainInterface.storyboard */,
+				7A47C0AB1CC8BA210003F25A /* Info.plist */,
+			);
+			path = PersonalFinanceTodayWidget;
+			sourceTree = "<group>";
+		};
 		7A614FC31C5C77D700BEE1B8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */,
+				7A47C0B41CC8BB5A0003F25A /* ShareWithGroupOperation.swift */,
 			);
 			name = "Base Info";
 			sourceTree = "<group>";
@@ -399,6 +456,7 @@
 				7A7EB3AB1C58F07F009AD0A7 /* PersonalFinance */,
 				7A7EB3C01C58F07F009AD0A7 /* PersonalFinanceTests */,
 				7A7EB3CB1C58F07F009AD0A7 /* PersonalFinanceUITests */,
+				7A47C0A51CC8BA210003F25A /* PersonalFinanceTodayWidget */,
 				7A7EB3AA1C58F07F009AD0A7 /* Products */,
 				F20E35BAF41E71FDCF259D73 /* Pods */,
 				49070AD2C4C610F6A62F52DB /* Frameworks */,
@@ -411,6 +469,7 @@
 				7A7EB3A91C58F07F009AD0A7 /* PersonalFinance.app */,
 				7A7EB3BD1C58F07F009AD0A7 /* PersonalFinanceTests.xctest */,
 				7A7EB3C81C58F07F009AD0A7 /* PersonalFinanceUITests.xctest */,
+				7A47C0A21CC8BA210003F25A /* PersonalFinanceTodayWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -614,6 +673,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7A47C0A11CC8BA210003F25A /* PersonalFinanceTodayWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A47C0B11CC8BA210003F25A /* Build configuration list for PBXNativeTarget "PersonalFinanceTodayWidget" */;
+			buildPhases = (
+				7A47C09E1CC8BA210003F25A /* Sources */,
+				7A47C09F1CC8BA210003F25A /* Frameworks */,
+				7A47C0A01CC8BA210003F25A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PersonalFinanceTodayWidget;
+			productName = PersonalFinanceTodayWidget;
+			productReference = 7A47C0A21CC8BA210003F25A /* PersonalFinanceTodayWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		7A7EB3A81C58F07F009AD0A7 /* PersonalFinance */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A7EB3D11C58F07F009AD0A7 /* Build configuration list for PBXNativeTarget "PersonalFinance" */;
@@ -625,10 +701,12 @@
 				4FC8A7159CBF54A83780CE31 /* Embed Pods Frameworks */,
 				474EB2C8EDEEF65D61CFA93B /* Copy Pods Resources */,
 				7A1800231CC20D280092AEC8 /* ShellScript */,
+				7A47C0B21CC8BA210003F25A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7A47C0AD1CC8BA210003F25A /* PBXTargetDependency */,
 			);
 			name = PersonalFinance;
 			productName = PersonalFinance;
@@ -677,14 +755,26 @@
 		7A7EB3A11C58F07F009AD0A7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "王焕强";
 				TargetAttributes = {
+					7A47C0A11CC8BA210003F25A = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = EYK6J4JA87;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					7A7EB3A81C58F07F009AD0A7 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = EYK6J4JA87;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -716,11 +806,21 @@
 				7A7EB3A81C58F07F009AD0A7 /* PersonalFinance */,
 				7A7EB3BC1C58F07F009AD0A7 /* PersonalFinanceTests */,
 				7A7EB3C71C58F07F009AD0A7 /* PersonalFinanceUITests */,
+				7A47C0A11CC8BA210003F25A /* PersonalFinanceTodayWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7A47C0A01CC8BA210003F25A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A47C0B71CC8C1E20003F25A /* Assets.xcassets in Resources */,
+				7A47C0AA1CC8BA210003F25A /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7EB3A71C58F07F009AD0A7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -813,11 +913,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7A47C09E1CC8BA210003F25A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A47C0A71CC8BA210003F25A /* TodayViewController.swift in Sources */,
+				7A47C0B61CC8BCCE0003F25A /* ShareWithGroupOperation.swift in Sources */,
+				7A47C1081CC8FAF80003F25A /* BaseDataInfoExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7A7EB3A51C58F07F009AD0A7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7A0D40AD1CC797F600B72EAE /* MKiCloudSync.m in Sources */,
+				7A47C0B51CC8BB5A0003F25A /* ShareWithGroupOperation.swift in Sources */,
 				7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */,
 				7A01C1211CBF3F6500D3EC90 /* MonthConsumeViewController.swift in Sources */,
 				7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */,
@@ -889,6 +1000,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7A47C0AD1CC8BA210003F25A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A47C0A11CC8BA210003F25A /* PersonalFinanceTodayWidget */;
+			targetProxy = 7A47C0AC1CC8BA210003F25A /* PBXContainerItemProxy */;
+		};
 		7A7EB3BF1C58F07F009AD0A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7A7EB3A81C58F07F009AD0A7 /* PersonalFinance */;
@@ -902,6 +1018,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7A47C0A81CC8BA210003F25A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A47C0A91CC8BA210003F25A /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		7A7EB3B01C58F07F009AD0A7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -921,6 +1045,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7A47C0AF1CC8BA210003F25A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = PersonalFinanceTodayWidget/PersonalFinanceTodayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PersonalFinanceTodayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huanqiang.PersonalFinance.PersonalFinanceTodayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		7A47C0B01CC8BA210003F25A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CODE_SIGN_ENTITLEMENTS = PersonalFinanceTodayWidget/PersonalFinanceTodayWidget.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = PersonalFinanceTodayWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huanqiang.PersonalFinance.PersonalFinanceTodayWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		7A7EB3CF1C58F07F009AD0A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1012,6 +1168,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1033,6 +1190,7 @@
 				CODE_SIGN_ENTITLEMENTS = PersonalFinance/PersonalFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1095,6 +1253,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7A47C0B11CC8BA210003F25A /* Build configuration list for PBXNativeTarget "PersonalFinanceTodayWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A47C0AF1CC8BA210003F25A /* Debug */,
+				7A47C0B01CC8BA210003F25A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7A7EB3A41C58F07F009AD0A7 /* Build configuration list for PBXProject "PersonalFinance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -9,6 +9,8 @@
 import UIKit
 import Timepiece
 
+let AddNewConsumeInWidgetNotification = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
+
 class ViewController: UIViewController {
     
     var mainVM: MainViewModel! = MainViewModel()
@@ -36,6 +38,15 @@ class ViewController: UIViewController {
         self.setBtnCornerRadius(self.recordConsumeBtn)
         self.setBtnCornerRadius(self.todayConsumeBtn)
         self.setBtnCornerRadius(self.monthConsumeBtn)
+        
+        // 修改导航栏返回键的文字
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+        
+        // 修改导航栏返回键的文字
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+        
+        // 配置 点击 Today Widget 的新增按钮的页面跳转操作
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showAddNewConsumeVC), name: AddNewConsumeInWidgetNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -46,7 +57,6 @@ class ViewController: UIViewController {
         
         // 配置水波纹数据
         self.configureWaveProgress(mainVM.gainMonthExpense(), percent: self.mainVM.configureWavePercent())
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -60,9 +70,7 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // 修改导航栏返回键的文字
-        let backItem: UIBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backItem
+        
     }
     
     // 设置按钮圆角
@@ -96,6 +104,11 @@ class ViewController: UIViewController {
         
         // 开始波浪波动
         waterWaveView.startWave()
+    }
+    
+    func showAddNewConsumeVC() {
+        let addNewConsumeVC = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController
+        self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
     }
 }
 

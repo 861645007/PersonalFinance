@@ -84,6 +84,8 @@ class AddNewCustomViewModel: NSObject {
         baseInfo.addMonthExpense(NSNumber(double: money))
         baseInfo.addDayExpense(NSNumber(double: money))
         baseInfo.saveNewExpense(NSNumber(double: money))
+        
+        ShareWithGroupOperation.sharedGroupOperation.saveNewDayExpense(baseInfo.gainDayExpense().doubleValue)
     }
     
     

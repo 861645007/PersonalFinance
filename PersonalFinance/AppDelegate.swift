@@ -10,7 +10,6 @@ import UIKit
 import VENTouchLock
 import Fabric
 import Crashlytics
-
 import MagicalRecord
 
 @UIApplicationMain
@@ -61,6 +60,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         sharedBaseInfo.judgeTimeWhenFirstUseInEveryDay(NSDate())        
         
         return true
+    }
+    
+    
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if url.scheme == "AppUrlType" {
+            if url.host == "open" {
+                NSNotificationCenter.defaultCenter().postNotificationName(AddNewConsumeInWidgetNotification, object: nil)
+            }
+            return true
+        }
+        
+        return false
     }
 
     func applicationWillResignActive(application: UIApplication) {
