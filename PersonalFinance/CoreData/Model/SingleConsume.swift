@@ -1,3 +1,4 @@
+
 //
 //  SingleConsume.swift
 //  PersonalFinance
@@ -15,16 +16,19 @@ class SingleConsume: NSManagedObject {
 // Insert code here to add functionality to your managed object subclass
     // MARK: - 新增消费记录
     class func addNewSingleCustom(category: Int32, photo: NSData, comment: String, money: Double, time: NSDate) {
+        
         let singleConsume: SingleConsume = SingleConsume.MR_createEntity()!
         
         singleConsume.category = NSNumber(int: category)
         singleConsume.photo    = photo
         singleConsume.comment  = comment
         singleConsume.money    = NSNumber(double: money)
-        singleConsume.time     = time.tolocalTime()
+        singleConsume.time     = time
+        
         singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(int: category))
         
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        
     }
     
     
@@ -81,7 +85,7 @@ class SingleConsume: NSManagedObject {
      - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
      */
     class func fetchConsumeRecordWithCurrentMonth() ->[SingleConsume] {
-        return self.fetchCustomWithRangeDate(NSDate().monthBegin(), dateEnd: NSDate())
+        return self.fetchCustomWithRangeDate(NSDate().monthBegin(), dateEnd: NSDate().dayEnd())
     }
     
     

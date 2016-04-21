@@ -13,6 +13,7 @@
 		7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644261C6B05BA00FAE828 /* Consume-Type.plist */; };
 		7A0644291C6B05DC00FAE828 /* NewConsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */; };
 		7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */; };
+		7A0D40AD1CC797F600B72EAE /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D40AC1CC797F600B72EAE /* MKiCloudSync.m */; };
 		7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */; };
 		7A2136E91CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */; };
 		7A2136EB1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */; };
@@ -92,6 +93,8 @@
 		7A0644261C6B05BA00FAE828 /* Consume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Consume-Type.plist"; sourceTree = "<group>"; };
 		7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewConsume-Type.plist"; sourceTree = "<group>"; };
 		7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A0D40AB1CC797F600B72EAE /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKiCloudSync.h; sourceTree = "<group>"; };
+		7A0D40AC1CC797F600B72EAE /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKiCloudSync.m; sourceTree = "<group>"; };
 		7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewConsumeCategoryViewModel.swift; path = ViewModel/AddNewConsumeCategoryViewModel.swift; sourceTree = "<group>"; };
 		7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewConsumeCategoryViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +215,15 @@
 				7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */,
 			);
 			name = "Month Consume";
+			sourceTree = "<group>";
+		};
+		7A0D40AA1CC797D300B72EAE /* NSUserDefaults Sync */ = {
+			isa = PBXGroup;
+			children = (
+				7A0D40AB1CC797F600B72EAE /* MKiCloudSync.h */,
+				7A0D40AC1CC797F600B72EAE /* MKiCloudSync.m */,
+			);
+			name = "NSUserDefaults Sync";
 			sourceTree = "<group>";
 		};
 		7A2136E41CC4CDE2000737CF /* Add New Category View Controller */ = {
@@ -552,6 +564,7 @@
 		7AF073621C5DA72800221F17 /* Function */ = {
 			isa = PBXGroup;
 			children = (
+				7A0D40AA1CC797D300B72EAE /* NSUserDefaults Sync */,
 				7A7376CC1CBB80530038BB3E /* TopAlert */,
 				7AF073651C5DA74900221F17 /* TYWaveProgressView */,
 			);
@@ -804,6 +817,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A0D40AD1CC797F600B72EAE /* MKiCloudSync.m in Sources */,
 				7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */,
 				7A01C1211CBF3F6500D3EC90 /* MonthConsumeViewController.swift in Sources */,
 				7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */,

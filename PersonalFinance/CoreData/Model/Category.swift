@@ -16,15 +16,23 @@ class Category: NSManagedObject {
 
     // MARK: - 插入
     class func insertNewConsumeCategory(name: String, iconData: NSData, beUsed: Bool) {
-        let id = Category.gainCategoryCount()  + 1
-        let category: Category = Category.MR_createEntity()!
         
-        category.id = NSNumber(int: id)
-        category.name = name
-        category.iconData = iconData
-        category.beUsed = NSNumber(bool: beUsed)
+//        MagicalRecord.saveWithBlock({ (localContext: NSManagedObjectContext) in
+//            
+//        })
+        // 判断数据库有没有数据
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        if Category.MR_findFirstByAttribute("name", withValue: name) == nil {
+            let id = Category.gainCategoryCount()  + 1
+            let category: Category = Category.MR_createEntity()!
+            
+            category.id = NSNumber(int: id)
+            category.name = name
+            category.iconData = iconData
+            category.beUsed = NSNumber(bool: beUsed)
+            
+            NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        }
     }
     
     /**

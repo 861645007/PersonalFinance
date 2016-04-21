@@ -24,17 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 配置 Core Data
         MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance.sqlite")
         
+//        var magicalRecordSetupFinished = false
+//        MagicalRecord.setupCoreDataStackWithiCloudContainer("iCloud.com.huanqiang.PersonalFinance", contentNameKey: "PersonalFinance_DataStore", localStoreNamed: "PersonalFinance.sqlite", cloudStorePathComponent: nil) {
+//            magicalRecordSetupFinished = true
+//        }
+//        while !magicalRecordSetupFinished {
+//            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
+//        }        
+//        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.persistentStoreDidChange(_:)), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.persistentStoreWillChange(_:)), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: nil)
         
-        var magicalRecordSetupFinished = false
-        MagicalRecord.setupCoreDataStackWithiCloudContainer("iCloud.com.huanqiang.PersonalFinance", contentNameKey: nil, localStoreNamed: "PersonalFinance.sqlite", cloudStorePathComponent: nil) {
-            magicalRecordSetupFinished = true
-        }
-        while !magicalRecordSetupFinished {
-            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
-        }
-        
-//        MagicalRecord.setupCoreDataStackWithiCloudContainer("iCloud.com.huanqiang.PersonalFinance", localStoreNamed: "PersonalFinance.sqlite")
-        
+//        // 配置 NSUserDefaults iCloud Sync
+//        MKiCloudSync.startWithPrefix("")
         
         // 配置 Fabric, Crashlytics
         Fabric.with([Crashlytics.self])
@@ -88,6 +90,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = OnBoardPageManager.onBoardPageManager.configOnboardVC()
     }
     
+    func persistentStoreDidChange(notification: NSNotification) {
+        NSLog("Persistent store did change")
+    }
+    
+    func persistentStoreWillChange(notification: NSNotification) {
+        print("\(notification.name)")
+        
+        let keys = notification.userInfo?.keys
+        
+        print("WillChange:  \(keys)")
+        
+        let values = notification.userInfo?.values
+        
+        print("WillChange:  \(values)")
+        
+        let persistent: NSPersistentStoreCoordinator = notification.object as! NSPersistentStoreCoordinator
+        
+        print("WillChange:  \(persistent.name)")
+        print("WillChange:  \(persistent.persistentStores)")
+    }
+
 
 }
 
