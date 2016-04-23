@@ -64,7 +64,7 @@ class AddNewCustomViewController: UIViewController {
         
         // 配置初始化 category 数据
         self.addNewCustomVM.gainAllConsumeType()
-        self.changeConsumeCategoryInfo(self.addNewCustomVM.gainCategoryWithCusOther()!)
+        self.changeConsumeCategoryInfo(self.addNewCustomVM.gainCategoryWithCusOther())
         
         // 配置 UICollectionView 的滚动
         self.customTypeCollectionView.alwaysBounceVertical = true
@@ -74,14 +74,23 @@ class AddNewCustomViewController: UIViewController {
     }
     
     // 配置 category 数据
-    func changeConsumeCategoryInfo(consumeCategory: ConsumeCategory) {
-        self.categoryImage.image = UIImage(data: (consumeCategory.iconData)!)
-        self.consumeCategoryID = consumeCategory.id
+    func changeConsumeCategoryInfo(consumeCategory: ConsumeCategory?) {
+        if consumeCategory == nil {
+            return
+        }
+        
+        self.categoryImage.image = UIImage(data: (consumeCategory!.iconData)!)
+        self.consumeCategoryID = consumeCategory!.id
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if Category.fetchAllConsumeCategoryWithUsed().count == 0 {
+            self.navigationController?.popViewControllerAnimated(true)
+            return
+        }
         
         self.numberTextField.becomeFirstResponder()
         self.addNewCustomVM.gainAllConsumeType()

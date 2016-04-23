@@ -84,9 +84,10 @@ class SettingViewController: UIViewController {
             // 存储操作
             let money = self!.monthBudget.substringFromIndex(self!.monthBudget.startIndex.advancedBy(1))
             if Double(money)! == 0.0 {
-                TopAlert().createFailureTopAlert("金额不能为 0，请重新输入", parentView: self!.view)
+                TopAlert().createFailureTopAlert("金额不能为 0 !", parentView: self!.view)
             }else {
                 BaseInfo.sharedBaseInfo.saveMonthBudget(NSNumber(double: Double(money)!))
+                TopAlert().createSuccessTopAlert("本月预算为 \(money) 元", parentView: self!.view)
             }
             
         }

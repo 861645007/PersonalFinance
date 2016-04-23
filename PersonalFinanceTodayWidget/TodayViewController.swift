@@ -20,12 +20,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     override func viewWillAppear(animated: Bool) {
-        preferredContentSize = CGSizeMake(0, 46)
+        self.preferredContentSize = CGSizeMake(0, 61)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(0, defaultMarginInsets.left, 0, 8)
     }
     
     

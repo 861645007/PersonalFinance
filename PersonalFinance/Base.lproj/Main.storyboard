@@ -38,7 +38,7 @@
                                 </constraints>
                                 <state key="normal" image="recordConsumeBtn"/>
                                 <connections>
-                                    <segue destination="xCE-0d-mza" kind="show" id="B91-3R-yqC"/>
+                                    <segue destination="xCE-0d-mza" kind="show" identifier="ShowAddNewConsumeVC" id="B91-3R-yqC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记一笔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2v-EB-TeQ">

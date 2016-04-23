@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pey-g5-pdO">
-                                <rect key="frame" x="259" y="10" width="45" height="35"/>
+                                <rect key="frame" x="243" y="10" width="45" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="QKi-0N-e9B"/>
                                     <constraint firstAttribute="width" secondItem="pey-g5-pdO" secondAttribute="height" multiplier="80:61" id="fWt-Cz-zFE"/>
@@ -47,11 +47,11 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="pey-g5-pdO" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" id="BA8-qp-p4C"/>
+                            <constraint firstItem="pey-g5-pdO" firstAttribute="trailing" secondItem="S3S-Oj-5AN" secondAttribute="trailingMargin" constant="-16" id="BA8-qp-p4C"/>
                             <constraint firstItem="WXu-su-OTd" firstAttribute="leading" secondItem="lqm-38-hDO" secondAttribute="trailing" id="HEN-7o-Kqi"/>
+                            <constraint firstItem="lqm-38-hDO" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="OVE-7W-PfS"/>
                             <constraint firstItem="pey-g5-pdO" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="Ss8-33-EuT"/>
                             <constraint firstItem="lqm-38-hDO" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="U9Z-sP-4gq"/>
-                            <constraint firstItem="lqm-38-hDO" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="f5j-fN-ZnH"/>
                             <constraint firstItem="WXu-su-OTd" firstAttribute="centerY" secondItem="lqm-38-hDO" secondAttribute="centerY" id="fKS-zw-yYH"/>
                         </constraints>
                     </view>

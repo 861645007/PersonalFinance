@@ -21,20 +21,68 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // 配置 Core Data
-        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance.sqlite")
+//        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance.sqlite")
         
-//        var magicalRecordSetupFinished = false
-//        MagicalRecord.setupCoreDataStackWithiCloudContainer("iCloud.com.huanqiang.PersonalFinance", contentNameKey: "PersonalFinance_DataStore", localStoreNamed: "PersonalFinance.sqlite", cloudStorePathComponent: nil) {
-//            magicalRecordSetupFinished = true
+        var magicalRecordSetupFinished = false
+        MagicalRecord.setupCoreDataStackWithiCloudContainer("iCloud.com.huanqiang.PersonalFinance", contentNameKey: "PersonalFinance_DataStore", localStoreNamed: "PersonalFinance.sqlite", cloudStorePathComponent: nil) {
+            magicalRecordSetupFinished = true
+        }
+        while !magicalRecordSetupFinished {
+            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
+        }
+        
+        // 注册一个通知: 当有数据从云端导入的时候，会进入这个 通知的回调函数
+        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: NSPersistentStoreCoordinator.MR_defaultStoreCoordinator(), queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
+            
+            NSManagedObjectContext.MR_defaultContext().performBlock({ 
+                NSManagedObjectContext.MR_defaultContext().mergeChangesFromContextDidSaveNotification(notification)
+            })
+            
+            print(notification.userInfo)
+        }
+        
+//        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresDidChangeNotification, object: NSPersistentStoreCoordinator.MR_defaultStoreCoordinator(), queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
+//            
+//            print("Persistent Store Coordinator Stores Did Change Notification")
+//            
+//            let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
+//            
+//            // 当 InitialImportCompleted 的时候导入初始化数据
+//            if type == NSPersistentStoreUbiquitousTransitionType.InitialImportCompleted.rawValue {
+//                print("InitialImportCompleted")
+//                
+//                if Category.fetchAllConsumeCategoryWithUsed().count == 0 {
+//                    print("Category is nil")
+//                    Category.initializeConsumeCategory()
+//                }
+//            }
 //        }
-//        while !magicalRecordSetupFinished {
-//            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
-//        }        
-//        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.persistentStoreDidChange(_:)), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.persistentStoreWillChange(_:)), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: nil)
         
-//        // 配置 NSUserDefaults iCloud Sync
+        /*
+         NSPersistentStoreCoordinatorStoresWillChangeNotification 的作用
+         
+         2、notification 的 userInfo 里面还包含了 一个 NSPersistentStoreUbiquitousTransitionType 的类型，用来表明本次通知的操作
+         */
+//        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresWillChangeNotification, object: NSPersistentStoreCoordinator.MR_defaultStoreCoordinator(), queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
+//            
+//            let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
+//            // 当 InitialImportCompleted 的时候导入初始化数据
+//            if type == NSPersistentStoreUbiquitousTransitionType.InitialImportCompleted.rawValue {
+//                print("Will Change: InitialImportCompleted")
+//                if Category.fetchAllConsumeCategoryWithUsed().count != 0 {
+//                    Category.removeAllCategoryForICloud()
+//                }
+//            }
+//        }
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreInitialImportCompleted(_:)), name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
+//        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreDidChange(_:)), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
+//
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreWillChange(_:)), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: nil)
+        
+        
+        // 配置 NSUserDefaults iCloud Sync
 //        MKiCloudSync.startWithPrefix("")
         
         // 配置 Fabric, Crashlytics
@@ -103,26 +151,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func persistentStoreDidChange(notification: NSNotification) {
-        NSLog("Persistent store did change")
+        print("Persistent Store Coordinator Stores Did Change Notification")
+        
+        let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
+        // 当 InitialImportCompleted 的时候导入初始化数据
+        if type == NSPersistentStoreUbiquitousTransitionType.InitialImportCompleted.rawValue {
+            print("InitialImportCompleted")
+            
+            if Category.fetchAllConsumeCategoryWithUsed().count == 0 {
+                print("Category is nil")
+                Category.initializeConsumeCategory()
+            }
+        }
+
     }
     
     func persistentStoreWillChange(notification: NSNotification) {
-        print("\(notification.name)")
         
-        let keys = notification.userInfo?.keys
+        let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
+        // 当 InitialImportCompleted 的时候导入初始化数据
+        if type == NSPersistentStoreUbiquitousTransitionType.InitialImportCompleted.rawValue {
+            print("Will Change: InitialImportCompleted")
+            if Category.fetchAllConsumeCategoryWithUsed().count != 0 {
+                Category.removeAllCategoryForICloud()
+            }
+        }
+    }
+    
+    func persistentStoreInitialImportCompleted(notification: NSNotification) {
         
-        print("WillChange:  \(keys)")
+        NSManagedObjectContext.MR_defaultContext().performBlock({
+            NSManagedObjectContext.MR_defaultContext().mergeChangesFromContextDidSaveNotification(notification)
+        })
         
-        let values = notification.userInfo?.values
+        print(notification.userInfo)
         
-        print("WillChange:  \(values)")
-        
-        let persistent: NSPersistentStoreCoordinator = notification.object as! NSPersistentStoreCoordinator
-        
-        print("WillChange:  \(persistent.name)")
-        print("WillChange:  \(persistent.persistentStores)")
+        print(notification.userInfo?.keys)
     }
 
-
+    
 }
 
