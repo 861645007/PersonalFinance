@@ -7,31 +7,31 @@
 //
 
 import Foundation
-import Timepiece
+import SwiftDate
 
 extension NSDate {
     func yearBegin() ->NSDate {
-        return self.beginningOfYear
+        return self.startOf(.Year)
     }
     
     func yearEnd() ->NSDate {
-        return self.endOfYear
+        return self.endOf(.Year)
     }
     
     func monthBegin() ->NSDate {
-        return self.beginningOfMonth
+        return self.startOf(.Month)
     }
     
     func monthEnd() ->NSDate {
-        return self.endOfMonth
+        return self.endOf(.Month)
     }
     
     func dayBegin() ->NSDate {
-        return self.beginningOfDay
+        return self.startOf(.Day)
     }
     
     func dayEnd() ->NSDate {
-        return self.endOfDay
+        return self.endOf(.Day)
     }
     
     func isLaterWithNewTime(newTime: NSDate) ->Bool {
@@ -82,4 +82,64 @@ extension NSDate {
         let seconds: NSInteger = tz.secondsFromGMTForDate(self)
         return NSDate(timeInterval: Double(seconds), sinceDate: self)
     }
+    
+    /**
+     获取下月一号的 x 时
+     
+     - parameter hour: 指定的小时
+     
+     - returns: 下月一号的 x 时
+     */
+    func firstDayWithNextMonth(hour: Int) -> NSDate {
+        if self.month == 12 {
+            return NSDate(year: self.year + 1, month: 1, day: 1, hour: hour)
+        }else {
+            return NSDate(year: self.year, month:self.month + 1, day: 1, hour: hour)
+        }
+    }
+    
+    /**
+     获取下个星期第一天的 x 时
+     
+     - parameter hour: 指定的小时
+     
+     - returns: 下个星期第一天的 x 时
+     */
+    func firstDayWithNextWeek(hour: Int) -> NSDate {
+        let firstDayOfThisWeek = self.firstDayOfWeek()
+        let lastDayOfThisWeek = self.lastDayOfWeek()
+        
+        if lastDayOfThisWeek < firstDayOfThisWeek {
+            // 如果 这个星期的最后一天小于第一天的值，说明跨月了
+            if self.month == 12 {
+                // 如果这个月是12月，说明跨年了
+                return NSDate(year: self.year + 1, month: 1, day: lastDayOfThisWeek! + 1, hour: hour)
+            }else {
+                return NSDate(year: self.year, month: self.month, day: lastDayOfThisWeek! + 1, hour: hour)
+            }
+        }else {
+            return self + 1.days
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

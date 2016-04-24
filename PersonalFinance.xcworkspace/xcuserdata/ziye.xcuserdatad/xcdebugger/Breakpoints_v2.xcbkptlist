@@ -170,75 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/ViewController.swift"
-            timestampString = "483066612.987673"
+            timestampString = "483110133.611913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalFinance/AppDelegate.swift"
-            timestampString = "483072640.3784"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
-            landmarkName = "persistentStoreWillChange(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PersonalFinance/AppDelegate.swift"
-            timestampString = "483072640.3784"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "persistentStoreInitialImportCompleted(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PersonalFinance.AppDelegate.persistentStoreInitialImportCompleted (__ObjC.NSNotification) -&gt; ()"
-                  moduleName = "PersonalFinance"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "483082927.249259"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "183"
-                  endingLineNumber = "183"
-                  offsetFromSymbolStart = "24">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "PersonalFinance.AppDelegate.(persistentStoreInitialImportCompleted (__ObjC.NSNotification) -&gt; ()).(closure #1)"
-                  moduleName = "PersonalFinance"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "483082927.249438"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "184"
-                  endingLineNumber = "184"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
+            startingLineNumber = "142"
+            endingLineNumber = "142">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -264,12 +200,12 @@
                   moduleName = "PersonalFinance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "483082927.25053"
+                  timestampString = "483179619.540128"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "37"
                   endingLineNumber = "37"
-                  offsetFromSymbolStart = "20">
+                  offsetFromSymbolStart = "15">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -279,12 +215,12 @@
                   moduleName = "PersonalFinance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "483082927.250719"
+                  timestampString = "483179619.540365"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
                   endingLineNumber = "38"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -296,12 +232,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/AppDelegate.swift"
-            timestampString = "483072650.559817"
+            timestampString = "483085319.846898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
-            landmarkName = "persistentStoreDidChange(_:)"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "persistentStoreWillChange(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -312,12 +248,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/AppDelegate.swift"
-            timestampString = "483075028.060362"
+            timestampString = "483085321.391797"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "persistentStoreInitialImportCompleted(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalFinance.AppDelegate.persistentStoreInitialImportCompleted (__ObjC.NSNotification) -&gt; ()"
+                  moduleName = "PersonalFinance"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
+                  timestampString = "483179619.56496"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "184"
+                  endingLineNumber = "184"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalFinance.AppDelegate.(persistentStoreInitialImportCompleted (__ObjC.NSNotification) -&gt; ()).(closure #1)"
+                  moduleName = "PersonalFinance"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
+                  timestampString = "483179619.565296"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalFinance/AppDelegate.swift"
+            timestampString = "483085324.14587"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "persistentStoreDidChange(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalFinance/ViewModel/ChartViewModel.swift"
+            timestampString = "483108949.51766"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "init()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

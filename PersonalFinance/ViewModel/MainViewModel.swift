@@ -31,7 +31,7 @@ class MainViewModel: NSObject {
     }
     
     func gainMonthExpense() ->Double {
-        return baseInfo.gainMonthExpense().doubleValue
+        return baseInfo.monthExpense()
     }
 
     func gainMonthBudget() ->Double {

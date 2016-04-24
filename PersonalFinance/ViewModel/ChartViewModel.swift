@@ -9,10 +9,9 @@
 import UIKit
 import Charts
 import CoreData
+import SwiftDate
 
 class ChartViewModel: NSObject {
-
-    var baseInfo: BaseInfo!
     
     var consumeTypeArr: [ConsumeCategory]?
     
@@ -32,11 +31,9 @@ class ChartViewModel: NSObject {
     override init() {
         super.init()
         
-        baseInfo = BaseInfo.sharedBaseInfo
-        
         // 变量处理
-        currentYearWithTrend = NSDate().change(day: 1, hour: 1)
-        currentMonthWithCategory = NSDate().change(day: 1, hour: 1)
+        currentYearWithTrend = NSDate().startOf(.Year)
+        currentMonthWithCategory = NSDate().endOf(.Month)
         
         // 获取 category 的数据
         self.gainAllConsumeType()
@@ -92,12 +89,12 @@ class ChartViewModel: NSObject {
     // MARK: - 环形图
     
     func gainDateForPreMonthWithCategory() -> NSDate {
-        currentMonthWithCategory = currentMonthWithCategory?.change(month: currentMonthWithCategory!.month - 1)
+        currentMonthWithCategory = currentMonthWithCategory! - 1.months
         return currentMonthWithCategory!
     }
     
     func gainDateForNextMonthWithCategory() -> NSDate {
-        currentMonthWithCategory = currentMonthWithCategory?.change(month: currentMonthWithCategory!.month + 1)
+        currentMonthWithCategory = currentMonthWithCategory! + 1.months
         return currentMonthWithCategory!
     }
     
@@ -166,12 +163,12 @@ class ChartViewModel: NSObject {
     
     // MARK: - 走势图
     func gainDateForPreYearTrend() ->NSDate {
-        currentYearWithTrend = currentYearWithTrend?.change(year: currentYearWithTrend!.year - 1)
+        currentYearWithTrend = currentYearWithTrend! - 1.years
         return currentYearWithTrend!
     }
     
     func gainDateForNextYearTrend() ->NSDate {
-        currentYearWithTrend = currentYearWithTrend?.change(year: currentYearWithTrend!.year + 1)
+        currentYearWithTrend = currentYearWithTrend! + 1.years
         return currentYearWithTrend!
     }
     
@@ -246,7 +243,7 @@ class ChartViewModel: NSObject {
     private func gainDataWithMonthTrend(date: NSDate) -> [Double] {
         var monthExpenseList: [Double] = []
         for i in 0..<12 {
-            let newDate = NSDate.date(year: date.year, month: i + 1, day: 1, hour: 1, minute: 1, second: 1)
+            let newDate = NSDate(year: date.year, month: i + 1, day: 1, hour: 1, minute: 1, second: 1)
             
             let consumeMonthList = SingleConsume.fetchConsumeWithMonthTrendChart(newDate)
             

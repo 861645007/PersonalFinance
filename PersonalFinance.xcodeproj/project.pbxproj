@@ -18,6 +18,8 @@
 		7A2136E91CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */; };
 		7A2136EB1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */; };
 		7A2136ED1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136EC1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift */; };
+		7A2845B01CCB596200770DB0 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2845AF1CCB596200770DB0 /* LocalNotification.swift */; };
+		7A2845B21CCB63C200770DB0 /* PrepareLocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2845B11CCB63C200770DB0 /* PrepareLocalNotification.swift */; };
 		7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */; };
 		7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */; };
 		7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */; };
@@ -129,6 +131,8 @@
 		7A2136EA1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewConsumeCategoryViewController.swift; sourceTree = "<group>"; };
 		7A2136EC1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewConsumeCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A2136F01CC517EA000737CF /* PersonalFinance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PersonalFinance.entitlements; sourceTree = "<group>"; };
+		7A2845AF1CCB596200770DB0 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		7A2845B11CCB63C200770DB0 /* PrepareLocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepareLocalNotification.swift; sourceTree = "<group>"; };
 		7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeInfo.swift; path = CoreData/Model/DayConsumeInfo.swift; sourceTree = "<group>"; };
 		7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
@@ -296,6 +300,15 @@
 			name = OnBoard;
 			sourceTree = "<group>";
 		};
+		7A2845AE1CCB593F00770DB0 /* Local Notification */ = {
+			isa = PBXGroup;
+			children = (
+				7A2845AF1CCB596200770DB0 /* LocalNotification.swift */,
+				7A2845B11CCB63C200770DB0 /* PrepareLocalNotification.swift */,
+			);
+			name = "Local Notification";
+			sourceTree = "<group>";
+		};
 		7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,6 +401,7 @@
 		7A614FC31C5C77D700BEE1B8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7A2845AE1CCB593F00770DB0 /* Local Notification */,
 				7A2B3F061CC123DD00D751D5 /* Passcode Operation */,
 				7A47B8561C6B3AE500F63D9A /* Operate Plist */,
 				7A614FC71C5C796F00BEE1B8 /* Base Info */,
@@ -947,6 +961,7 @@
 				7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */,
 				7A92C46B1CC3C6E50035CF0A /* Category+CoreDataProperties.swift in Sources */,
 				7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */,
+				7A2845B01CCB596200770DB0 /* LocalNotification.swift in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */,
@@ -954,6 +969,7 @@
 				7A2136EB1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift in Sources */,
 				7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */,
 				7A2B3F041CC11FF100D751D5 /* SampleSplashViewController.swift in Sources */,
+				7A2845B21CCB63C200770DB0 /* PrepareLocalNotification.swift in Sources */,
 				7A2B3ED61CC0C55E00D751D5 /* SettingTableViewCell.swift in Sources */,
 				7A7376CA1CBB80350038BB3E /* UIFont+FontAwesome.m in Sources */,
 				7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */,

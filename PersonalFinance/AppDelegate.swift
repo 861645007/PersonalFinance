@@ -173,6 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if type == NSPersistentStoreUbiquitousTransitionType.InitialImportCompleted.rawValue {
             print("Will Change: InitialImportCompleted")
             if Category.fetchAllConsumeCategoryWithUsed().count != 0 {
+                print("Category has data")
                 Category.removeAllCategoryForICloud()
             }
         }

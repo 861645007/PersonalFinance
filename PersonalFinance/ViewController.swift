@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Timepiece
 
 let AddNewConsumeInWidgetNotification = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
 
@@ -42,9 +41,6 @@ class ViewController: UIViewController {
         // 修改导航栏返回键的文字
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
         
-        // 修改导航栏返回键的文字
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
-        
         // 配置 点击 Today Widget 的新增按钮的页面跳转操作
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showAddNewConsumeVC), name: AddNewConsumeInWidgetNotification, object: nil)
     }
@@ -70,9 +66,6 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "ShowAddNewConsumeVC" {
-//            
-//        }
     }
     
     // 设置按钮圆角

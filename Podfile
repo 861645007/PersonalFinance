@@ -1,9 +1,8 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, "9.0"
+# platform :ios, “8.0”
+use_frameworks!
 
-
-target "PersonalFinance" do
- 	use_frameworks!
+target "PersonalFinance" do 	
 	
 # 图表
 	pod 'Charts'
@@ -22,7 +21,7 @@ target "PersonalFinance" do
 # 动画效果
 	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
 # NSDate 操作工具
-	pod "Timepiece"
+	pod 'SwiftDate'
 # 引导页
 	pod 'Onboard'
 # 数字键盘
