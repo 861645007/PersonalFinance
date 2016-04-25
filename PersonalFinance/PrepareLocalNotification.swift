@@ -115,4 +115,27 @@ class PrepareLocalNotification: NSObject {
     }
     
     
+    // MARK: - 移除
+    func removeAll() {
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+    }
+    
+    func remove(notification: UILocalNotification) {
+        UIApplication.sharedApplication().cancelLocalNotification(notification)
+    }
+    
+    func removeBadgeNumber() {
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

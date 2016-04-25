@@ -31,7 +31,6 @@
 		7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */; };
 		7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */; };
 		7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F561CB77D3400324267 /* ChartViewModel.swift */; };
-		7A444F5B1CB77D5D00324267 /* ChartDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */; };
 		7A47B8581C6B3B0F00F63D9A /* OperatePlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */; };
 		7A47C0A41CC8BA210003F25A /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A47C0A31CC8BA210003F25A /* NotificationCenter.framework */; };
 		7A47C0A71CC8BA210003F25A /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47C0A61CC8BA210003F25A /* TodayViewController.swift */; };
@@ -73,7 +72,6 @@
 		7ACEF5161C5A3A2B00EF2200 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */; };
 		7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */; };
 		7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE21181CB622A400BC9985 /* ChartViewController.swift */; };
-		7AEE211B1CB622B200BC9985 /* ChartDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE211A1CB622B200BC9985 /* ChartDetailViewController.swift */; };
 		7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073671C5DA75200221F17 /* TYWaterWaveView.m */; };
 		7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073691C5DA75200221F17 /* TYWaveProgressView.m */; };
 		7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF0736D1C5DA8AB00221F17 /* MainViewModel.swift */; };
@@ -144,7 +142,6 @@
 		7A4168131C6061BA00145EA1 /* AddNewCustomViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewCustomViewModel.swift; path = ViewModel/AddNewCustomViewModel.swift; sourceTree = "<group>"; };
 		7A444F521CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinanceOfCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		7A444F561CB77D3400324267 /* ChartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartViewModel.swift; path = ViewModel/ChartViewModel.swift; sourceTree = "<group>"; };
-		7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChartDetailViewModel.swift; path = ViewModel/ChartDetailViewModel.swift; sourceTree = "<group>"; };
 		7A47B8571C6B3B0F00F63D9A /* OperatePlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperatePlist.swift; sourceTree = "<group>"; };
 		7A47C0A21CC8BA210003F25A /* PersonalFinanceTodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PersonalFinanceTodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A47C0A31CC8BA210003F25A /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -195,7 +192,6 @@
 		7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
 		7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataInfoExtension.swift; sourceTree = "<group>"; };
 		7AEE21181CB622A400BC9985 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
-		7AEE211A1CB622B200BC9985 /* ChartDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDetailViewController.swift; sourceTree = "<group>"; };
 		7AF0735C1C5D9CCE00221F17 /* PersonalFinance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalFinance-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AF073661C5DA75200221F17 /* TYWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TYWaterWaveView.h; path = TYWaveProgressView/TYWaterWaveView.h; sourceTree = "<group>"; };
 		7AF073671C5DA75200221F17 /* TYWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TYWaterWaveView.m; path = TYWaveProgressView/TYWaterWaveView.m; sourceTree = "<group>"; };
@@ -369,14 +365,6 @@
 				7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */,
 			);
 			name = "Chart View Model";
-			sourceTree = "<group>";
-		};
-		7A444F551CB77D0D00324267 /* Chart Detail View Model */ = {
-			isa = PBXGroup;
-			children = (
-				7A444F5A1CB77D5D00324267 /* ChartDetailViewModel.swift */,
-			);
-			name = "Chart Detail View Model";
 			sourceTree = "<group>";
 		};
 		7A47B8561C6B3AE500F63D9A /* Operate Plist */ = {
@@ -600,19 +588,10 @@
 			name = "Chart View Controller";
 			sourceTree = "<group>";
 		};
-		7AEE21171CB6227800BC9985 /* Chart Detail View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				7AEE211A1CB622B200BC9985 /* ChartDetailViewController.swift */,
-			);
-			name = "Chart Detail View Controller";
-			sourceTree = "<group>";
-		};
 		7AF073601C5D9D7B00221F17 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
 				7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */,
-				7AEE21171CB6227800BC9985 /* Chart Detail View Controller */,
 				7AEE21161CB6224F00BC9985 /* Chart View Controller */,
 				7A2136E41CC4CDE2000737CF /* Add New Category View Controller */,
 				7A41680F1C60615200145EA1 /* Add New Consume View Controller */,
@@ -625,7 +604,6 @@
 			isa = PBXGroup;
 			children = (
 				7A2B3ECE1CC0A87600D751D5 /* Setting  View Model */,
-				7A444F551CB77D0D00324267 /* Chart Detail View Model */,
 				7A444F541CB77D0000324267 /* Chart View Model */,
 				7A2136E71CC4CE27000737CF /* Add New Category */,
 				7A4168101C60616F00145EA1 /* Add New Custom */,
@@ -955,9 +933,7 @@
 				7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */,
 				7A7376BC1CBB7F810038BB3E /* TopAlert.swift in Sources */,
 				7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */,
-				7A444F5B1CB77D5D00324267 /* ChartDetailViewModel.swift in Sources */,
 				7A2B3F081CC1240500D751D5 /* PasscodeOperation.swift in Sources */,
-				7AEE211B1CB622B200BC9985 /* ChartDetailViewController.swift in Sources */,
 				7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */,
 				7A92C46B1CC3C6E50035CF0A /* Category+CoreDataProperties.swift in Sources */,
 				7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */,

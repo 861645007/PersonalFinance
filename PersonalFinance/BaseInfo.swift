@@ -26,8 +26,8 @@ class BaseInfo: NSObject {
         self.saveMoneyInfo(value.doubleValue, key: "MonthBudget")
     }
     
-    func gainMonthBudget() ->NSNumber {
-        return NSNumber(double: self.getMoneyInfo("MonthBudget"))
+    func monthBudget() ->Double {
+        return self.getMoneyInfo("MonthBudget")
     }
     
     // MARK: - 最新消费
@@ -35,8 +35,8 @@ class BaseInfo: NSObject {
         self.saveMoneyInfo(value.doubleValue, key: "NewExpense")
     }
     
-    func gainNewExpense() ->NSNumber {
-        return NSNumber(double: self.getMoneyInfo("NewExpense"))
+    func newExpense() ->Double {
+        return self.getMoneyInfo("NewExpense")
     }
     
     
@@ -56,7 +56,7 @@ class BaseInfo: NSObject {
     
     // MARK: - 每日支出
     func addDayExpense(value: NSNumber) {
-        let totalExpense = value.doubleValue + self.gainDayExpense().doubleValue
+        let totalExpense = value.doubleValue + self.dayExpense()
         self.saveMoneyInfo(totalExpense, key: "DayExpense")
     }
     
@@ -64,8 +64,8 @@ class BaseInfo: NSObject {
         self.saveMoneyInfo(0.0, key: "DayExpense")
     }
     
-    func gainDayExpense() ->NSNumber {
-        return NSNumber(double: self.getMoneyInfo("DayExpense"))
+    func dayExpense() ->Double {
+        return self.getMoneyInfo("DayExpense")
     }
     
     // MARK: - 判断时间信息 ，当第一次进入的时候

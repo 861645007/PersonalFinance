@@ -20,7 +20,7 @@ class ChartViewController: UIViewController {
     
     // 普通实例变量
     let chartVM: ChartViewModel = ChartViewModel()
-    
+    var hasAnimation: Bool = false // 用来判断进入走势图的时候是否已经用过动画了
     
     
     // 控制视图 实例变量
@@ -34,16 +34,10 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var categoryChartView: PieChartView!
     
     // 走势图部分：以一个月的四周作为走势图
-    @IBOutlet weak var monthCurrentTime: UILabel!
-    @IBOutlet weak var monthArrowRight: UIButton!
-    @IBOutlet weak var monthArrowLeft: UIButton!
-    @IBOutlet weak var monthChartView: LineChartView!
+    @IBOutlet weak var sevenDaysChartView: BarChartView!
     
     // 以一年的12个月作为走势图
-    @IBOutlet weak var yearCurrentTime: UILabel!
-    @IBOutlet weak var yearArrowLeft: UIButton!
-    @IBOutlet weak var yearArrowRight: UIButton!
-    @IBOutlet weak var yearChartView: LineChartView!
+    @IBOutlet weak var thirdWeeksChartView: LineChartView!
     
     
     // 设置 UIScrollView 约束
@@ -52,6 +46,10 @@ class ChartViewController: UIViewController {
         
         self.scrollViewWidth.constant = CGRectGetWidth(UIScreen.mainScreen().bounds) * 2
         self.secondViewLeading.constant = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        
+        categoryChartView.delegate = self
+        sevenDaysChartView.delegate = self
+        thirdWeeksChartView.delegate = self
     }
     
     override func viewDidLoad() {
@@ -60,15 +58,22 @@ class ChartViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "报表"
         
+        // 去除 tableView 多余的分割线
+        self.categoryTableView.tableFooterView = UIView()
+        self.categoryTableView.allowsSelection = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        hasAnimation = false
+        
         // 创建环形图
         self.preparePieChartWithCategory(self.chartVM.currentMonthWithCategory!)
         
-        // 创建每月消费走势图
-        prepareYearTrendChart(self.chartVM.currentYearWithTrend!)
+        // 创建七天消费柱状图
+        self.prepareSevenDaysBarChart()
         
-        // 去除 tableView 多余的分割线
-        self.categoryTableView.tableFooterView = UIView()
-        
+        // 创建三周消费走势图
+        self.prepareThirdWeeksTrendChart()
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,8 +93,6 @@ class ChartViewController: UIViewController {
     */
     
     // MARK: - 按钮功能
-    
-
     @IBAction func clickCategoryArrowLeft(sender: AnyObject) {
         let newDate = self.chartVM.gainDateForPreMonthWithCategory()
         self.chartVM.setConsumeCategoryArrWithDate(newDate)
@@ -101,27 +104,6 @@ class ChartViewController: UIViewController {
         self.chartVM.setConsumeCategoryArrWithDate(newDate)
         self.preparePieChartWithCategory(newDate)
     }
-    
-    @IBAction func clickMonthArrowLeft(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func clickMonthArrowRight(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func clickYearArrowLeft(sender: AnyObject) {
-        let newDate = self.chartVM.gainDateForPreYearTrend()
-        self.chartVM.setConsumeMonthTrendArrWithDate(newDate)
-        prepareYearTrendChart(newDate)
-    }
-    
-    @IBAction func clickYearArrowRight(sender: AnyObject) {
-        let newDate = self.chartVM.gainDateForNextYearTrend()
-        self.chartVM.setConsumeMonthTrendArrWithDate(newDate)
-        prepareYearTrendChart(newDate)        
-    }
-    
     
     
     // MARK: - 创建环形图
@@ -144,55 +126,106 @@ class ChartViewController: UIViewController {
     
     // 创建一个环形图
     func createPieChart(dataPoints: [String], values: [Double], money: Double) {
-        let dataEntries: [ChartDataEntry] = self.chartVM.createDataEntries(dataPoints, values: values)
+        let dataEntries: [ChartDataEntry] = self.chartVM.createDataEntries(dataPoints.count, values: values)
 
         let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "消费类别图")
-        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
-        
         // 设置颜色
         pieChartDataSet.colors = self.chartVM.setColorWithPie()
+        pieChartDataSet.sliceSpace = 2.0;
+        
+        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        
+        // 设置百分比格式
+        let pFormatter = NSNumberFormatter()
+        pFormatter.numberStyle = .PercentStyle
+        pFormatter.maximumFractionDigits = 1;
+        pFormatter.multiplier = 1.0;
+        pFormatter.percentSymbol = " %";
+        pieChartData.setValueFormatter(pFormatter)
         
         categoryChartView.data = pieChartData
         
-        categoryChartView.descriptionText = ""
-        
-        // 设置动画
-        categoryChartView.animate(xAxisDuration: 1.4, easingOption: .EaseOutBack)
+        categoryChartView.descriptionText         = ""
+        categoryChartView.usePercentValuesEnabled = true     // 使数乘100
+        categoryChartView.rotationAngle           = 0.0
+        categoryChartView.rotationEnabled         = true
+        categoryChartView.drawHoleEnabled         = true
         
         // 设置中心文字
-        categoryChartView.centerAttributedText = self.chartVM.setCenterTextWithPie("总消费\n￥\(money.convertToStrWithTwoFractionDigits())");
+        self.setCategoryChartCenterText("总消费\n￥\(money.convertToStrWithTwoFractionDigits())")
     }
     
-    // MARK: - 创建 走势图
+    /**
+     设置图表中心的文字
+     
+     - parameter text: 需要被设置的文字内容
+     */
+    func setCategoryChartCenterText(text: String) {
+        categoryChartView.centerAttributedText = self.chartVM.setPieChartCenterText(text);
+    }
     
-    // 创建一个月的每周消费走势图
-    func createMonthTrendChart(dataPoints: [String], values: [Double]) {
-        let lineChartDataSet = self.chartVM.createLineChartDataSet("月消费走势图", dataEntries: self.chartVM.createDataEntries(dataPoints, values: values), gradient: self.chartVM.createGradientRef("#00ff0000", chartColorStr: "#ffff0000"))
+    // MARK: - 创建 柱状图
+    
+    func prepareSevenDaysBarChart() {
+        if self.chartVM.consumeExpensesInSevenDays.maxElement() == 0.0 {
+            sevenDaysChartView.data = nil
+            sevenDaysChartView.noDataTextDescription = "您近七天来尚未记录消费"
+        }else {
+            createSevenDaysBarChart(self.chartVM.sevenDays, values: self.chartVM.consumeExpensesInSevenDays)
+        }
+    }
+    
+    // 创建七天消费柱状图
+    private func createSevenDaysBarChart(dataPoints: [String], values: [Double]) {
+        var dataEntries: [BarChartDataEntry] = []
         
-        monthChartView.data = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
+        for i in 0..<dataPoints.count {
+            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            dataEntries.append(dataEntry)
+        }
+        let barChartDataSet = self.chartVM.createBarChartDataSet("七天消费柱状图", dataEntries: dataEntries)
+        sevenDaysChartView.data = BarChartData(xVals: dataPoints, dataSets: [barChartDataSet])
+
+        sevenDaysChartView.descriptionText = ""
+        sevenDaysChartView.xAxis.labelPosition = .Bottom
+        sevenDaysChartView.xAxis.drawGridLinesEnabled = false     // 除去图中的竖线
+        sevenDaysChartView.leftAxis.drawGridLinesEnabled = false  // 除去图中的横线
+        sevenDaysChartView.rightAxis.enabled = false              // 隐藏右侧的坐标轴
+        sevenDaysChartView.leftAxis.axisMinValue = 0.0;           // 使柱状的和x坐标轴紧贴
+        sevenDaysChartView.setScaleEnabled(false)
     }
     
+    // MARK: - 创建走势图
     // 创建一年的每月消费走势图
     
-    func prepareYearTrendChart(date: NSDate) {
+    func prepareThirdWeeksTrendChart() {
         
         // 如果当年每月的消费记录中最大值为0， 说明当年未记录消费，则隐藏数据
-        if self.chartVM.consumeMonthTrendArr.maxElement() == 0.0 {
-            yearChartView.data = nil
+        if self.chartVM.consumeExpensesInLastThirdWeeks.count == 0 {
+            thirdWeeksChartView.data = nil
+            sevenDaysChartView.noDataTextDescription = "您近三周来尚未记录消费"
         }else {
-            createYearTrendChart(self.chartVM.months, values: self.chartVM.consumeMonthTrendArr)
+            createThirdWeeksTrendChart(self.chartVM.weekdays, values: self.chartVM.consumeExpensesInLastThirdWeeks)
         }
-        
-        self.yearCurrentTime.text = "\(date.year)年"
     }
     
-    func createYearTrendChart(dataPoints: [String], values: [Double]) {
-        let lineChartDataSet = self.chartVM.createLineChartDataSet("年消费走势图", dataEntries: self.chartVM.createDataEntries(dataPoints, values: values), gradient: self.chartVM.createGradientRef("#00ff0000", chartColorStr: "#ffff0000"))
+    private func createThirdWeeksTrendChart(dataPoints: [String], values: [[Double]]) {
+        // 配置图表数据
+        var dataEntries: [[ChartDataEntry]] = []
+        for i in 0..<3 {
+            dataEntries.append(self.chartVM.createDataEntries(dataPoints.count, values: values[i]))
+        }
         
-        yearChartView.noDataText = "本年度尚未记录消费情况"
-        yearChartView.descriptionText = ""
+        let lineChartDataSets = self.chartVM.createLineChartDataSets(dataEntries)
         
-        yearChartView.data = LineChartData(xVals: dataPoints, dataSet: lineChartDataSet)
+        // 配置图表
+        thirdWeeksChartView.noDataTextDescription = "本年度尚未记录消费情况"
+        thirdWeeksChartView.descriptionText = ""
+        thirdWeeksChartView.xAxis.drawGridLinesEnabled = false     // 除去图中的竖线
+        thirdWeeksChartView.leftAxis.drawGridLinesEnabled = false  // 除去图中的横线
+        thirdWeeksChartView.xAxis.labelPosition = .Bottom
+        
+        thirdWeeksChartView.data = LineChartData(xVals: dataPoints, dataSets: lineChartDataSets)
     }
 }
 
@@ -205,6 +238,15 @@ extension ChartViewController: UIScrollViewDelegate {
         let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         //设置pageController的当前页
         pageControl.currentPage = page
+        
+        // 设置动画
+        if page == 1 {
+            if hasAnimation == false {
+                hasAnimation = true
+                thirdWeeksChartView.animate(xAxisDuration: 2.0)
+                sevenDaysChartView.animate(xAxisDuration: 2.0)
+            }
+        }
     }
 }
 
@@ -218,12 +260,11 @@ extension ChartViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("FinanceCategory") as! FinanceOfCategoryTableViewCell
         
-        cell.prepareCollectionCellForChartView(self.chartVM.gainFinanceCategoryAtIndex(indexPath))
+        cell.prepareCollectionCellForChartView(self.chartVM.gainFinanceCategoryAt(indexPath.row))
         
         return cell;
     }
 }
-
 
 // MARK: - TableView 操作协议
 extension ChartViewController: UITableViewDelegate {
@@ -231,6 +272,34 @@ extension ChartViewController: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
+
+
+// MARK: - （Chart）图形中选择每个元素后的 Delegate
+extension ChartViewController: ChartViewDelegate {
+    
+    // 当 有元素被选中了
+    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+        if chartView == categoryChartView {
+            // 设置中心元素
+            let categoryConsume = self.chartVM.gainFinanceCategoryAt(entry.xIndex)
+            self.setCategoryChartCenterText("\(categoryConsume.categoryName)\n￥\(categoryConsume.categoryMoney.convertToStrWithTwoFractionDigits())")
+        }else if chartView == thirdWeeksChartView {
+            print("thirdWeeksChartView: \(entry) + \(dataSetIndex) + \(highlight)")
+        }else if chartView == sevenDaysChartView {
+            print("sevenDaysChartView: \(entry) + \(dataSetIndex) + \(highlight)")
+        }
+    }
+    
+    
+    func chartValueNothingSelected(chartView: ChartViewBase) {
+        if chartView == categoryChartView {
+            self.setCategoryChartCenterText("总消费\n￥\(self.chartVM.gainTotalExpense().convertToStrWithTwoFractionDigits())")
+        }
+    }
+}
+
+
+
 
 
 

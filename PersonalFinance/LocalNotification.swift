@@ -21,9 +21,8 @@ class LocalNotification: NSObject {
     
     // 月初提醒本月预算
     func createShowMonthBudgetNotification() {
-        let budget: Double = baseInfo.gainMonthBudget().doubleValue        
         // 设置触发时间为下个月1号8点
-        let notification =  prepareLocalNotication.createLocalNotification("您的本月预算为：\(budget.convertToStrWithTwoFractionDigits())", fireDate: NSDate().firstDayWithNextMonth(8))
+        let notification =  prepareLocalNotication.createLocalNotification("您的本月预算为：\(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())", fireDate: NSDate().firstDayWithNextMonth(8))
         
         // 设置触发周期为：每月
         notification.repeatInterval = .Month
@@ -44,9 +43,6 @@ class LocalNotification: NSObject {
     }
     
     
-    
-    
-    
     /*
      当用户每月消费了每月预算的 50%，80%的时候分别给出提示 
         示例： 警告：您已经消费了本月预算的50%，共500元，接下来您每天还可以使用XX元
@@ -58,7 +54,7 @@ class LocalNotification: NSObject {
         
         let fireDate = NSDate(timeInterval: 10.0, sinceDate: NSDate())
         
-        let dayExpense = (baseInfo.gainMonthBudget().doubleValue - baseInfo.monthExpense()) / Double(fireDate.monthDays - fireDate.day)
+        let dayExpense = (baseInfo.monthBudget() - baseInfo.monthExpense()) / Double(fireDate.monthDays - fireDate.day)
         
         let bodyInfo = "警告：您已经消费了本月预算的\(percent.convertToStrWithTwoFractionDigits())%，共 \(baseInfo.monthExpense().convertToStrWithTwoFractionDigits())元，接下来您每天还可以使用\(dayExpense.convertToStrWithTwoFractionDigits())元"
         
@@ -79,5 +75,21 @@ class LocalNotification: NSObject {
      * 忽视
      * 查看详情：点击后跳转至页面： 显示这两个月的消费情况（雷达图）
      */
-    
+    func createContrastWithLastAndCurrentMonthNotification() {
+        
+//        let fireDate = NSDate(timeInterval: 10.0, sinceDate: NSDate())
+//        
+//        let dayExpense = (baseInfo.monthBudget() - baseInfo.monthExpense()) / Double(fireDate.monthDays - fireDate.day)
+//        
+//        let bodyInfo = "警告：您已经消费了本月预算的\(percent.convertToStrWithTwoFractionDigits())%，共 \(baseInfo.monthExpense().convertToStrWithTwoFractionDigits())元，接下来您每天还可以使用\(dayExpense.convertToStrWithTwoFractionDigits())元"
+//        
+//        let workAction = NotificationAction(name: "立即查看", id: "PercentInMonthBudgetWorkAction")
+//        let relaxAction = NotificationAction(name: "忽略", id: "PercentInMonthBudgetRelaxAction")
+//        
+//        // 创建一个通知
+//        let notification =  prepareLocalNotication.createLocalNotificationWithTwoAction(bodyInfo, fireDate: fireDate, categoryID: "CategoryNotificationWithPercentInMonthBudget", workAction: workAction, relaxAction: relaxAction)
+//        
+//        // 启动 通知
+//        prepareLocalNotication.scheduleLocalNotification(notification)
+    }
 }

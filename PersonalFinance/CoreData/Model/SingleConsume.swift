@@ -68,6 +68,25 @@ class SingleConsume: NSManagedObject {
     }
     
     
+    
+    /**
+     获取指定日期的消费总额
+     
+     - parameter day: 指定日期内的任意时刻
+     
+     - returns: 指定日期内的消费总额
+     */
+    class func fetchExpensesInThisDay(day: NSDate) -> Double {
+        let consumes = SingleConsume.fetchCustomWithRangeDate(day.dayBegin(), dateEnd: day.dayEnd())
+        var expense: Double = 0.0
+        
+        for consume in consumes {
+            expense += (consume.money?.doubleValue)!
+        }
+        
+        return expense
+    }
+    
     // MARK: 消费列表使用的查询数据
     
     /**

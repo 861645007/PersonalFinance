@@ -16,31 +16,30 @@ class ChartViewModel: NSObject {
     var consumeTypeArr: [ConsumeCategory]?
     
     var currentMonthWithCategory: NSDate?
-    var currentYearWithTrend: NSDate?
     
     // MARK: - 图形部分变量
         /// 饼图数据的专用
     var consumeCategoryArr: [FinanceOfCategory]?
-    var consumeMonthTrendArr: [Double] = []
-    var consumeWeekTrendArr: [Double] = []
+    var consumeExpensesInSevenDays: [Double] = []
+    var consumeExpensesInLastThirdWeeks: [[Double]] = []
     
-    let months:[String] = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-    let weeks: [String] = ["第一周", "第二周", "第三周", "第四周"]
+    let weekdays: [String] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
+    let weeks: [String] = ["前两周", "前一周", "本周"]
+    var sevenDays: [String] = []
     
     
     override init() {
         super.init()
         
         // 变量处理
-        currentYearWithTrend = NSDate().startOf(.Year)
         currentMonthWithCategory = NSDate().endOf(.Month)
         
         // 获取 category 的数据
         self.gainAllConsumeType()
         
-        self.setConsumeCategoryArrWithDate(currentYearWithTrend!)
-        
-        self.setConsumeMonthTrendArrWithDate(currentMonthWithCategory!)
+        self.setConsumeCategoryArrWithDate(currentMonthWithCategory!)
+        self.setConsumeExpenseInSevenDaysWithTheDate()
+        self.setConsumeExpensesInLastThirdWeeks()
     }
     
     
@@ -52,14 +51,19 @@ class ChartViewModel: NSObject {
     }
     
     /**
-     设置指定时间的每月数据数组 consumeMonthTrendArr的数据值
-     
-     - parameter date: 指定的时间
+     设置七天内的数据数组
      */
-    func setConsumeMonthTrendArrWithDate(date: NSDate) {
-        consumeMonthTrendArr = self.gainDataWithMonthTrend(date)
+    func setConsumeExpenseInSevenDaysWithTheDate() {
+        sevenDays = gainDaysWithSevenDays(NSDate())
+        consumeExpensesInSevenDays = self.gainExpensesWithSevenDays(NSDate())
     }
     
+    /**
+     获取近三周的所有消费记录
+     */
+    func setConsumeExpensesInLastThirdWeeks() {
+        consumeExpensesInLastThirdWeeks = self.gainExpensesWithLastThridWeeks(NSDate())
+    }
     
     
     // MARK: - TableView 数据
@@ -67,18 +71,18 @@ class ChartViewModel: NSObject {
         return (self.consumeCategoryArr?.count)!
     }
     
-    func gainFinanceCategoryAtIndex(indexPath: NSIndexPath) -> FinanceOfCategory {
-        return self.consumeCategoryArr![indexPath.row]
+    func gainFinanceCategoryAt(index: NSInteger) -> FinanceOfCategory {
+        return self.consumeCategoryArr![index]
     }
     
     
     // MARK: - 图上数据配置操作
     
     // 创建 图 的数据实例
-    func createDataEntries(dataPoints: [String], values: [Double]) -> [ChartDataEntry] {
+    func createDataEntries(dataPointLengths: Int, values: [Double]) -> [ChartDataEntry] {
         var dataEntries: [ChartDataEntry] = []
         
-        for i in 0..<dataPoints.count {
+        for i in 0..<dataPointLengths {
             let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
             dataEntries.append(dataEntry)
         }
@@ -88,12 +92,12 @@ class ChartViewModel: NSObject {
     
     // MARK: - 环形图
     
-    func gainDateForPreMonthWithCategory() -> NSDate {
+    func gainDateForPreMonthWithCategory() ->NSDate {
         currentMonthWithCategory = currentMonthWithCategory! - 1.months
         return currentMonthWithCategory!
     }
     
-    func gainDateForNextMonthWithCategory() -> NSDate {
+    func gainDateForNextMonthWithCategory() ->NSDate {
         currentMonthWithCategory = currentMonthWithCategory! + 1.months
         return currentMonthWithCategory!
     }
@@ -113,7 +117,7 @@ class ChartViewModel: NSObject {
     }
     
     // 获取 各项名称
-    func gainCategoryNamesWithPie() -> [String] {
+    func gainCategoryNamesWithPie() ->[String] {
         var categoryNames: [String] = []
         
         for financeCategory: FinanceOfCategory in consumeCategoryArr! {
@@ -123,7 +127,7 @@ class ChartViewModel: NSObject {
     }
     
     // 获取各项值
-    func gainCategoryRatioWithPie() -> [Double] {
+    func gainCategoryRatioWithPie() ->[Double] {
         var categoryRatio: [Double] = []
         
         for financeCategory: FinanceOfCategory in consumeCategoryArr! {
@@ -145,7 +149,7 @@ class ChartViewModel: NSObject {
         return colors.copy() as! [NSUIColor]
     }
     
-    func setCenterTextWithPie(centerStr: String) -> NSAttributedString {
+    func setPieChartCenterText(centerStr: String) -> NSAttributedString {
         // 设置所需要的格式
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.Center
@@ -162,34 +166,36 @@ class ChartViewModel: NSObject {
     }
     
     // MARK: - 走势图
-    func gainDateForPreYearTrend() ->NSDate {
-        currentYearWithTrend = currentYearWithTrend! - 1.years
-        return currentYearWithTrend!
+    
+    // 创建数据集
+    func createLineChartDataSets(dataEntries: [[ChartDataEntry]]) -> [LineChartDataSet] {
+        var dataSets: [LineChartDataSet] = []
+        let colors = [ChartColorTemplates.vordiplom(), ChartColorTemplates.colorful(), ChartColorTemplates.joyful()]
+        
+        for i in 0..<weeks.count {
+            dataSets.append(self.createLineChartDataSet(weeks[i], dataEntries: dataEntries[i], colors: colors[i]))
+        }
+        
+        return dataSets
     }
     
-    func gainDateForNextYearTrend() ->NSDate {
-        currentYearWithTrend = currentYearWithTrend! + 1.years
-        return currentYearWithTrend!
-    }
     
-    // 创建 走势图上点和图 的颜色
-    func createGradientRef(pointColorStr: String, chartColorStr: String) -> CGGradientRef {
-        let gradientColors = [ChartColorTemplates.colorFromString(pointColorStr).CGColor, ChartColorTemplates.colorFromString(chartColorStr).CGColor]
-        return CGGradientCreateWithColors(nil, gradientColors, nil)!
-    }
-    
-    // 创建数据
-    func createLineChartDataSet(lineName: String, dataEntries: [ChartDataEntry], gradient: CGGradientRef) -> LineChartDataSet {
+    private func createLineChartDataSet(lineName: String, dataEntries: [ChartDataEntry], colors: [NSUIColor]) -> LineChartDataSet {
         let lineChartDataSet = LineChartDataSet(yVals: dataEntries, label: lineName)
         
-        lineChartDataSet.fillAlpha = 1.0
-        lineChartDataSet.fill = ChartFill.fillWithLinearGradient(gradient, angle: 90.0)
-        lineChartDataSet.drawCubicEnabled = true
-        lineChartDataSet.drawFilledEnabled = true
+        lineChartDataSet.colors = colors
+        lineChartDataSet.drawCirclesEnabled = false
         
         return lineChartDataSet
     }
     
+    
+    // 创建 柱状图数据
+    func createBarChartDataSet(lineName: String, dataEntries: [BarChartDataEntry]) -> BarChartDataSet {
+        let barChartDataSet = BarChartDataSet(yVals: dataEntries, label: lineName)
+        barChartDataSet.setColors(self.setColorWithPie(), alpha: 1.0)
+        return barChartDataSet
+    }
     
     
     // MARK: - 私有函数
@@ -202,7 +208,7 @@ class ChartViewModel: NSObject {
     private func gainDataWithCategory(date: NSDate) {
         consumeCategoryArr = []
         
-        let consumeArr:NSFetchedResultsController = SingleConsume.fetchConsumeWithPieChart(date)
+        let consumeArr: NSFetchedResultsController = SingleConsume.fetchConsumeWithPieChart(date)
         for section: NSFetchedResultsSectionInfo in consumeArr.sections! {
             // 获取 当前 消费类型
             var consumeCategory: ConsumeCategory!
@@ -232,31 +238,62 @@ class ChartViewModel: NSObject {
     
     
     
+    /**
+     获取七天内每天的消费额
+     
+     - returns: 含 每天的消费额 数组
+     */
+    private func gainExpensesWithSevenDays(today: NSDate) -> [Double] {
+        var expensesWithSavenDays: [Double] = []
+        
+        for i in 0..<7 {
+            expensesWithSavenDays.append(SingleConsume.fetchExpensesInThisDay(today - i.days))
+        }
+        
+        return expensesWithSavenDays.reverse()
+    }
+    
+    private func gainDaysWithSevenDays(today: NSDate) -> [String] {
+        var days: [String] = []
+        for i in 0..<7 {
+            if i == 0 {
+                days.append("今日")
+            }else {
+                days.append("\((today - i.days).day)日")
+            }
+        }
+        return days.reverse()
+    }
     
     /**
-     获取指定一年内的每月消费总额
+     获取近三周内的每天消费额（返回的数据格式：[[上上周],[上周],[本周]] ）
      
-     - parameter date: 这一年的随便一天（一般为当前时间）
+     - parameter today: 今天的任意时间
      
-     - returns: 每月消费总额
+     - returns: 返回三周的消费集合
      */
-    private func gainDataWithMonthTrend(date: NSDate) -> [Double] {
-        var monthExpenseList: [Double] = []
-        for i in 0..<12 {
-            let newDate = NSDate(year: date.year, month: i + 1, day: 1, hour: 1, minute: 1, second: 1)
+    func gainExpensesWithLastThridWeeks(today: NSDate) -> [[Double]] {
+        
+        // 获取一周之内的所有消费集合
+        func gainExpenseWithWeek(firstDayOfWeek: NSDate) -> [Double] {
+            var weekdayExpenses: [Double] = []
             
-            let consumeMonthList = SingleConsume.fetchConsumeWithMonthTrendChart(newDate)
-            
-            var monthExpense = 0.0
-            for singleConsume: SingleConsume in consumeMonthList {
-                monthExpense += (singleConsume.money?.doubleValue)!
+            for weekdayIndex in 0..<7 {
+                weekdayExpenses.append(SingleConsume.fetchExpensesInThisDay(firstDayOfWeek - weekdayIndex.days))
             }
-            
-            monthExpenseList.append(monthExpense)
+            return weekdayExpenses
         }
-        return monthExpenseList
+        
+        let firstDayOfWeek: NSDate = today.firstDayWithNextWeek(8) - 7.days
+        var allExpenses: [[Double]] = []
+        
+        for weekIndex in 0..<3 {
+            allExpenses.append(gainExpenseWithWeek(firstDayOfWeek - (weekIndex * 7).days))
+        }
+        
+        return allExpenses
     }
-
+    
     
     /**
      获取 所有的 Consume-Category
@@ -272,6 +309,5 @@ class ChartViewModel: NSObject {
             consumeTypeArr?.append(consumeType)
         }
         consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
-    }
-    
+    }    
 }

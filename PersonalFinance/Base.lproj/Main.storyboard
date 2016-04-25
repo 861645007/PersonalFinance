@@ -637,101 +637,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvW-ge-dGZ">
                                                 <rect key="frame" x="600" y="0.0" width="0.0" height="536"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyI-bo-wlT" customClass="LineChartView" customModule="Charts">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyI-bo-wlT" customClass="BarChartView" customModule="Charts">
                                                         <rect key="frame" x="0.0" y="30" width="0.0" height="263"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年4月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NK-dD-hiJ">
-                                                                <rect key="frame" x="-41" y="8" width="83" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nq-Cb-zuo">
-                                                                <rect key="frame" x="50" y="6" width="25" height="25"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="25" id="4PA-2D-nNr"/>
-                                                                    <constraint firstAttribute="width" constant="25" id="gWK-ho-LeL"/>
-                                                                </constraints>
-                                                                <state key="normal" image="arrow-right"/>
-                                                                <connections>
-                                                                    <action selector="clickMonthArrowRight:" destination="RF3-ga-HDM" eventType="touchUpInside" id="qbg-9X-fLf"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22u-a8-Mg4">
-                                                                <rect key="frame" x="-74" y="6" width="25" height="25"/>
-                                                                <state key="normal" image="arrow-left"/>
-                                                                <connections>
-                                                                    <action selector="clickMonthArrowLeft:" destination="RF3-ga-HDM" eventType="touchUpInside" id="aaG-1m-cSC"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXo-Ve-82G" customClass="LineChartView" customModule="Charts">
-                                                                <rect key="frame" x="0.0" y="37" width="0.0" height="226"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="dXo-Ve-82G" secondAttribute="trailing" id="4Bb-XL-AuO"/>
-                                                            <constraint firstItem="5NK-dD-hiJ" firstAttribute="leading" secondItem="22u-a8-Mg4" secondAttribute="trailing" constant="8" id="CEW-21-p3E"/>
-                                                            <constraint firstItem="22u-a8-Mg4" firstAttribute="width" secondItem="4nq-Cb-zuo" secondAttribute="width" id="EXf-fM-Nhy"/>
-                                                            <constraint firstItem="5NK-dD-hiJ" firstAttribute="top" secondItem="zyI-bo-wlT" secondAttribute="top" constant="8" id="N9F-2B-QsR"/>
-                                                            <constraint firstItem="4nq-Cb-zuo" firstAttribute="centerY" secondItem="5NK-dD-hiJ" secondAttribute="centerY" id="Nlc-1C-uHV"/>
-                                                            <constraint firstAttribute="bottom" secondItem="dXo-Ve-82G" secondAttribute="bottom" id="PfP-wg-Grw"/>
-                                                            <constraint firstItem="22u-a8-Mg4" firstAttribute="height" secondItem="4nq-Cb-zuo" secondAttribute="height" id="RLw-zB-aMq"/>
-                                                            <constraint firstItem="22u-a8-Mg4" firstAttribute="centerY" secondItem="5NK-dD-hiJ" secondAttribute="centerY" id="agN-5h-zJr"/>
-                                                            <constraint firstItem="5NK-dD-hiJ" firstAttribute="centerX" secondItem="zyI-bo-wlT" secondAttribute="centerX" id="eb8-ne-yFO"/>
-                                                            <constraint firstItem="dXo-Ve-82G" firstAttribute="leading" secondItem="zyI-bo-wlT" secondAttribute="leading" id="gmk-lu-pP6"/>
-                                                            <constraint firstItem="4nq-Cb-zuo" firstAttribute="leading" secondItem="5NK-dD-hiJ" secondAttribute="trailing" constant="8" id="h53-bW-BYi"/>
-                                                            <constraint firstItem="dXo-Ve-82G" firstAttribute="top" secondItem="5NK-dD-hiJ" secondAttribute="bottom" constant="8" id="u60-Y8-Uy7"/>
-                                                        </constraints>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyK-W6-m6B" customClass="LineChartView" customModule="Charts">
                                                         <rect key="frame" x="0.0" y="293" width="0.0" height="243"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifs-Ef-8Ll">
-                                                                <rect key="frame" x="-28" y="8" width="56" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mY-Pl-AQo">
-                                                                <rect key="frame" x="36" y="6" width="25" height="25"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="25" id="0xM-W8-7xB"/>
-                                                                    <constraint firstAttribute="height" constant="25" id="og5-DX-T64"/>
-                                                                </constraints>
-                                                                <state key="normal" image="arrow-right"/>
-                                                                <connections>
-                                                                    <action selector="clickYearArrowRight:" destination="RF3-ga-HDM" eventType="touchUpInside" id="0kG-3x-Pca"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IKf-nT-nwM">
-                                                                <rect key="frame" x="-61" y="6" width="25" height="25"/>
-                                                                <state key="normal" image="arrow-left"/>
-                                                                <connections>
-                                                                    <action selector="clickYearArrowLeft:" destination="RF3-ga-HDM" eventType="touchUpInside" id="7zp-0O-2im"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dxm-gV-NV0" customClass="LineChartView" customModule="Charts">
-                                                                <rect key="frame" x="0.0" y="37" width="0.0" height="206"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </view>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstItem="IKf-nT-nwM" firstAttribute="centerY" secondItem="ifs-Ef-8Ll" secondAttribute="centerY" id="4A6-47-tO4"/>
-                                                            <constraint firstItem="2mY-Pl-AQo" firstAttribute="centerY" secondItem="ifs-Ef-8Ll" secondAttribute="centerY" id="EBF-1m-109"/>
-                                                            <constraint firstItem="Dxm-gV-NV0" firstAttribute="leading" secondItem="yyK-W6-m6B" secondAttribute="leading" id="FQu-IM-bsj"/>
-                                                            <constraint firstItem="IKf-nT-nwM" firstAttribute="height" secondItem="2mY-Pl-AQo" secondAttribute="height" id="QS3-6T-5Ap"/>
-                                                            <constraint firstItem="Dxm-gV-NV0" firstAttribute="top" secondItem="ifs-Ef-8Ll" secondAttribute="bottom" constant="8" id="SoA-S2-1ej"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Dxm-gV-NV0" secondAttribute="bottom" id="UgY-Mn-lxE"/>
-                                                            <constraint firstItem="ifs-Ef-8Ll" firstAttribute="leading" secondItem="IKf-nT-nwM" secondAttribute="trailing" constant="8" id="bcz-x6-RI4"/>
-                                                            <constraint firstItem="IKf-nT-nwM" firstAttribute="width" secondItem="2mY-Pl-AQo" secondAttribute="width" id="jfT-ck-atJ"/>
-                                                            <constraint firstItem="ifs-Ef-8Ll" firstAttribute="top" secondItem="yyK-W6-m6B" secondAttribute="top" constant="8" id="rAZ-9t-lxl"/>
-                                                            <constraint firstItem="2mY-Pl-AQo" firstAttribute="leading" secondItem="ifs-Ef-8Ll" secondAttribute="trailing" constant="8" id="sSI-Ie-bWx"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Dxm-gV-NV0" secondAttribute="trailing" id="ufo-xn-i5H"/>
-                                                            <constraint firstItem="ifs-Ef-8Ll" firstAttribute="centerX" secondItem="yyK-W6-m6B" secondAttribute="centerX" id="v9t-b6-SiW"/>
-                                                        </constraints>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -797,17 +709,11 @@
                         <outlet property="categoryChartView" destination="HWa-Xa-H5S" id="CdB-bM-72d"/>
                         <outlet property="categoryCurrentTime" destination="5az-99-xK1" id="plo-vT-mSH"/>
                         <outlet property="categoryTableView" destination="8iP-ab-5wD" id="aX5-mS-KWK"/>
-                        <outlet property="monthArrowLeft" destination="22u-a8-Mg4" id="QPh-Co-NAP"/>
-                        <outlet property="monthArrowRight" destination="4nq-Cb-zuo" id="GOo-1o-2fM"/>
-                        <outlet property="monthChartView" destination="dXo-Ve-82G" id="8wM-EA-L83"/>
-                        <outlet property="monthCurrentTime" destination="5NK-dD-hiJ" id="vVk-E6-Tep"/>
                         <outlet property="pageControl" destination="ReL-2G-zcG" id="iHq-eF-OLr"/>
                         <outlet property="scrollViewWidth" destination="zqK-DY-2nt" id="4sZ-UG-awu"/>
                         <outlet property="secondViewLeading" destination="TXM-hP-77m" id="oJ8-BK-IzP"/>
-                        <outlet property="yearArrowLeft" destination="IKf-nT-nwM" id="Fsr-Ca-l49"/>
-                        <outlet property="yearArrowRight" destination="2mY-Pl-AQo" id="So5-fQ-oDd"/>
-                        <outlet property="yearChartView" destination="Dxm-gV-NV0" id="BhS-rR-Eqj"/>
-                        <outlet property="yearCurrentTime" destination="ifs-Ef-8Ll" id="WKD-9Y-JNO"/>
+                        <outlet property="sevenDaysChartView" destination="zyI-bo-wlT" id="gA6-8R-Y3b"/>
+                        <outlet property="thirdWeeksChartView" destination="yyK-W6-m6B" id="MXZ-1i-Hof"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5g-f9-caZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

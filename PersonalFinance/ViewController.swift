@@ -28,11 +28,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // 设置导航栏透明
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.translucent = true
-        
         // 设置三个按钮圆角
         self.setBtnCornerRadius(self.recordConsumeBtn)
         self.setBtnCornerRadius(self.todayConsumeBtn)
@@ -47,6 +42,10 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // 设置导航栏透明
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
+        self.navigationController?.navigationBar.shadowImage = UIImage()
 
         self.todayExpenseLabel.text = "今日消费：￥\(mainVM.gainDayExpense().convertToStrWithTwoFractionDigits())"
         self.monthExpenseLabel.text = "本月消费：￥\(mainVM.gainMonthExpense().convertToStrWithTwoFractionDigits())"
@@ -58,6 +57,14 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         // 每次进入主页面的时候，重新加载水波图
         self.waterWaveView.startWave()
+        
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(true)
+        // 取消其他页面的导航栏透明
+        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default);
+        self.navigationController?.navigationBar.shadowImage = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,6 +73,8 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        segue.destinationViewController.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
+        segue.destinationViewController.navigationController?.navigationBar.shadowImage = nil
     }
     
     // 设置按钮圆角

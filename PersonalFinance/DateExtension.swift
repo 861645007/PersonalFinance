@@ -118,7 +118,7 @@ extension NSDate {
                 return NSDate(year: self.year, month: self.month, day: lastDayOfThisWeek! + 1, hour: hour)
             }
         }else {
-            return self + 1.days
+            return NSDate(year: self.year, month: self.month, day: lastDayOfThisWeek!, hour: hour) + 1.days
         }
     }
 }
