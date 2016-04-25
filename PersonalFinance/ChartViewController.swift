@@ -164,8 +164,7 @@ class ChartViewController: UIViewController {
         categoryChartView.centerAttributedText = self.chartVM.setPieChartCenterText(text);
     }
     
-    // MARK: - 创建 柱状图
-    
+    // MARK: - 创建 柱状图    
     func prepareSevenDaysBarChart() {
         if self.chartVM.consumeExpensesInSevenDays.maxElement() == 0.0 {
             sevenDaysChartView.data = nil

@@ -93,6 +93,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         VENTouchLock.sharedInstance().setKeychainService("com.wanghuanqiang.PersonalFinance", keychainAccount: (infoDictionary!["CFBundleDisplayName"] as! String), touchIDReason: "通过Home键验证已有的手机指纹", passcodeAttemptLimit: 10, splashViewControllerClass: SampleSplashViewController().classForCoder)
         
+        // 注册本地通知
+        PrepareLocalNotification.sharedInstance.registerUserNotificationSettings()
+        
         // 初始化基础数据 和 加载引导页面
         let sharedBaseInfo = BaseInfo.sharedBaseInfo
         if !sharedBaseInfo.gainOnBoardSymbol() {
@@ -105,7 +108,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // 判断所存的时间是不是今天（新的一天），不是的话，进行操作
-        sharedBaseInfo.judgeTimeWhenFirstUseInEveryDay(NSDate())        
+        sharedBaseInfo.judgeTimeWhenFirstUseInEveryDay(NSDate())
+        
+        
+        // 通知测试
+//        LocalNotification.sharedInstance.createContrastWithLastAndCurrentMonthNotification((50.0).convertToStrWithTwoFractionDigits())
+        LocalNotification.sharedInstance.createPercentWithMonthBudgetNotification()
         
         return true
     }
@@ -122,6 +130,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return false
     }
+    
+    // MARK: - 接受通知事件
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        
+        if identifier == PercentInMonthBudgetWorkAction {
+            print("点击了按钮 PercentInMonthBudgetWorkAction")
+        }
+        
+        completionHandler()
+    }
+    
+    // 通知回调函数
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        PrepareLocalNotification.sharedInstance.removeBadgeNumber()
+        print("点击了按钮 didReceiveLocalNotification")
+    }
+    
+    
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

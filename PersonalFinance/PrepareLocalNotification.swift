@@ -44,7 +44,7 @@ class PrepareLocalNotification: NSObject {
         
         let relaxingAction = self.createNotificationAction(relaxAction.name, id: relaxAction.id, activationMode: false)
         
-        createNotificationCategory(categoryID, actions: [workingAction, relaxingAction])
+        registerNotificationCategory(categoryID, actions: [workingAction, relaxingAction])
         
         return self.createLocalNotification(bodyInfo, fireDate: fireDate, categoryID: categoryID)
     }
@@ -57,7 +57,7 @@ class PrepareLocalNotification: NSObject {
      - parameter identifier: Category 的 ID（这个非常重要）
      - parameter actions:    按钮集合
      */
-    func createNotificationCategory(identifier: String, actions: [UIUserNotificationAction]) {
+    func registerNotificationCategory(identifier: String, actions: [UIUserNotificationAction]) {
         
         let notificationCompleteCategory: UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         //记住这个identifier ，待会用
@@ -80,7 +80,7 @@ class PrepareLocalNotification: NSObject {
      
      - returns: 返回一个交互按钮
      */
-    func createNotificationAction(title: String, id: String, activationMode: Bool) -> UIUserNotificationAction {
+    func createNotificationAction(title: String, id: String, activationMode: Bool) -> UIMutableUserNotificationAction {
         let notificationAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         notificationAction.title = title
         notificationAction.identifier = id
@@ -108,7 +108,7 @@ class PrepareLocalNotification: NSObject {
     
     
     // MARK: - 注册本地通知
-    func registerUserNotificationSettings(notificationCategory: [AnyObject]?) {
+    func registerUserNotificationSettings(notificationCategory: [AnyObject]? = nil) {
         let set = (notificationCategory != nil) ? NSSet(array: notificationCategory!) as? Set<UIUserNotificationCategory> : nil
         
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound , .Alert , .Badge], categories: set ))
@@ -127,15 +127,5 @@ class PrepareLocalNotification: NSObject {
     func removeBadgeNumber() {
         UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

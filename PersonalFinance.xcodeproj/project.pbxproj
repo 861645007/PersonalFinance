@@ -386,6 +386,20 @@
 			path = PersonalFinanceTodayWidget;
 			sourceTree = "<group>";
 		};
+		7A51605D1CCE2E6900D6A71F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		7A51605E1CCE2E7000D6A71F /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		7A614FC31C5C77D700BEE1B8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,6 +605,7 @@
 		7AF073601C5D9D7B00221F17 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7A51605D1CCE2E6900D6A71F /* New Group */,
 				7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */,
 				7AEE21161CB6224F00BC9985 /* Chart View Controller */,
 				7A2136E41CC4CDE2000737CF /* Add New Category View Controller */,
@@ -603,6 +618,7 @@
 		7AF073611C5D9D8700221F17 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7A51605E1CCE2E7000D6A71F /* New Group */,
 				7A2B3ECE1CC0A87600D751D5 /* Setting  View Model */,
 				7A444F541CB77D0000324267 /* Chart View Model */,
 				7A2136E71CC4CE27000737CF /* Add New Category */,
