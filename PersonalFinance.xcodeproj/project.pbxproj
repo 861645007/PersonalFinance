@@ -38,7 +38,6 @@
 		7A47C0AE1CC8BA210003F25A /* PersonalFinanceTodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 7A47C0A21CC8BA210003F25A /* PersonalFinanceTodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7A47C0B51CC8BB5A0003F25A /* ShareWithGroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47C0B41CC8BB5A0003F25A /* ShareWithGroupOperation.swift */; };
 		7A47C0B61CC8BCCE0003F25A /* ShareWithGroupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47C0B41CC8BB5A0003F25A /* ShareWithGroupOperation.swift */; };
-		7A47C0B71CC8C1E20003F25A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B31C58F07F009AD0A7 /* Assets.xcassets */; };
 		7A47C1081CC8FAF80003F25A /* BaseDataInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */; };
 		7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC51C5C780900BEE1B8 /* DateExtension.swift */; };
 		7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */; };
@@ -70,6 +69,7 @@
 		7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50B1C5A340600EF2200 /* RAC.swift */; };
 		7ACEF5121C5A39F500EF2200 /* SingleCustomServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */; };
 		7ACEF5161C5A3A2B00EF2200 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */; };
+		7AD844A91CD0CABA003FEE05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B31C58F07F009AD0A7 /* Assets.xcassets */; };
 		7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */; };
 		7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE21181CB622A400BC9985 /* ChartViewController.swift */; };
 		7AF0736A1C5DA75200221F17 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073671C5DA75200221F17 /* TYWaterWaveView.m */; };
@@ -824,7 +824,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A47C0B71CC8C1E20003F25A /* Assets.xcassets in Resources */,
+				7AD844A91CD0CABA003FEE05 /* Assets.xcassets in Resources */,
 				7A47C0AA1CC8BA210003F25A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,6 +23,7 @@ class MonthConsumeViewController: UIViewController {
         self.title = "本月消费"
         
         monthConsumeTableView.tableFooterView = UIView()
+        monthConsumeTableView.allowsSelection = true
     }
     
     override func viewWillAppear(animated: Bool) {

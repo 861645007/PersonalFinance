@@ -9,6 +9,8 @@
 import UIKit
 
 let AddNewConsumeInWidgetNotification = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
+let ShowMonthConsumesVCNotification = "ShowMonthConsumesVCNotification"
+
 
 class ViewController: UIViewController {
     
@@ -38,6 +40,10 @@ class ViewController: UIViewController {
         
         // 配置 点击 Today Widget 的新增按钮的页面跳转操作
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showAddNewConsumeVC), name: AddNewConsumeInWidgetNotification, object: nil)
+        
+        
+        // 配置通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMonthConsumesVC), name: ShowMonthConsumesVCNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -57,14 +63,16 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         // 每次进入主页面的时候，重新加载水波图
         self.waterWaveView.startWave()
-        
     }
+    
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(true)
         // 取消其他页面的导航栏透明
         self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default);
         self.navigationController?.navigationBar.shadowImage = nil
+        
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: ShowMonthConsumesVCNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,8 +81,8 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        segue.destinationViewController.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
-        segue.destinationViewController.navigationController?.navigationBar.shadowImage = nil
+//        segue.destinationViewController.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
+//        segue.destinationViewController.navigationController?.navigationBar.shadowImage = nil
     }
     
     // 设置按钮圆角
@@ -113,6 +121,11 @@ class ViewController: UIViewController {
     func showAddNewConsumeVC() {
         let addNewConsumeVC = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController
         self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
+    }
+    
+    func showMonthConsumesVC() {
+        let monthConsumesVC = self.storyboard?.instantiateViewControllerWithIdentifier("MonthConsumeViewController") as! MonthConsumeViewController
+        self.navigationController?.pushViewController(monthConsumesVC, animated: true)
     }
 }
 

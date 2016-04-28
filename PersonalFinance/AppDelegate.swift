@@ -83,10 +83,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // 配置 NSUserDefaults iCloud Sync
-//        MKiCloudSync.startWithPrefix("")
+        MKiCloudSync.startWithPrefix("")
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(kMKiCloudSyncNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
+//            <#code#>
+        }
         
         // 配置 Fabric, Crashlytics
         Fabric.with([Crashlytics.self])
+        
         
         // 配置密码锁
         let infoDictionary = NSBundle.mainBundle().infoDictionary
@@ -113,7 +118,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // 通知测试
 //        LocalNotification.sharedInstance.createContrastWithLastAndCurrentMonthNotification((50.0).convertToStrWithTwoFractionDigits())
-        LocalNotification.sharedInstance.createPercentWithMonthBudgetNotification()
+//        LocalNotification.sharedInstance.createPercentWithMonthBudgetNotification(50.0)
+        
         
         return true
     }
@@ -134,9 +140,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - 接受通知事件
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         
-        
         if identifier == PercentInMonthBudgetWorkAction {
-            print("点击了按钮 PercentInMonthBudgetWorkAction")
+            NSNotificationCenter.defaultCenter().postNotificationName(ShowMonthConsumesVCNotification, object: nil)
         }
         
         completionHandler()
