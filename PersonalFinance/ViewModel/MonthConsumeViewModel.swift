@@ -88,11 +88,9 @@ class MonthConsumeViewModel: NSObject {
     }
     
     private func gainMonthConsumeMoney() -> Double {
-        var money = 0.0
-        for dayConsume: DayConsumeInfo in monthConsumeArr! {
-            money += dayConsume.dayExpense
-        }
-        return money
+        return monthConsumeArr!.reduce(0.0, combine: {
+            $0 + $1.dayExpense
+        })
     }
     
 }

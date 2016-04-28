@@ -24,7 +24,7 @@ class ChartViewModel: NSObject {
     var consumeExpensesInLastThirdWeeks: [[Double]] = []
     
     let weekdays: [String] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
-    let weeks: [String] = ["前两周", "前一周", "本周"]
+    let weeks: [String] = ["本周", "前一周", "前两周"]
     var sevenDays: [String] = []
     
     
@@ -108,32 +108,23 @@ class ChartViewModel: NSObject {
      - returns: 当月总消费额
      */
     func gainTotalExpense() ->Double {
-        var monthExpense = 0.0
-        
-        for financeCategory: FinanceOfCategory in consumeCategoryArr! {
-            monthExpense += financeCategory.categoryMoney
-        }
-        return monthExpense
+        return consumeCategoryArr!.reduce(0.0, combine: {
+            $0 + $1.categoryMoney
+        })
     }
     
     // 获取 各项名称
     func gainCategoryNamesWithPie() ->[String] {
-        var categoryNames: [String] = []
-        
-        for financeCategory: FinanceOfCategory in consumeCategoryArr! {
-            categoryNames.append(financeCategory.categoryName)
-        }
-        return categoryNames
+        return consumeCategoryArr!.map({ (financeCategory: FinanceOfCategory) in
+            financeCategory.categoryName
+        })
     }
     
     // 获取各项值
     func gainCategoryRatioWithPie() ->[Double] {
-        var categoryRatio: [Double] = []
-        
-        for financeCategory: FinanceOfCategory in consumeCategoryArr! {
-            categoryRatio.append(financeCategory.categoryRatio)
-        }
-        return categoryRatio
+        return consumeCategoryArr!.map({
+            $0.categoryRatio
+        })
     }
     
     // 设置颜色
@@ -170,7 +161,7 @@ class ChartViewModel: NSObject {
     // 创建数据集
     func createLineChartDataSets(dataEntries: [[ChartDataEntry]]) -> [LineChartDataSet] {
         var dataSets: [LineChartDataSet] = []
-        let colors = [ChartColorTemplates.vordiplom(), ChartColorTemplates.colorful(), ChartColorTemplates.joyful()]
+        let colors = [[NSUIColor.redColor()], [NSUIColor.blueColor()],[NSUIColor.yellowColor()]]
         
         for i in 0..<weeks.count {
             dataSets.append(self.createLineChartDataSet(weeks[i], dataEntries: dataEntries[i], colors: colors[i]))
@@ -244,54 +235,36 @@ class ChartViewModel: NSObject {
      - returns: 含 每天的消费额 数组
      */
     private func gainExpensesWithSevenDays(today: NSDate) -> [Double] {
-        var expensesWithSavenDays: [Double] = []
-        
-        for i in 0..<7 {
-            expensesWithSavenDays.append(SingleConsume.fetchExpensesInThisDay(today - i.days))
-        }
-        
-        return expensesWithSavenDays.reverse()
+        return  (0..<7).map {
+            SingleConsume.fetchExpensesInThisDay(NSDate() - $0.days)
+        }.reverse()
     }
     
     private func gainDaysWithSevenDays(today: NSDate) -> [String] {
-        var days: [String] = []
-        for i in 0..<7 {
-            if i == 0 {
-                days.append("今日")
+        return (0..<7).map {
+            if $0 == 0 {
+               return "今日"
             }else {
-                days.append("\((today - i.days).day)日")
+                return "\((today - $0.days).day)日"
             }
-        }
-        return days.reverse()
+        }.reverse()
     }
     
     /**
-     获取近三周内的每天消费额（返回的数据格式：[[上上周],[上周],[本周]] ）
+     获取近三周内的每天消费额（返回的数据格式：[[本周],[上周],[上上周]] ）
      
      - parameter today: 今天的任意时间
      
      - returns: 返回三周的消费集合
      */
     func gainExpensesWithLastThridWeeks(today: NSDate) -> [[Double]] {
-        
-        // 获取一周之内的所有消费集合
-        func gainExpenseWithWeek(firstDayOfWeek: NSDate) -> [Double] {
-            var weekdayExpenses: [Double] = []
-            
-            for weekdayIndex in 0..<7 {
-                weekdayExpenses.append(SingleConsume.fetchExpensesInThisDay(firstDayOfWeek - weekdayIndex.days))
-            }
-            return weekdayExpenses
-        }
-        
         let firstDayOfWeek: NSDate = today.firstDayWithNextWeek(8) - 7.days
-        var allExpenses: [[Double]] = []
         
-        for weekIndex in 0..<3 {
-            allExpenses.append(gainExpenseWithWeek(firstDayOfWeek - (weekIndex * 7).days))
+        return (0..<3).map { (week: Int) in
+            return (0..<7).map {
+                SingleConsume.fetchExpensesInThisDay((firstDayOfWeek - (week * 7).days) - $0.days)
+            }
         }
-        
-        return allExpenses
     }
     
     
@@ -299,15 +272,10 @@ class ChartViewModel: NSObject {
      获取 所有的 Consume-Category
      */
     private func gainAllConsumeType() {
-        consumeTypeArr = []
-        
-        // 获取数据，并转换为 常规 数据类型（非Core Data中的存储类型）
-        let consumeList = Category.fetchAllConsumeCategoryWithUsed()
-        
-        for category: Category in consumeList {
-            let consumeType = ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
-            consumeTypeArr?.append(consumeType)
+        consumeTypeArr = Category.fetchAllConsumeCategoryWithUsed().map { (category: Category) in
+             ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
         }
+        
         consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
     }    
 }

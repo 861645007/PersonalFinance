@@ -24,7 +24,6 @@ class DayConsumeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "今日消费"
         dayConsumeTableView.tableFooterView = UIView()
-        dayConsumeTableView.allowsSelection = true
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -71,7 +70,7 @@ extension DayConsumeViewController: UITableViewDataSource {
 
 
 extension DayConsumeViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

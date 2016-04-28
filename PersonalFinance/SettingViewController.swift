@@ -25,7 +25,6 @@ class SettingViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         settingTableView.tableFooterView = UIView()
-        self.settingTableView.allowsSelection = true
     }
 
     override func didReceiveMemoryWarning() {

@@ -20,7 +20,6 @@ class ChartViewController: UIViewController {
     
     // 普通实例变量
     let chartVM: ChartViewModel = ChartViewModel()
-    var hasAnimation: Bool = false // 用来判断进入走势图的时候是否已经用过动画了
     
     
     // 控制视图 实例变量
@@ -60,12 +59,9 @@ class ChartViewController: UIViewController {
         
         // 去除 tableView 多余的分割线
         self.categoryTableView.tableFooterView = UIView()
-        self.categoryTableView.allowsSelection = true
     }
     
     override func viewWillAppear(animated: Bool) {
-        hasAnimation = false
-        
         // 创建环形图
         self.preparePieChartWithCategory(self.chartVM.currentMonthWithCategory!)
         
@@ -151,6 +147,8 @@ class ChartViewController: UIViewController {
         categoryChartView.rotationEnabled         = true
         categoryChartView.drawHoleEnabled         = true
         
+        categoryChartView.animate(xAxisDuration: 2.0, easingOption: .EaseInOutBack)
+        
         // 设置中心文字
         self.setCategoryChartCenterText("总消费\n￥\(money.convertToStrWithTwoFractionDigits())")
     }
@@ -221,8 +219,10 @@ class ChartViewController: UIViewController {
         thirdWeeksChartView.noDataTextDescription = "本年度尚未记录消费情况"
         thirdWeeksChartView.descriptionText = ""
         thirdWeeksChartView.xAxis.drawGridLinesEnabled = false     // 除去图中的竖线
-        thirdWeeksChartView.leftAxis.drawGridLinesEnabled = false  // 除去图中的横线
+        thirdWeeksChartView.rightAxis.enabled = false              // 隐藏右侧的坐标轴
+        thirdWeeksChartView.leftAxis.axisMinValue = 0.0;           // 使x坐标轴紧贴
         thirdWeeksChartView.xAxis.labelPosition = .Bottom
+        thirdWeeksChartView.setScaleEnabled(false)
         
         thirdWeeksChartView.data = LineChartData(xVals: dataPoints, dataSets: lineChartDataSets)
     }
@@ -237,15 +237,6 @@ extension ChartViewController: UIScrollViewDelegate {
         let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         //设置pageController的当前页
         pageControl.currentPage = page
-        
-        // 设置动画
-        if page == 1 {
-            if hasAnimation == false {
-                hasAnimation = true
-                thirdWeeksChartView.animate(xAxisDuration: 2.0)
-                sevenDaysChartView.animate(xAxisDuration: 2.0)
-            }
-        }
     }
 }
 
@@ -267,7 +258,7 @@ extension ChartViewController: UITableViewDataSource {
 
 // MARK: - TableView 操作协议
 extension ChartViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }
@@ -283,9 +274,9 @@ extension ChartViewController: ChartViewDelegate {
             let categoryConsume = self.chartVM.gainFinanceCategoryAt(entry.xIndex)
             self.setCategoryChartCenterText("\(categoryConsume.categoryName)\n￥\(categoryConsume.categoryMoney.convertToStrWithTwoFractionDigits())")
         }else if chartView == thirdWeeksChartView {
-            print("thirdWeeksChartView: \(entry) + \(dataSetIndex) + \(highlight)")
+//            print("thirdWeeksChartView: \(entry) + \(dataSetIndex) + \(highlight)")
         }else if chartView == sevenDaysChartView {
-            print("sevenDaysChartView: \(entry) + \(dataSetIndex) + \(highlight)")
+//            print("sevenDaysChartView: \(entry) + \(dataSetIndex) + \(highlight)")
         }
     }
     

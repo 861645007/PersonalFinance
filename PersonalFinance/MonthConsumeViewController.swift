@@ -23,7 +23,6 @@ class MonthConsumeViewController: UIViewController {
         self.title = "本月消费"
         
         monthConsumeTableView.tableFooterView = UIView()
-        monthConsumeTableView.allowsSelection = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -92,7 +91,7 @@ extension MonthConsumeViewController: UITableViewDataSource {
 
 
 extension MonthConsumeViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 }

@@ -32,17 +32,11 @@ class AddNewCustomViewModel: NSObject {
      获取 所有的 Consume-Category
      */
     func gainAllConsumeType() {
-        consumeTypeArr = []
-        
-        // 获取数据，并转换为 常规 数据类型（非Core Data中的存储类型）
-        let consumeList = Category.fetchAllConsumeCategoryWithUsed()
-        
-        for category: Category in consumeList {
-            let consumeType = ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
-            consumeTypeArr?.append(consumeType)
+        consumeTypeArr = Category.fetchAllConsumeCategoryWithUsed().map { (category: Category) in
+            ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
         }
-        consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
         
+        consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
     }
     
     

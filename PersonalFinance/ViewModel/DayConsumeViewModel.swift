@@ -51,11 +51,9 @@ class DayConsumeViewModel: NSObject {
     
     
     private func gainDayConsumeMoney() -> Double {
-        var money = 0.0
-        for singleConsume: SingleConsume in dayConsumeArr! {
-            money += singleConsume.money!.doubleValue
-        }
-        return money
+        return dayConsumeArr!.reduce(0.0, combine: {
+            $0 + $1.money!.doubleValue
+        })
     }
     
     

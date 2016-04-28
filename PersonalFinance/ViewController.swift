@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 let AddNewConsumeInWidgetNotification = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
 let ShowMonthConsumesVCNotification = "ShowMonthConsumesVCNotification"
