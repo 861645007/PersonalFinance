@@ -200,12 +200,12 @@
                   moduleName = "PersonalFinance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "483504687.368785"
+                  timestampString = "484107663.881504"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "216"
                   endingLineNumber = "216"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "19">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -215,12 +215,12 @@
                   moduleName = "PersonalFinance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "483504687.368969"
+                  timestampString = "484107663.881754"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "217"
                   endingLineNumber = "217"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -264,12 +264,91 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/ChartViewController.swift"
-            timestampString = "483504686.113897"
+            timestampString = "484107662.050762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "tableView(_:didselectRowAtIndexPath:)"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalFinanceTests/NSDateExtensionTest.swift"
+            timestampString = "483590156.117201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "testFirstDayWithNextWeek()"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalFinanceTests.NSDateExtensionTest.testFirstDayWithNextWeek () -&gt; ()"
+                  moduleName = "PersonalFinanceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinanceTests/NSDateExtensionTest.swift"
+                  timestampString = "483590006.139893"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalFinanceTests.NSDateExtensionTest.(testFirstDayWithNextWeek () -&gt; ()).(implicit closure #1)"
+                  moduleName = "PersonalFinanceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinanceTests/NSDateExtensionTest.swift"
+                  timestampString = "483590006.140217"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "33">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PersonalFinanceTests.NSDateExtensionTest.(testFirstDayWithNextWeek () -&gt; ()).(implicit closure #3)"
+                  moduleName = "PersonalFinanceTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinanceTests/NSDateExtensionTest.swift"
+                  timestampString = "483590006.140694"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PersonalFinance/CustomTypeCollectionViewCell.swift"
+            timestampString = "483593232.402568"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "moveToMenu(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

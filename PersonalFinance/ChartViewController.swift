@@ -39,12 +39,15 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var thirdWeeksChartView: LineChartView!
     
     
+    let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
+    
+    
     // 设置 UIScrollView 约束
     override func updateViewConstraints() {
         super.updateViewConstraints()
         
-        self.scrollViewWidth.constant = CGRectGetWidth(UIScreen.mainScreen().bounds) * 2
-        self.secondViewLeading.constant = CGRectGetWidth(UIScreen.mainScreen().bounds)
+        self.scrollViewWidth.constant = screenWidth * 2
+        self.secondViewLeading.constant = screenWidth
         
         categoryChartView.delegate = self
         sevenDaysChartView.delegate = self
@@ -183,13 +186,16 @@ class ChartViewController: UIViewController {
         let barChartDataSet = self.chartVM.createBarChartDataSet("七天消费柱状图", dataEntries: dataEntries)
         sevenDaysChartView.data = BarChartData(xVals: dataPoints, dataSets: [barChartDataSet])
 
-        sevenDaysChartView.descriptionText = ""
-        sevenDaysChartView.xAxis.labelPosition = .Bottom
-        sevenDaysChartView.xAxis.drawGridLinesEnabled = false     // 除去图中的竖线
-        sevenDaysChartView.leftAxis.drawGridLinesEnabled = false  // 除去图中的横线
-        sevenDaysChartView.rightAxis.enabled = false              // 隐藏右侧的坐标轴
-        sevenDaysChartView.leftAxis.axisMinValue = 0.0;           // 使柱状的和x坐标轴紧贴
+        sevenDaysChartView.descriptionText               = ""
+        sevenDaysChartView.xAxis.labelPosition           = .Bottom
+        sevenDaysChartView.xAxis.drawGridLinesEnabled    = false       // 除去图中的竖线
+        sevenDaysChartView.leftAxis.drawGridLinesEnabled = false       // 除去图中的横线
+        sevenDaysChartView.rightAxis.enabled             = false       // 隐藏右侧的坐标轴
+        sevenDaysChartView.leftAxis.axisMinValue         = 0.0;        // 使柱状的和x坐标轴紧贴
         sevenDaysChartView.setScaleEnabled(false)
+        
+        // WARNING: - 待测试
+        sevenDaysChartView.xAxis.spaceBetweenLabels      = 1
     }
     
     // MARK: - 创建走势图
@@ -238,7 +244,23 @@ extension ChartViewController: UIScrollViewDelegate {
         //设置pageController的当前页
         pageControl.currentPage = page
     }
+    
+    
+    
+    // 设置一定会滚动到指定另一个位置
+    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let targetOffset: CGPoint = self.nearestTargetOffsetForOffset(targetContentOffset.memory)
+        targetContentOffset.memory.x = targetOffset.x
+        targetContentOffset.memory.y = targetOffset.y
+    }
+    
+    func nearestTargetOffsetForOffset(offset: CGPoint) -> CGPoint {
+        let page: NSInteger = Int(roundf(Float(offset.x / screenWidth)))
+        let targetx = screenWidth * CGFloat(page)
+        return CGPointMake(targetx, offset.y)
+    }
 }
+
 
 // MARK: - TableView 数据源协议
 extension ChartViewController: UITableViewDataSource {

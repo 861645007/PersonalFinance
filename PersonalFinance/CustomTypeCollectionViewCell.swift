@@ -17,4 +17,19 @@ class CustomTypeCollectionViewCell: UICollectionViewCell {
         self.consumeImageView.image = UIImage(data: category.iconData!)
         self.consumeTypeLabel.text = category.name
     }
+    
+    
+    // 动画操作
+    func moveToMenu(center: CGPoint) {
+        let oldCenter = self.consumeImageView.center
+        
+        UIView.animateWithDuration(1.5, animations: { [weak self] in
+            self!.consumeImageView.center.x = center.x
+            self!.consumeImageView.center.y = center.y
+        }) { [weak self] (success: Bool) in
+            if success {
+                self!.consumeImageView.center = oldCenter
+            }
+        }
+    }
 }

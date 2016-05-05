@@ -261,7 +261,7 @@ class ChartViewModel: NSObject {
         let firstDayOfWeek: NSDate = today.firstDayWithNextWeek(8) - 7.days
         
         return (0..<3).map { (week: Int) in
-            return (0..<7).map {
+            return (1..<8).map {
                 SingleConsume.fetchExpensesInThisDay((firstDayOfWeek - (week * 7).days) - $0.days)
             }
         }

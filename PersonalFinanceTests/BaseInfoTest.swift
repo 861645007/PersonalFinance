@@ -38,13 +38,13 @@ class BaseInfoTest: XCTestCase {
     
     func testGainMonthbudget() {
         baseInfo.saveMonthBudget(12.0)
-        let budget = baseInfo.gainMonthBudget()
+        let budget = baseInfo.monthBudget()
         
         XCTAssert(budget == 12.0, "saveMonthBudget Can't Unit Test")
         
         baseInfo.saveMonthBudget(18.0)
         
-        let budget1 = baseInfo.gainMonthBudget()
+        let budget1 = baseInfo.monthBudget()
         
         XCTAssert(budget1 == 18.0, "saveMonthBudget Can't Unit Test")
     }
@@ -77,13 +77,13 @@ class BaseInfoTest: XCTestCase {
     
     func testGainNewExpense() {
         baseInfo.saveNewExpense(13.0)
-        let newExpense = baseInfo.gainNewExpense()
+        let newExpense = baseInfo.newExpense()
         
         XCTAssert(newExpense == 13.0, "saveNewExpense Can't Unit Test")
         
         baseInfo.saveNewExpense(18.0)
         
-        let newExpense2 = baseInfo.gainNewExpense()
+        let newExpense2 = baseInfo.newExpense()
         
         XCTAssert(newExpense2 == 18.0, "saveNewExpense Can't Unit Test")
     }

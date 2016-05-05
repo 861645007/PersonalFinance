@@ -13,6 +13,7 @@
 		7A0644271C6B05BA00FAE828 /* Consume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644261C6B05BA00FAE828 /* Consume-Type.plist */; };
 		7A0644291C6B05DC00FAE828 /* NewConsume-Type.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */; };
 		7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */; };
+		7A0C60461CD2F96600C08DAC /* NSDateExtensionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0C60451CD2F96600C08DAC /* NSDateExtensionTest.swift */; };
 		7A0D40AD1CC797F600B72EAE /* MKiCloudSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D40AC1CC797F600B72EAE /* MKiCloudSync.m */; };
 		7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */; };
 		7A2136E91CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136E81CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift */; };
@@ -62,13 +63,10 @@
 		7A92C46B1CC3C6E50035CF0A /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4671CC3C6E50035CF0A /* Category+CoreDataProperties.swift */; };
 		7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4681CC3C6E50035CF0A /* Category.swift */; };
 		7AB1EDD51CBCDE4A007D7151 /* FinanceOfCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */; };
-		7ABC84BA1C6B28E9001156BF /* CategoryServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */; };
 		7ABCA7E11CBE8A5D008973E0 /* DayConsumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */; };
 		7ABCA7E61CBE8B4D008973E0 /* DayConsumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */; };
 		7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */; };
 		7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50B1C5A340600EF2200 /* RAC.swift */; };
-		7ACEF5121C5A39F500EF2200 /* SingleCustomServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */; };
-		7ACEF5161C5A3A2B00EF2200 /* CoreDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */; };
 		7AD844A91CD0CABA003FEE05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B31C58F07F009AD0A7 /* Assets.xcassets */; };
 		7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */; };
 		7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE21181CB622A400BC9985 /* ChartViewController.swift */; };
@@ -122,6 +120,7 @@
 		7A0644261C6B05BA00FAE828 /* Consume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Consume-Type.plist"; sourceTree = "<group>"; };
 		7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NewConsume-Type.plist"; sourceTree = "<group>"; };
 		7A06442A1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A0C60451CD2F96600C08DAC /* NSDateExtensionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtensionTest.swift; sourceTree = "<group>"; };
 		7A0D40AB1CC797F600B72EAE /* MKiCloudSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKiCloudSync.h; sourceTree = "<group>"; };
 		7A0D40AC1CC797F600B72EAE /* MKiCloudSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKiCloudSync.m; sourceTree = "<group>"; };
 		7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -183,13 +182,10 @@
 		7A92C4671CC3C6E50035CF0A /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "CoreData/Model/Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A92C4681CC3C6E50035CF0A /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = CoreData/Model/Category.swift; sourceTree = "<group>"; };
 		7AB1EDD41CBCDE4A007D7151 /* FinanceOfCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FinanceOfCategory.swift; path = CoreData/FinanceOfCategory.swift; sourceTree = "<group>"; };
-		7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryServiceTest.swift; sourceTree = "<group>"; };
 		7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayConsumeViewController.swift; sourceTree = "<group>"; };
 		7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeViewModel.swift; path = ViewModel/DayConsumeViewModel.swift; sourceTree = "<group>"; };
 		7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardPageManager.swift; sourceTree = "<group>"; };
 		7ACEF50B1C5A340600EF2200 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
-		7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleCustomServiceTest.swift; sourceTree = "<group>"; };
-		7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTest.swift; sourceTree = "<group>"; };
 		7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataInfoExtension.swift; sourceTree = "<group>"; };
 		7AEE21181CB622A400BC9985 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		7AF0735C1C5D9CCE00221F17 /* PersonalFinance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalFinance-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -510,8 +506,8 @@
 			isa = PBXGroup;
 			children = (
 				7A614FCA1C5C851900BEE1B8 /* BaseInfoTest */,
-				7ACEF5101C5A39C700EF2200 /* ServiceTest */,
 				7A7EB3C11C58F07F009AD0A7 /* PersonalFinanceTests.swift */,
+				7A0C60451CD2F96600C08DAC /* NSDateExtensionTest.swift */,
 				7A7EB3C31C58F07F009AD0A7 /* Info.plist */,
 			);
 			path = PersonalFinanceTests;
@@ -581,16 +577,6 @@
 				7A0644281C6B05DC00FAE828 /* NewConsume-Type.plist */,
 			);
 			name = Resource;
-			sourceTree = "<group>";
-		};
-		7ACEF5101C5A39C700EF2200 /* ServiceTest */ = {
-			isa = PBXGroup;
-			children = (
-				7ACEF5151C5A3A2B00EF2200 /* CoreDataTest.swift */,
-				7ACEF5111C5A39F500EF2200 /* SingleCustomServiceTest.swift */,
-				7ABC84B91C6B28E9001156BF /* CategoryServiceTest.swift */,
-			);
-			name = ServiceTest;
 			sourceTree = "<group>";
 		};
 		7AEE21161CB6224F00BC9985 /* Chart View Controller */ = {
@@ -990,10 +976,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A614FCC1C5C853600BEE1B8 /* BaseInfoTest.swift in Sources */,
-				7ACEF5161C5A3A2B00EF2200 /* CoreDataTest.swift in Sources */,
-				7ACEF5121C5A39F500EF2200 /* SingleCustomServiceTest.swift in Sources */,
+				7A0C60461CD2F96600C08DAC /* NSDateExtensionTest.swift in Sources */,
 				7A7EB3C21C58F07F009AD0A7 /* PersonalFinanceTests.swift in Sources */,
-				7ABC84BA1C6B28E9001156BF /* CategoryServiceTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1121,7 +1105,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1159,7 +1143,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

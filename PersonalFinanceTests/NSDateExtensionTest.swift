@@ -1,25 +1,20 @@
 //
-//  SingleCustomServiceTest.swift
+//  NSDateExtensionTest.swift
 //  PersonalFinance
 //
-//  Created by ziye on 16/1/28.
+//  Created by 子叶 on 16/4/29.
 //  Copyright © 2016年 王焕强. All rights reserved.
 //
 
 import XCTest
-import CoreData
+import SwiftDate
 @testable import PersonalFinance
 
-class SingleCustomServiceTest: XCTestCase {
-    
-    var coreDataStack: CoreDataTest!
-    var singleCustomService: SingleCustomService!
+class NSDateExtensionTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        coreDataStack = CoreDataTest()
-        singleCustomService = SingleCustomService()
     }
     
     override func tearDown() {
@@ -39,17 +34,13 @@ class SingleCustomServiceTest: XCTestCase {
         }
     }
     
-//    func testAddNewSingleCustom() {
-//        expectationForNotification(NSManagedObjectContextDidSaveNotification, object: self.coreDataStack.managedObjectContext) { (notification: NSNotification!) -> Bool in
-//            return true
-//        }
-//        
-//        singleCustomService.addNewSingleCustom(2, photo: NSData(), comment: "1234", money: 3, time: NSDate())
-//        
-//        waitForExpectationsWithTimeout(2) { (error: NSError?) -> Void in
-//            XCTAssertNil(error, "save did not occur")
-//        }
-//        
-//    }
+    
+    func testFirstDayWithNextWeek() {
+        let nextWeek = NSDate().firstDayWithNextWeek(8)
+        let currentWeek = nextWeek - 7.days
+        
+        XCTAssert(nextWeek.month == 5 && nextWeek.day == 1, "Good")
+        XCTAssert(currentWeek.month == 4 && currentWeek.day == 24, "\(currentWeek)")
+    }
     
 }

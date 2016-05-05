@@ -295,6 +295,10 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
             return
         }else {
             let category = self.addNewCustomVM.consumeTypeArr![indexPath.row]
+            
+            let cell: CustomTypeCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("ConsumeTypeCollectionViewCell", forIndexPath: indexPath) as! CustomTypeCollectionViewCell
+            cell.moveToMenu(self.categoryImage.center)
+            
             self.changeConsumeCategoryInfo(category)
         }
     }

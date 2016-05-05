@@ -78,13 +78,10 @@ class SingleConsume: NSManagedObject {
      */
     class func fetchExpensesInThisDay(day: NSDate) -> Double {
         let consumes = SingleConsume.fetchCustomWithRangeDate(day.dayBegin(), dateEnd: day.dayEnd())
-        var expense: Double = 0.0
         
-        for consume in consumes {
-            expense += (consume.money?.doubleValue)!
-        }
-        
-        return expense
+        return consumes.reduce(0.0, combine: {
+            $0 + $1.money!.doubleValue
+        })
     }
     
     // MARK: 消费列表使用的查询数据
