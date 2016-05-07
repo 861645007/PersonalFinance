@@ -21,6 +21,8 @@
 		7A2136ED1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2136EC1CC4D71F000737CF /* AddNewConsumeCategoryCollectionViewCell.swift */; };
 		7A2845B01CCB596200770DB0 /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2845AF1CCB596200770DB0 /* LocalNotification.swift */; };
 		7A2845B21CCB63C200770DB0 /* PrepareLocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2845B11CCB63C200770DB0 /* PrepareLocalNotification.swift */; };
+		7A294E6C1CDAEDC300C139E0 /* MonthBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A294E6B1CDAEDC300C139E0 /* MonthBudgetViewController.swift */; };
+		7A294E6E1CDAEDFB00C139E0 /* MonthBudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A294E6D1CDAEDFB00C139E0 /* MonthBudgetViewModel.swift */; };
 		7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */; };
 		7A2B3ED01CC0A8AA00D751D5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */; };
 		7A2B3ED21CC0A8C100D751D5 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */; };
@@ -130,6 +132,8 @@
 		7A2136F01CC517EA000737CF /* PersonalFinance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PersonalFinance.entitlements; sourceTree = "<group>"; };
 		7A2845AF1CCB596200770DB0 /* LocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
 		7A2845B11CCB63C200770DB0 /* PrepareLocalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepareLocalNotification.swift; sourceTree = "<group>"; };
+		7A294E6B1CDAEDC300C139E0 /* MonthBudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthBudgetViewController.swift; sourceTree = "<group>"; };
+		7A294E6D1CDAEDFB00C139E0 /* MonthBudgetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthBudgetViewModel.swift; path = ViewModel/MonthBudgetViewModel.swift; sourceTree = "<group>"; };
 		7A2B3ECB1CC08CE200D751D5 /* DayConsumeInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeInfo.swift; path = CoreData/Model/DayConsumeInfo.swift; sourceTree = "<group>"; };
 		7A2B3ECF1CC0A8AA00D751D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		7A2B3ED11CC0A8C100D751D5 /* SettingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewModel.swift; path = ViewModel/SettingViewModel.swift; sourceTree = "<group>"; };
@@ -382,18 +386,20 @@
 			path = PersonalFinanceTodayWidget;
 			sourceTree = "<group>";
 		};
-		7A51605D1CCE2E6900D6A71F /* New Group */ = {
+		7A51605D1CCE2E6900D6A71F /* Month Budget View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7A294E6B1CDAEDC300C139E0 /* MonthBudgetViewController.swift */,
 			);
-			name = "New Group";
+			name = "Month Budget View Controller";
 			sourceTree = "<group>";
 		};
-		7A51605E1CCE2E7000D6A71F /* New Group */ = {
+		7A51605E1CCE2E7000D6A71F /* Month Budget View Model */ = {
 			isa = PBXGroup;
 			children = (
+				7A294E6D1CDAEDFB00C139E0 /* MonthBudgetViewModel.swift */,
 			);
-			name = "New Group";
+			name = "Month Budget View Model";
 			sourceTree = "<group>";
 		};
 		7A614FC31C5C77D700BEE1B8 /* Other */ = {
@@ -591,7 +597,7 @@
 		7AF073601C5D9D7B00221F17 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7A51605D1CCE2E6900D6A71F /* New Group */,
+				7A51605D1CCE2E6900D6A71F /* Month Budget View Controller */,
 				7A2B3ECD1CC0A86300D751D5 /* Setting View Controller */,
 				7AEE21161CB6224F00BC9985 /* Chart View Controller */,
 				7A2136E41CC4CDE2000737CF /* Add New Category View Controller */,
@@ -604,7 +610,7 @@
 		7AF073611C5D9D8700221F17 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7A51605E1CCE2E7000D6A71F /* New Group */,
+				7A51605E1CCE2E7000D6A71F /* Month Budget View Model */,
 				7A2B3ECE1CC0A87600D751D5 /* Setting  View Model */,
 				7A444F541CB77D0000324267 /* Chart View Model */,
 				7A2136E71CC4CE27000737CF /* Add New Category */,
@@ -931,6 +937,7 @@
 				7A06442B1C6B08A300FAE828 /* CustomTypeCollectionViewCell.swift in Sources */,
 				7A92C46A1CC3C6E50035CF0A /* SingleConsume.swift in Sources */,
 				7A7EB3AF1C58F07F009AD0A7 /* ViewController.swift in Sources */,
+				7A294E6C1CDAEDC300C139E0 /* MonthBudgetViewController.swift in Sources */,
 				7A2B3ECC1CC08CE200D751D5 /* DayConsumeInfo.swift in Sources */,
 				7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */,
 				7A7376BC1CBB7F810038BB3E /* TopAlert.swift in Sources */,
@@ -941,6 +948,7 @@
 				7A18FFE51CC1BC530092AEC8 /* UIViewControllerExtension.swift in Sources */,
 				7A2845B01CCB596200770DB0 /* LocalNotification.swift in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
+				7A294E6E1CDAEDFB00C139E0 /* MonthBudgetViewModel.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */,
 				7A7D35B81CC2668D00E2A389 /* DealMoneyFormat.swift in Sources */,

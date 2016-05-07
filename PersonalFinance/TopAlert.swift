@@ -17,8 +17,9 @@ class TopAlert: NSObject {
     - parameter alertInfo:  alertView 显示的信息
     - parameter parentView: alertVeiw 所显示的视图
     */
-    func createSuccessTopAlert(alertInfo: String, parentView: UIView) {
-        self.createBaseTopAlert(MozAlertTypeSuccess, alertInfo: alertInfo, parentView: parentView)
+    func createSuccessTopAlert(alertInfo: String, parentView: UIView, dismissBlock: dispatch_block_t? = nil) {
+        let topAlertView = self.createBaseTopAlert(MozAlertTypeSuccess, alertInfo: alertInfo, parentView: parentView)
+        topAlertView.dismissBlock = dismissBlock
     }
     
     /**
@@ -40,8 +41,8 @@ class TopAlert: NSObject {
     - parameter alertInfo:  alertView 显示的信息
     - parameter parentView: alertVeiw 所显示的视图
     */
-    func createBaseTopAlert(alertType: MozAlertType, alertInfo: String, parentView: UIView) {
-        MozTopAlertView.showWithType(alertType, text: alertInfo, parentView: parentView)
+    func createBaseTopAlert(alertType: MozAlertType, alertInfo: String, parentView: UIView) -> MozTopAlertView {
+        return MozTopAlertView.showWithType(alertType, text: alertInfo, parentView: parentView)
     }
     
     /**

@@ -22,8 +22,6 @@ class SettingViewModel: NSObject {
 
     var settingData: [[SettingModel]] = [[], []]
     
-    let dealMoneyFormat = DealMoneyFormat()
-    
     override init() {
         super.init()
         self.setSettingData()
@@ -44,17 +42,6 @@ class SettingViewModel: NSObject {
         settingData[1].append(SettingModel(imageName: "aboutApp", name: "关于APP"));
     }
     
-    /**
-     处理金额数据格式：使之保持一个 ￥0.00 的格式
-     
-     - parameter text: 待处理的数字文本
-     
-     - returns: 处理好的数字文本
-     */
-    func dealWithDecimalMoney(text: String) -> String {
-        return dealMoneyFormat.dealWithDecimalMoney(text)
-    }
-    
     
     // MARK: - TableView 操作
     func numberOfSection() -> NSInteger {
@@ -69,8 +56,6 @@ class SettingViewModel: NSObject {
         return settingData[indexPath.section][indexPath.row]
     }
     
-    
-
     func nameAtIndexPathWithFirst() -> String {
         return settingData[0][0].name
     }

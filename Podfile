@@ -32,7 +32,8 @@ target "PersonalFinance" do
 	pod "SimpleAlert"
 # 密码锁
 	pod 'VENTouchLock', '~> 1.11.0'
-
+# 进度条显示器
+	pod "MBCircularProgressBar"
 
 end
 
