@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftDate
+import MBCircularProgressBar
 
 let AddNewConsumeInWidgetNotification = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
 let ShowMonthConsumesVCNotification = "ShowMonthConsumesVCNotification"
@@ -17,8 +18,17 @@ class ViewController: UIViewController {
     
     var mainVM: MainViewModel! = MainViewModel()
     
+    @IBOutlet weak var percentProgressBar: MBCircularProgressBarView!
+    
     @IBOutlet weak var todayExpenseLabel: UILabel!
     @IBOutlet weak var monthExpenseLabel: UILabel!
+    @IBOutlet weak var newExpenseLabel: UILabel!
+    @IBOutlet weak var weekExpenseLabel: UILabel!
+    
+    
+    
+    
+    
 
 
     override func viewDidLoad() {
