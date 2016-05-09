@@ -51,10 +51,10 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.todayExpenseLabel.text   = self.mainVM.gainDayExpense()
-        self.monthExpenseLabel.text   = self.mainVM.gainMonthExpense()
-        self.newExpenseLabel.text     = self.mainVM.gainNewExpense()
-        self.weekExpenseLabel.text    = self.mainVM.gainWeekExpense()
+        self.todayExpenseLabel.fn_setNumber(self.mainVM.gainDayExpense(), format: "￥%.2f")
+        self.monthExpenseLabel.fn_setNumber(self.mainVM.gainMonthExpense(), format: "￥%.2f")
+        self.newExpenseLabel.fn_setNumber(self.mainVM.gainNewExpense(), format: "￥%.2f")
+        self.weekExpenseLabel.fn_setNumber(self.mainVM.gainWeekExpense(), format: "￥%.2f")
         
         self.percentProgressBar.value = self.mainVM.configureProgressBarPercent()
     }

@@ -45,6 +45,8 @@
 		7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC51C5C780900BEE1B8 /* DateExtension.swift */; };
 		7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */; };
 		7A614FCC1C5C853600BEE1B8 /* BaseInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */; };
+		7A65625D1CE06B8C002ADE0F /* UILabel+FlickerNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A65625C1CE06B8C002ADE0F /* UILabel+FlickerNumber.swift */; };
+		7A6562621CE07B24002ADE0F /* UIImageColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6562611CE07B24002ADE0F /* UIImageColors.swift */; };
 		7A7376BC1CBB7F810038BB3E /* TopAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376BB1CBB7F810038BB3E /* TopAlert.swift */; };
 		7A7376BF1CBB80200038BB3E /* MozTopAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376BE1CBB80200038BB3E /* MozTopAlertView.m */; };
 		7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7376C11CBB80350038BB3E /* FAImageView.m */; };
@@ -156,6 +158,8 @@
 		7A614FC51C5C780900BEE1B8 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7A614FC81C5C7C1900BEE1B8 /* BaseInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfo.swift; sourceTree = "<group>"; };
 		7A614FCB1C5C853600BEE1B8 /* BaseInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseInfoTest.swift; sourceTree = "<group>"; };
+		7A65625C1CE06B8C002ADE0F /* UILabel+FlickerNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+FlickerNumber.swift"; sourceTree = "<group>"; };
+		7A6562611CE07B24002ADE0F /* UIImageColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageColors.swift; sourceTree = "<group>"; };
 		7A7376BB1CBB7F810038BB3E /* TopAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlert.swift; sourceTree = "<group>"; };
 		7A7376BD1CBB80200038BB3E /* MozTopAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MozTopAlertView.h; path = TopAlertView/MozTopAlertView.h; sourceTree = "<group>"; };
 		7A7376BE1CBB80200038BB3E /* MozTopAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MozTopAlertView.m; path = TopAlertView/MozTopAlertView.m; sourceTree = "<group>"; };
@@ -419,6 +423,8 @@
 		7A614FC41C5C77E100BEE1B8 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				7A6562611CE07B24002ADE0F /* UIImageColors.swift */,
+				7A65625C1CE06B8C002ADE0F /* UILabel+FlickerNumber.swift */,
 				7A614FC51C5C780900BEE1B8 /* DateExtension.swift */,
 				7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */,
 				7A18FFE41CC1BC530092AEC8 /* UIViewControllerExtension.swift */,
@@ -951,6 +957,7 @@
 				7A294E6E1CDAEDFB00C139E0 /* MonthBudgetViewModel.swift in Sources */,
 				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */,
+				7A65625D1CE06B8C002ADE0F /* UILabel+FlickerNumber.swift in Sources */,
 				7A7D35B81CC2668D00E2A389 /* DealMoneyFormat.swift in Sources */,
 				7A2136EB1CC4D486000737CF /* AddNewConsumeCategoryViewController.swift in Sources */,
 				7A444F571CB77D3500324267 /* ChartViewModel.swift in Sources */,
@@ -971,6 +978,7 @@
 				7A4168141C6061BA00145EA1 /* AddNewCustomViewModel.swift in Sources */,
 				7A614FC91C5C7C1900BEE1B8 /* BaseInfo.swift in Sources */,
 				7A2136E91CC4CE44000737CF /* AddNewConsumeCategoryViewModel.swift in Sources */,
+				7A6562621CE07B24002ADE0F /* UIImageColors.swift in Sources */,
 				7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */,
 				7ABCA7E11CBE8A5D008973E0 /* DayConsumeViewController.swift in Sources */,
 				7A444F531CB7778E00324267 /* FinanceOfCategoryTableViewCell.swift in Sources */,

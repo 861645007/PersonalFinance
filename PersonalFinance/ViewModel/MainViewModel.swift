@@ -24,24 +24,24 @@ class MainViewModel: NSObject {
         return self.baseInfo.monthBudget() == 0.0 ? 0.0 : CGFloat(self.baseInfo.monthExpense() / self.baseInfo.monthBudget())
     }
     
-    func gainMonthExpense() ->String {
-        return "￥" + baseInfo.monthExpense().convertToStrWithTwoFractionDigits()
+    func gainMonthExpense() ->Double {
+        return baseInfo.monthExpense()
     }
 
-    func gainMonthBudget() ->String {
-        return "￥" + baseInfo.monthBudget().convertToStrWithTwoFractionDigits()
+    func gainMonthBudget() ->Double {
+        return baseInfo.monthBudget()
     }
     
-    func gainDayExpense() ->String {
-        return "￥" + baseInfo.dayExpense().convertToStrWithTwoFractionDigits()
+    func gainDayExpense() ->Double {
+        return baseInfo.dayExpense()
     }
     
-    func gainNewExpense() ->String {
-        return "￥" + baseInfo.newExpense().convertToStrWithTwoFractionDigits()
+    func gainNewExpense() ->Double {
+        return baseInfo.newExpense()
     }
     
-    func gainWeekExpense() ->String {
-        return "￥" + baseInfo.weekExpense().convertToStrWithTwoFractionDigits()
+    func gainWeekExpense() ->Double {
+        return baseInfo.weekExpense()
     }
     
     

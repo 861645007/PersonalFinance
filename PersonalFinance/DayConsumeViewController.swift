@@ -30,7 +30,7 @@ class DayConsumeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.dayConsumeVM.initData()
 
-        self.totalMoneyLabel.text = "￥\(self.dayConsumeVM.dayConsumeMoney.convertToStrWithTwoFractionDigits())"
+        self.totalMoneyLabel.fn_setNumber(self.dayConsumeVM.dayConsumeMoney, format: "￥%.2f")
     }
     
     override func didReceiveMemoryWarning() {

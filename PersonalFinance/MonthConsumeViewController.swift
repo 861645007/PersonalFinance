@@ -35,7 +35,7 @@ class MonthConsumeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.monthConsumeVM.initData()
         
-        self.totalMoneyLabel.text = "￥\(self.monthConsumeVM.consumesMoney.convertToStrWithTwoFractionDigits())"
+        self.totalMoneyLabel.fn_setNumber(self.monthConsumeVM.consumesMoney, format: "￥%.2f")
     }
 
     override func didReceiveMemoryWarning() {
