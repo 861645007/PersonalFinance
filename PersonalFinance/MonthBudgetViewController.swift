@@ -65,15 +65,12 @@ class MonthBudgetViewController: UIViewController {
     @IBAction func sureMonthBudget(sender: AnyObject) {
         // 存储操作
         
-        guard let money: String? = self.monthBudgetTextField.text!.substringFromIndex(self.monthBudgetTextField.text!.startIndex.advancedBy(1))
-        else {
-            self.dismissSelf()
-        }
-                
-        if Double(money!) == 0.0 {
+        let money: String = self.monthBudgetTextField.text!.substringFromIndex(self.monthBudgetTextField.text!.startIndex.advancedBy(1)).stringByReplacingOccurrencesOfString(",", withString: "", options: [], range: nil)
+
+        if Double(money) == 0.0 {
             TopAlert().createFailureTopAlert("金额不能为 0 !", parentView: self.view)
         }else {
-            self.monthBudgetVM.saveMonthBudget(Double(money!)!)
+            self.monthBudgetVM.saveMonthBudget(Double(money)!)
             TopAlert().createSuccessTopAlert("本月预算为 \(money) 元", parentView: self.view) { [unowned self] in
                 self.dismissSelf()
             }

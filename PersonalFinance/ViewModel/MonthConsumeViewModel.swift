@@ -12,6 +12,7 @@ import CoreData
 class MonthConsumeViewModel: NSObject {
     // VC 使用的变量
     var monthConsumeArr: [DayConsumeInfo]?
+    var sectionIsShow: [Bool] = []
     var monthConsumeMoney: Double = 0.0
     
     override init() {
@@ -22,9 +23,9 @@ class MonthConsumeViewModel: NSObject {
     
     func initData() {
         monthConsumeArr = self.gainMonthConsumeInfo()
+        sectionIsShow = self.initSectionIsShow()
         monthConsumeMoney = self.gainMonthConsumeMoney()
     }
-    
     
     // MARK: - TableView 数据源
     func numberOfSections() -> NSInteger {
@@ -32,7 +33,7 @@ class MonthConsumeViewModel: NSObject {
     }
     
     func numberOfCellsInSection(section: NSInteger) -> NSInteger {
-        return (monthConsumeArr![section].dayConsumeArr?.count)!
+        return sectionIsShow[section] ? (monthConsumeArr![section].dayConsumeArr?.count)! : 0
     }
     
     
@@ -47,6 +48,15 @@ class MonthConsumeViewModel: NSObject {
     
     func titleWithMoneyForSection(section: NSInteger) -> String {
         return "￥" + monthConsumeArr![section].dayExpense.convertToStrWithTwoFractionDigits()
+    }
+    
+    /**
+     设置某一个 section 的 cell 是隐藏还是展开
+     
+     - parameter section: section 的 index
+     */
+    func setCellIsShowOfSection(section: NSInteger) {
+        self.sectionIsShow[section] = !self.sectionIsShow[section]
     }
     
     // MARK: - 私有函数
@@ -91,6 +101,12 @@ class MonthConsumeViewModel: NSObject {
         return monthConsumeArr!.reduce(0.0, combine: {
             $0 + $1.dayExpense
         })
+    }
+    
+    private func initSectionIsShow() -> [Bool] {
+        return self.monthConsumeArr!.map {_ in 
+            false
+        }
     }
     
 }

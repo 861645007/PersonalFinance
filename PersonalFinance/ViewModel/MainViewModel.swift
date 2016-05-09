@@ -9,12 +9,10 @@
 import UIKit
 
 class MainViewModel: NSObject {
-    var baseInfo: BaseInfo!
+    let baseInfo: BaseInfo = BaseInfo.sharedBaseInfo
     
     override init() {
         super.init()
-        
-        baseInfo = BaseInfo.sharedBaseInfo
     }
     
     /**
@@ -22,27 +20,27 @@ class MainViewModel: NSObject {
      
      - returns: 波浪小球的百分比
      */
-    func configureWavePercent() -> CGFloat {
-        if self.gainMonthBudget() == 0.0 {
-            return 0.0
-        }
-        
-        return CGFloat(self.gainMonthExpense() / self.gainMonthBudget())
+    func configureProgressBarPercent() -> CGFloat {
+        return self.baseInfo.monthBudget() == 0.0 ? 0.0 : CGFloat(self.baseInfo.monthExpense() / self.baseInfo.monthBudget())
     }
     
-    func gainMonthExpense() ->Double {
-        return baseInfo.monthExpense()
+    func gainMonthExpense() ->String {
+        return "￥" + baseInfo.monthExpense().convertToStrWithTwoFractionDigits()
     }
 
-    func gainMonthBudget() ->Double {
-        return baseInfo.monthBudget()
+    func gainMonthBudget() ->String {
+        return "￥" + baseInfo.monthBudget().convertToStrWithTwoFractionDigits()
     }
     
-    func gainDayExpense() ->Double {
-        return baseInfo.dayExpense()
+    func gainDayExpense() ->String {
+        return "￥" + baseInfo.dayExpense().convertToStrWithTwoFractionDigits()
     }
     
-    func gainNewExpense() ->Double {
-        return baseInfo.newExpense()
+    func gainNewExpense() ->String {
+        return "￥" + baseInfo.newExpense().convertToStrWithTwoFractionDigits()
     }
+    
+//    func gainWeekExpense() ->Double {
+//        return
+//    }
 }

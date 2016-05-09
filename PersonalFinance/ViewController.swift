@@ -27,17 +27,26 @@ class ViewController: UIViewController {
     
     
     
-    
-    
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        
+        self.todayExpenseLabel.text = self.mainVM.gainDayExpense()
+        self.monthExpenseLabel.text = self.mainVM.gainMonthExpense()
+        self.newExpenseLabel.text = self.mainVM.gainNewExpense()
+        
+        self.percentProgressBar.value = self.mainVM.configureProgressBarPercent()
+        
        
         // 修改导航栏返回键的文字
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+        
+        // 设置导航栏透明
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         
         // 配置 点击 Today Widget 的新增按钮的页面跳转操作
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showAddNewConsumeVC), name: AddNewConsumeInWidgetNotification, object: nil)
@@ -48,20 +57,14 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // 设置导航栏透明
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-
-        
+        super.viewWillAppear(animated)        
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(true)
-        // 取消其他页面的导航栏透明
-        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default);
-        self.navigationController?.navigationBar.shadowImage = nil
+//        // 取消其他页面的导航栏透明
+//        self.navigationController?.navigationBar.setBackgroundImage(nil, forBarMetrics: .Default);
+//        self.navigationController?.navigationBar.shadowImage = nil
     }
 
     override func didReceiveMemoryWarning() {

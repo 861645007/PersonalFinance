@@ -33,6 +33,8 @@ class SingleConsume: NSManagedObject {
     
     
     // MARK: - 查询消费记录
+    
+    // MARK: - 查询图表页面所需的信息
     /**
      按年查询 一年的消费记录 to 走势图
      
@@ -69,21 +71,6 @@ class SingleConsume: NSManagedObject {
     
     
     
-    /**
-     获取指定日期的消费总额
-     
-     - parameter day: 指定日期内的任意时刻
-     
-     - returns: 指定日期内的消费总额
-     */
-    class func fetchExpensesInThisDay(day: NSDate) -> Double {
-        let consumes = SingleConsume.fetchCustomWithRangeDate(day.dayBegin(), dateEnd: day.dayEnd())
-        
-        return consumes.reduce(0.0, combine: {
-            $0 + $1.money!.doubleValue
-        })
-    }
-    
     // MARK: 消费列表使用的查询数据
     
     /**
@@ -103,6 +90,26 @@ class SingleConsume: NSManagedObject {
     class func fetchConsumeRecordWithCurrentMonth() ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(NSDate().monthBegin(), dateEnd: NSDate().dayEnd())
     }
+    // MARK: - 查询消费总额
+    
+    
+    /**
+     获取指定日期的消费总额
+     
+     - parameter day: 指定日期内的任意时刻
+     
+     - returns: 指定日期内的消费总额
+     */
+    class func fetchExpensesInThisDay(day: NSDate) -> Double {
+        let consumes = SingleConsume.fetchCustomWithRangeDate(day.dayBegin(), dateEnd: day.dayEnd())
+        
+        return consumes.reduce(0.0, combine: {
+            $0 + $1.money!.doubleValue
+        })
+    }
+    
+    
+    
     
     
     //MARK: - 私有函数

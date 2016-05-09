@@ -22,6 +22,11 @@ class MonthConsumeViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.title = "本月消费"
         
+        if self.monthConsumeVM.monthConsumeArr?.count != 0 {
+            monthConsumeTableView.emptyDataSetSource = nil
+            monthConsumeTableView.emptyDataSetDelegate = nil
+        }
+        
         monthConsumeTableView.tableFooterView = UIView()
     }
     
@@ -51,8 +56,6 @@ class MonthConsumeViewController: UIViewController {
 }
 
 
-
-
 extension MonthConsumeViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return self.monthConsumeVM.numberOfSections()
@@ -70,32 +73,49 @@ extension MonthConsumeViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44
+    }
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headView: UIView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, 25))
-        headView.backgroundColor = UIColor.whiteColor()
+        let headView: UIView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, 44))
+        headView.backgroundColor = UIColor(red:0.158, green:0.104, blue:0.229, alpha:1)
         
-        let dayLabel: UILabel = UILabel(frame: CGRectMake(20, 2, 100, 21))
+        let bgbtn:UIButton = UIButton(frame: headView.frame)
+        bgbtn.tag = section
+        bgbtn.addTarget(self, action: #selector(clickSection(_:)), forControlEvents: .TouchUpInside)
+        headView.addSubview(bgbtn)
+        
+        let dayLabel: UILabel = UILabel(frame: CGRectMake(16, 10, 60, 21))
         dayLabel.text = self.monthConsumeVM.titleWithTimeForSection(section)
-        
+        dayLabel.font = UIFont.boldSystemFontOfSize(20)
+        dayLabel.textColor = UIColor(red:191/255.0, green:191/255.0, blue:191/255.0, alpha:255/255.0)
         headView.addSubview(dayLabel)
         
-        let moneyLabel: UILabel = UILabel(frame: CGRectMake(self.view.bounds.size.width - 120, 2, 100, 21))
+        let moneyLabel: UILabel = UILabel(frame: CGRectMake(dayLabel.frame.size.width + 28, 10, 100, 21))
         moneyLabel.text = self.monthConsumeVM.titleWithMoneyForSection(section)
-        
+        dayLabel.font = UIFont.boldSystemFontOfSize(18)
+        moneyLabel.textColor = UIColor(red:191/255.0, green:191/255.0, blue:191/255.0, alpha:255/255.0)
         headView.addSubview(moneyLabel)
         
+        let imageView: UIImageView = UIImageView(frame: CGRectMake(self.view.bounds.size.width - 42, 12, 20, 20))
+        imageView.image = self.monthConsumeVM.sectionIsShow[section] ? UIImage(named: "month-DownArrow") : UIImage(named: "month-RightArrow")
+        headView.addSubview(imageView)
+        
         return headView
+    }
+    
+    func clickSection(btn: UIButton) {
+        self.monthConsumeVM.setCellIsShowOfSection(btn.tag)
+        self.monthConsumeTableView.reloadSections(NSIndexSet(index: btn.tag), withRowAnimation: .Fade)
     }
     
 }
 
 
 extension MonthConsumeViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
+    
 }
-
 
 
 // MARK: - DZNEmptyDataSetSource 数据源协议
@@ -146,9 +166,5 @@ extension MonthConsumeViewController: DZNEmptyDataSetDelegate {
         
     }
 }
-
-
-
-
 
 

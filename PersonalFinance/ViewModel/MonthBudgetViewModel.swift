@@ -35,8 +35,6 @@ class MonthBudgetViewModel: NSObject {
     }
     
     func gainMonthBudget() -> String {
-        print(baseInfo.monthBudget())
-        print(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())
         return baseInfo.monthBudget().convertToStrWithTwoFractionDigits()
     }
     

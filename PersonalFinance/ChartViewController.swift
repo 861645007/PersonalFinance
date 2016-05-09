@@ -243,8 +243,7 @@ extension ChartViewController: UIScrollViewDelegate {
         let page = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
         //设置pageController的当前页
         pageControl.currentPage = page
-    }
-    
+    }    
     
     
     // 设置一定会滚动到指定另一个位置

@@ -70,9 +70,7 @@ extension DayConsumeViewController: UITableViewDataSource {
 
 
 extension DayConsumeViewController: UITableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
+    
 }
 
 
@@ -123,7 +121,6 @@ extension DayConsumeViewController: DZNEmptyDataSetDelegate {
     
     func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
         let addNewConsumeVC: AddNewCustomViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController
-        
         
         self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
         
