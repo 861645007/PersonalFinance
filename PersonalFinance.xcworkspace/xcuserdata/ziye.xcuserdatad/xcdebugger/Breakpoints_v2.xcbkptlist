@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/CoreData/Model/SingleConsume.swift"
-            timestampString = "483247205.473998"
+            timestampString = "484455374.185299"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "SingleConsume"
             landmarkType = "3">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "PersonalFinance/ViewController.swift"
-            timestampString = "484396380.523357"
+            timestampString = "484462303.790712"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129">
+            startingLineNumber = "134"
+            endingLineNumber = "134">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -184,7 +184,7 @@
                   moduleName = "PersonalFinance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "484451568.966732"
+                  timestampString = "484462434.35161"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "216"
@@ -199,7 +199,7 @@
                   moduleName = "PersonalFinance"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ziye/Documents/Project/iOS/PersonalFinance/PersonalFinance/AppDelegate.swift"
-                  timestampString = "484451568.966937"
+                  timestampString = "484462434.351845"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "217"

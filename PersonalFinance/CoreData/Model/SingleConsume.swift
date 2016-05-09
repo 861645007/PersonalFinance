@@ -71,15 +71,19 @@ class SingleConsume: NSManagedObject {
     
     
     
-    // MARK: 消费列表使用的查询数据
+    // MARK: 查询消费情况集合
     
     /**
      查询今天的所有消费记录
      
      - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
      */
-    class func fetchConsumeRecordWithToday() ->[SingleConsume] {
-        return self.fetchCustomWithRangeDate(NSDate().dayBegin(), dateEnd: NSDate().dayEnd())
+    class func fetchConsumeRecordInThisDay(date: NSDate) ->[SingleConsume] {
+        return self.fetchCustomWithRangeDate(date.dayBegin(), dateEnd: date.dayEnd())
+    }
+    
+    class func fetchConsumeRecordInThisWeek(date: NSDate) ->[SingleConsume] {
+        return self.fetchCustomWithRangeDate(date.weekBegin(), dateEnd: date.weekEnd())
     }
     
     /**
@@ -87,11 +91,18 @@ class SingleConsume: NSManagedObject {
      
      - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
      */
-    class func fetchConsumeRecordWithCurrentMonth() ->[SingleConsume] {
-        return self.fetchCustomWithRangeDate(NSDate().monthBegin(), dateEnd: NSDate().dayEnd())
+    class func fetchConsumeRecordInThisMonth(date: NSDate) ->[SingleConsume] {
+        return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.dayEnd())
     }
-    // MARK: - 查询消费总额
     
+    
+    class func fetchLastConsumeRecord() ->SingleConsume? {
+        return self.fetchConsumeRecordInThisDay(NSDate()).last
+    }
+    
+    
+    
+    // MARK: - 查询消费总额
     
     /**
      获取指定日期的消费总额
@@ -101,13 +112,22 @@ class SingleConsume: NSManagedObject {
      - returns: 指定日期内的消费总额
      */
     class func fetchExpensesInThisDay(day: NSDate) -> Double {
-        let consumes = SingleConsume.fetchCustomWithRangeDate(day.dayBegin(), dateEnd: day.dayEnd())
-        
-        return consumes.reduce(0.0, combine: {
+        return SingleConsume.fetchConsumeRecordInThisDay(day).reduce(0.0, combine: {
             $0 + $1.money!.doubleValue
         })
     }
     
+    class func fetchExpensesInThisWeek(day: NSDate) -> Double {
+        return SingleConsume.fetchConsumeRecordInThisWeek(day).reduce(0.0, combine: {
+            $0 + $1.money!.doubleValue
+        })
+    }
+    
+    class func fetchExpensesInThisMonth(day: NSDate) -> Double {
+        return SingleConsume.fetchConsumeRecordInThisMonth(day).reduce(0.0, combine: {
+            $0 + $1.money!.doubleValue
+        })
+    }
     
     
     

@@ -26,6 +26,14 @@ extension NSDate {
         return self.endOf(.Month)
     }
     
+    func weekBegin() ->NSDate {
+        return self.firstDayWithNextWeek(0) - 7.days
+    }
+    
+    func weekEnd() ->NSDate {
+        return self.firstDayWithNextWeek(0) - 1.days
+    }
+    
     func dayBegin() ->NSDate {
         return self.startOf(.Day)
     }

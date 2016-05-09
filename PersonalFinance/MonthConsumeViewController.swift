@@ -20,9 +20,10 @@ class MonthConsumeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "本月消费"
         
-        if self.monthConsumeVM.monthConsumeArr?.count != 0 {
+        self.title = self.monthConsumeVM.setVCTitleName()
+        
+        if self.monthConsumeVM.singleConsumes?.count != 0 {
             monthConsumeTableView.emptyDataSetSource = nil
             monthConsumeTableView.emptyDataSetDelegate = nil
         }
@@ -34,7 +35,7 @@ class MonthConsumeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.monthConsumeVM.initData()
         
-        self.totalMoneyLabel.text = "￥\(self.monthConsumeVM.monthConsumeMoney.convertToStrWithTwoFractionDigits())"
+        self.totalMoneyLabel.text = "￥\(self.monthConsumeVM.consumesMoney.convertToStrWithTwoFractionDigits())"
     }
 
     override func didReceiveMemoryWarning() {

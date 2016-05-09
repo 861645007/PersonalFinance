@@ -31,41 +31,27 @@ class BaseInfo: NSObject {
     }
     
     // MARK: - 最新消费
-    func saveNewExpense(value: NSNumber) {
-        self.saveMoneyInfo(value.doubleValue, key: "NewExpense")
-    }
-    
     func newExpense() ->Double {
-        return self.getMoneyInfo("NewExpense")
+        guard let consume: SingleConsume = SingleConsume.fetchLastConsumeRecord() else {
+            return 0.0
+        }
+        
+        return consume.money!.doubleValue
     }
     
+    // MARK: - 每周支出
+    func weekExpense() ->Double {
+        return SingleConsume.fetchExpensesInThisWeek(NSDate())
+    }
     
     // MARK: - 每月支出
-    func addMonthExpense(value: NSNumber) {
-        let totalExpense = value.doubleValue + self.monthExpense()
-        self.saveMoneyInfo(totalExpense, key: "MonthExpense")
-    }
-    
-    func saveNewMonthExpense() {
-        self.saveMoneyInfo(0.0, key: "MonthExpense")
-    }
-    
     func monthExpense() ->Double {
-        return self.getMoneyInfo("MonthExpense")
+        return SingleConsume.fetchExpensesInThisMonth(NSDate())
     }
     
     // MARK: - 每日支出
-    func addDayExpense(value: NSNumber) {
-        let totalExpense = value.doubleValue + self.dayExpense()
-        self.saveMoneyInfo(totalExpense, key: "DayExpense")
-    }
-    
-    func saveNewDayExpense() {
-        self.saveMoneyInfo(0.0, key: "DayExpense")
-    }
-    
     func dayExpense() ->Double {
-        return self.getMoneyInfo("DayExpense")
+        return SingleConsume.fetchExpensesInThisDay(NSDate())
     }
     
     // MARK: - 判断时间信息 ，当第一次进入的时候
@@ -76,12 +62,9 @@ class BaseInfo: NSObject {
     */
     func judgeTimeWhenFirstUseInEveryDay(date: NSDate) {
         if !self.isCurrentMonth(date) {
-            self.saveNewDayExpense()
-            self.saveNewMonthExpense()
             self.saveTime(date)
         }else {
             if !self.isToday(date) {
-                self.saveNewDayExpense()
                 self.saveTime(date)
             }
         }
@@ -92,10 +75,7 @@ class BaseInfo: NSObject {
      当第一次进入应用的时候初始化各项基本数据
      */
     func initDataWhenFirstUse() {
-        self.addDayExpense(0.0)
         self.saveMonthBudget(0.0)
-        self.addMonthExpense(0.0)
-        self.saveNewExpense(0.0)
         self.saveTime(NSDate())
     }
     

@@ -17,6 +17,9 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var selectedFlagView: UIView!
     
+    var lastSelectedState: Bool = false
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,14 +29,20 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-        if selected {
+        if selected && lastSelectedState == false {
             self.selectedFlagView.hidden = false
             self.cellisSelectedAnimation()
             self.backgroundColor = UIColor(red:0.146, green:0.096, blue:0.212, alpha:1)
-//                UIColor(red:0.18, green:0.119, blue:0.261, alpha:1)
+            
+            lastSelectedState = true
         }else {
-            self.selectedFlagView.hidden = true
+            
+            if lastSelectedState {
+                self.cellisCanceledAnimation()
+            }
             self.backgroundColor = UIColor.clearColor()
+            
+            lastSelectedState = false
         }
     }
     
@@ -58,6 +67,17 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
             self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 1.0)
 
             }, completion: nil)
+    }
+    
+    func cellisCanceledAnimation() {
+        self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        
+        UIView.animateWithDuration(1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: { [unowned self] in
+            self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 0.000001)
+            
+        }) { [unowned self] _ in
+            self.selectedFlagView.hidden = true            
+        }
     }
 
 }

@@ -40,7 +40,14 @@ class MainViewModel: NSObject {
         return "￥" + baseInfo.newExpense().convertToStrWithTwoFractionDigits()
     }
     
-//    func gainWeekExpense() ->Double {
-//        return
-//    }
+    func gainWeekExpense() ->String {
+        return "￥" + baseInfo.weekExpense().convertToStrWithTwoFractionDigits()
+    }
+    
+    
+    
+    // MARK: - 跳转
+    func monthOrWeekConsumesVM(state: MonthOrWeekVCState) -> MonthConsumeViewModel {
+        return MonthConsumeViewModel(state: state)
+    }
 }

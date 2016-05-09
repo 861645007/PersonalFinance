@@ -46,14 +46,12 @@ class DayConsumeViewModel: NSObject {
      - returns: 今日所有的消费信息
      */
     private func gainDayConsumeInfo() ->[SingleConsume] {    
-        return SingleConsume.fetchConsumeRecordWithToday()
+        return SingleConsume.fetchConsumeRecordInThisDay(NSDate())
     }
     
     
     private func gainDayConsumeMoney() -> Double {
-        return dayConsumeArr!.reduce(0.0, combine: {
-            $0 + $1.money!.doubleValue
-        })
+        return SingleConsume.fetchExpensesInThisDay(NSDate())
     }
     
     

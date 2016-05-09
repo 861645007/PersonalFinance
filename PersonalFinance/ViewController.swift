@@ -33,14 +33,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        self.todayExpenseLabel.text = self.mainVM.gainDayExpense()
-        self.monthExpenseLabel.text = self.mainVM.gainMonthExpense()
-        self.newExpenseLabel.text = self.mainVM.gainNewExpense()
-        
-        self.percentProgressBar.value = self.mainVM.configureProgressBarPercent()
-        
-       
         // 修改导航栏返回键的文字
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
         
@@ -57,7 +49,14 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)        
+        super.viewWillAppear(animated)
+        
+        self.todayExpenseLabel.text   = self.mainVM.gainDayExpense()
+        self.monthExpenseLabel.text   = self.mainVM.gainMonthExpense()
+        self.newExpenseLabel.text     = self.mainVM.gainNewExpense()
+        self.weekExpenseLabel.text    = self.mainVM.gainWeekExpense()
+        
+        self.percentProgressBar.value = self.mainVM.configureProgressBarPercent()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -73,8 +72,14 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        segue.destinationViewController.navigationController?.navigationBar.backgroundColor = UIColor.whiteColor()
-//        segue.destinationViewController.navigationController?.navigationBar.shadowImage = nil
+        
+        if segue.identifier == "GotoMonthConsumeVC" {
+            let vc = segue.destinationViewController as! MonthConsumeViewController
+            vc.monthConsumeVM = self.mainVM.monthOrWeekConsumesVM(MonthOrWeekVCState.Month)            
+        }else if segue.identifier == "GotoWeekConsumeVC" {
+            let vc = segue.destinationViewController as! MonthConsumeViewController
+            vc.monthConsumeVM = self.mainVM.monthOrWeekConsumesVM(MonthOrWeekVCState.Week)
+        }
     }
     
     // 设置按钮圆角

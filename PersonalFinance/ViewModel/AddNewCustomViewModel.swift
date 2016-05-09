@@ -74,11 +74,6 @@ class AddNewCustomViewModel: NSObject {
         // 在数据库里新增一条记录
         SingleConsume.addNewSingleCustom(category, photo: photo, comment: comment, money: money, time: time)
         
-        // 修改基础各类数据：每 月/日 消费、最新消费
-        baseInfo.addMonthExpense(NSNumber(double: money))
-        baseInfo.addDayExpense(NSNumber(double: money))
-        baseInfo.saveNewExpense(NSNumber(double: money))
-        
         ShareWithGroupOperation.sharedGroupOperation.saveNewDayExpense(baseInfo.dayExpense())
     }
     

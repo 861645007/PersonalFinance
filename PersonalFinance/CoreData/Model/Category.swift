@@ -17,7 +17,7 @@ class Category: NSManagedObject {
     // MARK: - 插入
     class func insertNewConsumeCategory(name: String, iconData: NSData, beUsed: Bool) {
         
-        let id = Category.gainCategoryCount()  + 1
+        let id = Category.gainCategoryCount() + 1
         let category: Category = Category.MR_createEntity()!
         
         category.id = NSNumber(int: id)

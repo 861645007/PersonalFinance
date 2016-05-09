@@ -9,45 +9,63 @@
 import UIKit
 import CoreData
 
+enum MonthOrWeekVCState {
+    case Month
+    case Week
+}
+
 class MonthConsumeViewModel: NSObject {
+    
+    
     // VC 使用的变量
-    var monthConsumeArr: [DayConsumeInfo]?
+    var singleConsumes: [DayConsumeInfo]?
     var sectionIsShow: [Bool] = []
-    var monthConsumeMoney: Double = 0.0
+    var consumesMoney: Double = 0.0
+    
+    var vcState: MonthOrWeekVCState = .Month
     
     override init() {
         super.init()
-
+        self.initData()
+    }
+    
+    init(state: MonthOrWeekVCState) {
+        super.init()
+        self.vcState = state
         self.initData()
     }
     
     func initData() {
-        monthConsumeArr = self.gainMonthConsumeInfo()
-        sectionIsShow = self.initSectionIsShow()
-        monthConsumeMoney = self.gainMonthConsumeMoney()
+        singleConsumes   = self.gainConsumesInfo()
+        consumesMoney = self.gainConsumesMoney()
+        sectionIsShow     = self.initSectionIsShow()
+    }
+    
+    func setVCTitleName() -> String {
+        return (self.vcState == .Month) ? "本月消费" : "本周消费"
     }
     
     // MARK: - TableView 数据源
     func numberOfSections() -> NSInteger {
-        return (monthConsumeArr?.count)!
+        return (singleConsumes?.count)!
     }
     
     func numberOfCellsInSection(section: NSInteger) -> NSInteger {
-        return sectionIsShow[section] ? (monthConsumeArr![section].dayConsumeArr?.count)! : 0
+        return sectionIsShow[section] ? (singleConsumes![section].dayConsumeArr?.count)! : 0
     }
     
     
     func conusmeInfoAtIndexPath(indexPath: NSIndexPath) -> SingleConsume {
-        return monthConsumeArr![indexPath.section].dayConsumeArr![indexPath.row]
+        return singleConsumes![indexPath.section].dayConsumeArr![indexPath.row]
     }
     
     func titleWithTimeForSection(section: NSInteger) -> String {
-        return monthConsumeArr![section].dateStr
+        return singleConsumes![section].dateStr
     }
     
     
     func titleWithMoneyForSection(section: NSInteger) -> String {
-        return "￥" + monthConsumeArr![section].dayExpense.convertToStrWithTwoFractionDigits()
+        return "￥" + singleConsumes![section].dayExpense.convertToStrWithTwoFractionDigits()
     }
     
     /**
@@ -66,19 +84,20 @@ class MonthConsumeViewModel: NSObject {
      
      - returns: 今日所有的消费信息
      */
-    private func gainMonthConsumeInfo() ->[DayConsumeInfo] {
-        let monthSingleConsumeWithFetchArr:[SingleConsume] = SingleConsume.fetchConsumeRecordWithCurrentMonth()
-        var newMonthConsumeArr: [DayConsumeInfo] = []
+    private func gainConsumesInfo() ->[DayConsumeInfo] {
+        let singleConsumeWithFetchArr:[SingleConsume] = (self.vcState == .Month) ? SingleConsume.fetchConsumeRecordInThisMonth(NSDate()) : SingleConsume.fetchConsumeRecordInThisWeek(NSDate())
+        
+        var newConsumeArr: [DayConsumeInfo] = []
         
         var dayConsumeInfo: DayConsumeInfo = DayConsumeInfo()
         
-        for singleConsume: SingleConsume in monthSingleConsumeWithFetchArr {
+        for singleConsume: SingleConsume in singleConsumeWithFetchArr {
             // 判断 当前消费的时间 是否已经属于当前正在循环的日期（比如当前正在循环的日期为4月1日，当前消费日期为4月1日3点）
             // 若是，则直接把 当前消费信息加入到当前正在循环的日期的数组中；若不是，则进行一定处理
             if dayConsumeInfo.dateStr != "\(singleConsume.time!.month)月\(singleConsume.time!.day)日" {
                 if dayConsumeInfo.dateStr != "" {
                     // 把整理好的一个 [section: cells] 数据加入到数组中， 并把 cells 数据数组置空
-                    newMonthConsumeArr.append(dayConsumeInfo)
+                    newConsumeArr.append(dayConsumeInfo)
                     dayConsumeInfo = DayConsumeInfo()
                 }
                 // 处理时间信息
@@ -91,20 +110,18 @@ class MonthConsumeViewModel: NSObject {
         
         // 把最后一个消费信息加入到数组中
         if dayConsumeInfo.dayConsumeArr?.count != 0 {
-            newMonthConsumeArr.append(dayConsumeInfo)
+            newConsumeArr.append(dayConsumeInfo)
         }        
         
-        return newMonthConsumeArr
+        return newConsumeArr
     }
     
-    private func gainMonthConsumeMoney() -> Double {
-        return monthConsumeArr!.reduce(0.0, combine: {
-            $0 + $1.dayExpense
-        })
+    private func gainConsumesMoney() -> Double {
+        return (self.vcState == .Month) ? SingleConsume.fetchExpensesInThisMonth(NSDate()) : SingleConsume.fetchExpensesInThisWeek(NSDate())
     }
     
     private func initSectionIsShow() -> [Bool] {
-        return self.monthConsumeArr!.map {_ in 
+        return self.singleConsumes!.map {_ in 
             false
         }
     }
