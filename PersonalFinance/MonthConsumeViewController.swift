@@ -124,24 +124,22 @@ extension MonthConsumeViewController: UITableViewDelegate {
 extension MonthConsumeViewController: DZNEmptyDataSetSource {
     // 设置图片
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: "saveMoney")
+        return UIImage(named: "NoMoney")
     }
     
     // 设置文字
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let attribute = [NSFontAttributeName: UIFont.systemFontOfSize(18.0),
-                         NSForegroundColorAttributeName: UIColor.grayColor()]
+        let attribute = [NSFontAttributeName: UIFont.systemFontOfSize(13.0),
+                         NSForegroundColorAttributeName: UIColor(red:0.894, green:0.827, blue:0.882, alpha:1)]
         return NSAttributedString(string: "本月尚未记账", attributes: attribute)
     }
     
     func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
-        let animation: CABasicAnimation = CABasicAnimation(keyPath: "transform")
+        let animation = CABasicAnimation(keyPath: "opacity")
         
-        animation.fromValue = NSValue.init(CATransform3D: CATransform3DIdentity)
-        animation.toValue = NSValue.init(CATransform3D: CATransform3DMakeRotation(CGFloat(M_PI_2), 0.0, 0.0, 1.0))
-        
-        animation.duration = 0.5
-        animation.cumulative = true
+        animation.fromValue  = 0.0
+        animation.toValue    = 1.0
+        animation.duration   = 1.0
         
         return animation
     }

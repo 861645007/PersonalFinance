@@ -32,7 +32,7 @@ class ChartViewModel: NSObject {
     
     let weekdays: [String] = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]
     let months: [String] = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-    
+    var daysOfMonth: [String] = []
     
     override init() {
         // 变量处理
@@ -172,6 +172,11 @@ class ChartViewModel: NSObject {
         return barChartDataSet
     }
     
+    func gainDaysWithMonth() -> [String] {
+        return (0..<currentMonth.monthDays).map {
+            return "\((currentMonth + $0.days).day)日"
+        }
+    }
     
     // MARK: - 私有函数：数据的获取
     // 数据设置
@@ -236,7 +241,6 @@ class ChartViewModel: NSObject {
      - returns: 含 每天的消费 数组
      */
     private func gainConsumesForBarChart(today: NSDate, model: ChartTimeModel) -> [Double] {
-        var consumesArr: [SingleConsume]
         
         switch model {
         case .Week:            
@@ -246,7 +250,11 @@ class ChartViewModel: NSObject {
                 })
             })
         case .Month:
-            consumesArr = SingleConsume.fetchConsumeRecordInThisMonth(today)
+            return (0..<today.monthDays).map({
+                SingleConsume.fetchConsumeRecordInThisDay(today + $0.days).reduce(0.0, combine: {
+                    $0 + $1.money!.doubleValue
+                })
+            })
         case .Year:
             return (0..<12).map({
                 SingleConsume.fetchConsumeRecordInThisMonth(today + $0.months).reduce(0.0, combine: {
@@ -254,22 +262,7 @@ class ChartViewModel: NSObject {
                 })
             })
         }
-        
-        return consumesArr.map({
-            ($0.money?.doubleValue)!
-        })
     }
-    
-    private func gainDaysWithSevenDays(today: NSDate) -> [String] {
-        return (0..<7).map {
-            if $0 == 0 {
-               return "今日"
-            }else {
-                return "\((today - $0.days).day)日"
-            }
-        }.reverse()
-    }
-    
     
     
     /**

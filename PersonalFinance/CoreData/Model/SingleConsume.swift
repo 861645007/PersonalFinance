@@ -90,9 +90,9 @@ class SingleConsume: NSManagedObject {
     
     
     class func fetchLastConsumeRecord() ->SingleConsume? {
-        return self.fetchConsumeRecordInThisDay(NSDate()).last
+        
+        return SingleConsume.MR_findFirstWithPredicate(nil, sortedBy: "time", ascending: false)
     }
-    
     
     
     // MARK: - 查询消费总额

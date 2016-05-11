@@ -30,8 +30,9 @@ extension NSDate {
         return self.firstDayWithNextWeek(0) - 7.days
     }
     
+    // 把下周的第一天的开始时间作为上一周的结束时间
     func weekEnd() ->NSDate {
-        return self.firstDayWithNextWeek(0) - 1.days
+        return self.firstDayWithNextWeek(0)
     }
     
     func dayBegin() ->NSDate {
@@ -123,7 +124,7 @@ extension NSDate {
                 // 如果这个月是12月，说明跨年了
                 return NSDate(year: self.year + 1, month: 1, day: lastDayOfThisWeek! + 1, hour: hour)
             }else {
-                return NSDate(year: self.year, month: self.month, day: lastDayOfThisWeek! + 1, hour: hour)
+                return NSDate(year: self.year, month: self.month + 1, day: lastDayOfThisWeek! + 1, hour: hour)
             }
         }else {
             return NSDate(year: self.year, month: self.month, day: lastDayOfThisWeek!, hour: hour) + 1.days

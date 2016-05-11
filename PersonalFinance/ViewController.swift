@@ -35,6 +35,8 @@ class ViewController: UIViewController {
         
         // 修改导航栏返回键的文字
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "    ", style: .Plain, target: nil, action: nil)
+        // 修改返回键的颜色 为略粉色
+        self.navigationController?.navigationBar.tintColor = UIColor(red:0.976, green:0.904, blue:0.965, alpha:1)
         
         // 设置导航栏透明
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
