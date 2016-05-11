@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // 修改导航栏返回键的文字
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "    ", style: .Plain, target: nil, action: nil)
         
         // 设置导航栏透明
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);

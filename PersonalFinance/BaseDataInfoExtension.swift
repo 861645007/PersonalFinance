@@ -41,6 +41,15 @@ extension UIView {
 
         self.layer.insertSublayer(gradient, atIndex: 0)
     }
+    
+    func snapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0)
+        self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
 }
 
 

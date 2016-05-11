@@ -35,39 +35,33 @@ class SingleConsume: NSManagedObject {
     // MARK: - 查询消费记录
     
     // MARK: - 查询图表页面所需的信息
+    
     /**
-     按年查询 一年的消费记录 to 走势图
+     获取一个星期的数据(按 Category 组分类)
      
-     - parameter date: 一年中的任意日期
-     
-     - returns: 一年的消费记录
+     - returns: 一个 NSFetchedResultsController 的实例数据
      */
-    class func fetchConsumeWithYearTrendChart(date: NSDate) ->[SingleConsume] {
+    class func fetchConsumeWithCategoryGroupInWeek(date: NSDate) ->NSFetchedResultsController {
+        return self.fetchCustomWithRangeDate(date.weekBegin(), dateEnd: date.weekEnd())
+    }
+    
+    /**
+     获取一个月的数据(按 Category 组分类)
+     
+     - returns: 一个 NSFetchedResultsController 的实例数据
+     */
+    class func fetchConsumeWithCategoryGroupInMonth(date: NSDate) ->NSFetchedResultsController {
+        return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
+    }
+    /**
+     获取一年的数据(按 Category 组分类)
+     
+     - returns: 一个 NSFetchedResultsController 的实例数据
+     */
+    class func fetchConsumeWithCategoryGroupInYear(date: NSDate) ->NSFetchedResultsController {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
-    /**
-     按月查询 一个月的消费记录 to 走势图
-     
-     - parameter date: 一个月中的任意日期
-     
-     - returns: 一个月的消费记录
-     */
-    class func fetchConsumeWithMonthTrendChart(date: NSDate) ->[SingleConsume] {
-        return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
-    }
-    
-    /**
-     获取一个月的 环形图 的数据(按 Category 组分类)
-     
-     - returns: 一个 NSFetchedResultsController 的实例数据 to 走势图
-     */
-    class func fetchConsumeWithPieChart(date: NSDate) ->NSFetchedResultsController {
-        let predicate = self.createPredicateWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
-        
-//        let request = SingleConsume.MR_requestAllWithPredicate(predicate)
-        return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "time", ascending: true)
-    }
     
     
     
@@ -86,13 +80,12 @@ class SingleConsume: NSManagedObject {
         return self.fetchCustomWithRangeDate(date.weekBegin(), dateEnd: date.weekEnd())
     }
     
-    /**
-     查询当月的所有消费记录
-     
-     - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
-     */
     class func fetchConsumeRecordInThisMonth(date: NSDate) ->[SingleConsume] {
-        return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.dayEnd())
+        return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
+    }
+    
+    class func fetchConsumeRecordInThisYear(date: NSDate) ->[SingleConsume] {
+        return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
     
@@ -135,7 +128,20 @@ class SingleConsume: NSManagedObject {
     //MARK: - 私有函数
     
     /**
-     查询一段时间内的 消费记录，并按照时间顺序排列，Category进行分组
+     按Category进行分组查询一段时间内的 消费记录，并按照时间顺序排列
+     
+     - parameter dateBegin: 开始时间
+     - parameter dateEnd:   结束时间
+     
+     - returns: 一段时间内的 消费记录（NSFetchedResultsController）
+     */
+    private static func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->NSFetchedResultsController {
+        let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
+        return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "time", ascending: true)
+    }
+    
+    /**
+     查询一段时间内的 消费记录，并按照时间顺序排列
      
      - parameter dateBegin: 开始时间
      - parameter dateEnd:   结束时间

@@ -62,6 +62,7 @@
 		7A7EB3C21C58F07F009AD0A7 /* PersonalFinanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3C11C58F07F009AD0A7 /* PersonalFinanceTests.swift */; };
 		7A7EB3CD1C58F07F009AD0A7 /* PersonalFinanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3CC1C58F07F009AD0A7 /* PersonalFinanceUITests.swift */; };
 		7A7EB3DD1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A7EB3DB1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodeld */; };
+		7A8DE9471CE2096B00013EB6 /* DayConsumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8DE9461CE2096B00013EB6 /* DayConsumeTableViewCell.swift */; };
 		7A92C4691CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4651CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift */; };
 		7A92C46A1CC3C6E50035CF0A /* SingleConsume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4661CC3C6E50035CF0A /* SingleConsume.swift */; };
 		7A92C46B1CC3C6E50035CF0A /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A92C4671CC3C6E50035CF0A /* Category+CoreDataProperties.swift */; };
@@ -185,6 +186,7 @@
 		7A7EB3CC1C58F07F009AD0A7 /* PersonalFinanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFinanceUITests.swift; sourceTree = "<group>"; };
 		7A7EB3CE1C58F07F009AD0A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A7EB3DC1C58F4E8009AD0A7 /* PersonalFinance.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersonalFinance.xcdatamodel; sourceTree = "<group>"; };
+		7A8DE9461CE2096B00013EB6 /* DayConsumeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayConsumeTableViewCell.swift; sourceTree = "<group>"; };
 		7A92C4651CC3C6E50035CF0A /* SingleConsume+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SingleConsume+CoreDataProperties.swift"; path = "CoreData/Model/SingleConsume+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		7A92C4661CC3C6E50035CF0A /* SingleConsume.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SingleConsume.swift; path = CoreData/Model/SingleConsume.swift; sourceTree = "<group>"; };
 		7A92C4671CC3C6E50035CF0A /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "CoreData/Model/Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				7A01C1201CBF3F6500D3EC90 /* MonthConsumeViewController.swift */,
+				7A8DE9461CE2096B00013EB6 /* DayConsumeTableViewCell.swift */,
 			);
 			name = "MonthConsume View Controller";
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				7A614FC61C5C780900BEE1B8 /* DateExtension.swift in Sources */,
 				7A7376BC1CBB7F810038BB3E /* TopAlert.swift in Sources */,
 				7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */,
+				7A8DE9471CE2096B00013EB6 /* DayConsumeTableViewCell.swift in Sources */,
 				7A2B3F081CC1240500D751D5 /* PasscodeOperation.swift in Sources */,
 				7A7376C71CBB80350038BB3E /* FAImageView.m in Sources */,
 				7A92C46B1CC3C6E50035CF0A /* Category+CoreDataProperties.swift in Sources */,

@@ -60,9 +60,9 @@ extension DayConsumeViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("DayConsumeCell") as! FinanceOfCategoryTableViewCell
+        let cell: DayConsumeTableViewCell = tableView.dequeueReusableCellWithIdentifier("DayConsumeCell") as! DayConsumeTableViewCell
         
-        cell.prepareCollectionCellForDayConsumeView(self.dayConsumeVM.consumeInfoAtIndex(indexPath.row))
+        cell.prepareCollectionCellForConsumeView(self.dayConsumeVM.consumeInfoAtIndex(indexPath.row))
         
         return cell
     }

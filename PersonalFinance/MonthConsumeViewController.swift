@@ -53,7 +53,6 @@ class MonthConsumeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 
@@ -67,9 +66,9 @@ extension MonthConsumeViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("MonthConsumeCell") as! FinanceOfCategoryTableViewCell
+        let cell: DayConsumeTableViewCell = tableView.dequeueReusableCellWithIdentifier("MonthConsumeCell") as! DayConsumeTableViewCell
         
-        cell.prepareCollectionCellForDayConsumeView(self.monthConsumeVM.conusmeInfoAtIndexPath(indexPath))
+        cell.prepareCollectionCellForConsumeView(self.monthConsumeVM.conusmeInfoAtIndexPath(indexPath))
         
         return cell
     }
@@ -80,14 +79,16 @@ extension MonthConsumeViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headView: UIView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, 44))
-        headView.backgroundColor = UIColor(red:0.158, green:0.104, blue:0.229, alpha:1)
+        headView.layer.masksToBounds = true
+        headView.layer.cornerRadius = 2.0
+        headView.backgroundColor = UIColor(red:0.146, green:0.096, blue:0.212, alpha:1)
         
         let bgbtn:UIButton = UIButton(frame: headView.frame)
         bgbtn.tag = section
         bgbtn.addTarget(self, action: #selector(clickSection(_:)), forControlEvents: .TouchUpInside)
         headView.addSubview(bgbtn)
         
-        let dayLabel: UILabel = UILabel(frame: CGRectMake(16, 10, 60, 21))
+        let dayLabel: UILabel = UILabel(frame: CGRectMake(16, 10, 80, 21))
         dayLabel.text = self.monthConsumeVM.titleWithTimeForSection(section)
         dayLabel.font = UIFont.boldSystemFontOfSize(20)
         dayLabel.textColor = UIColor(red:191/255.0, green:191/255.0, blue:191/255.0, alpha:255/255.0)
@@ -99,7 +100,7 @@ extension MonthConsumeViewController: UITableViewDataSource {
         moneyLabel.textColor = UIColor(red:191/255.0, green:191/255.0, blue:191/255.0, alpha:255/255.0)
         headView.addSubview(moneyLabel)
         
-        let imageView: UIImageView = UIImageView(frame: CGRectMake(self.view.bounds.size.width - 42, 12, 20, 20))
+        let imageView: UIImageView = UIImageView(frame: CGRectMake(self.view.bounds.size.width - 36, 12, 20, 20))
         imageView.image = self.monthConsumeVM.sectionIsShow[section] ? UIImage(named: "month-DownArrow") : UIImage(named: "month-RightArrow")
         headView.addSubview(imageView)
         
