@@ -10,6 +10,7 @@ import UIKit
 import Charts
 import DZNEmptyDataSet
 import Spring
+import SwiftDate
 
 class ChartViewController: UIViewController {
 
@@ -22,10 +23,16 @@ class ChartViewController: UIViewController {
     let chartVM: ChartViewModel = ChartViewModel()
     var currentTimeModel: ChartTimeModel = .Week
     
+    // 控制视图 实例变量
+    
+    @IBOutlet weak var showWeekConsumesBtn: DesignableButton!
+    @IBOutlet weak var showMonthConsumesBtn: DesignableButton!    
+    @IBOutlet weak var showYearConsumesBtn: DesignableButton!
+    
+    @IBOutlet weak var todayTimeLabel: UILabel!
     
     @IBOutlet weak var timeIndicatorView: UIView!
     
-    // 控制视图 实例变量
     @IBOutlet weak var categoryTableView: UITableView!
     
     @IBOutlet weak var chartBGView: SpringView!
@@ -56,6 +63,18 @@ class ChartViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.prepareChartView()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        switch currentTimeModel {
+        case .Week:
+            self.moveTimeIndicatorAnimation(self.showWeekConsumesBtn.center.x)
+        case .Month:
+            self.moveTimeIndicatorAnimation(self.showMonthConsumesBtn.center.x)
+        case .Year:
+            self.moveTimeIndicatorAnimation(self.showYearConsumesBtn.center.x)
+        }
+    }
+        
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -201,6 +220,8 @@ class ChartViewController: UIViewController {
     // MARK: - 创建环形图
     
     func prepareChartView() {
+        self.todayTimeLabel.text = self.chartVM.setCurrentTime(currentTimeModel)
+        
         // 创建环形图
         self.preparePieChart()
         // 创建七天消费柱状图
@@ -288,7 +309,7 @@ class ChartViewController: UIViewController {
         }
         let barChartDataSet = self.chartVM.createBarChartDataSet("七天消费柱状图", dataEntries: dataEntries)
         // 设置每个柱之前的宽度比例
-        barChartDataSet.barSpace = 0.35
+        barChartDataSet.barSpace = 0.45
         barChartDataSet.valueTextColor = UIColor.whiteColor()
         barChartDataSet.valueFont = UIFont.systemFontOfSize(11.0)
         
@@ -304,12 +325,30 @@ class ChartViewController: UIViewController {
         sevenDaysChartView.rightAxis.enabled             = false        // 隐藏右侧的坐标轴
         sevenDaysChartView.leftAxis.axisMinValue         = 0.0;         // 使柱状的和x坐标轴紧贴
         
-        sevenDaysChartView.setVisibleXRangeMaximum(12)                  // 设置一个屏幕的最多柱状图的柱数
+        sevenDaysChartView.fitScreen()
+        sevenDaysChartView.setVisibleXRangeMaximum(15)                  // 设置一个屏幕的最多柱状图的柱数
         
         sevenDaysChartView.setScaleEnabled(false)                       // 防止变大
         sevenDaysChartView.legend.enabled                = false        // 隐藏色彩说明
     }
     
+    
+    // 点击柱状图 跳转到相应的详细页面
+    private func showDetailViewWithBar(day: NSDate, isMonth: Bool) {
+        let detailView: UIViewController
+        
+        if isMonth {
+            detailView = self.storyboard?.instantiateViewControllerWithIdentifier("MonthConsumeViewController") as! MonthConsumeViewController
+            (detailView as! MonthConsumeViewController).monthConsumeVM = MonthConsumeViewModel(state: .Month, today: day)
+            detailView.title = "\(day.year)年\(day.month)月"
+        }else {
+            detailView = self.storyboard?.instantiateViewControllerWithIdentifier("DayConsumeViewController") as! DayConsumeViewController
+            detailView.title = "\(day.month)月\(day.day)日"
+            (detailView as! DayConsumeViewController).dayConsumeVM = DayConsumeViewModel(today: day)
+        }
+        
+        self.navigationController?.pushViewController(detailView, animated: true)
+    }
 }
 
 
@@ -341,7 +380,10 @@ extension ChartViewController: UITableViewDelegate {
             self.setCategoryChartCenterText("")
             self.categoryChartView.highlightValue(highlight: nil, callDelegate: false)
         }else {
-            self.categoryChartView.highlightValue(xIndex: indexPath.row, dataSetIndex: 0, callDelegate: true)            
+            // 设置扇形的中心文字
+            
+            self.setCategoryChartCenterText("\((self.chartVM.gainFinanceCategoryAt(indexPath.row).categoryRatio * 100).convertToStrWithTwoFractionDigits())%")
+            self.categoryChartView.highlightValue(xIndex: indexPath.row, dataSetIndex: 0, callDelegate: true)
         }
         
     }
@@ -353,21 +395,30 @@ extension ChartViewController: ChartViewDelegate {
     
     // 当 有元素被选中了
     func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
-        if chartView == categoryChartView {
-            
+        if chartView == categoryChartView {            
             // 设置扇形的中心文字
             self.setCategoryChartCenterText("\((entry.value * 100).convertToStrWithTwoFractionDigits())%")
             
             // 设置 tableView 中 对应的那一行被选中，如果已经被选中就不需要执行选中操作
             let indexpath = NSIndexPath(forRow: entry.xIndex, inSection: 0)
-            let cell = self.categoryTableView.cellForRowAtIndexPath(indexpath)            
+            let cell = self.categoryTableView.cellForRowAtIndexPath(indexpath)
             
-            if ((cell?.selected) != nil) {
-                self.categoryTableView.selectRowAtIndexPath(NSIndexPath(forRow: entry.xIndex, inSection: 0), animated: false, scrollPosition: .Middle)
+            if cell == nil {
+                self.categoryTableView.scrollToRowAtIndexPath(indexpath, atScrollPosition: .Middle, animated: true)
+            }else {
+                if !cell!.selected {
+                    self.categoryTableView.selectRowAtIndexPath(NSIndexPath(forRow: entry.xIndex, inSection: 0), animated: false, scrollPosition: .Middle)
+                }
             }
-            
         }else if chartView == sevenDaysChartView {
-//            print("sevenDaysChartView: \(entry) + \(dataSetIndex) + \(highlight)")
+            switch currentTimeModel {
+            case .Week:
+                self.showDetailViewWithBar(self.chartVM.currentWeek + (entry.xIndex).days, isMonth: false)
+            case .Month:
+                self.showDetailViewWithBar(self.chartVM.currentMonth + (entry.xIndex).days, isMonth: false)
+            case .Year:
+                self.showDetailViewWithBar(self.chartVM.currentYear + (entry.xIndex).months, isMonth: true)
+            }
         }
     }
     
@@ -382,6 +433,23 @@ extension ChartViewController: ChartViewDelegate {
             }
             
             self.categoryTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+    }
+}
+
+
+extension ChartViewController: UIScrollViewDelegate {
+    
+    // 在点击扇形的高亮的后，如果是非可见cell，我们要先把cell滑动出来后再处理 cell 的选择（在滑动动画结束之后操作）
+    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+        let index = self.categoryChartView.highlighted.first!.xIndex
+        
+        let indexpath = NSIndexPath(forRow: index, inSection: 0)
+        
+        let cell = self.categoryTableView.cellForRowAtIndexPath(indexpath)
+        
+        if !cell!.selected {
+            self.categoryTableView.selectRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0), animated: false, scrollPosition: .Middle)
         }
     }
 }

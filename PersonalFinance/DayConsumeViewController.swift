@@ -14,7 +14,7 @@ class DayConsumeViewController: UIViewController {
     @IBOutlet weak var totalMoneyLabel: UILabel!    
     @IBOutlet weak var dayConsumeTableView: UITableView!
     
-    let dayConsumeVM: DayConsumeViewModel = DayConsumeViewModel()
+    var dayConsumeVM: DayConsumeViewModel = DayConsumeViewModel()
     
     
     
@@ -22,15 +22,15 @@ class DayConsumeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "今日消费"
         dayConsumeTableView.tableFooterView = UIView()
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.dayConsumeVM.initData()
-
         self.totalMoneyLabel.fn_setNumber(self.dayConsumeVM.dayConsumeMoney, format: "￥%.2f")
+        
+        self.dayConsumeVM.initData()
+        self.dayConsumeTableView.reloadData()        
     }
     
     override func didReceiveMemoryWarning() {

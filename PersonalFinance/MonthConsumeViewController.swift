@@ -21,8 +21,6 @@ class MonthConsumeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.title = self.monthConsumeVM.setVCTitleName()
-        
         if self.monthConsumeVM.singleConsumes?.count != 0 {
             monthConsumeTableView.emptyDataSetSource = nil
             monthConsumeTableView.emptyDataSetDelegate = nil

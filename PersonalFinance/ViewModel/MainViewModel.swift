@@ -48,6 +48,6 @@ class MainViewModel: NSObject {
     
     // MARK: - 跳转
     func monthOrWeekConsumesVM(state: MonthOrWeekVCState) -> MonthConsumeViewModel {
-        return MonthConsumeViewModel(state: state)
+        return MonthConsumeViewModel(state: state, today: NSDate())
     }
 }

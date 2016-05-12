@@ -64,6 +64,16 @@ class ChartViewModel: NSObject {
         }
     }
     
+    func setCurrentTime(model: ChartTimeModel) -> String {
+        switch model {
+        case .Week:
+            return "\(currentWeek.year)年-\(currentWeek.month)月  第\(currentWeek.weekOfYear)周"
+        case .Month:
+            return "\(currentMonth.year)年-\(currentMonth.month)月"
+        case .Year:
+            return "\(currentYear.year)年"
+        }
+    }
     
     // MARK: - TableView 数据
     func gainNumberOfSection() -> Int {
@@ -195,7 +205,8 @@ class ChartViewModel: NSObject {
     private func dealConsumesForPieChart(consumeFetchedResultsController: NSFetchedResultsController) {
         self.consumesForPieChart = []
         
-        for section: NSFetchedResultsSectionInfo in consumeFetchedResultsController.sections! {
+        for section in consumeFetchedResultsController.sections! {
+            
             // 获取 当前 消费类型
             var consumeCategory: ConsumeCategory!
             for consumeC: ConsumeCategory in consumeTypeArr! {

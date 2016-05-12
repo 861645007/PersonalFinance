@@ -24,14 +24,21 @@ class MonthConsumeViewModel: NSObject {
     
     var vcState: MonthOrWeekVCState = .Month
     
+    let today: NSDate
+    
     override init() {
+        today = NSDate()
+        
         super.init()
         self.initData()
     }
     
-    init(state: MonthOrWeekVCState) {
-        super.init()
+    init(state: MonthOrWeekVCState, today: NSDate) {
+        self.today = today
         self.vcState = state
+        
+        
+        super.init()
         self.initData()
     }
     
@@ -41,9 +48,6 @@ class MonthConsumeViewModel: NSObject {
         sectionIsShow     = self.initSectionIsShow()
     }
     
-    func setVCTitleName() -> String {
-        return (self.vcState == .Month) ? "本月消费" : "本周消费"
-    }
     
     // MARK: - TableView 数据源
     func numberOfSections() -> NSInteger {

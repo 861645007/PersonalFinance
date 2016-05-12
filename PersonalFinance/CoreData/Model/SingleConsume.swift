@@ -19,6 +19,7 @@ class SingleConsume: NSManagedObject {
         
         let singleConsume: SingleConsume = SingleConsume.MR_createEntity()!
         
+//        singleConsume.id       = SingleConsume.MR_countOfEntities() + 1
         singleConsume.category = NSNumber(int: category)
         singleConsume.photo    = photo
         singleConsume.comment  = comment
@@ -137,7 +138,7 @@ class SingleConsume: NSManagedObject {
      */
     private static func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->NSFetchedResultsController {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
-        return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "time", ascending: true)
+        return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "category,time", ascending: true)
     }
     
     /**

@@ -313,7 +313,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EWy-tU-MNt" customClass="bg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EWy-tU-MNt">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ugb-3c-5lR">
@@ -396,7 +396,7 @@
                             <constraint firstItem="EWy-tU-MNt" firstAttribute="top" secondItem="EL0-rN-lNy" secondAttribute="topMargin" id="yvf-Wn-vrq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="bEH-mP-glo">
+                    <navigationItem key="navigationItem" title="本月消费" id="bEH-mP-glo">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="itk-cY-yhq">
                             <view key="customView" contentMode="scaleToFill" id="znp-VF-1iK">
                                 <rect key="frame" x="447" y="5" width="133" height="33"/>
@@ -509,8 +509,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XHd-Nl-Mpc" customClass="DesignableView" customModule="Spring">
                                         <rect key="frame" x="8" y="70" width="584" height="254"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hd-VV-Yd1">
+                                                <rect key="frame" x="271" y="20" width="42" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.59999999999999998" green="0.45882352939999999" blue="0.64313725489999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SNu-w9-cAR">
-                                                <rect key="frame" x="225" y="-7" width="359" height="268"/>
+                                                <rect key="frame" x="225" y="-42" width="359" height="288"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -584,7 +590,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17f-VH-Ade" customClass="PieChartView" customModule="Charts">
-                                                <rect key="frame" x="0.0" y="24" width="225" height="206"/>
+                                                <rect key="frame" x="0.0" y="-1" width="225" height="206"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="17f-VH-Ade" secondAttribute="height" multiplier="117:107" id="jd2-iB-MSY"/>
@@ -601,12 +607,14 @@
                                         <constraints>
                                             <constraint firstItem="17f-VH-Ade" firstAttribute="centerY" secondItem="SNu-w9-cAR" secondAttribute="centerY" id="CUI-n3-NiF"/>
                                             <constraint firstItem="SNu-w9-cAR" firstAttribute="width" secondItem="17f-VH-Ade" secondAttribute="width" multiplier="1.6" id="DQS-vO-KSY"/>
-                                            <constraint firstItem="SNu-w9-cAR" firstAttribute="height" secondItem="17f-VH-Ade" secondAttribute="height" multiplier="1.3" id="F4d-HH-4HR"/>
+                                            <constraint firstItem="SNu-w9-cAR" firstAttribute="height" secondItem="17f-VH-Ade" secondAttribute="height" multiplier="1.4" id="F4d-HH-4HR"/>
                                             <constraint firstItem="17f-VH-Ade" firstAttribute="height" relation="lessThanOrEqual" secondItem="XHd-Nl-Mpc" secondAttribute="height" multiplier="0.85" id="FIz-Vn-JbG"/>
                                             <constraint firstItem="SNu-w9-cAR" firstAttribute="leading" secondItem="17f-VH-Ade" secondAttribute="trailing" id="NUg-iw-Gll"/>
                                             <constraint firstItem="SNu-w9-cAR" firstAttribute="top" secondItem="XHd-Nl-Mpc" secondAttribute="top" priority="999" constant="8" id="Wpa-K8-OD3"/>
                                             <constraint firstItem="SNu-w9-cAR" firstAttribute="centerY" secondItem="XHd-Nl-Mpc" secondAttribute="centerY" id="fK9-NM-bYq"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SNu-w9-cAR" secondAttribute="bottom" priority="999" constant="8" id="o7m-2b-07A"/>
+                                            <constraint firstItem="6hd-VV-Yd1" firstAttribute="top" secondItem="XHd-Nl-Mpc" secondAttribute="top" constant="20" id="jYC-Ez-Ler"/>
+                                            <constraint firstAttribute="bottom" secondItem="SNu-w9-cAR" secondAttribute="bottom" constant="8" id="o7m-2b-07A"/>
+                                            <constraint firstItem="6hd-VV-Yd1" firstAttribute="centerX" secondItem="XHd-Nl-Mpc" secondAttribute="centerX" id="vb5-wu-97k"/>
                                             <constraint firstAttribute="trailing" secondItem="SNu-w9-cAR" secondAttribute="trailing" id="vqz-Oa-Dz0"/>
                                             <constraint firstItem="17f-VH-Ade" firstAttribute="leading" secondItem="XHd-Nl-Mpc" secondAttribute="leading" id="xX2-U9-qiW"/>
                                         </constraints>
@@ -627,6 +635,11 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="fK9-NM-bYq"/>
+                                            </mask>
+                                        </variation>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="0.0" y="8" width="414" height="384"/>
                                         </variation>
@@ -806,7 +819,11 @@
                         <outlet property="categoryTableView" destination="SNu-w9-cAR" id="KuC-q7-Erc"/>
                         <outlet property="chartBGView" destination="Cvc-9C-dZV" id="aYN-1G-ddP"/>
                         <outlet property="sevenDaysChartView" destination="d5y-CR-SrR" id="Fxj-am-V20"/>
+                        <outlet property="showMonthConsumesBtn" destination="EQi-K9-vxY" id="McT-c4-1bb"/>
+                        <outlet property="showWeekConsumesBtn" destination="o1b-Yd-jPx" id="T5a-p8-tWa"/>
+                        <outlet property="showYearConsumesBtn" destination="GBM-dt-tQR" id="Zaa-ch-cRc"/>
                         <outlet property="timeIndicatorView" destination="7gg-G2-cK9" id="ioF-RH-jBs"/>
+                        <outlet property="todayTimeLabel" destination="6hd-VV-Yd1" id="y65-Nu-aHR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRD-0N-i3J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1386,14 +1403,14 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="Nrs-oU-g3w">
-                        <barButtonItem key="leftBarButtonItem" image="setting" id="0HW-ld-iZd">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="leftBarButtonItem" image="MainSetting" id="0HW-ld-iZd">
+                            <color key="tintColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="CS0-89-gTt" kind="show" identifier="GotoSettingVC" id="UXL-bX-nzQ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="iconfont-chart" id="DUM-0g-Z8Z">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <barButtonItem key="rightBarButtonItem" image="MainChart" id="DUM-0g-Z8Z">
+                            <color key="tintColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="XR3-Wx-Ccc" kind="show" id="Bjj-r9-NyP"/>
                             </connections>
@@ -1624,6 +1641,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bnb-u7-FPW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.89400000000000002" green="0.82699999999999996" blue="0.88200000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -1637,13 +1657,13 @@
     </scenes>
     <resources>
         <image name="AddCustomType" width="48" height="48"/>
+        <image name="MainChart" width="30" height="30"/>
         <image name="MainMonth" width="35" height="35"/>
         <image name="MainNew" width="35" height="35"/>
         <image name="MainRecordConsume" width="30" height="30"/>
+        <image name="MainSetting" width="30" height="30"/>
         <image name="MainSevenDay" width="35" height="35"/>
         <image name="MainToday" width="35" height="35"/>
-        <image name="iconfont-chart" width="30" height="30"/>
-        <image name="setting" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BIW-X9-Q8S"/>

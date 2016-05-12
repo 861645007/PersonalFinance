@@ -77,9 +77,11 @@ class ViewController: UIViewController {
         
         if segue.identifier == "GotoMonthConsumeVC" {
             let vc = segue.destinationViewController as! MonthConsumeViewController
+            vc.title = "本月消费"
             vc.monthConsumeVM = self.mainVM.monthOrWeekConsumesVM(MonthOrWeekVCState.Month)            
         }else if segue.identifier == "GotoWeekConsumeVC" {
             let vc = segue.destinationViewController as! MonthConsumeViewController
+            vc.title = "本周消费"
             vc.monthConsumeVM = self.mainVM.monthOrWeekConsumesVM(MonthOrWeekVCState.Week)
         }
     }
