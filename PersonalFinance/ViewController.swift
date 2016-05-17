@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftDate
+import ReactiveCocoa
 import MBCircularProgressBar
 
 let AddNewConsumeInWidgetNotification = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
@@ -25,10 +25,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var newExpenseLabel: UILabel!
     @IBOutlet weak var weekExpenseLabel: UILabel!
     
-    
-    
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -52,14 +48,26 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         self.todayExpenseLabel.fn_setNumber(self.mainVM.gainDayExpense(), format: "￥%.2f")
         self.monthExpenseLabel.fn_setNumber(self.mainVM.gainMonthExpense(), format: "￥%.2f")
         self.newExpenseLabel.fn_setNumber(self.mainVM.gainNewExpense(), format: "￥%.2f")
         self.weekExpenseLabel.fn_setNumber(self.mainVM.gainWeekExpense(), format: "￥%.2f")
-        
-        self.percentProgressBar.value = self.mainVM.configureProgressBarPercent()
+
+        // 设置进度条
+        self.setProgressBar(self.mainVM.configureProgressBarPercent())
     }
+        
+    // 设置进度条
+    func setProgressBar(value: CGFloat) {
+        
+        self.percentProgressBar.setValue(value > 100.0 ? 100.0 : value , animateWithDuration: Double(value) * 3.0 / 100.0)
+
+        // 根据值得大小不同设置 进度条的颜色
+        self.percentProgressBar.progressColor = self.mainVM.gainProgressColor(value)
+        self.percentProgressBar.progressStrokeColor = self.mainVM.gainProgressColor(value)
+    }
+    
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(true)
@@ -84,12 +92,6 @@ class ViewController: UIViewController {
             vc.title = "本周消费"
             vc.monthConsumeVM = self.mainVM.monthOrWeekConsumesVM(MonthOrWeekVCState.Week)
         }
-    }
-    
-    // 设置按钮圆角
-    func setBtnCornerRadius(btn: UIButton) {
-        btn.layer.masksToBounds = true
-        btn.layer.cornerRadius = (btn.frame.height / 2)
     }
     
     func showAddNewConsumeVC() {

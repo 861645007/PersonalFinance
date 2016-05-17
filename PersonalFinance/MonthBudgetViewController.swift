@@ -60,8 +60,6 @@ class MonthBudgetViewController: UIViewController {
         self.dismissSelf()
     }
     
-    
-    
     @IBAction func sureMonthBudget(sender: AnyObject) {
         // 存储操作
         

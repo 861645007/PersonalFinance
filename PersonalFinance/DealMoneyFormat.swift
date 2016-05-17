@@ -29,7 +29,9 @@ class DealMoneyFormat: NSObject {
      */
     func dealWithDecimalMoney(text: String) -> String {
         
-        if  text.characters.count >= 12 {
+        let money: String = text.substringFromIndex(text.startIndex.advancedBy(1)).stringByReplacingOccurrencesOfString(",", withString: "", options: [], range: nil)
+        
+        if  money.characters.count >= 11 || Double(money) == 0.0 {
             var newText: String = text
             newText.removeAtIndex(newText.endIndex.advancedBy(-1))
             return newText

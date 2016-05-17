@@ -15,7 +15,7 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
     var categoryImage: UIImageView!
     var categoryNameTextField: UITextField!
     
-    
+    var lastPosition: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,33 +151,17 @@ extension AddNewConsumeCategoryViewController {
         self.categoryImage.image = self.addNewConsumeCategoryVM.imageAtIndexPath(indexPath!.row)
     }
     
-    /*
-     // Uncomment this method to specify if the specified item should be highlighted during tracking
-     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-     return true
-     }
-     */
-    
-    /*
-     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-     return false
-     }
-     
-     override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-     return false
-     }
-     
-     override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-     
-     }
-     */
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let currentPostion: Int = Int(scrollView.contentOffset.y);
+        if (currentPostion - lastPosition > 25) {
+            // 上滑
+            lastPosition = currentPostion;
+            self.categoryNameTextField.resignFirstResponder()
+            
+        }else if (lastPosition - currentPostion > 25) {
+            // 下滑
+            lastPosition = currentPostion;
+        }
+    }
 }
 

@@ -87,9 +87,7 @@ extension SettingViewController: UITableViewDelegate {
             }else if indexPath.row == 1 {
                 let monthBudgetVC = self.storyboard?.instantiateViewControllerWithIdentifier("MonthBudgetViewController") as! MonthBudgetViewController
                 
-                
-                monthBudgetVC.modalPresentationStyle = .OverCurrentContext
-                
+                monthBudgetVC.modalPresentationStyle = .OverCurrentContext                
                 self.presentViewController(monthBudgetVC, animated: true, completion: {
                     //
                 })

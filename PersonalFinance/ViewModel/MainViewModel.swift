@@ -16,12 +16,22 @@ class MainViewModel: NSObject {
     }
     
     /**
-     配置波浪小球的百分比
+     配置进度调的百分比
      
-     - returns: 波浪小球的百分比
+     - returns: 进度条的百分比
      */
     func configureProgressBarPercent() -> CGFloat {
-        return self.baseInfo.monthBudget() == 0.0 ? 0.0 : CGFloat(self.baseInfo.monthExpense() / self.baseInfo.monthBudget())
+        return self.baseInfo.monthBudget() == 0.0 ? 0.0 : CGFloat(self.baseInfo.monthExpense() / self.baseInfo.monthBudget()) * 100
+    }
+    
+    func gainProgressColor(value: CGFloat) -> UIColor {
+        if(value >= 35 && value < 70) {
+            return UIColor.greenColor()
+        }else if(value >= 70) {
+            return UIColor.redColor()
+        }else {
+            return UIColor(red:0.317, green:0.662, blue:1, alpha:1)
+        }
     }
     
     func gainMonthExpense() ->Double {
@@ -43,6 +53,8 @@ class MainViewModel: NSObject {
     func gainWeekExpense() ->Double {
         return baseInfo.weekExpense()
     }
+    
+    
     
     
     

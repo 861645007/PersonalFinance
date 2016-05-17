@@ -56,6 +56,11 @@ class ChartViewController: UIViewController {
         categoryChartView.delegate = self
         sevenDaysChartView.delegate = self
         
+        // 修改导航栏返回键的文字
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "    ", style: .Plain, target: nil, action: nil)
+        // 修改返回键的颜色 为略粉色
+        self.navigationController?.navigationBar.tintColor = UIColor(red:0.976, green:0.904, blue:0.965, alpha:1)
+        
         // 去除 tableView 多余的分割线
         self.categoryTableView.tableFooterView = UIView()
     }
@@ -131,6 +136,7 @@ class ChartViewController: UIViewController {
     
     // 滑动动画
     func swipeAnimation(isRight: Bool, completion: () -> ()) {
+        // 创建一个 MainView 的截屏图片 作为假假面，再把真的图层移除界面，再做成一个动画
         let animationImage = UIImageView(frame: self.chartBGView.frame)
         animationImage.image = self.chartBGView.snapshot()
         self.view.addSubview(animationImage)
@@ -208,13 +214,28 @@ class ChartViewController: UIViewController {
     }
     
     func changeChartsModelAnimation(completion: () -> ()) {
-        self.chartBGView.animation = "flipX"
-        self.chartBGView.curve = "spring"
-        self.chartBGView.duration = 1.0
         
-        self.chartBGView.animateNext {
-            completion()
+        // 创建一个 MainView 的截屏图片 作为假的主视图
+        let animationImage = UIImageView(frame: self.chartBGView.frame)
+        animationImage.image = self.chartBGView.snapshot()
+        self.view.addSubview(animationImage)
+        
+        // 执行操作形成真实数据的MainView
+        completion()
+        
+//        UIView.transitionFromView(animationImage,
+//                                  toView: self.chartBGView,
+//                                  duration: 1.0,
+//                                  options: [.TransitionFlipFromLeft, .CurveEaseInOut]) { _ in
+//                                    animationImage.removeFromSuperview()
+//        }
+        UIView.transitionFromView(animationImage,
+                                  toView: self.chartBGView,
+                                  duration: 1.0,
+                                  options: [.TransitionCurlUp, .CurveEaseInOut]) { _ in
+                                    animationImage.removeFromSuperview()
         }
+        
     }
     
     // MARK: - 创建环形图

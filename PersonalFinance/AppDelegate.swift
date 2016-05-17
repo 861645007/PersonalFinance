@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        
         // 配置 Core Data
 //        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance.sqlite")
         
@@ -176,6 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 
     // 跳转至 引导页
     func gotoOnBoardVC() {

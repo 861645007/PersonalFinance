@@ -70,7 +70,10 @@ class AddNewCustomViewController: UIViewController {
         self.customTypeCollectionView.alwaysBounceVertical = true
         
         
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: nil, action: nil)
+        // 修改导航栏返回键的文字
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "    ", style: .Plain, target: nil, action: nil)
+        // 修改返回键的颜色 为略粉色
+        self.navigationController?.navigationBar.tintColor = UIColor(red:0.976, green:0.904, blue:0.965, alpha:1)
     }
     
     // 配置 category 数据
@@ -119,11 +122,10 @@ class AddNewCustomViewController: UIViewController {
     // MARK: - 数字 输入处理
     func filterInput() {
         self.numberTextField.rac_textSignal().filter({ (object: AnyObject!) -> Bool in
-            let text = object as! String
-            return text != "￥0.00"
+            return (object as! String) != "￥0.00"
             }).map { (object: AnyObject!) -> AnyObject! in
                 let text = object as! String
-                
+
                 return self.addNewCustomVM.dealWithDecimalMoney(text)
                 }.subscribeNext { (object: AnyObject!) -> Void in
                     self.numberTextField.text = object as? String
@@ -300,6 +302,9 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
             cell.moveToMenu(self.categoryImage.center)
             
             self.changeConsumeCategoryInfo(category)
+            
+            
+            self.numberTextField.becomeFirstResponder()
         }
     }
     
