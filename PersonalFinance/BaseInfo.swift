@@ -61,12 +61,9 @@ class BaseInfo: NSObject {
     - parameter date: 被判断的时间
     */
     func judgeTimeWhenFirstUseInEveryDay(date: NSDate) {
-        if !self.isCurrentMonth(date) {
+        if !self.isCurrentMonth(date) || !self.isToday(date) {
             self.saveTime(date)
-        }else {
-            if !self.isToday(date) {
-                self.saveTime(date)
-            }
+            ShareWithGroupOperation.sharedGroupOperation.saveNewDayExpense(BaseInfo().dayExpense())
         }
     }
     

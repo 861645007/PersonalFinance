@@ -20,6 +20,7 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "新增类别"
         // Uncomment the following line to preserve selection between presentations
         self.collectionView?.alwaysBounceVertical = true
         
