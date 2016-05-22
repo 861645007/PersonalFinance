@@ -40,15 +40,12 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
     func addNewCategoryDone() {
         
         // 保存操作
-        if categoryNameTextField.text == "" {
+        if self.addNewConsumeCategoryVM.saveNewCategory(categoryNameTextField.text!, image: self.categoryImage.image!) {
+            self.navigationController?.popViewControllerAnimated(true)
+        }else {
             TopAlert().createFailureTopAlert("请输入类型名称", parentView: self.view)
             return
         }
-        
-        Category.insertNewConsumeCategory(self.categoryNameTextField.text!, iconData: UIImagePNGRepresentation(self.categoryImage.image!)!, beUsed: true)
-        
-        
-        self.navigationController?.popViewControllerAnimated(true)
     }
 
     /*
@@ -62,9 +59,6 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
     */
 
     
-
-    
-
     // MARK: - 创建一个键盘上方的 View
     func createCustonKeyBoardView() ->UIView {
         let customView: UIView = UIView(frame: CGRectMake(0, UIScreen.mainScreen().bounds.height - 40, UIScreen.mainScreen().bounds.width, 66))
