@@ -209,7 +209,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZhS-74-FW3">
-                                <rect key="frame" x="1" y="0.0" width="598" height="600"/>
+                                <rect key="frame" x="1" y="72" width="598" height="528"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DayConsumeCell" id="WUO-n4-Z2R" customClass="DayConsumeTableViewCell" customModule="PersonalFinance" customModuleProvider="target">
@@ -280,7 +280,7 @@
                             <constraint firstItem="rYJ-m6-I15" firstAttribute="top" secondItem="lZt-7g-Etv" secondAttribute="bottom" id="BRV-lU-bUr"/>
                             <constraint firstItem="ZhS-74-FW3" firstAttribute="leading" secondItem="ixk-cF-RuA" secondAttribute="leadingMargin" constant="-19" id="Hnz-yO-bZD"/>
                             <constraint firstItem="lZt-7g-Etv" firstAttribute="leading" secondItem="ixk-cF-RuA" secondAttribute="leadingMargin" constant="-20" id="K5Y-dx-t93"/>
-                            <constraint firstItem="ZhS-74-FW3" firstAttribute="top" secondItem="ixk-cF-RuA" secondAttribute="topMargin" id="Pq8-JT-sea"/>
+                            <constraint firstItem="ZhS-74-FW3" firstAttribute="top" secondItem="ixk-cF-RuA" secondAttribute="topMargin" constant="72" id="Pq8-JT-sea"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lZt-7g-Etv" secondAttribute="trailing" constant="-20" id="bjX-dG-AYN"/>
                             <constraint firstItem="lZt-7g-Etv" firstAttribute="top" secondItem="ixk-cF-RuA" secondAttribute="topMargin" id="de5-Bv-2WK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ZhS-74-FW3" secondAttribute="trailing" constant="-19" id="sUD-L7-LWV"/>
@@ -1298,9 +1298,7 @@
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="0.064417177914110432" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="PingFangHK-Semibold" family="PingFang HK" pointSize="23"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title=" 手记" image="MainRecordConsume">
-                                            <color key="titleColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
+                                        <state key="normal" title=" 手记" image="MainRecordConsume"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                 <real key="value" value="8"/>
@@ -1619,6 +1617,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="6zB-zS-7hv"/>
                                     <constraint firstItem="nTZ-fY-1VT" firstAttribute="leading" secondItem="8BV-Ce-eEy" secondAttribute="trailing" constant="8" id="7xd-vE-Guj"/>
                                     <constraint firstItem="8BV-Ce-eEy" firstAttribute="top" secondItem="x16-WW-P8f" secondAttribute="bottom" id="Ge6-Vf-GP1"/>
                                     <constraint firstItem="PaM-3S-hTQ" firstAttribute="centerX" secondItem="z33-1l-L76" secondAttribute="centerX" id="HSQ-Vh-jrR"/>
@@ -1660,9 +1659,10 @@
                             <constraint firstItem="2rQ-uG-JxP" firstAttribute="top" secondItem="JXD-28-quy" secondAttribute="topMargin" id="A7x-Cy-D2n"/>
                             <constraint firstItem="z33-1l-L76" firstAttribute="top" secondItem="H8c-si-Stj" secondAttribute="bottom" constant="130" id="PLa-90-e50"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2rQ-uG-JxP" secondAttribute="trailing" constant="-20" id="aFu-ue-ate"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="z33-1l-L76" secondAttribute="trailing" constant="40" id="cxn-lw-Vzk"/>
-                            <constraint firstItem="z33-1l-L76" firstAttribute="leading" secondItem="JXD-28-quy" secondAttribute="leadingMargin" constant="40" id="jEi-wr-quc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z33-1l-L76" secondAttribute="trailing" priority="999" constant="40" id="cxn-lw-Vzk"/>
+                            <constraint firstItem="z33-1l-L76" firstAttribute="leading" secondItem="JXD-28-quy" secondAttribute="leadingMargin" priority="999" constant="40" id="jEi-wr-quc"/>
                             <constraint firstItem="pvK-p4-ZQK" firstAttribute="top" secondItem="2rQ-uG-JxP" secondAttribute="bottom" id="kVr-Yl-KfJ"/>
+                            <constraint firstItem="z33-1l-L76" firstAttribute="centerX" secondItem="JXD-28-quy" secondAttribute="centerX" id="wU3-wR-9bq"/>
                             <constraint firstItem="2rQ-uG-JxP" firstAttribute="leading" secondItem="JXD-28-quy" secondAttribute="leadingMargin" constant="-20" id="x9K-Qf-8VF"/>
                         </constraints>
                     </view>
@@ -1684,7 +1684,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.89400000000000002" green="0.82699999999999996" blue="0.88200000000000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

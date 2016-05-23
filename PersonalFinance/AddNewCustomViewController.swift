@@ -231,7 +231,22 @@ class AddNewCustomViewController: UIViewController {
             pdtCalendar = PDTSimpleCalendarViewController()
             pdtCalendar?.delegate = self
             pdtCalendar?.weekdayHeaderEnabled = true
-            pdtCalendar?.weekdayTextType = .VeryShort
+            
+            // 设置时间选择器的开始和结束时间
+            let offsetComponents = NSDateComponents()
+            offsetComponents.month = 3
+            pdtCalendar!.lastDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: NSDate(), options: .WrapComponents)
+            
+            offsetComponents.month = -4
+            pdtCalendar!.firstDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: NSDate(), options: .WrapComponents)
+            
+            PDTSimpleCalendarViewCell.appearance().circleTodayColor = UIColor(red:217/255.0, green:217/255.0, blue:213/255.0, alpha:255/255.0)
+            PDTSimpleCalendarViewCell.appearance().circleSelectedColor = UIColor(red:49/255.0, green:97/255.0, blue:157/255.0, alpha:255/255.0)
+            
+            // 默认显示当前日期
+            pdtCalendar?.scrollToDate(NSDate(), animated: true)
+            
+            pdtCalendar?.edgesForExtendedLayout = .None
             
             pdtCalendar?.title = "选择时间"
             pdtCalendar?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Done, target: self, action: #selector(selectDateDone))

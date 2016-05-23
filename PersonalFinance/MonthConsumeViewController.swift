@@ -79,7 +79,7 @@ extension MonthConsumeViewController: UITableViewDataSource {
         let headView: UIView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, 44))
         headView.layer.masksToBounds = true
         headView.layer.cornerRadius = 2.0
-        headView.backgroundColor = UIColor(red:0.146, green:0.096, blue:0.212, alpha:1)
+        headView.backgroundColor = UIColor(red:0.723, green:0.723, blue:0.723, alpha:0.101)
         
         let bgbtn:UIButton = UIButton(frame: headView.frame)
         bgbtn.tag = section

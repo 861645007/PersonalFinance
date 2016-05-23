@@ -31,9 +31,7 @@ class DayConsumeTableViewCell: UITableViewCell {
             self.selectedFlagView.hidden = false
             self.cellisSelectedAnimation()
             
-            self.backgroundColor = UIColor(red:170/255.0, green:138/255.0, blue:179/255.0, alpha:0.5)
-//                UIColor(red:111/255.0, green:158/255.0, blue:176/255.0, alpha:255/255.0)
-//                UIColor(red:0.146, green:0.096, blue:0.212, alpha:1)
+            self.backgroundColor = UIColor(red:170/255.0, green:138/255.0, blue:179/255.0, alpha:0.35)
             
             lastSelectedState = true
         }else {
