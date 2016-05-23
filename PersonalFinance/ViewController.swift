@@ -30,13 +30,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         // 修改导航栏返回键的文字
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "    ", style: .Plain, target: nil, action: nil)
-        // 修改返回键的颜色 为白色
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.setNavigationBackItemBlank()
         
         // 设置导航栏透明
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.setNavigationBarHidden()
         
         // 配置 点击 Today Widget 的新增按钮的页面跳转操作
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showAddNewConsumeVC), name: AddNewConsumeInWidgetNotification, object: nil)

@@ -71,9 +71,7 @@ class AddNewCustomViewController: UIViewController {
         
         
         // 修改导航栏返回键的文字
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "    ", style: .Plain, target: nil, action: nil)
-        // 修改返回键的颜色 为略粉色
-        self.navigationController?.navigationBar.tintColor = UIColor(red:0.976, green:0.904, blue:0.965, alpha:1)
+        self.setNavigationBackItemBlank()
     }
     
     // 配置 category 数据
@@ -234,18 +232,20 @@ class AddNewCustomViewController: UIViewController {
             
             // 设置时间选择器的开始和结束时间
             let offsetComponents = NSDateComponents()
-            offsetComponents.month = 3
+            offsetComponents.month = 2
             pdtCalendar!.lastDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: NSDate(), options: .WrapComponents)
             
             offsetComponents.month = -4
             pdtCalendar!.firstDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: NSDate(), options: .WrapComponents)
             
-            PDTSimpleCalendarViewCell.appearance().circleTodayColor = UIColor(red:217/255.0, green:217/255.0, blue:213/255.0, alpha:255/255.0)
+            PDTSimpleCalendarViewCell.appearance().circleTodayColor = UIColor(red:200/255.0, green:200/255.0, blue:200/255.0, alpha:1.0)
             PDTSimpleCalendarViewCell.appearance().circleSelectedColor = UIColor(red:49/255.0, green:97/255.0, blue:157/255.0, alpha:255/255.0)
             
             // 默认显示当前日期
+            pdtCalendar?.selectedDate = NSDate()
             pdtCalendar?.scrollToDate(NSDate(), animated: true)
             
+            // 设置时间选择器的View 距上为0（据 NavigationController）
             pdtCalendar?.edgesForExtendedLayout = .None
             
             pdtCalendar?.title = "选择时间"

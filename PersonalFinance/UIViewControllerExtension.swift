@@ -10,6 +10,23 @@ import Foundation
 import SimpleAlert
 
 extension UIViewController {
+    // MARK: - UINavigationController 扩展
+    func setNavigationBackItemBlank() {
+        // 修改导航栏返回键的文字
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "    ", style: .Plain, target: nil, action: nil)
+        // 修改返回键的颜色 为白色
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    }
+    
+    
+    func setNavigationBarHidden() {
+        // 设置导航栏透明
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default);
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    
+    
     // MARK: - Simple 框架的 Alert
     func showSimpleAlertWithOneBtn(title: String, msg: String, handler: ((SimpleAlert.Action!) -> Void)? = nil) {
         let alert = self.createSimpleAlert(title, msg: msg, cancelHandler: nil, okHandler: handler)
