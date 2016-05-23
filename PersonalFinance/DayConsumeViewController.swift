@@ -86,7 +86,7 @@ extension DayConsumeViewController: DZNEmptyDataSetSource {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         let attribute = [NSFontAttributeName: UIFont.systemFontOfSize(13.0),
                          NSForegroundColorAttributeName: UIColor(red:0.894, green:0.827, blue:0.882, alpha:1)]
-        return NSAttributedString(string: "今天尚未记账", attributes: attribute)
+        return NSAttributedString(string: "今天尚未记账，快来记一笔吧", attributes: attribute)
     }
     
     func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
@@ -100,10 +100,14 @@ extension DayConsumeViewController: DZNEmptyDataSetSource {
     }
     
     
-    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
-        let attribute = [NSForegroundColorAttributeName: UIColor(red:0, green:0.53, blue:0.7, alpha:1),
-                         NSFontAttributeName: UIFont.systemFontOfSize(20.0)]
-        return NSAttributedString(string: "今日首记", attributes: attribute)
+//    func buttonTitleForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> NSAttributedString! {
+//        let attribute = [NSForegroundColorAttributeName: UIColor(red:0, green:0.53, blue:0.7, alpha:1),
+//                         NSFontAttributeName: UIFont.systemFontOfSize(20.0)]
+//        return NSAttributedString(string: "今日首记", attributes: attribute)
+//    }
+    
+    func buttonImageForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> UIImage! {
+        return UIImage(named: "rightArrowToNextVC")
     }
 
 }
