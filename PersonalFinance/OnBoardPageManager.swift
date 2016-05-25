@@ -19,6 +19,9 @@ class OnBoardPageManager {
 
     func configOnboardVC() ->OnboardingViewController {
         let onboardVC = OnboardingViewController(backgroundImage: UIImage(named: "onBoardBg"), contents: self.generateOnBoardPage())
+        
+        onboardVC.shouldMaskBackground = false
+        
         // 隐藏最后一页的 skip 按钮 和 PageControl 控件
         onboardVC.shouldFadeTransitions = true
         onboardVC.fadePageControlOnLastPage = true
@@ -46,6 +49,7 @@ class OnBoardPageManager {
         return [firstPage, secondPage, thirdPage]
     }
     
+    //
     private func handleOnboardingCompletion() {
         let app = UIApplication.sharedApplication()
         let appDelegate: AppDelegate = app.delegate as! AppDelegate

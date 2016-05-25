@@ -49,17 +49,17 @@ class DayConsumeTableViewCell: UITableViewCell {
         self.categoryName.text = consume.consumeCategory?.name
         self.categoryMoney.text = "￥" + (consume.money?.doubleValue.convertToStrWithTwoFractionDigits())!
         self.categoryIcon.image = UIImage(data: (consume.consumeCategory?.iconData)!)
-    }
-    
-    func cellisSelectedAnimation() {
+        
         // 将选中指示调颜色 改为图片主要颜色
         self.categoryIcon.image?.getColors({[unowned self] (colors) in
             self.selectedFlagView.backgroundColor = colors.primaryColor
-        })
-        
+            })
+    }
+    
+    func cellisSelectedAnimation() {
         self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 0.01)
         
-        UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: { [unowned self] in
+        UIView.animateWithDuration(1.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: { [unowned self] in
             self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 1.0)
             
             }, completion: nil)
