@@ -333,7 +333,8 @@ class ChartViewController: UIViewController {
         barChartDataSet.valueFont = UIFont.systemFontOfSize(11.0)
         
         sevenDaysChartView.data = BarChartData(xVals: dataPoints, dataSets: [barChartDataSet])
-
+        sevenDaysChartView.data?.highlightEnabled = false               // 设置Bar选中之后不再高亮
+        
         sevenDaysChartView.descriptionText               = ""
         sevenDaysChartView.xAxis.labelPosition           = .Bottom
         sevenDaysChartView.xAxis.drawGridLinesEnabled    = false        // 除去图中的竖线
@@ -430,6 +431,11 @@ extension ChartViewController: ChartViewDelegate {
                 }
             }
         }else if chartView == sevenDaysChartView {
+            
+            if entry.value == 0.0 {
+                return
+            }
+            
             switch currentTimeModel {
             case .Week:
                 self.showDetailViewWithBar(self.chartVM.currentWeek + (entry.xIndex).days, isMonth: false)

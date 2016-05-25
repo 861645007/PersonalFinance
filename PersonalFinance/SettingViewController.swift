@@ -23,6 +23,8 @@ class SettingViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         settingTableView.tableFooterView = UIView()
+        
+        self.setNavigationBackItemBlank()
     }
 
     override func didReceiveMemoryWarning() {
@@ -83,7 +85,6 @@ extension SettingViewController: UITableViewDelegate {
                         self!.settingTableView.reloadData()
                     })
                 }
-                
             }else if indexPath.row == 1 {
                 let monthBudgetVC = self.storyboard?.instantiateViewControllerWithIdentifier("MonthBudgetViewController") as! MonthBudgetViewController
                 
@@ -91,6 +92,11 @@ extension SettingViewController: UITableViewDelegate {
                 self.presentViewController(monthBudgetVC, animated: true, completion: {
                     //
                 })
+            }
+        }else {
+            if indexPath.row == 1 {
+                let aboutSelfVC = self.storyboard?.instantiateViewControllerWithIdentifier("AboutSelfViewController") as! AboutSelfViewController
+                self.navigationController?.pushViewController(aboutSelfVC, animated: true)
             }
         }
         

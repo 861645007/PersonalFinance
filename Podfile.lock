@@ -24,6 +24,7 @@ PODS:
   - MMNumberKeyboard (0.1.5)
   - Onboard (2.1.9)
   - PDTSimpleCalendar (0.9.1)
+  - PulsingHalo (0.1.0)
   - ReactiveCocoa (4.0.4-alpha-4):
     - ReactiveCocoa/UI (= 4.0.4-alpha-4)
     - Result (~> 1.0)
@@ -57,6 +58,7 @@ DEPENDENCIES:
   - MMNumberKeyboard
   - Onboard
   - PDTSimpleCalendar (~> 0.9.1)
+  - PulsingHalo
   - ReactiveCocoa (~> 4.0.4-alpha-4)
   - SDWebImage (~> 3.7.4)
   - SimpleAlert
@@ -85,6 +87,7 @@ SPEC CHECKSUMS:
   MMNumberKeyboard: 12da79571d08aca21566534a74726c5469aed29a
   Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
   PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
+  PulsingHalo: d2684152281a3f7398b9554734b9a4f8feb9129a
   ReactiveCocoa: e459ea92099447802df20c4735e31e8139b06094
   Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461

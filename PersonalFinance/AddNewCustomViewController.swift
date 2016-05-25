@@ -11,6 +11,7 @@ import ReactiveCocoa
 import MMNumberKeyboard
 import PDTSimpleCalendar
 import SimpleAlert
+import PulsingHalo
 
 // ConsumeCategory 结构体
 struct ConsumeCategory {
@@ -29,8 +30,7 @@ class AddNewCustomViewController: UIViewController {
     
     @IBOutlet weak var customTypeCollectionView: UICollectionView!
     @IBOutlet weak var numberTextField: UITextField!
-    @IBOutlet weak var categoryImage: UIImageView!
-    
+    @IBOutlet weak var categoryImage: UIImageView!    
     
     var consumeDate: NSDate = NSDate()
     var consumeCategoryID: Int32 = 0
@@ -68,7 +68,6 @@ class AddNewCustomViewController: UIViewController {
         
         // 配置 UICollectionView 的滚动
         self.customTypeCollectionView.alwaysBounceVertical = true
-        
         
         // 修改导航栏返回键的文字
         self.setNavigationBackItemBlank()
@@ -298,6 +297,27 @@ class AddNewCustomViewController: UIViewController {
             }
         }
     }
+    
+    // 添加脉冲动画
+    func addPulsHaloAnimation(categoryIcon: UIImage) {
+        let layer = PulsingHaloLayer.init()
+        
+        self.categoryImage.superview?.layer.insertSublayer(layer, below: self.categoryImage.layer)
+        
+        layer.startInterval         = 0.0
+        layer.keyTimeForHalfOpacity = 0.5
+        layer.haloLayerNumber       = 1         // 脉冲个数
+        layer.radius                = 40        // 脉冲范围
+        layer.animationDuration     = 1.5       // 动画间隔
+        layer.repeatCount           = 1         // 动画只显示一次
+        layer.position              = self.categoryImage.center
+        
+        categoryIcon.getColors({(colors) in
+            layer.backgroundColor = colors.primaryColor.CGColor
+        })
+        
+        layer.start()
+    }
 }
 
 // MARK: - UICollectionViewDelegate 协议
@@ -313,12 +333,12 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
         }else {
             let category = self.addNewCustomVM.consumeTypeArr![indexPath.row]
             
-            let cell: CustomTypeCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("ConsumeTypeCollectionViewCell", forIndexPath: indexPath) as! CustomTypeCollectionViewCell
-            cell.moveToMenu(self.categoryImage.center)
+//            let cell: CustomTypeCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("ConsumeTypeCollectionViewCell", forIndexPath: indexPath) as! CustomTypeCollectionViewCell
+//            cell.moveToMenu(self.categoryImage.center)
             
             self.changeConsumeCategoryInfo(category)
             
-            
+            self.addPulsHaloAnimation(self.categoryImage.image!)
             self.numberTextField.becomeFirstResponder()
         }
     }

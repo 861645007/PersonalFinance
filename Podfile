@@ -34,6 +34,8 @@ target "PersonalFinance" do
 	pod 'VENTouchLock', '~> 1.11.0'
 # 进度条显示器
 	pod "MBCircularProgressBar"
+# 脉冲动画
+	pod "PulsingHalo"
 
 end
 
