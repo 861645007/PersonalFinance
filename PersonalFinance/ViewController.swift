@@ -57,7 +57,6 @@ class ViewController: UIViewController {
     
     // 设置进度条
     func setProgressBar(value: CGFloat) {
-        
         self.percentProgressBar.setValue(value > 100.0 ? 100.0 : value , animateWithDuration: Double(value) * 3.0 / 100.0)
 
         // 根据值得大小不同设置 进度条的颜色
@@ -90,6 +89,19 @@ class ViewController: UIViewController {
             vc.monthConsumeVM = self.mainVM.monthOrWeekConsumesVM(MonthOrWeekVCState.Week)
         }
     }
+    
+    
+    @IBAction func showConsumeDetailVC(sender: AnyObject) {
+        if self.mainVM.gainNewExpense() == 0.0 {
+            return
+        }
+        
+        let addNewConsumeVC = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController
+        addNewConsumeVC.addNewCustomVM = self.mainVM.newDetailConsumeVM()
+        self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
+    }
+    
+    
     
     func showAddNewConsumeVC() {
         let addNewConsumeVC = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController

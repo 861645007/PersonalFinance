@@ -19,19 +19,31 @@ class SingleConsume: NSManagedObject {
         
         let singleConsume: SingleConsume = SingleConsume.MR_createEntity()!
         
-//        singleConsume.id       = SingleConsume.MR_countOfEntities() + 1
+        singleConsume.id       = NSNumber(int: Int32(SingleConsume.MR_countOfEntities()) + 1)
         singleConsume.category = NSNumber(int: category)
         singleConsume.photo    = photo
         singleConsume.comment  = comment
         singleConsume.money    = NSNumber(double: money)
         singleConsume.time     = time
-        
         singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(int: category))
         
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         
     }
     
+    // MARK: - 修改消费信息    
+    class func modifySingleCustom(id: Int32, category: Int32, photo: NSData, comment: String, money: Double, time: NSDate){
+        let singleConsume: SingleConsume = SingleConsume.MR_findFirstByAttribute("id", withValue: NSNumber(int: id))!
+        
+        singleConsume.category = NSNumber(int: category)
+        singleConsume.photo    = photo
+        singleConsume.comment  = comment
+        singleConsume.money    = NSNumber(double: money)
+        singleConsume.time     = time
+        singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(int: category))
+        
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+    }
     
     // MARK: - 查询消费记录
     
@@ -90,8 +102,7 @@ class SingleConsume: NSManagedObject {
     }
     
     
-    class func fetchLastConsumeRecord() ->SingleConsume? {
-        
+    class func fetchLastConsumeRecord() ->SingleConsume? {        
         return SingleConsume.MR_findFirstWithPredicate(nil, sortedBy: "time", ascending: false)
     }
     

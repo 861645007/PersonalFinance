@@ -62,4 +62,9 @@ class MainViewModel: NSObject {
     func monthOrWeekConsumesVM(state: MonthOrWeekVCState) -> MonthConsumeViewModel {
         return MonthConsumeViewModel(state: state, today: NSDate())
     }
+    
+    
+    func newDetailConsumeVM() -> AddNewCustomViewModel {
+        return AddNewCustomViewModel(state: ConsumeOperationStatus.EditConsumeDetail, consume: SingleConsume.fetchLastConsumeRecord())
+    }
 }

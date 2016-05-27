@@ -31,10 +31,12 @@ class DealMoneyFormat: NSObject {
         
         let money: String = text.substringFromIndex(text.startIndex.advancedBy(1)).stringByReplacingOccurrencesOfString(",", withString: "", options: [], range: nil)
         
-        if  money.characters.count >= 11 || Double(money) == 0.0 {
+        if  money.characters.count >= 11 {
             var newText: String = text
             newText.removeAtIndex(newText.endIndex.advancedBy(-1))
             return newText
+        }else if (Double(money) == 0.0) {
+            return "￥0.00"
         }
         
         let lastChar = text.substringFromIndex(text.endIndex.advancedBy(-1))
@@ -42,7 +44,6 @@ class DealMoneyFormat: NSObject {
         
         if decimalLater.characters.count == 1 {
             // 说明是删除了数据
-            
             if self.hasDecimalPoint {
                 // 删除小数点前的数
                 let decimalAfterPointLength = self.decimalAfterPoint.characters.count

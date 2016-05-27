@@ -37,7 +37,7 @@ class AddNewCustomViewController: UIViewController {
     var pdtCalendar: PDTSimpleCalendarViewController?
     
     
-    var addNewCustomVM: AddNewCustomViewModel!
+    var addNewCustomVM: AddNewCustomViewModel! = AddNewCustomViewModel()
     var keyboardView: UIView!
     var selectTimeBtn: UIButton!
     var commentBtn: UIButton!
@@ -51,7 +51,12 @@ class AddNewCustomViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        addNewCustomVM = AddNewCustomViewModel()
+        
+        // 配置初始化 category 数据
+        self.addNewCustomVM.gainAllConsumeType()
+        self.changeConsumeCategoryInfo(self.addNewCustomVM.setDefaultCategory())
+        self.numberTextField.text = self.addNewCustomVM.setDefaultMoney()
+        self.commentString = self.addNewCustomVM.setDefaultComment()
         
         // 设置键盘
         self.createNumberKeyBoard()
@@ -60,11 +65,8 @@ class AddNewCustomViewController: UIViewController {
         // 添加键盘上方的自定义View
         self.keyboardView = self.createCustonKeyBoardView()
         self.prepareKeyboardNotifation()
-        self.view.addSubview(self.keyboardView)
+        self.view.addSubview(self.keyboardView)       
         
-        // 配置初始化 category 数据
-        self.addNewCustomVM.gainAllConsumeType()
-        self.changeConsumeCategoryInfo(self.addNewCustomVM.gainCategoryWithCusOther())
         
         // 配置 UICollectionView 的滚动
         self.customTypeCollectionView.alwaysBounceVertical = true
@@ -81,7 +83,6 @@ class AddNewCustomViewController: UIViewController {
         
         self.categoryImage.image = UIImage(data: (consumeCategory!.iconData)!)
         self.consumeCategoryID = consumeCategory!.id
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -145,14 +146,20 @@ class AddNewCustomViewController: UIViewController {
         customView.backgroundColor = UIColor.whiteColor()
         
         selectTimeBtn = UIButton(frame: CGRectMake(10, 5, 80, 30))
-        selectTimeBtn.setTitle(self.addNewCustomVM.gainToday(), forState: .Normal)
+        selectTimeBtn.setTitle(self.addNewCustomVM.setDefaultTime(), forState: .Normal)
         selectTimeBtn.addTarget(self, action: #selector(selectTime), forControlEvents: .TouchUpInside)
         self.setButtonStyleOfKeyboard(selectTimeBtn)
         customView.addSubview(selectTimeBtn)
         
         commentBtn = UIButton(frame: CGRectMake(100, 5, 80, 30))
-        commentBtn.setTitle("写备注", forState: .Normal)
         commentBtn.addTarget(self, action: #selector(noteDownComment), forControlEvents: .TouchUpInside)
+        if commentString != "" {
+            commentBtn.setTitle("已有备注", forState: .Normal)
+            commentBtn.layer.borderColor = UIColor.blueColor().CGColor
+        }else {
+            commentBtn.setTitle("写备注", forState: .Normal)
+            commentBtn.layer.borderColor = UIColor.grayColor().CGColor
+        }
         self.setButtonStyleOfKeyboard(commentBtn)
         customView.addSubview(commentBtn)
 
@@ -333,9 +340,6 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
         }else {
             let category = self.addNewCustomVM.consumeTypeArr![indexPath.row]
             
-//            let cell: CustomTypeCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("ConsumeTypeCollectionViewCell", forIndexPath: indexPath) as! CustomTypeCollectionViewCell
-//            cell.moveToMenu(self.categoryImage.center)
-            
             self.changeConsumeCategoryInfo(category)
             
             self.addPulsHaloAnimation(self.categoryImage.image!)
@@ -355,7 +359,6 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
         }else if (lastPosition - currentPostion > 25) {
             // 下滑
             lastPosition = currentPostion;
-//            self.numberTextField.becomeFirstResponder()
         }
     }
     
@@ -395,7 +398,7 @@ extension AddNewCustomViewController: MMNumberKeyboardDelegate {
         let money: Double = Double(numberStr!)!
         
         // 保存数据
-        self.addNewCustomVM.saveNewConsume(consumeCategoryID, photo: NSData(), comment: commentString!, money: money, time: consumeDate)
+        self.addNewCustomVM.saveConsumeInfo(consumeCategoryID, photo: NSData(), comment: commentString!, money: money, time: consumeDate)
         
         // 返回主页面
         self.navigationController?.popViewControllerAnimated(true)

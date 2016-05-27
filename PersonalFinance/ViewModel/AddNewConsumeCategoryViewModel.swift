@@ -19,8 +19,7 @@ class AddNewConsumeCategoryViewModel: NSObject {
     
     func setCategoryWithouUsedArr() {
         categoryWithouUsedArr = self.gainAllConsumeCategoryWithoutUsed()
-    }
-    
+    }    
        
     
     //MARK: - UICollectionView Data Source

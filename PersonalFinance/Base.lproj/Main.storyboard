@@ -952,6 +952,9 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7y-X7-Elu">
                                                 <rect key="frame" x="12" y="1" width="276" height="83"/>
+                                                <connections>
+                                                    <action selector="showConsumeDetailVC:" destination="EpC-LM-szM" eventType="touchUpInside" id="aFy-7r-x2E"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
