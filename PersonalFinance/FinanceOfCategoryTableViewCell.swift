@@ -63,7 +63,7 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
             })
     }
     
-    func cellisSelectedAnimation() {        
+    func cellisSelectedAnimation() {
         self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 0.01)
         
         UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.35, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: { [unowned self] in
@@ -79,7 +79,7 @@ class FinanceOfCategoryTableViewCell: UITableViewCell {
             self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 0.000001)
             
         }) { [unowned self] _ in
-            self.selectedFlagView.hidden = true            
+            self.selectedFlagView.hidden = true
         }
     }
 

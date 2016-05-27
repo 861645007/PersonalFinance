@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         // 设置进度条
         self.setProgressBar(self.mainVM.configureProgressBarPercent())
     }
-        
+    
     // 设置进度条
     func setProgressBar(value: CGFloat) {
         

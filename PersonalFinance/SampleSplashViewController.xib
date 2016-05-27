@@ -15,22 +15,72 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple Splash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntt-UB-7Ds">
-                    <rect key="frame" x="246" y="85" width="108" height="21"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="wq4-Ce-xu1">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="解锁进入应用" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntt-UB-7Ds">
+                    <rect key="frame" x="249" y="85" width="102" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzK-nF-JPW">
-                    <rect key="frame" x="254" y="429" width="92" height="30"/>
-                    <state key="normal" title="Use Touch ID"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzK-nF-JPW" customClass="DesignableButton" customModule="Spring">
+                    <rect key="frame" x="150" y="401" width="300" height="44"/>
+                    <color key="backgroundColor" red="0.9066666666333334" green="0.9066666666333334" blue="0.9066666666333334" alpha="0.15384615384615385" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="TcB-tw-maq"/>
+                        <constraint firstAttribute="height" constant="44" id="u8p-wx-nFJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="19"/>
+                    <state key="normal" title="指纹解锁">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" red="0.84533333330000004" green="0.84533333330000004" blue="0.84533333330000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="userTappedShowTouchIDuserTappedShowTouchID:" destination="-1" eventType="touchUpInside" id="bRq-Ig-KE0"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl9-T7-ZXD">
-                    <rect key="frame" x="252" y="497" width="97" height="30"/>
-                    <state key="normal" title="Use Password"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pl9-T7-ZXD" customClass="DesignableButton" customModule="Spring">
+                    <rect key="frame" x="150" y="483" width="300" height="44"/>
+                    <color key="backgroundColor" red="0.90666666659999995" green="0.90666666659999995" blue="0.90666666659999995" alpha="0.1538461538" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="Bhh-6T-72W"/>
+                        <constraint firstAttribute="height" constant="44" id="H6c-Uj-Hlm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="19"/>
+                    <state key="normal" title="输入密码">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" red="0.84533333330000004" green="0.84533333330000004" blue="0.84533333330000004" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="UserTapPassword:" destination="-1" eventType="touchUpInside" id="VoY-14-gDc"/>
                     </connections>
@@ -38,13 +88,24 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="pl9-T7-ZXD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" priority="999" constant="30" id="32b-Kv-WRI"/>
+                <constraint firstAttribute="trailing" secondItem="pl9-T7-ZXD" secondAttribute="trailing" priority="999" constant="30" id="7nj-Nx-U1o"/>
+                <constraint firstAttribute="trailing" secondItem="gzK-nF-JPW" secondAttribute="trailing" priority="999" constant="30" id="LsN-V2-LXH"/>
+                <constraint firstAttribute="bottom" secondItem="wq4-Ce-xu1" secondAttribute="bottom" id="Nyj-ut-e1J"/>
+                <constraint firstItem="wq4-Ce-xu1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Onb-ze-Fx3"/>
                 <constraint firstItem="pl9-T7-ZXD" firstAttribute="top" secondItem="gzK-nF-JPW" secondAttribute="bottom" constant="38" id="RXE-ed-Siq"/>
                 <constraint firstItem="pl9-T7-ZXD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="U9p-0C-t2X"/>
                 <constraint firstItem="ntt-UB-7Ds" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="85" id="Xor-Kz-WlJ"/>
                 <constraint firstItem="ntt-UB-7Ds" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aw2-EO-w5c"/>
+                <constraint firstItem="wq4-Ce-xu1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cKu-Xq-ads"/>
                 <constraint firstItem="gzK-nF-JPW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lfs-Sf-gHb"/>
                 <constraint firstAttribute="bottom" secondItem="pl9-T7-ZXD" secondAttribute="bottom" constant="73" id="o7v-dM-kuF"/>
+                <constraint firstItem="gzK-nF-JPW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" priority="999" constant="30" id="toI-Dl-6cw"/>
+                <constraint firstAttribute="trailing" secondItem="wq4-Ce-xu1" secondAttribute="trailing" id="zfg-Li-z3b"/>
             </constraints>
         </view>
     </objects>
+    <resources>
+        <image name="bg" width="621" height="1104"/>
+    </resources>
 </document>
