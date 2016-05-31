@@ -1519,10 +1519,10 @@
             </objects>
             <point key="canvasLocation" x="2356" y="2697"/>
         </scene>
-        <!--View Controller-->
+        <!--Data Analysis View Controller-->
         <scene sceneID="5FE-i3-wdj">
             <objects>
-                <viewController id="A5m-WS-gy0" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DataAnalysisViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A5m-WS-gy0" customClass="DataAnalysisViewController" customModule="PersonalFinance" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Jn-yY-5ay"/>
                         <viewControllerLayoutGuide type="bottom" id="JbG-Cz-aF1"/>
@@ -1541,7 +1541,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="败家小能手" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyu-fQ-fGb">
-                                                <rect key="frame" x="258" y="22" width="85" height="21"/>
+                                                <rect key="frame" x="258" y="30" width="85" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -1857,6 +1857,12 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="emptyCapType">
                                                                         <integer key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                                        <color key="value" red="0.31764705879999999" green="0.66274509800000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                                                        <color key="value" red="0.31764705879999999" green="0.66274509800000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您本月消费了8笔，共消费XXX元" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="7Cm-0S-2Ic">
@@ -1916,6 +1922,12 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="emptyCapType">
                                                                         <integer key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                                        <color key="value" red="0.31764705879999999" green="0.66274509800000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                                                        <color key="value" red="0.31764705879999999" green="0.66274509800000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
@@ -2014,6 +2026,12 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="emptyCapType">
                                                                         <integer key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                                                        <color key="value" red="0.31764705879999999" green="0.66274509800000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                                                        <color key="value" red="0.31764705879999999" green="0.66274509800000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您本月消费了8笔，共消费XXX元" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="5TC-Yc-iAz">
@@ -2082,7 +2100,7 @@
                                             <constraint firstAttribute="height" constant="600" id="bjw-Em-Trw"/>
                                             <constraint firstAttribute="trailing" secondItem="Q4T-fG-m5Z" secondAttribute="trailing" constant="8" id="def-f8-PvW"/>
                                             <constraint firstItem="Q4T-fG-m5Z" firstAttribute="top" secondItem="Uh7-Pj-m0w" secondAttribute="bottom" constant="8" id="jGV-wd-7M3"/>
-                                            <constraint firstItem="kyu-fQ-fGb" firstAttribute="top" secondItem="39h-ME-YZu" secondAttribute="top" constant="22" id="jjf-9E-aWY"/>
+                                            <constraint firstItem="kyu-fQ-fGb" firstAttribute="top" secondItem="39h-ME-YZu" secondAttribute="top" constant="30" id="jjf-9E-aWY"/>
                                             <constraint firstItem="qwF-CY-SaE" firstAttribute="leading" secondItem="39h-ME-YZu" secondAttribute="leading" constant="56" id="sNa-uI-0n9"/>
                                             <constraint firstItem="Q4T-fG-m5Z" firstAttribute="top" secondItem="kp2-TE-WFm" secondAttribute="bottom" constant="44" id="tNH-on-tlD"/>
                                         </constraints>
@@ -2109,6 +2127,34 @@
                             <constraint firstItem="JbG-Cz-aF1" firstAttribute="top" secondItem="n8H-8M-4hp" secondAttribute="bottom" id="t0B-S7-CJj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bgViewHight" destination="bjw-Em-Trw" id="bkI-dJ-iXC"/>
+                        <outlet property="firstMonthCategoryDescribeLabel" destination="7Cm-0S-2Ic" id="4kr-ti-baS"/>
+                        <outlet property="firstMonthCategoryImageView" destination="U5q-9v-00F" id="Cec-f8-DZ1"/>
+                        <outlet property="firstMonthCategoryNameLabel" destination="CDK-J5-WNg" id="o3a-26-PM8"/>
+                        <outlet property="firstMonthCategoryProgressBar" destination="pe4-3w-epq" id="wjE-WB-0g7"/>
+                        <outlet property="firstMonthCategoryView" destination="7P1-9s-TeH" id="71V-mF-861"/>
+                        <outlet property="firstMonthExpenseLabel" destination="yLB-sC-5yT" id="irh-Ry-Lfv"/>
+                        <outlet property="firstMonthLabel" destination="kr6-ze-mZm" id="zVf-iU-Qfb"/>
+                        <outlet property="firstMonthSplitView" destination="GVQ-x2-ndD" id="kEz-7w-ojG"/>
+                        <outlet property="mainScrollView" destination="LG7-Cm-4Kt" id="mEa-HH-nU0"/>
+                        <outlet property="quarterCategoryViewHight" destination="tZw-wF-So8" id="6hd-9J-Pke"/>
+                        <outlet property="secondMonthCategoryDescribeLabel" destination="yFG-gR-OWG" id="t6n-za-NsH"/>
+                        <outlet property="secondMonthCategoryImageView" destination="piH-yg-axU" id="C2Y-QX-WEH"/>
+                        <outlet property="secondMonthCategoryNameLabel" destination="Y2g-7E-O2R" id="f7a-lX-d1H"/>
+                        <outlet property="secondMonthCategoryProgressBar" destination="p3M-M4-sFq" id="Rw2-dk-1zp"/>
+                        <outlet property="secondMonthCategoryView" destination="9Kp-47-fFp" id="Bqf-kG-nsy"/>
+                        <outlet property="secondMonthExpenseLabel" destination="BT7-hN-YEs" id="Axe-If-mrE"/>
+                        <outlet property="secondMonthLabel" destination="15b-BM-QxZ" id="5Qb-kd-tHP"/>
+                        <outlet property="secondMonthSplitView" destination="hXL-hG-imN" id="urH-Hr-xs4"/>
+                        <outlet property="thirdMonthCategoryDescribeLabel" destination="5TC-Yc-iAz" id="Qqq-J6-kT7"/>
+                        <outlet property="thirdMonthCategoryImageView" destination="KNd-Lm-zSD" id="YaN-71-fL8"/>
+                        <outlet property="thirdMonthCategoryNameLabel" destination="iKK-bh-dlo" id="V8G-PW-8KW"/>
+                        <outlet property="thirdMonthCategoryProgressBar" destination="S0b-PF-FgU" id="50h-YG-a9f"/>
+                        <outlet property="thirdMonthCategoryView" destination="Qy2-oj-VL9" id="Bkn-uJ-6It"/>
+                        <outlet property="thirdMonthExpenseLabel" destination="bmh-h9-6Vd" id="oAx-Kv-AXj"/>
+                        <outlet property="thirdMonthLabel" destination="38t-jZ-dLc" id="XZT-NV-bUZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hN-vg-G1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

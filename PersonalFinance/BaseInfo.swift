@@ -54,18 +54,7 @@ class BaseInfo: NSObject {
         return SingleConsume.fetchExpensesInThisDay(NSDate())
     }
     
-    // MARK: - 判断时间信息 ，当第一次进入的时候
-    /**
-    当每次进入的时候，判断一下时间信息，以设置各项信息
     
-    - parameter date: 被判断的时间
-    */
-    func judgeTimeWhenFirstUseInEveryDay(date: NSDate) {
-        if !self.isCurrentMonth(date) || !self.isToday(date) {
-            self.saveTime(date)
-            ShareWithGroupOperation.sharedGroupOperation.saveNewDayExpense(BaseInfo().dayExpense())
-        }
-    }
     
     // MARK: - 当第一次进入应用的时候初始化各项基本数据
     /**
@@ -114,7 +103,7 @@ extension BaseInfo {
         return false
     }
     
-    private func saveTime(date: NSDate) {
+    func saveTime(date: NSDate) {
         self.saveTimeInfo(date, key: "today")
     }
     

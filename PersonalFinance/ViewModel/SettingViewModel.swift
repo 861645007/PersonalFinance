@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct SettingModel {
     var imageName: String = ""
@@ -31,15 +32,21 @@ class SettingViewModel: NSObject {
         settingData = [[], []]
         
         if PasscodeOperation.sharedPasscodeOperation.hasPasscodeExist() {
-            settingData[0].append(SettingModel(imageName: "password", name: "关闭密码锁"));
+            settingData[0].append(SettingModel(imageName: "password", name: "关闭密码锁"))
         }else {
-            settingData[0].append(SettingModel(imageName: "password", name: "开启密码锁"));
+            settingData[0].append(SettingModel(imageName: "password", name: "开启密码锁"))
         }        
         
-        settingData[0].append(SettingModel(imageName: "budget", name: "设置月预算"));
+        settingData[0].append(SettingModel(imageName: "budget", name: "设置月预算"))
+        
+        
+        if self.hasDataInLastQuarter() {
+            settingData[0].append(SettingModel(imageName: "dataAnalysis", name: "上月消费分析报表"))
+        }
+        
 //        settingData[0].append(SettingModel(imageName: "cloudBackups", name: "开启云备份"));
-        settingData[1].append(SettingModel(imageName: "goodEvaluate", name: "好评鼓励"));
-        settingData[1].append(SettingModel(imageName: "aboutApp", name: "关于APP"));
+        settingData[1].append(SettingModel(imageName: "goodEvaluate", name: "好评鼓励"))
+        settingData[1].append(SettingModel(imageName: "aboutApp", name: "关于APP"))
     }
     
     
@@ -59,4 +66,14 @@ class SettingViewModel: NSObject {
     func nameAtIndexPathWithFirst() -> String {
         return settingData[0][0].name
     }
+    
+    // MARK: - 判断上季度有没有数据
+    func hasDataInLastQuarter() -> Bool {
+        
+        let quarterCategorysFetchedResultsController: NSFetchedResultsController = SingleConsume.fetchConsumeWithCategoryGroupInQuarter(NSDate())
+        
+        return quarterCategorysFetchedResultsController.fetchedObjects?.count == 0 ? false : true
+    }
+    
+    
 }

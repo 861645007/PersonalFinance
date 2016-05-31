@@ -10,8 +10,10 @@ import UIKit
 import ReactiveCocoa
 import MBCircularProgressBar
 
-let AddNewConsumeInWidgetNotification = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
-let ShowMonthConsumesVCNotification = "ShowMonthConsumesVCNotification"
+let AddNewConsumeInWidgetNotification   = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
+let ShowMonthConsumesVCNotification     = "ShowMonthConsumesVCNotification"
+let ShowModifyMonthBudgetVCNotification = "ShowModifyMonthBudgetVCNotification"
+
 
 
 class ViewController: UIViewController {
@@ -38,9 +40,11 @@ class ViewController: UIViewController {
         // 配置 点击 Today Widget 的新增按钮的页面跳转操作
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showAddNewConsumeVC), name: AddNewConsumeInWidgetNotification, object: nil)
         
-        
         // 配置通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMonthConsumesVC), name: ShowMonthConsumesVCNotification, object: nil)
+        
+        // 配置修改月预算通知
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showMidifyMonthBudgetVC), name: ShowModifyMonthBudgetVCNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -60,7 +64,7 @@ class ViewController: UIViewController {
         self.percentProgressBar.setValue(value > 100.0 ? 100.0 : value , animateWithDuration: Double(value) * 3.0 / 100.0)
 
         // 根据值得大小不同设置 进度条的颜色
-        self.percentProgressBar.progressColor = self.mainVM.gainProgressColor(value)
+        self.percentProgressBar.progressColor       = self.mainVM.gainProgressColor(value)
         self.percentProgressBar.progressStrokeColor = self.mainVM.gainProgressColor(value)
     }
     
@@ -111,6 +115,11 @@ class ViewController: UIViewController {
     func showMonthConsumesVC() {
         let monthConsumesVC = self.storyboard?.instantiateViewControllerWithIdentifier("MonthConsumeViewController") as! MonthConsumeViewController
         self.navigationController?.pushViewController(monthConsumesVC, animated: true)
+    }
+    
+    func showMidifyMonthBudgetVC() {
+        let midifyMonthBudgetVC = self.storyboard?.instantiateViewControllerWithIdentifier("MonthBudgetViewController") as! MonthBudgetViewController
+        self.navigationController?.pushViewController(midifyMonthBudgetVC, animated: true)
     }
 }
 

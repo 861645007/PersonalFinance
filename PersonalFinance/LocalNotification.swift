@@ -9,8 +9,11 @@
 import UIKit
 import SwiftDate
 
-let PercentInMonthBudgetWorkAction = "PercentInMonthBudgetWorkAction"
-let CategoryNotificationWithPercentInMonthBudget = "CategoryNotificationWithPercentInMonthBudget"
+let PercentInMonthBudgetWorkAction       = "PercentInMonthBudgetWorkAction"
+let ModifyMonthBudgetWorkAction          = "ModifyMonthBudgetWorkAction"
+let PercentInMonthBudgetNotificationWith = "PercentInMonthBudgetNotificationWith"
+let ModifyMonthBudgetNotification        = "ModifyMonthBudgetNotification"
+
 
 
 class LocalNotification: NSObject {
@@ -26,12 +29,13 @@ class LocalNotification: NSObject {
     
     // 月初提醒本月预算
     func createShowMonthBudgetNotification() {
-        // 设置触发时间为下个月1号8点
-                
-        let notification =  prepareLocalNotication.createLocalNotification("您的本月预算为：\(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())", fireDate: NSDate().firstDayWithNextMonth(8))
         
-        // 设置触发周期为：每月
-        notification.repeatInterval = .Month
+        let workAction = NotificationAction(name: "修改预算", id: ModifyMonthBudgetWorkAction)
+        let relaxAction = NotificationAction(name: "知道了", id: "MonthBudgetRelaxAction")
+        
+        // 设置触发时间为下个月1号8点
+        let notification = prepareLocalNotication.createLocalNotificationWithTwoAction("您的本月预算为：\(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())", fireDate: NSDate().firstDayWithNextMonth(9), categoryID: PercentInMonthBudgetNotificationWith, workAction: workAction, relaxAction: relaxAction)
+        
         // 设置 通知
         prepareLocalNotication.scheduleLocalNotification(notification)
     }
@@ -39,7 +43,7 @@ class LocalNotification: NSObject {
     // 每周一提醒上周的消费情况
     func createShowLastWeekExpenseNotification() {
         // 设置触发时间为下个星期第一天的8点
-        let notification = prepareLocalNotication.createLocalNotification("%您上周的消费报表已经生成了，快来查看吧！", fireDate: NSDate().firstDayWithNextWeek(8))
+        let notification = prepareLocalNotication.createLocalNotification("%您上周的消费报表已经生成了，快来查看吧！", fireDate: NSDate().firstDayWithNextWeek(9))
         
         // 设置触发周期为：每周
         notification.repeatInterval = .WeekOfYear
@@ -68,7 +72,7 @@ class LocalNotification: NSObject {
         let relaxAction = NotificationAction(name: "忽略", id: "PercentInMonthBudgetRelaxAction")
         
         // 创建一个通知
-        let notification =  prepareLocalNotication.createLocalNotificationWithTwoAction(bodyInfo, fireDate: fireDate, categoryID: CategoryNotificationWithPercentInMonthBudget, workAction: workAction, relaxAction: relaxAction)
+        let notification = prepareLocalNotication.createLocalNotificationWithTwoAction(bodyInfo, fireDate: fireDate, categoryID: PercentInMonthBudgetNotificationWith, workAction: workAction, relaxAction: relaxAction)
         
         // 启动 通知
         prepareLocalNotication.scheduleLocalNotification(notification)

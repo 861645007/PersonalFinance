@@ -75,7 +75,10 @@ class SingleConsume: NSManagedObject {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
-    
+    // 季度
+    class func fetchConsumeWithCategoryGroupInQuarter(date: NSDate) ->NSFetchedResultsController {
+        return self.fetchCustomWithRangeDate(date.quarterBegin(), dateEnd: date.quarterEnd())
+    }
     
     
     // MARK: 查询消费情况集合
@@ -149,7 +152,7 @@ class SingleConsume: NSManagedObject {
      */
     private static func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->NSFetchedResultsController {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
-        return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "category,time", ascending: true)
+        return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "category,money", ascending: true)
     }
     
     /**

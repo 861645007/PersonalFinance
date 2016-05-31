@@ -43,6 +43,14 @@ extension NSDate {
         return self.endOf(.Day)
     }
     
+    func quarterBegin() -> NSDate {
+        return self.startOf(.Quarter) - 3.months
+    }
+    
+    func quarterEnd() -> NSDate {
+        return self.startOf(.Quarter)
+    }
+    
     func isLaterWithNewTime(newTime: NSDate) ->Bool {
         if self > newTime {
             return true

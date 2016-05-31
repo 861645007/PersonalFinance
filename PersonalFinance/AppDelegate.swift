@@ -86,15 +86,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // 配置 NSUserDefaults iCloud Sync
-        MKiCloudSync.startWithPrefix("")
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(kMKiCloudSyncNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
-//            <#code#>
-        }
+        Zephyr.debugEnabled = true
+        Zephyr.sync()
         
         // 配置 Fabric, Crashlytics
         Fabric.with([Crashlytics.self])
-        
         
         // 配置密码锁
         let infoDictionary = NSBundle.mainBundle().infoDictionary
@@ -114,15 +110,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             self.gotoOnBoardVC()
         }
-//        self.gotoOnBoardVC()
+        
         // 判断所存的时间是不是今天（新的一天），不是的话，进行操作
-        sharedBaseInfo.judgeTimeWhenFirstUseInEveryDay(NSDate())
-        
-        
-        // 通知测试
-//        LocalNotification.sharedInstance.createContrastWithLastAndCurrentMonthNotification((50.0).convertToStrWithTwoFractionDigits())
-//        LocalNotification.sharedInstance.createPercentWithMonthBudgetNotification(50.0)
-        
+        self.judgeTimeWhenFirstUseInEveryDay(NSDate())
         
         return true
     }
@@ -145,6 +135,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if identifier == PercentInMonthBudgetWorkAction {
             NSNotificationCenter.defaultCenter().postNotificationName(ShowMonthConsumesVCNotification, object: nil)
+        }else if (identifier == ModifyMonthBudgetWorkAction) {
+            NSNotificationCenter.defaultCenter().postNotificationName(ShowModifyMonthBudgetVCNotification, object: nil)
         }
         
         completionHandler()
@@ -224,6 +216,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print(notification.userInfo)
         
         print(notification.userInfo?.keys)
+    }
+    
+    
+    
+    
+    
+    // MARK: - 判断时间信息 ，当第一次进入的时候
+    /**
+     当每次进入的时候，判断一下时间信息，以设置各项信息
+     
+     - parameter date: 被判断的时间
+     */
+    func judgeTimeWhenFirstUseInEveryDay(date: NSDate) {
+        if !BaseInfo.sharedBaseInfo.isCurrentMonth(date) || !BaseInfo.sharedBaseInfo.isToday(date) {
+            if !BaseInfo.sharedBaseInfo.isCurrentMonth(date) {
+                // 注册每月预算通知
+                LocalNotification.sharedInstance.createShowMonthBudgetNotification()
+            }
+            
+            BaseInfo.sharedBaseInfo.saveTime(date)
+            ShareWithGroupOperation.sharedGroupOperation.saveNewDayExpense(BaseInfo().dayExpense())
+        }
     }
 
     

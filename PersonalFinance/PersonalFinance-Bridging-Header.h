@@ -8,6 +8,3 @@
 // 头部提示框
 #import "MozTopAlertView.h"
 
-#import "MKiCloudSync.h"
-
-

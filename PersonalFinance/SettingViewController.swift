@@ -92,6 +92,9 @@ extension SettingViewController: UITableViewDelegate {
                 self.presentViewController(monthBudgetVC, animated: true, completion: {
                     //
                 })
+            }else if indexPath.row == 2 {
+                let dataAnalysisVC = self.storyboard?.instantiateViewControllerWithIdentifier("DataAnalysisViewController") as! DataAnalysisViewController
+                self.navigationController?.pushViewController(dataAnalysisVC, animated: true)
             }
         }else {
             if indexPath.row == 1 {
