@@ -169,6 +169,8 @@ class ChartViewController: UIViewController {
     @IBAction func showWeekConsumes(sender: AnyObject) {
         currentTimeModel = .Week
         
+        self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
+        
         self.moveTimeIndicatorAnimation(sender.center.x)
         self.changeChartsModelAnimation { [unowned self] in
             self.prepareChartData()
@@ -180,6 +182,8 @@ class ChartViewController: UIViewController {
     @IBAction func showMonthConsumes(sender: AnyObject) {
         currentTimeModel = .Month
         
+        self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
+        
         self.moveTimeIndicatorAnimation(sender.center.x)
         self.changeChartsModelAnimation { [unowned self] in
             self.prepareChartData()
@@ -190,6 +194,8 @@ class ChartViewController: UIViewController {
     
     @IBAction func showYearConsumes(sender: AnyObject) {
         currentTimeModel = .Year
+        
+        self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
         
         self.moveTimeIndicatorAnimation(sender.center.x)
         self.changeChartsModelAnimation { [unowned self] in

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D87B9240-2E6E-410F-ABAE-60AD8872E8B4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PersonalFinance</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8803DCF1800061C8A37526442F043B963BA7892E</key>
+		<string>github.com:861645007/PersonalFinance.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PersonalFinance.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8803DCF1800061C8A37526442F043B963BA7892E</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:861645007/PersonalFinance.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8803DCF1800061C8A37526442F043B963BA7892E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8803DCF1800061C8A37526442F043B963BA7892E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>PersonalFinance</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -41,7 +41,7 @@ class SettingViewModel: NSObject {
         
         
         if self.hasDataInLastQuarter() {
-            settingData[0].append(SettingModel(imageName: "dataAnalysis", name: "上月消费分析报表"))
+            settingData[0].append(SettingModel(imageName: "dataAnalysis", name: "上季度消费分析报表"))
         }
         
 //        settingData[0].append(SettingModel(imageName: "cloudBackups", name: "开启云备份"));

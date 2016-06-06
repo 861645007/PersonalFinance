@@ -37,7 +37,7 @@ class DataAnalysisViewModel: NSObject {
     override init() {
         super.init()
         
-        quarterOverviewInfo = self.quarterOverviewData().reverse()
+        quarterOverviewInfo = self.quarterOverviewData()
         quarterExpense = self.setQuarterExpense()
         quarterCategorysTop3 = self.gainQuarterCategorysTop3()
     }
@@ -48,8 +48,8 @@ class DataAnalysisViewModel: NSObject {
     
     // MARK: - 本月概览
     private func quarterOverviewData() -> [(String, String)] {
-        return (1...3).map {[unowned self] in
-            let month = NSDate() - $0.months
+        return (0...2).map {[unowned self] in
+            let month = NSDate().quarterBegin() + $0.months
             return ("\(month.month)月", "\(self.monthExpense(month).convertToStrWithTwoFractionDigits())元")
         }
     }

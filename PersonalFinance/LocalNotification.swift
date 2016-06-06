@@ -33,8 +33,8 @@ class LocalNotification: NSObject {
         let workAction = NotificationAction(name: "修改预算", id: ModifyMonthBudgetWorkAction)
         let relaxAction = NotificationAction(name: "知道了", id: "MonthBudgetRelaxAction")
         
-        // 设置触发时间为下个月1号8点
-        let notification = prepareLocalNotication.createLocalNotificationWithTwoAction("您的本月预算为：\(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())", fireDate: NSDate().firstDayWithNextMonth(9), categoryID: PercentInMonthBudgetNotificationWith, workAction: workAction, relaxAction: relaxAction)
+        // 设置触发时间为下个月1号8点NSDate().firstDayWithNextMonth(9)
+        let notification = prepareLocalNotication.createLocalNotificationWithTwoAction("您的本月预算为：\(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())", fireDate: NSDate(timeInterval: 60.0 * 30, sinceDate: NSDate()), categoryID: PercentInMonthBudgetNotificationWith, workAction: workAction, relaxAction: relaxAction)
         
         // 设置 通知
         prepareLocalNotication.scheduleLocalNotification(notification)

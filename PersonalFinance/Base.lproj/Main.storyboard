@@ -459,6 +459,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Eeh-bb-DiV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvc-9C-dZV" customClass="SpringView" customModule="Spring">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
@@ -674,10 +677,14 @@
                         <color key="backgroundColor" red="0.2677307129" green="0.19222086669999999" blue="0.36898496749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="Eeh-bb-DiV" firstAttribute="top" secondItem="hYK-Q0-Rqe" secondAttribute="topMargin" id="8mH-vU-bGJ"/>
                             <constraint firstItem="yPp-XT-abv" firstAttribute="top" secondItem="Cvc-9C-dZV" secondAttribute="bottom" id="GXC-DF-Arb"/>
                             <constraint firstItem="Cvc-9C-dZV" firstAttribute="leading" secondItem="hYK-Q0-Rqe" secondAttribute="leading" id="S5o-Fg-JqN"/>
+                            <constraint firstItem="yPp-XT-abv" firstAttribute="top" secondItem="Eeh-bb-DiV" secondAttribute="bottom" id="bfG-HT-xBl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Eeh-bb-DiV" secondAttribute="trailing" constant="-20" id="f7w-dq-k7u"/>
                             <constraint firstAttribute="trailing" secondItem="Cvc-9C-dZV" secondAttribute="trailing" id="lzK-M5-aAg"/>
                             <constraint firstItem="Cvc-9C-dZV" firstAttribute="top" secondItem="kWr-W4-CYZ" secondAttribute="bottom" constant="-64" id="wPL-uB-qlh"/>
+                            <constraint firstItem="Eeh-bb-DiV" firstAttribute="leading" secondItem="hYK-Q0-Rqe" secondAttribute="leadingMargin" constant="-20" id="zeo-2f-CoE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WN6-uH-usy">
@@ -1540,7 +1547,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="39h-ME-YZu">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="败家小能手" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyu-fQ-fGb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="省钱小专家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kyu-fQ-fGb">
                                                 <rect key="frame" x="258" y="30" width="85" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2964,6 +2971,6 @@
         <image name="triangle" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BIW-X9-Q8S"/>
+        <segue reference="2va-qr-ZKL"/>
     </inferredMetricsTieBreakers>
 </document>
