@@ -2,12 +2,11 @@
 //  PersonalFinanceTests.swift
 //  PersonalFinanceTests
 //
-//  Created by ziye on 16/1/27.
-//  Copyright © 2016年 王焕强. All rights reserved.
+//  Created by Huangqiang on 2017/1/2.
+//  Copyright © 2017年 王焕强. All rights reserved.
 //
 
 import XCTest
-@testable import PersonalFinance
 
 class PersonalFinanceTests: XCTestCase {
     
@@ -28,7 +27,7 @@ class PersonalFinanceTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

@@ -1,56 +1,49 @@
 PODS:
-  - Charts (2.2.4):
-    - Charts/Core (= 2.2.4)
-  - Charts/Core (2.2.4)
-  - CocoaLumberjack (2.2.0):
-    - CocoaLumberjack/Default (= 2.2.0)
-    - CocoaLumberjack/Extensions (= 2.2.0)
-  - CocoaLumberjack/Core (2.2.0)
-  - CocoaLumberjack/Default (2.2.0):
+  - Charts (3.0.1):
+    - Charts/Core (= 3.0.1)
+  - Charts/Core (3.0.1)
+  - CocoaLumberjack (2.4.0):
+    - CocoaLumberjack/Default (= 2.4.0)
+    - CocoaLumberjack/Extensions (= 2.4.0)
+  - CocoaLumberjack/Core (2.4.0)
+  - CocoaLumberjack/Default (2.4.0):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.2.0):
+  - CocoaLumberjack/Extensions (2.4.0):
     - CocoaLumberjack/Default
-  - Crashlytics (3.7.1):
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
-  - DZNEmptyDataSet (1.7.3)
-  - Fabric (1.6.7)
+  - DZNEmptyDataSet (1.8.1)
+  - Fabric (1.6.11)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/CocoaLumberjack (2.3.2):
     - CocoaLumberjack (~> 2.0)
     - MagicalRecord/Core
   - MagicalRecord/Core (2.3.2)
-  - MBCircularProgressBar (0.3.4)
+  - MBCircularProgressBar (0.3.5)
   - MMNumberKeyboard (0.1.5)
-  - Onboard (2.1.9)
+  - Onboard (2.3.1)
   - PDTSimpleCalendar (0.9.1)
-  - PulsingHalo (0.1.0)
-  - ReactiveCocoa (4.0.4-alpha-4):
-    - ReactiveCocoa/UI (= 4.0.4-alpha-4)
-    - Result (~> 1.0)
-  - ReactiveCocoa/Core (4.0.4-alpha-4):
-    - ReactiveCocoa/no-arc
-    - Result (~> 1.0)
-  - ReactiveCocoa/no-arc (4.0.4-alpha-4):
-    - Result (~> 1.0)
-  - ReactiveCocoa/UI (4.0.4-alpha-4):
-    - ReactiveCocoa/Core
-    - Result (~> 1.0)
-  - Result (1.0.2)
-  - SDWebImage (3.7.5):
-    - SDWebImage/Core (= 3.7.5)
-  - SDWebImage/Core (3.7.5)
-  - SimpleAlert (1.3.1)
+  - PulsingHalo (0.2.3)
+  - ReactiveCocoa (5.0.0-rc.1):
+    - ReactiveSwift (~> 1.0.0-rc.3)
+  - ReactiveSwift (1.0.0):
+    - Result (~> 3.1)
+  - Result (3.1.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SimpleAlert (2.0.1)
   - Spring (1.0.3)
-  - SSKeychain (1.4.0)
-  - SwiftDate (3.0.8)
+  - SSKeychain (1.4.1)
+  - SwiftDate (4.0.10)
   - VENTouchLock (1.11.0):
     - SSKeychain (~> 1.0)
 
 DEPENDENCIES:
   - Charts
   - Crashlytics
-  - DZNEmptyDataSet (~> 1.7.3)
+  - DZNEmptyDataSet
   - Fabric
   - MagicalRecord
   - MagicalRecord/CocoaLumberjack
@@ -59,42 +52,45 @@ DEPENDENCIES:
   - Onboard
   - PDTSimpleCalendar (~> 0.9.1)
   - PulsingHalo
-  - ReactiveCocoa (~> 4.0.4-alpha-4)
-  - SDWebImage (~> 3.7.4)
+  - ReactiveCocoa (= 5.0.0-rc.1)
+  - SDWebImage (~> 3.8)
   - SimpleAlert
-  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift2`)
+  - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
   - SwiftDate
   - VENTouchLock (~> 1.11.0)
 
 EXTERNAL SOURCES:
   Spring:
-    :branch: swift2
+    :branch: swift3
     :git: https://github.com/MengTo/Spring.git
 
 CHECKOUT OPTIONS:
   Spring:
-    :commit: 18d5c7b74489de8044e34767f856d1e574f0820e
+    :commit: 3a9227c6e9157e7b47f5ac1ee5abab2a56b50002
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
-  Charts: a9e735c83c6d376ade20f6612dcf0ba217394a49
-  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
-  Crashlytics: 3cdd4c9655be68032a0cf0379e0fb5ef6af22cad
-  DZNEmptyDataSet: dd7cca17c1d07dfa78956859b1e70a52505678ef
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
+  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
-  MBCircularProgressBar: ff3b8e2f441214d9ee122a24ba0d4d00cc7de881
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
   MMNumberKeyboard: 12da79571d08aca21566534a74726c5469aed29a
-  Onboard: 4d92c763ed15f939071dec12e87ed9e8dc036746
+  Onboard: b6871f25ac753175b2ab9a362fb2feb26a81a311
   PDTSimpleCalendar: d1c03387678422715dc021aa1a85d70f4d1014f2
-  PulsingHalo: d2684152281a3f7398b9554734b9a4f8feb9129a
-  ReactiveCocoa: e459ea92099447802df20c4735e31e8139b06094
-  Result: dd3dd71af3fa2e262f1a999e14fba2c25ec14f16
-  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  SimpleAlert: 05215ee656e1da1428998e76a76bb153a16c7a21
+  PulsingHalo: f0fe19699182eb959e4bc333838a2609ef7f7d48
+  ReactiveCocoa: 3e9cad4b77fa199d41e03f603cb55d0701ad6ad8
+  ReactiveSwift: f391724ee318a2cfd3e37dfb041cd49ecf4e7869
+  Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SimpleAlert: 383d1197df2e7b70b9bef5771f3632979c1aadae
   Spring: 3f02b5dc3308572ef177b3cad0fa7bbc4b0706f7
-  SSKeychain: c71293fa57216a40ab06c23f4085387583293de4
-  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
+  SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
+  SwiftDate: efdff69cf3750c2e4ef4fb9f0461e22b40c4c942
   VENTouchLock: f3145d6fbff243d6692dfb1107b88db06dc216c9
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: d014bf49ee47308a73b0574c33abd6876ace6840
+
+COCOAPODS: 1.1.1

@@ -27,17 +27,17 @@ class AddNewConsumeCategoryViewModel: NSObject {
         return (categoryWithouUsedArr?.count)!
     }
     
-    func imageAtIndexPath(index: NSInteger) -> UIImage {
-        return UIImage(data: categoryWithouUsedArr![index].iconData!)!
+    func imageAtIndexPath(_ index: NSInteger) -> UIImage {
+        return UIImage(data: categoryWithouUsedArr![index].iconData! as Data)!
     }
     
-    private func gainAllConsumeCategoryWithoutUsed() -> [Category] {
+    fileprivate func gainAllConsumeCategoryWithoutUsed() -> [Category] {
         return Category.fetchAllConsumeCategoryWithoutUsed()
     }
     
     // MARK: - can Save New Category
     
-    func saveNewCategory(text: String, image: UIImage) -> Bool {
+    func saveNewCategory(_ text: String, image: UIImage) -> Bool {
         // 保存操作(text.isEmpty)
         if text == "" {
             return false

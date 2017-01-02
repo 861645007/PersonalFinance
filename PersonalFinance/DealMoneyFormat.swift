@@ -27,20 +27,20 @@ class DealMoneyFormat: NSObject {
      
      - returns: 处理好的数字文本
      */
-    func dealWithDecimalMoney(text: String) -> String {
+    func dealWithDecimalMoney(_ text: String) -> String {
         
-        let money: String = text.substringFromIndex(text.startIndex.advancedBy(1)).stringByReplacingOccurrencesOfString(",", withString: "", options: [], range: nil)
+        let money: String = text.substring(from: text.characters.index(text.startIndex, offsetBy: 1)).replacingOccurrences(of: ",", with: "", options: [], range: nil)
         
         if  money.characters.count >= 11 {
             var newText: String = text
-            newText.removeAtIndex(newText.endIndex.advancedBy(-1))
+            newText.remove(at: newText.characters.index(newText.endIndex, offsetBy: -1))
             return newText
         }else if (Double(money) == 0.0) {
             return "￥0.00"
         }
         
-        let lastChar = text.substringFromIndex(text.endIndex.advancedBy(-1))
-        let decimalLater = text.substringFromIndex((text.rangeOfString(".")?.endIndex)!)
+        let lastChar = text.substring(from: text.characters.index(text.endIndex, offsetBy: -1))
+        let decimalLater = text.substring(from: (text.range(of: ".")?.upperBound)!)
         
         if decimalLater.characters.count == 1 {
             // 说明是删除了数据
@@ -49,10 +49,10 @@ class DealMoneyFormat: NSObject {
                 let decimalAfterPointLength = self.decimalAfterPoint.characters.count
                 
                 if decimalAfterPointLength == 2 {
-                    self.decimalAfterPoint.removeAtIndex(self.decimalAfterPoint.endIndex.advancedBy(-1))
+                    self.decimalAfterPoint.remove(at: self.decimalAfterPoint.characters.index(self.decimalAfterPoint.endIndex, offsetBy: -1))
                     return "￥\(self.decimalBeforePoint).\(self.decimalAfterPoint)0"
                 }else if decimalAfterPointLength == 1 {
-                    self.decimalAfterPoint.removeAtIndex(self.decimalAfterPoint.endIndex.advancedBy(-1))
+                    self.decimalAfterPoint.remove(at: self.decimalAfterPoint.characters.index(self.decimalAfterPoint.endIndex, offsetBy: -1))
                     self.hasDecimalPoint = false
                     return "￥\(self.decimalBeforePoint).00"
                 }
@@ -65,7 +65,7 @@ class DealMoneyFormat: NSObject {
                     self.decimalBeforePoint = ""
                     return "￥0.00"
                 }else {
-                    self.decimalBeforePoint.removeAtIndex(self.decimalBeforePoint.endIndex.advancedBy(-1))
+                    self.decimalBeforePoint.remove(at: self.decimalBeforePoint.characters.index(self.decimalBeforePoint.endIndex, offsetBy: -1))
                     return "￥\(self.decimalBeforePoint).00"
                 }
             }

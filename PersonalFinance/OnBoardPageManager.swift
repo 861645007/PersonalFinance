@@ -36,7 +36,7 @@ class OnBoardPageManager {
     }
 
     
-    private func generateOnBoardPage() ->[OnboardingContentViewController] {
+    fileprivate func generateOnBoardPage() ->[OnboardingContentViewController] {
         
         let firstPage: OnboardingContentViewController = OnboardingContentViewController(title: "第一页", body: "欢迎使用", image: nil, buttonText: nil){ () -> Void in
             self.handleOnboardingCompletion()
@@ -50,9 +50,9 @@ class OnBoardPageManager {
     }
     
     //
-    private func handleOnboardingCompletion() {
-        let app = UIApplication.sharedApplication()
+    fileprivate func handleOnboardingCompletion() {
+        let app = UIApplication.shared
         let appDelegate: AppDelegate = app.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("RootViewController")
+        appDelegate.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RootViewController")
     }
 }

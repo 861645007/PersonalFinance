@@ -17,9 +17,9 @@ import PulsingHalo
 struct ConsumeCategory {
     var id: Int32
     var name: String?
-    var iconData: NSData?
+    var iconData: Data?
     
-    init(id: Int32, name: String, icon: NSData) {
+    init(id: Int32, name: String, icon: Data) {
         self.id = id
         self.name = name
         self.iconData = icon
@@ -32,7 +32,7 @@ class AddNewCustomViewController: UIViewController {
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var categoryImage: UIImageView!    
     
-    var consumeDate: NSDate = NSDate()
+    var consumeDate: Date = Date()
     var consumeCategoryID: Int32 = 0
     var pdtCalendar: PDTSimpleCalendarViewController?
     
@@ -76,7 +76,7 @@ class AddNewCustomViewController: UIViewController {
     }
     
     // 配置 category 数据
-    func changeConsumeCategoryInfo(consumeCategory: ConsumeCategory?) {
+    func changeConsumeCategoryInfo(_ consumeCategory: ConsumeCategory?) {
         if consumeCategory == nil {
             return
         }
@@ -85,11 +85,11 @@ class AddNewCustomViewController: UIViewController {
         self.consumeCategoryID = consumeCategory!.id
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if Category.fetchAllConsumeCategoryWithUsed().count == 0 {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
             return
         }
         
@@ -132,7 +132,7 @@ class AddNewCustomViewController: UIViewController {
     
     // MARK: - 配置数字键盘
     func createNumberKeyBoard() {
-        let keyboard = MMNumberKeyboard(frame: CGRectZero)
+        let keyboard = MMNumberKeyboard(frame: CGRect.zero)
         keyboard.allowsDecimalPoint = true
         keyboard.delegate = self
         keyboard.returnKeyTitle = "完成一笔"
@@ -142,23 +142,23 @@ class AddNewCustomViewController: UIViewController {
     
     // MARK: - 创建一个键盘上方的 View
     func createCustonKeyBoardView() ->UIView {
-        let customView: UIView = UIView(frame: CGRectMake(0, UIScreen.mainScreen().bounds.height - 40, UIScreen.mainScreen().bounds.width, 40))
-        customView.backgroundColor = UIColor.whiteColor()
+        let customView: UIView = UIView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 40, width: UIScreen.main.bounds.width, height: 40))
+        customView.backgroundColor = UIColor.white
         
-        selectTimeBtn = UIButton(frame: CGRectMake(10, 5, 80, 30))
-        selectTimeBtn.setTitle(self.addNewCustomVM.setDefaultTime(), forState: .Normal)
-        selectTimeBtn.addTarget(self, action: #selector(selectTime), forControlEvents: .TouchUpInside)
+        selectTimeBtn = UIButton(frame: CGRect(x: 10, y: 5, width: 80, height: 30))
+        selectTimeBtn.setTitle(self.addNewCustomVM.setDefaultTime(), for: UIControlState())
+        selectTimeBtn.addTarget(self, action: #selector(selectTime), for: .touchUpInside)
         self.setButtonStyleOfKeyboard(selectTimeBtn)
         customView.addSubview(selectTimeBtn)
         
-        commentBtn = UIButton(frame: CGRectMake(100, 5, 80, 30))
-        commentBtn.addTarget(self, action: #selector(noteDownComment), forControlEvents: .TouchUpInside)
+        commentBtn = UIButton(frame: CGRect(x: 100, y: 5, width: 80, height: 30))
+        commentBtn.addTarget(self, action: #selector(noteDownComment), for: .touchUpInside)
         if commentString != "" {
-            commentBtn.setTitle("已有备注", forState: .Normal)
-            commentBtn.layer.borderColor = UIColor.blueColor().CGColor
+            commentBtn.setTitle("已有备注", for: UIControlState())
+            commentBtn.layer.borderColor = UIColor.blue.cgColor
         }else {
-            commentBtn.setTitle("写备注", forState: .Normal)
-            commentBtn.layer.borderColor = UIColor.grayColor().CGColor
+            commentBtn.setTitle("写备注", for: UIControlState())
+            commentBtn.layer.borderColor = UIColor.gray.cgColor
         }
         self.setButtonStyleOfKeyboard(commentBtn)
         customView.addSubview(commentBtn)
@@ -175,53 +175,53 @@ class AddNewCustomViewController: UIViewController {
     }
     
     
-    func setButtonStyleOfKeyboard(button: UIButton) {
-        button.backgroundColor = UIColor.clearColor()
+    func setButtonStyleOfKeyboard(_ button: UIButton) {
+        button.backgroundColor = UIColor.clear
         
         button.layer.cornerRadius = 2.5
         button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.grayColor().CGColor
+        button.layer.borderColor = UIColor.gray.cgColor
         
-        button.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        button.setTitleColor(UIColor.lightGrayColor(), forState: .Highlighted)
-        button.titleLabel?.font = UIFont.systemFontOfSize(13)
+        button.setTitleColor(UIColor.gray, for: UIControlState())
+        button.setTitleColor(UIColor.lightGray, for: .highlighted)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
     }
     
     // MARK: - 为键盘上方的 View 配置操作
     func prepareKeyboardNotifation() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeKeyboardShowNotifation(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeKeyboardHideNotifation(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeKeyboardShowNotifation(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeKeyboardHideNotifation(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func changeKeyboardShowNotifation(notification: NSNotification) {
-        let userInfo: [NSObject: AnyObject] = notification.userInfo!
+    func changeKeyboardShowNotifation(_ notification: Notification) {
+        let userInfo: [AnyHashable: Any] = notification.userInfo!
         let valueEndFrame: NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         
-        let keyboardEndY = valueEndFrame.CGRectValue().origin.y
+        let keyboardEndY = valueEndFrame.cgRectValue.origin.y
         self.notifationOperation(userInfo, keyboardY: keyboardEndY)
     }
     
-    func changeKeyboardHideNotifation(notification: NSNotification) {
-        let userInfo: [NSObject: AnyObject] = notification.userInfo!
+    func changeKeyboardHideNotifation(_ notification: Notification) {
+        let userInfo: [AnyHashable: Any] = notification.userInfo!
         let valueStartFrame: NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         
-        let keyboardStartY = valueStartFrame.CGRectValue().origin.y
+        let keyboardStartY = valueStartFrame.cgRectValue.origin.y
         
         self.notifationOperation(userInfo, keyboardY: keyboardStartY)
     }
     
-    func notifationOperation(userInfo: [NSObject: AnyObject], keyboardY: CGFloat) {
+    func notifationOperation(_ userInfo: [AnyHashable: Any], keyboardY: CGFloat) {
         let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]
         let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]
         
-        UIView.animateWithDuration(duration!.doubleValue) { () -> Void in
+        UIView.animate(withDuration: (duration! as AnyObject).doubleValue, animations: { () -> Void in
             UIView.setAnimationBeginsFromCurrentState(true)
-            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: Int(curve!.intValue))!)
-            self.keyboardView.center = CGPointMake(self.keyboardView.center.x, keyboardY - self.keyboardView.bounds.size.height/2.0);
-        }
+            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: Int((curve! as AnyObject).int32Value))!)
+            self.keyboardView.center = CGPoint(x: self.keyboardView.center.x, y: keyboardY - self.keyboardView.bounds.size.height/2.0);
+        }) 
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
@@ -237,19 +237,19 @@ class AddNewCustomViewController: UIViewController {
             pdtCalendar?.weekdayHeaderEnabled = true
             
             // 设置时间选择器的开始和结束时间
-            let offsetComponents = NSDateComponents()
+            var offsetComponents = DateComponents()
             offsetComponents.month = 2
-            pdtCalendar!.lastDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: NSDate(), options: .WrapComponents)
+            pdtCalendar!.lastDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: Date(), options: .WrapComponents)
             
             offsetComponents.month = -4
-            pdtCalendar!.firstDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: NSDate(), options: .WrapComponents)
+            pdtCalendar!.firstDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: Date(), options: .WrapComponents)
             
             PDTSimpleCalendarViewCell.appearance().circleTodayColor = UIColor(red:200/255.0, green:200/255.0, blue:200/255.0, alpha:1.0)
             PDTSimpleCalendarViewCell.appearance().circleSelectedColor = UIColor(red:49/255.0, green:97/255.0, blue:157/255.0, alpha:255/255.0)
             
             // 默认显示当前日期
-            pdtCalendar?.selectedDate = NSDate()
-            pdtCalendar?.scrollToDate(NSDate(), animated: true)
+            pdtCalendar?.selectedDate = Date()
+            pdtCalendar?.scrollToDate(Date(), animated: true)
             
             // 设置时间选择器的View 距上为0（据 NavigationController）
             pdtCalendar?.edgesForExtendedLayout = .None
@@ -274,16 +274,16 @@ class AddNewCustomViewController: UIViewController {
     // MARK: - 配置一个弹出框    
     func createPopView() {
         // 创建一个自定义的view
-        let cusView = UIView(frame: CGRectMake(0, 0, 270, 100))
-        cusView.backgroundColor = UIColor.whiteColor()
+        let cusView = UIView(frame: CGRect(x: 0, y: 0, width: 270, height: 100))
+        cusView.backgroundColor = UIColor.white
         
-        let nameLabel = UILabel(frame: CGRectMake(0, 8, 270, 20))
+        let nameLabel = UILabel(frame: CGRect(x: 0, y: 8, width: 270, height: 20))
         nameLabel.text = "备注"
-        nameLabel.textAlignment = .Center
-        nameLabel.font = UIFont.systemFontOfSize(20)
+        nameLabel.textAlignment = .center
+        nameLabel.font = UIFont.systemFont(ofSize: 20)
         cusView.addSubview(nameLabel)
         
-        let textView: UITextView = UITextView(frame: CGRectMake(8, 30, 270 - 16, 64))
+        let textView: UITextView = UITextView(frame: CGRect(x: 8, y: 30, width: 270 - 16, height: 64))
         textView.text = commentString
         textView.backgroundColor = UIColor(red: 220/255.0, green: 220/255.0, blue: 220/255.0, alpha: 1.0)
         textView.layer.masksToBounds = true
@@ -306,7 +306,7 @@ class AddNewCustomViewController: UIViewController {
     }
     
     // 添加脉冲动画
-    func addPulsHaloAnimation(categoryIcon: UIImage) {
+    func addPulsHaloAnimation(_ categoryIcon: UIImage) {
         let layer = PulsingHaloLayer.init()
         
         self.categoryImage.superview?.layer.insertSublayer(layer, below: self.categoryImage.layer)
@@ -329,11 +329,11 @@ class AddNewCustomViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegate 协议
 extension AddNewCustomViewController: UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         if indexPath.row == (self.addNewCustomVM.consumeTypeArr?.count)! - 1 {
             
-            let addNewConsumeCategoryVC = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewConsumeCategoryViewController")
+            let addNewConsumeCategoryVC = self.storyboard?.instantiateViewController(withIdentifier: "AddNewConsumeCategoryViewController")
 
             self.navigationController?.pushViewController(addNewConsumeCategoryVC!, animated: true)
             return
@@ -349,7 +349,7 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
     
     
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPostion: Int = Int(scrollView.contentOffset.y);
         if (currentPostion - lastPosition > 25) {
             // 上滑
@@ -368,12 +368,12 @@ extension AddNewCustomViewController: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource 协议
 extension AddNewCustomViewController: UICollectionViewDataSource {
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return addNewCustomVM.consumeTypeArr!.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: CustomTypeCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("ConsumeTypeCollectionViewCell", forIndexPath: indexPath) as! CustomTypeCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: CustomTypeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConsumeTypeCollectionViewCell", for: indexPath) as! CustomTypeCollectionViewCell
         
         cell.prepareCollectionCell(addNewCustomVM.consumeTypeArr![indexPath.row])
         
@@ -385,7 +385,7 @@ extension AddNewCustomViewController: UICollectionViewDataSource {
 extension AddNewCustomViewController: MMNumberKeyboardDelegate {
     
     // 按下返回键操作
-    func numberKeyboardShouldReturn(numberKeyboard: MMNumberKeyboard!) -> Bool {
+    func numberKeyboardShouldReturn(_ numberKeyboard: MMNumberKeyboard!) -> Bool {
         // 首先判断 金额是否为0，为0 不能保存
         if self.numberTextField.text == "￥0.00" {
             TopAlert().createFailureTopAlert("金额不能为 0", parentView: self.view)
@@ -394,21 +394,21 @@ extension AddNewCustomViewController: MMNumberKeyboardDelegate {
         
         // 获取消费金额
         let numberText = numberTextField.text
-        let numberStr = numberText?.substringFromIndex((numberText?.startIndex.advancedBy(1))!)
+        let numberStr = numberText?.substring(from: (numberText?.characters.index((numberText?.startIndex)!, offsetBy: 1))!)
         let money: Double = Double(numberStr!)!
         
         // 保存数据
-        self.addNewCustomVM.saveConsumeInfo(consumeCategoryID, photo: NSData(), comment: commentString!, money: money, time: consumeDate)
+        self.addNewCustomVM.saveConsumeInfo(consumeCategoryID, photo: Data(), comment: commentString!, money: money, time: consumeDate)
         
         // 返回主页面
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         return true
     }
 }
 
 
 extension AddNewCustomViewController: PDTSimpleCalendarViewDelegate {
-    func simpleCalendarViewController(controller: PDTSimpleCalendarViewController!, didSelectDate date: NSDate!) {
+    func simpleCalendarViewController(_ controller: PDTSimpleCalendarViewController!, didSelectDate date: Date!) {
         consumeDate = date.tolocalTime()
     }
 }

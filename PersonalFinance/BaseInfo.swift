@@ -16,13 +16,13 @@ class BaseInfo: NSObject {
         return sharedInstance
     }
     
-    private let userDefault: NSUserDefaults = {
-        return NSUserDefaults.standardUserDefaults()
+    fileprivate let userDefault: UserDefaults = {
+        return UserDefaults.standard
     }()
     
     
     // MARK: - 每月预算
-    func saveMonthBudget(value: NSNumber) {
+    func saveMonthBudget(_ value: NSNumber) {
         self.saveMoneyInfo(value.doubleValue, key: "MonthBudget")
     }
     
@@ -41,17 +41,17 @@ class BaseInfo: NSObject {
     
     // MARK: - 每周支出
     func weekExpense() ->Double {
-        return SingleConsume.fetchExpensesInThisWeek(NSDate())
+        return SingleConsume.fetchExpensesInThisWeek(Date())
     }
     
     // MARK: - 每月支出
     func monthExpense() ->Double {
-        return SingleConsume.fetchExpensesInThisMonth(NSDate())
+        return SingleConsume.fetchExpensesInThisMonth(Date())
     }
     
     // MARK: - 每日支出
     func dayExpense() ->Double {
-        return SingleConsume.fetchExpensesInThisDay(NSDate())
+        return SingleConsume.fetchExpensesInThisDay(Date())
     }
     
     
@@ -62,23 +62,23 @@ class BaseInfo: NSObject {
      */
     func initDataWhenFirstUse() {
         self.saveMonthBudget(0.0)
-        self.saveTime(NSDate())
+        self.saveTime(Date())
     }
     
     // MARK: 是否用过引导页的标示
     func saveOnBoardSymbol() {
-        self.userDefault.setBool(true, forKey: "HasOnborad")
+        self.userDefault.set(true, forKey: "HasOnborad")
         self.userDefault.synchronize()
     }
     
     func gainOnBoardSymbol() ->Bool {
-        return self.userDefault.boolForKey("HasOnborad")
+        return self.userDefault.bool(forKey: "HasOnborad")
     }
 }
 
 // MARK: - 各项与时间相关的操作
 extension BaseInfo {
-    func isCurrentMonth(date: NSDate) ->Bool {
+    func isCurrentMonth(_ date: Date) ->Bool {
         if date.isInThisMonth(self.gainTime()) {
             return true
         }else {
@@ -86,7 +86,7 @@ extension BaseInfo {
         }
     }
     
-    func isToday(date: NSDate) ->Bool {
+    func isToday(_ date: Date) ->Bool {
         if date.isThisDay(self.gainTime()) {
             return true
         }else {
@@ -94,7 +94,7 @@ extension BaseInfo {
         }
     }
     
-    private func isNewDay(date: NSDate) ->Bool {
+    fileprivate func isNewDay(_ date: Date) ->Bool {
         let tomorrow = self.gainTime().dayEnd()
         
         if tomorrow.isLaterWithNewTime(date) {
@@ -103,11 +103,11 @@ extension BaseInfo {
         return false
     }
     
-    func saveTime(date: NSDate) {
+    func saveTime(_ date: Date) {
         self.saveTimeInfo(date, key: "today")
     }
     
-    private func gainTime() ->NSDate {
+    fileprivate func gainTime() ->Date {
         return self.getTimeInfo("today")
     }
     
@@ -116,21 +116,21 @@ extension BaseInfo {
 
 // MARK: - NSUserDefault 操作
 extension BaseInfo {
-    private func saveMoneyInfo(value: Double, key: String) {
-        self.userDefault.setDouble(value, forKey: key)
+    fileprivate func saveMoneyInfo(_ value: Double, key: String) {
+        self.userDefault.set(value, forKey: key)
         self.userDefault.synchronize()
     }
     
-    private func getMoneyInfo(key: String) ->Double {
-        return self.userDefault.doubleForKey(key)
+    fileprivate func getMoneyInfo(_ key: String) ->Double {
+        return self.userDefault.double(forKey: key)
     }
     
-    private func saveTimeInfo(value: NSDate, key: String) {
-        self.userDefault.setObject(value, forKey: key)
+    fileprivate func saveTimeInfo(_ value: Date, key: String) {
+        self.userDefault.set(value, forKey: key)
         self.userDefault.synchronize()
     }
     
-    private func getTimeInfo(key: String) ->NSDate {
-        return self.userDefault.objectForKey(key) as! NSDate
+    fileprivate func getTimeInfo(_ key: String) ->Date {
+        return self.userDefault.object(forKey: key) as! Date
     }
 }

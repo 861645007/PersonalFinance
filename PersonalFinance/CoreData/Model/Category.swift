@@ -15,15 +15,15 @@ class Category: NSManagedObject {
 // Insert code here to add functionality to your managed object subclass
 
     // MARK: - 插入
-    class func insertNewConsumeCategory(name: String, iconData: NSData, beUsed: Bool) {
+    class func insertNewConsumeCategory(_ name: String, iconData: Data, beUsed: Bool) {
         
         let id = Category.gainCategoryCount() + 1
         let category: Category = Category.MR_createEntity()!
         
-        category.id = NSNumber(int: id)
+        category.id = NSNumber(value: id as Int32)
         category.name = name
         category.iconData = iconData
-        category.beUsed = NSNumber(bool: beUsed)
+        category.beUsed = NSNumber(value: beUsed as Bool)
         
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
@@ -64,12 +64,12 @@ class Category: NSManagedObject {
     }
     
     
-    class func fetchConsumeCategoryWithId(id: NSNumber) -> Category? {
+    class func fetchConsumeCategoryWithId(_ id: NSNumber) -> Category? {
         return Category.MR_findFirstByAttribute("id", withValue: id)
     }
     
     // 修改
-    func modifyConsumeCategory(id: NSNumber, name: String) {
+    func modifyConsumeCategory(_ id: NSNumber, name: String) {
         let category = Category.fetchConsumeCategoryWithId(id)
         
         category?.name = name
@@ -87,11 +87,11 @@ class Category: NSManagedObject {
     
     
     // 私有方法
-    private static func gainCategoryCount() ->Int32 {
+    fileprivate static func gainCategoryCount() ->Int32 {
         return Category.MR_numberOfEntities().intValue
     }
     
-    private static func createPredicateWithBeUsed(beUsed: Bool) -> NSPredicate {
-        return NSPredicate(format: "beUsed == %@", NSNumber(bool: beUsed))
+    fileprivate static func createPredicateWithBeUsed(_ beUsed: Bool) -> NSPredicate {
+        return NSPredicate(format: "beUsed == %@", NSNumber(value: beUsed as Bool))
     }
 }

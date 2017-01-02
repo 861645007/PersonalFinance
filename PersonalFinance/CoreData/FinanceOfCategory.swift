@@ -10,13 +10,13 @@ import UIKit
 
 class FinanceOfCategory: NSObject {
    
-    var iconData: NSData?
+    var iconData: Data?
     var categoryName: String = ""
     var categoryRatio: Double = 0.0
     var categoryMoney: Double = 0
     
     
-    init(iconData: NSData, name: String, ratio: Double, money: Double) {
+    init(iconData: Data, name: String, ratio: Double, money: Double) {
         self.iconData = iconData
         self.categoryName = name
         self.categoryRatio = ratio

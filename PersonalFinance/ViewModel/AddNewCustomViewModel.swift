@@ -9,8 +9,8 @@
 import Foundation
 
 enum ConsumeOperationStatus {
-    case AddNewConsume
-    case EditConsumeDetail
+    case addNewConsume
+    case editConsumeDetail
 }
 
 class AddNewCustomViewModel: NSObject {
@@ -24,7 +24,7 @@ class AddNewCustomViewModel: NSObject {
     let currentState: ConsumeOperationStatus!
     let currentConsume: SingleConsume?
  
-    init(state: ConsumeOperationStatus? = .AddNewConsume, consume: SingleConsume? = nil) {
+    init(state: ConsumeOperationStatus? = .addNewConsume, consume: SingleConsume? = nil) {
         self.currentState = state
         self.currentConsume = consume
         
@@ -33,20 +33,20 @@ class AddNewCustomViewModel: NSObject {
     
     // MARK: - 设置初始化数据
     func setDefaultMoney() -> String {
-        return (currentState == .AddNewConsume) ? "￥0.00" : "￥\(self.currentConsume!.money!.doubleValue.convertToStrWithTwoFractionDigits())"
+        return (currentState == .addNewConsume) ? "￥0.00" : "￥\(self.currentConsume!.money!.doubleValue.convertToStrWithTwoFractionDigits())"
     }
     
     // 配置默认消费类型
     func setDefaultCategory() -> ConsumeCategory? {
-        return (currentState == .AddNewConsume) ? self.gainCategoryWithCusOther() : ConsumeCategory(id: (currentConsume?.consumeCategory!.id!.intValue)!, name: (currentConsume?.consumeCategory!.name)!, icon: currentConsume!.consumeCategory!.iconData!)
+        return (currentState == .addNewConsume) ? self.gainCategoryWithCusOther() : ConsumeCategory(id: (currentConsume?.consumeCategory!.id!.int32Value)!, name: (currentConsume?.consumeCategory!.name)!, icon: currentConsume!.consumeCategory!.iconData!)
     }
     
     func setDefaultTime() -> String {
-        return (currentState == .AddNewConsume) ? self.gainToday() : "\(currentConsume!.time!.month)月\(currentConsume!.time!.day)日"
+        return (currentState == .addNewConsume) ? self.gainToday() : "\(currentConsume!.time!.month)月\(currentConsume!.time!.day)日"
     }
     
     func setDefaultComment() -> String {
-        return (currentState == .AddNewConsume) ? "" : (currentConsume?.comment)!
+        return (currentState == .addNewConsume) ? "" : (currentConsume?.comment)!
     }
     
     /**
@@ -54,16 +54,16 @@ class AddNewCustomViewModel: NSObject {
      */
     func gainAllConsumeType() {
         consumeTypeArr = Category.fetchAllConsumeCategoryWithUsed().map { (category: Category) in
-            ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
+            ConsumeCategory(id: (category.id?.int32Value)!, name: category.name!, icon: category.iconData!)
         }
         
         consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))
     }
     
     // MARK: - 保存
-    func saveConsumeInfo(category: Int32, photo: NSData, comment: String, money: Double, time: NSDate) {
-        if currentState == .EditConsumeDetail {
-            self.modifyConsume((currentConsume?.id?.intValue)!, category: category, photo: photo, comment: comment, money: money, time: time)
+    func saveConsumeInfo(_ category: Int32, photo: Data, comment: String, money: Double, time: Date) {
+        if currentState == .editConsumeDetail {
+            self.modifyConsume((currentConsume?.id?.int32Value)!, category: category, photo: photo, comment: comment, money: money, time: time)
         }else {
             self.saveNewConsume(category, photo: photo, comment: comment, money: money, time: time)
         }
@@ -79,7 +79,7 @@ class AddNewCustomViewModel: NSObject {
      
      - returns: 处理好的数字文本
      */
-    func dealWithDecimalMoney(text: String) -> String {
+    func dealWithDecimalMoney(_ text: String) -> String {
         return dealMoneyFormat.dealWithDecimalMoney(text)
     }
     
@@ -94,7 +94,7 @@ class AddNewCustomViewModel: NSObject {
      - parameter money:    消费金额
      - parameter time:     消费时间
      */
-    private func saveNewConsume(category: Int32, photo: NSData, comment: String, money: Double, time: NSDate)  {
+    fileprivate func saveNewConsume(_ category: Int32, photo: Data, comment: String, money: Double, time: Date)  {
         // 在数据库里新增一条记录
         SingleConsume.addNewSingleCustom(category, photo: photo, comment: comment, money: money, time: time)
         
@@ -111,7 +111,7 @@ class AddNewCustomViewModel: NSObject {
      - parameter money:    消费金额
      - parameter time:     消费时间
      */
-    private func modifyConsume(id: Int32, category: Int32, photo: NSData, comment: String, money: Double, time: NSDate)  {
+    fileprivate func modifyConsume(_ id: Int32, category: Int32, photo: Data, comment: String, money: Double, time: Date)  {
         // 在数据库里修改一条记录
         SingleConsume.modifySingleCustom(id, category: category, photo: photo, comment: comment, money: money, time: time)
     }
@@ -121,12 +121,12 @@ class AddNewCustomViewModel: NSObject {
      
      - returns: 返回今日时间（形如：xx月xx日）
      */
-    private func gainToday() -> String {
-        let today = NSDate()
+    fileprivate func gainToday() -> String {
+        let today = Date()
         return "\(today.month)月\(today.day)日"
     }
     
-    private func gainCategoryWithCusOther() ->ConsumeCategory? {
+    fileprivate func gainCategoryWithCusOther() ->ConsumeCategory? {
         for category: ConsumeCategory in consumeTypeArr! {
             if category.name == "一般" {
                 return category

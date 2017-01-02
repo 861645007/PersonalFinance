@@ -19,8 +19,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Do any additional setup after loading the view from its nib.
     }
     
-    override func viewWillAppear(animated: Bool) {
-        self.preferredContentSize = CGSizeMake(0, 61)
+    override func viewWillAppear(_ animated: Bool) {
+        self.preferredContentSize = CGSize(width: 0, height: 61)
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,12 +28,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, defaultMarginInsets.left, 0, 8)
     }
     
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
@@ -41,16 +41,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
         self.loadData()
         
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
     
     func loadData() {
         dayExpenseLabel.text = ShareWithGroupOperation.sharedGroupOperation.gainDayExpense().convertToStrWithTwoFractionDigits()
     }
     
-    @IBAction func addNewConsume(sender: AnyObject) {
+    @IBAction func addNewConsume(_ sender: AnyObject) {
         
-        self.extensionContext?.openURL(NSURL(string: "AppUrlType://open")!, completionHandler: { (success: Bool) in
+        self.extensionContext?.open(URL(string: "AppUrlType://open")!, completionHandler: { (success: Bool) in
 //            <#code#>
         })
     }

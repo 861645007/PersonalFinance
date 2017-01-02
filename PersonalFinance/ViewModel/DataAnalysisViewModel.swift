@@ -47,22 +47,22 @@ class DataAnalysisViewModel: NSObject {
     // MARK: - 私有变量
     
     // MARK: - 本月概览
-    private func quarterOverviewData() -> [(String, String)] {
+    fileprivate func quarterOverviewData() -> [(String, String)] {
         return (0...2).map {[unowned self] in
-            let month = NSDate().quarterBegin() + $0.months
+            let month = Date().quarterBegin() + $0.months
             return ("\(month.month)月", "\(self.monthExpense(month).convertToStrWithTwoFractionDigits())元")
         }
     }
     
     
-    private func monthExpense(month: NSDate) -> Double {
+    fileprivate func monthExpense(_ month: Date) -> Double {
         return SingleConsume.fetchExpensesInThisMonth(month)
     }
     
     // 获取一个季度的总消费额
-    private func setQuarterExpense() -> Double {
+    fileprivate func setQuarterExpense() -> Double {
         return (1...3).reduce(0.0) {
-            return $0 + SingleConsume.fetchExpensesInThisMonth(NSDate() - $1.months)
+            return $0 + SingleConsume.fetchExpensesInThisMonth(Date() - $1.months)
         }
     }
     
@@ -70,16 +70,16 @@ class DataAnalysisViewModel: NSObject {
     // MARK: - 季度类型消费Top3
     
     // 获取一个季度类型消费的Top3
-    private func gainQuarterCategorysTop3() -> [QuarterConsumeCategory] {
-        return self.gainQuarterCategorys().sort({ (category1, category2) -> Bool in
+    fileprivate func gainQuarterCategorysTop3() -> [QuarterConsumeCategory] {
+        return self.gainQuarterCategorys().sorted(by: { (category1, category2) -> Bool in
             category1.categoryProgressValue > category2.categoryProgressValue
         })
     }
     
     // 获取一个季度所有的类型消费
-    private func gainQuarterCategorys() -> [QuarterConsumeCategory] {
+    fileprivate func gainQuarterCategorys() -> [QuarterConsumeCategory] {
         
-        let quarterCategorysFetchedResultsController: NSFetchedResultsController = SingleConsume.fetchConsumeWithCategoryGroupInQuarter(NSDate())
+        let quarterCategorysFetchedResultsController: NSFetchedResultsController = SingleConsume.fetchConsumeWithCategoryGroupInQuarter(Date())
         
         var quarterCategorys: [QuarterConsumeCategory] = []
         
@@ -89,7 +89,7 @@ class DataAnalysisViewModel: NSObject {
             let category = (section.objects?.first as! SingleConsume).consumeCategory
             
             // 当前 category 的总金额
-            let quarterMoney = (section.objects as! [SingleConsume]).reduce(0.0, combine: {
+            let quarterMoney = (section.objects as! [SingleConsume]).reduce(0.0, {
                 return $0 + ($1.money?.doubleValue)!
             })
             

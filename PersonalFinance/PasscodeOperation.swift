@@ -24,7 +24,7 @@ class PasscodeOperation: NSObject {
     }
     
     
-    func setPasscode(vc: UIViewController, handler: (Void -> Void)) {
+    func setPasscode(_ vc: UIViewController, handler: @escaping ((Void) -> Void)) {
         let createPasscodeVC: VENTouchLockCreatePasscodeViewController = VENTouchLockCreatePasscodeViewController()
         
         createPasscodeVC.willFinishWithResult = { finished in
@@ -36,7 +36,7 @@ class PasscodeOperation: NSObject {
         vc.presentViewController(createPasscodeVC.embeddedInNavigationController(), animated: true, completion: nil)
     }
     
-    func showPasscode(vc: UIViewController) {
+    func showPasscode(_ vc: UIViewController) {
         if self.hasPasscodeExist() {
             let showPasscodeVC: VENTouchLockEnterPasscodeViewController = VENTouchLockEnterPasscodeViewController()
             vc.presentViewController(showPasscodeVC.embeddedInNavigationController(), animated: true, completion: nil)
@@ -46,7 +46,7 @@ class PasscodeOperation: NSObject {
         }        
     }
     
-    func deletePasscode(vc: UIViewController, handler: (Void -> Void)) {
+    func deletePasscode(_ vc: UIViewController, handler: @escaping ((Void) -> Void)) {
         vc.showSystemAlertWithTwoBtn("确定删除密码?", msg: "如果您删除了密码，您的财务隐私将得不到很好地保护！", cancelHandler: { (action) in
                 // 不做操作
             }) { (action) in
@@ -61,7 +61,7 @@ class PasscodeOperation: NSObject {
     }
     
     // MARK: - 私有函数
-    private func isCanUseTouchId() -> Bool {
+    fileprivate func isCanUseTouchId() -> Bool {
         return VENTouchLock.canUseTouchID()
     }
     

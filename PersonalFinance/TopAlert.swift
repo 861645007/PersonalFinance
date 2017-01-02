@@ -17,7 +17,7 @@ class TopAlert: NSObject {
     - parameter alertInfo:  alertView 显示的信息
     - parameter parentView: alertVeiw 所显示的视图
     */
-    func createSuccessTopAlert(alertInfo: String, parentView: UIView, dismissBlock: dispatch_block_t? = nil) {
+    func createSuccessTopAlert(_ alertInfo: String, parentView: UIView, dismissBlock: @escaping ()->()? = nil) {
         let topAlertView = self.createBaseTopAlert(MozAlertTypeSuccess, alertInfo: alertInfo, parentView: parentView)
         topAlertView.dismissBlock = dismissBlock
     }
@@ -28,7 +28,7 @@ class TopAlert: NSObject {
     - parameter alertInfo:  alertView 显示的信息
     - parameter parentView: alertVeiw 所显示的视图
     */
-    func createFailureTopAlert(alertInfo: String, parentView: UIView) {
+    func createFailureTopAlert(_ alertInfo: String, parentView: UIView) {
         self.createBaseTopAlert(MozAlertTypeError, alertInfo: alertInfo, parentView: parentView)
     }
     
@@ -41,8 +41,8 @@ class TopAlert: NSObject {
     - parameter alertInfo:  alertView 显示的信息
     - parameter parentView: alertVeiw 所显示的视图
     */
-    func createBaseTopAlert(alertType: MozAlertType, alertInfo: String, parentView: UIView) -> MozTopAlertView {
-        return MozTopAlertView.showWithType(alertType, text: alertInfo, parentView: parentView)
+    func createBaseTopAlert(_ alertType: MozAlertType, alertInfo: String, parentView: UIView) -> MozTopAlertView {
+        return MozTopAlertView.show(with: alertType, text: alertInfo, parentView: parentView)
     }
     
     /**
@@ -53,9 +53,9 @@ class TopAlert: NSObject {
     - parameter parentView:   alertVeiw 所显示的视图
     - parameter dismissBlock: 结束时要执行的 Block 操作
     */
-    func createBaseTopAlertWithBlock(alertType: MozAlertType, alertInfo: String, parentView: UIView, dismissBlock: dispatch_block_t) {
-        let topAlertView =  MozTopAlertView.showWithType(alertType, text: alertInfo, parentView: parentView)
-        topAlertView.dismissBlock = dismissBlock
+    func createBaseTopAlertWithBlock(_ alertType: MozAlertType, alertInfo: String, parentView: UIView, dismissBlock: @escaping ()->()) {
+        let topAlertView =  MozTopAlertView.show(with: alertType, text: alertInfo, parentView: parentView)
+        topAlertView?.dismissBlock = dismissBlock
     }
     
     /**
@@ -67,8 +67,8 @@ class TopAlert: NSObject {
     - parameter parentView: alertVeiw 所显示的视图
     - parameter doBlock:    点击按钮所要执行的操作
     */
-    func createBaseTopAlertWithBtn(alertType: MozAlertType, alertInfo: String, btnText: String, parentView: UIView, doBlock: dispatch_block_t) {
-        MozTopAlertView.showWithType(alertType, text: alertInfo, doText: btnText, doBlock: { () -> Void in
+    func createBaseTopAlertWithBtn(_ alertType: MozAlertType, alertInfo: String, btnText: String, parentView: UIView, doBlock: @escaping ()->()) {
+        MozTopAlertView.show(with: alertType, text: alertInfo, doText: btnText, do: { () -> Void in
             doBlock()
         }, parentView: parentView)
     }

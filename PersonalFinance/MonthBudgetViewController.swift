@@ -35,7 +35,7 @@ class MonthBudgetViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.monthBudgetTextField.becomeFirstResponder()
     }
 
@@ -56,14 +56,14 @@ class MonthBudgetViewController: UIViewController {
     */
 
     
-    @IBAction func cancelVC(sender: AnyObject) {
+    @IBAction func cancelVC(_ sender: AnyObject) {
         self.dismissSelf()
     }
     
-    @IBAction func sureMonthBudget(sender: AnyObject) {
+    @IBAction func sureMonthBudget(_ sender: AnyObject) {
         // 存储操作
         
-        let money: String = self.monthBudgetTextField.text!.substringFromIndex(self.monthBudgetTextField.text!.startIndex.advancedBy(1)).stringByReplacingOccurrencesOfString(",", withString: "", options: [], range: nil)
+        let money: String = self.monthBudgetTextField.text!.substring(from: self.monthBudgetTextField.text!.characters.index(self.monthBudgetTextField.text!.startIndex, offsetBy: 1)).replacingOccurrences(of: ",", with: "", options: [], range: nil)
 
         if Double(money) == 0.0 {
             TopAlert().createFailureTopAlert("金额不能为 0 !", parentView: self.view)
@@ -76,7 +76,7 @@ class MonthBudgetViewController: UIViewController {
     }
     
     
-    @IBAction func cancelMonthBudget(sender: AnyObject) {
+    @IBAction func cancelMonthBudget(_ sender: AnyObject) {
         self.dismissSelf()
     }
     
@@ -84,7 +84,7 @@ class MonthBudgetViewController: UIViewController {
     
     func dismissSelf() {
         self.monthBudgetTextField.resignFirstResponder()
-        self.dismissViewControllerAnimated(false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
     
     

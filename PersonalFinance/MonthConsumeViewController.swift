@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DZNEmptyDataSet
+//import DZNEmptyDataSet
 
 class MonthConsumeViewController: UIViewController {
     
@@ -29,7 +29,7 @@ class MonthConsumeViewController: UIViewController {
         monthConsumeTableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.monthConsumeVM.initData()
         
@@ -55,59 +55,59 @@ class MonthConsumeViewController: UIViewController {
 
 
 extension MonthConsumeViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.monthConsumeVM.numberOfSections()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.monthConsumeVM.numberOfCellsInSection(section)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: DayConsumeTableViewCell = tableView.dequeueReusableCellWithIdentifier("MonthConsumeCell") as! DayConsumeTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: DayConsumeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "MonthConsumeCell") as! DayConsumeTableViewCell
         
         cell.prepareCollectionCellForConsumeView(self.monthConsumeVM.conusmeInfoAtIndexPath(indexPath))
         
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headView: UIView = UIView(frame: CGRectMake(0, 0, self.view.bounds.size.width, 44))
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 44))
         headView.layer.masksToBounds = true
         headView.layer.cornerRadius = 2.0
         headView.backgroundColor = UIColor(red:0.723, green:0.723, blue:0.723, alpha:0.101)
         
         let bgbtn:UIButton = UIButton(frame: headView.frame)
         bgbtn.tag = section
-        bgbtn.addTarget(self, action: #selector(clickSection(_:)), forControlEvents: .TouchUpInside)
+        bgbtn.addTarget(self, action: #selector(clickSection(_:)), for: .touchUpInside)
         headView.addSubview(bgbtn)
         
-        let dayLabel: UILabel = UILabel(frame: CGRectMake(16, 10, 80, 21))
+        let dayLabel: UILabel = UILabel(frame: CGRect(x: 16, y: 10, width: 80, height: 21))
         dayLabel.text = self.monthConsumeVM.titleWithTimeForSection(section)
-        dayLabel.font = UIFont.boldSystemFontOfSize(20)
+        dayLabel.font = UIFont.boldSystemFont(ofSize: 20)
         dayLabel.textColor = UIColor(red:191/255.0, green:191/255.0, blue:191/255.0, alpha:255/255.0)
         headView.addSubview(dayLabel)
         
-        let moneyLabel: UILabel = UILabel(frame: CGRectMake(dayLabel.frame.size.width + 28, 10, 100, 21))
+        let moneyLabel: UILabel = UILabel(frame: CGRect(x: dayLabel.frame.size.width + 28, y: 10, width: 100, height: 21))
         moneyLabel.text = self.monthConsumeVM.titleWithMoneyForSection(section)
-        dayLabel.font = UIFont.boldSystemFontOfSize(18)
+        dayLabel.font = UIFont.boldSystemFont(ofSize: 18)
         moneyLabel.textColor = UIColor(red:191/255.0, green:191/255.0, blue:191/255.0, alpha:255/255.0)
         headView.addSubview(moneyLabel)
         
-        let imageView: UIImageView = UIImageView(frame: CGRectMake(self.view.bounds.size.width - 36, 12, 20, 20))
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: self.view.bounds.size.width - 36, y: 12, width: 20, height: 20))
         imageView.image = self.monthConsumeVM.sectionIsShow[section] ? UIImage(named: "month-DownArrow") : UIImage(named: "month-RightArrow")
         headView.addSubview(imageView)
         
         return headView
     }
     
-    func clickSection(btn: UIButton) {
+    func clickSection(_ btn: UIButton) {
         self.monthConsumeVM.setCellIsShowOfSection(btn.tag)
-        self.monthConsumeTableView.reloadSections(NSIndexSet(index: btn.tag), withRowAnimation: .Fade)
+        self.monthConsumeTableView.reloadSections(IndexSet(integer: btn.tag), with: .fade)
     }
     
 }
@@ -121,18 +121,18 @@ extension MonthConsumeViewController: UITableViewDelegate {
 // MARK: - DZNEmptyDataSetSource 数据源协议
 extension MonthConsumeViewController: DZNEmptyDataSetSource {
     // 设置图片
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func imageForEmptyDataSet(_ scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "NoMoney")
     }
     
     // 设置文字
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let attribute = [NSFontAttributeName: UIFont.systemFontOfSize(13.0),
+    func titleForEmptyDataSet(_ scrollView: UIScrollView!) -> NSAttributedString! {
+        let attribute = [NSFontAttributeName: UIFont.systemFont(ofSize: 13.0),
                          NSForegroundColorAttributeName: UIColor(red:0.894, green:0.827, blue:0.882, alpha:1)]
         return NSAttributedString(string: "您还没有记过账，快来记一笔吧", attributes: attribute)
     }
     
-    func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
+    func imageAnimationForEmptyDataSet(_ scrollView: UIScrollView!) -> CAAnimation! {
         let animation = CABasicAnimation(keyPath: "opacity")
         
         animation.fromValue  = 0.0
@@ -149,7 +149,7 @@ extension MonthConsumeViewController: DZNEmptyDataSetSource {
 //        return NSAttributedString(string: "本月首记", attributes: attribute)
 //    }
     
-    func buttonImageForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> UIImage! {
+    func buttonImageForEmptyDataSet(_ scrollView: UIScrollView!, forState state: UIControlState) -> UIImage! {
         return UIImage(named: "rightArrowToNextVC")
     }
     
@@ -158,12 +158,12 @@ extension MonthConsumeViewController: DZNEmptyDataSetSource {
 
 // MARK: - DZNEmptyDataSetDelegate 操作协议
 extension MonthConsumeViewController: DZNEmptyDataSetDelegate {
-    func emptyDataSetShouldAnimateImageView(scrollView: UIScrollView!) -> Bool {
+    func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool {
         return true
     }
     
-    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
-        let addNewConsumeVC: AddNewCustomViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController
+    func emptyDataSetDidTapButton(_ scrollView: UIScrollView!) {
+        let addNewConsumeVC: AddNewCustomViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddNewCustomViewController") as! AddNewCustomViewController
         self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
         
     }

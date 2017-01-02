@@ -13,17 +13,17 @@ class DayConsumeViewModel: NSObject {
     // VC 使用的变量
     var dayConsumeArr: [SingleConsume]?
     var dayConsumeMoney: Double = 0.0
-    let today: NSDate
+    let today: Date
     
     
     override init() {
-        self.today = NSDate()
+        self.today = Date()
         
         super.init()
         self.initData()
     }
     
-    init(today: NSDate) {
+    init(today: Date) {
         self.today = today
         
         super.init()
@@ -45,7 +45,7 @@ class DayConsumeViewModel: NSObject {
         return (self.dayConsumeArr?.count)!
     }
     
-    func consumeInfoAtIndex(index: NSInteger) -> SingleConsume {
+    func consumeInfoAtIndex(_ index: NSInteger) -> SingleConsume {
         return dayConsumeArr![index]
     }
     
@@ -56,12 +56,12 @@ class DayConsumeViewModel: NSObject {
      
      - returns: 今日所有的消费信息
      */
-    private func gainDayConsumeInfo(today: NSDate) ->[SingleConsume] {
+    fileprivate func gainDayConsumeInfo(_ today: Date) ->[SingleConsume] {
         return SingleConsume.fetchConsumeRecordInThisDay(today)
     }
     
     
-    private func gainDayConsumeMoney(today: NSDate) -> Double {
+    fileprivate func gainDayConsumeMoney(_ today: Date) -> Double {
         return SingleConsume.fetchExpensesInThisDay(today)
     }
     

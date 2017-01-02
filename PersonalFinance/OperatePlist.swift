@@ -10,14 +10,14 @@ import UIKit
 
 class OperatePlist: NSObject {
     
-    func gainDataWithFileName(fileName: String) -> [String: String] {
+    func gainDataWithFileName(_ fileName: String) -> [String: String] {
         //获取文件的完整路径
         let filePath = self.gainFilePath(fileName)
         return NSDictionary(contentsOfFile: filePath) as! [String: String]
     }
     
     // MARK: - 私有函数
-    private func gainFilePath(fileName: String) -> String {
-        return NSBundle.mainBundle().pathForResource(fileName, ofType: "plist")!
+    fileprivate func gainFilePath(_ fileName: String) -> String {
+        return Bundle.main.path(forResource: fileName, ofType: "plist")!
     }
 }

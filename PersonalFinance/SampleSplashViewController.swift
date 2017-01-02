@@ -12,7 +12,7 @@ import VENTouchLock
 
 class SampleSplashViewController: VENTouchLockSplashViewController {
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: "SampleSplashViewController", bundle: nil)
         
         
@@ -69,12 +69,12 @@ class SampleSplashViewController: VENTouchLockSplashViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func userTappedShowTouchIDuserTappedShowTouchID(sender: AnyObject) {
+    @IBAction func userTappedShowTouchIDuserTappedShowTouchID(_ sender: AnyObject) {
         self.showTouchID()
     }
 
     
-    @IBAction func UserTapPassword(sender: AnyObject) {
+    @IBAction func UserTapPassword(_ sender: AnyObject) {
         self.showPasscodeAnimated(true)
     }
     

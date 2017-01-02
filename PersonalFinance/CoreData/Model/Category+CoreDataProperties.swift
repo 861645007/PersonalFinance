@@ -14,7 +14,7 @@ import CoreData
 
 extension Category {
 
-    @NSManaged var iconData: NSData?
+    @NSManaged var iconData: Data?
     @NSManaged var id: NSNumber?
     @NSManaged var name: String?
     @NSManaged var beUsed: NSNumber?

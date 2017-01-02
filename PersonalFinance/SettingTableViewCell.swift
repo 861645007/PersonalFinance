@@ -19,13 +19,13 @@ class SettingTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func prepareCollectionCell(settingModel: SettingModel) {
+    func prepareCollectionCell(_ settingModel: SettingModel) {
         self.settingImageView.image = UIImage(named: settingModel.imageName)
         self.settingNameLabel.text = settingModel.name
     }

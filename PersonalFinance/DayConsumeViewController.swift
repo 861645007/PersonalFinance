@@ -25,7 +25,7 @@ class DayConsumeViewController: UIViewController {
         dayConsumeTableView.tableFooterView = UIView()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.totalMoneyLabel.fn_setNumber(self.dayConsumeVM.dayConsumeMoney, format: "￥%.2f")
         
@@ -55,12 +55,12 @@ class DayConsumeViewController: UIViewController {
 
 
 extension DayConsumeViewController: UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dayConsumeVM.numberOfItemsInSection()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: DayConsumeTableViewCell = tableView.dequeueReusableCellWithIdentifier("DayConsumeCell") as! DayConsumeTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: DayConsumeTableViewCell = tableView.dequeueReusableCell(withIdentifier: "DayConsumeCell") as! DayConsumeTableViewCell
         
         cell.prepareCollectionCellForConsumeView(self.dayConsumeVM.consumeInfoAtIndex(indexPath.row))
         
@@ -78,18 +78,18 @@ extension DayConsumeViewController: UITableViewDelegate {
 // MARK: - DZNEmptyDataSetSource 数据源协议
 extension DayConsumeViewController: DZNEmptyDataSetSource {
     // 设置图片
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func imageForEmptyDataSet(_ scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "NoMoney")
     }
     
     // 设置文字
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        let attribute = [NSFontAttributeName: UIFont.systemFontOfSize(13.0),
+    func titleForEmptyDataSet(_ scrollView: UIScrollView!) -> NSAttributedString! {
+        let attribute = [NSFontAttributeName: UIFont.systemFont(ofSize: 13.0),
                          NSForegroundColorAttributeName: UIColor(red:0.894, green:0.827, blue:0.882, alpha:1)]
         return NSAttributedString(string: "今天尚未记账，快来记一笔吧", attributes: attribute)
     }
     
-    func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
+    func imageAnimationForEmptyDataSet(_ scrollView: UIScrollView!) -> CAAnimation! {
         let animation = CABasicAnimation(keyPath: "opacity")
         
         animation.fromValue  = 0.0
@@ -106,7 +106,7 @@ extension DayConsumeViewController: DZNEmptyDataSetSource {
 //        return NSAttributedString(string: "今日首记", attributes: attribute)
 //    }
     
-    func buttonImageForEmptyDataSet(scrollView: UIScrollView!, forState state: UIControlState) -> UIImage! {
+    func buttonImageForEmptyDataSet(_ scrollView: UIScrollView!, forState state: UIControlState) -> UIImage! {
         return UIImage(named: "rightArrowToNextVC")
     }
 
@@ -114,12 +114,12 @@ extension DayConsumeViewController: DZNEmptyDataSetSource {
 
 // MARK: - DZNEmptyDataSetDelegate 操作协议
 extension DayConsumeViewController: DZNEmptyDataSetDelegate {
-    func emptyDataSetShouldAnimateImageView(scrollView: UIScrollView!) -> Bool {
+    func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool {
         return true
     }
     
-    func emptyDataSetDidTapButton(scrollView: UIScrollView!) {
-        let addNewConsumeVC: AddNewCustomViewController = self.storyboard?.instantiateViewControllerWithIdentifier("AddNewCustomViewController") as! AddNewCustomViewController
+    func emptyDataSetDidTapButton(_ scrollView: UIScrollView!) {
+        let addNewConsumeVC: AddNewCustomViewController = self.storyboard?.instantiateViewController(withIdentifier: "AddNewCustomViewController") as! AddNewCustomViewController
         
         self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
     }

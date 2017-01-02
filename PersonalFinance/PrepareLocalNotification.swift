@@ -21,12 +21,12 @@ struct NotificationAction {
 class PrepareLocalNotification: NSObject {
     static let sharedInstance = PrepareLocalNotification()
     
-    private override init() {
+    fileprivate override init() {
         super.init()
     }
     
     // MARK: - 创建本地通知
-    func createLocalNotification(bodyInfo: String, fireDate: NSDate, categoryID: String? = nil) -> UILocalNotification {
+    func createLocalNotification(_ bodyInfo: String, fireDate: Date, categoryID: String? = nil) -> UILocalNotification {
         let localNotification: UILocalNotification = UILocalNotification()
         
         localNotification.fireDate                   = fireDate
@@ -38,7 +38,7 @@ class PrepareLocalNotification: NSObject {
         return localNotification
     }
     
-    func createLocalNotificationWithTwoAction(bodyInfo: String, fireDate: NSDate, categoryID: String, workAction: NotificationAction, relaxAction: NotificationAction) -> UILocalNotification {
+    func createLocalNotificationWithTwoAction(_ bodyInfo: String, fireDate: Date, categoryID: String, workAction: NotificationAction, relaxAction: NotificationAction) -> UILocalNotification {
         
         let workingAction = self.createNotificationAction(workAction.name, id: workAction.id, activationMode: true)
         
@@ -57,13 +57,13 @@ class PrepareLocalNotification: NSObject {
      - parameter identifier: Category 的 ID（这个非常重要）
      - parameter actions:    按钮集合
      */
-    func registerNotificationCategory(identifier: String, actions: [UIUserNotificationAction]) {
+    func registerNotificationCategory(_ identifier: String, actions: [UIUserNotificationAction]) {
         
         let notificationCompleteCategory: UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         //记住这个identifier ，待会用
         notificationCompleteCategory.identifier = identifier
-        notificationCompleteCategory.setActions(actions, forContext: .Default)
-        notificationCompleteCategory.setActions(actions, forContext: .Minimal)
+        notificationCompleteCategory.setActions(actions, for: .default)
+        notificationCompleteCategory.setActions(actions, for: .minimal)
         
         // 在用 Category 的时候必须要注册一下
         self.registerUserNotificationSettings([notificationCompleteCategory])
@@ -80,16 +80,16 @@ class PrepareLocalNotification: NSObject {
      
      - returns: 返回一个交互按钮
      */
-    func createNotificationAction(title: String, id: String, activationMode: Bool) -> UIMutableUserNotificationAction {
+    func createNotificationAction(_ title: String, id: String, activationMode: Bool) -> UIMutableUserNotificationAction {
         let notificationAction: UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         notificationAction.title = title
         notificationAction.identifier = id
         // 是否作为 destructive 样式提醒
-        notificationAction.destructive = false
+        notificationAction.isDestructive = false
         // 执行这个操作的时候是否要解锁设备
-        notificationAction.authenticationRequired = false
+        notificationAction.isAuthenticationRequired = false
         // 是否唤醒App
-        notificationAction.activationMode = activationMode ? UIUserNotificationActivationMode.Foreground: UIUserNotificationActivationMode.Background
+        notificationAction.activationMode = activationMode ? UIUserNotificationActivationMode.foreground: UIUserNotificationActivationMode.background
         
         return notificationAction
     }
@@ -102,30 +102,30 @@ class PrepareLocalNotification: NSObject {
      
      - parameter notification: 被调用的通知
      */
-    func scheduleLocalNotification(notification: UILocalNotification) {
-        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    func scheduleLocalNotification(_ notification: UILocalNotification) {
+        UIApplication.shared.scheduleLocalNotification(notification)
     }
     
     
     // MARK: - 注册本地通知
-    func registerUserNotificationSettings(notificationCategory: [AnyObject]? = nil) {
+    func registerUserNotificationSettings(_ notificationCategory: [AnyObject]? = nil) {
         let set = (notificationCategory != nil) ? NSSet(array: notificationCategory!) as? Set<UIUserNotificationCategory> : nil
         
-        UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Sound , .Alert , .Badge], categories: set ))
+        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound , .alert , .badge], categories: set ))
     }
     
     
     // MARK: - 移除
     func removeAll() {
-        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        UIApplication.shared.cancelAllLocalNotifications()
     }
     
-    func remove(notification: UILocalNotification) {
-        UIApplication.sharedApplication().cancelLocalNotification(notification)
+    func remove(_ notification: UILocalNotification) {
+        UIApplication.shared.cancelLocalNotification(notification)
     }
     
     func removeBadgeNumber() {
-        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
     
 }

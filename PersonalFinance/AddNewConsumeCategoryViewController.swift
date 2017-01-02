@@ -24,7 +24,7 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         self.collectionView?.alwaysBounceVertical = true
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Plain, target: self, action: #selector(addNewCategoryDone))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .plain, target: self, action: #selector(addNewCategoryDone))
         
         // 添加键盘上方的自定义View
         self.keyboardView = self.createCustonKeyBoardView()
@@ -41,7 +41,7 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
         
         // 保存操作
         if self.addNewConsumeCategoryVM.saveNewCategory(categoryNameTextField.text!, image: self.categoryImage.image!) {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }else {
             TopAlert().createFailureTopAlert("请输入类型名称", parentView: self.view)
             return
@@ -61,14 +61,14 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
     
     // MARK: - 创建一个键盘上方的 View
     func createCustonKeyBoardView() ->UIView {
-        let customView: UIView = UIView(frame: CGRectMake(0, UIScreen.mainScreen().bounds.height - 40, UIScreen.mainScreen().bounds.width, 66))
-        customView.backgroundColor = UIColor.whiteColor()
+        let customView: UIView = UIView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height - 40, width: UIScreen.main.bounds.width, height: 66))
+        customView.backgroundColor = UIColor.white
         
-        categoryImage = UIImageView(frame: CGRectMake(20, 8, 50, 50))
+        categoryImage = UIImageView(frame: CGRect(x: 20, y: 8, width: 50, height: 50))
         categoryImage.image = UIImage(named: "New-yan")
         customView.addSubview(categoryImage)
         
-        categoryNameTextField = UITextField(frame: CGRectMake(80, 13, 200, 40))
+        categoryNameTextField = UITextField(frame: CGRect(x: 80, y: 13, width: 200, height: 40))
         categoryNameTextField.backgroundColor = UIColor(red:228/255.0, green:228/255.0, blue:228/255.0, alpha:255/255.0)
         categoryNameTextField.layer.masksToBounds = true
         categoryNameTextField.layer.cornerRadius = 5.0
@@ -80,56 +80,56 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
     
     // MARK: - 为键盘上方的 View 配置操作
     func prepareKeyboardNotifation() {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeKeyboardShowNotifation(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeKeyboardHideNotifation(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeKeyboardShowNotifation(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeKeyboardHideNotifation(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    func changeKeyboardShowNotifation(notification: NSNotification) {
-        let userInfo: [NSObject: AnyObject] = notification.userInfo!
+    func changeKeyboardShowNotifation(_ notification: Notification) {
+        let userInfo: [AnyHashable: Any] = notification.userInfo!
         let valueEndFrame: NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         
-        let keyboardEndY = valueEndFrame.CGRectValue().origin.y
+        let keyboardEndY = valueEndFrame.cgRectValue.origin.y
         self.notifationOperation(userInfo, keyboardY: keyboardEndY)
     }
     
-    func changeKeyboardHideNotifation(notification: NSNotification) {
-        let userInfo: [NSObject: AnyObject] = notification.userInfo!
+    func changeKeyboardHideNotifation(_ notification: Notification) {
+        let userInfo: [AnyHashable: Any] = notification.userInfo!
         let valueStartFrame: NSValue = userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue
         
-        let keyboardStartY = valueStartFrame.CGRectValue().origin.y
+        let keyboardStartY = valueStartFrame.cgRectValue.origin.y
         
         self.notifationOperation(userInfo, keyboardY: keyboardStartY)
     }
     
-    func notifationOperation(userInfo: [NSObject: AnyObject], keyboardY: CGFloat) {
+    func notifationOperation(_ userInfo: [AnyHashable: Any], keyboardY: CGFloat) {
         let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]
         let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]
         
-        UIView.animateWithDuration(duration!.doubleValue) { () -> Void in
+        UIView.animate(withDuration: (duration! as AnyObject).doubleValue, animations: { () -> Void in
             UIView.setAnimationBeginsFromCurrentState(true)
-            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: Int(curve!.intValue))!)
-            self.keyboardView.center = CGPointMake(self.keyboardView.center.x, keyboardY - self.keyboardView.bounds.size.height/2.0);
-        }
+            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: Int((curve! as AnyObject).int32Value))!)
+            self.keyboardView.center = CGPoint(x: self.keyboardView.center.x, y: keyboardY - self.keyboardView.bounds.size.height/2.0);
+        }) 
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 }
 // MARK: UICollectionViewDataSource
 extension AddNewConsumeCategoryViewController {
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.addNewConsumeCategoryVM.numberOfItemsInSection()
     }
     
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: AddNewConsumeCategoryCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("AddNewConsumeCategoryCell", forIndexPath: indexPath) as! AddNewConsumeCategoryCollectionViewCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: AddNewConsumeCategoryCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddNewConsumeCategoryCell", for: indexPath) as! AddNewConsumeCategoryCollectionViewCell
         
         // Configure the cell
         cell.categoryImageView.image = self.addNewConsumeCategoryVM.imageAtIndexPath(indexPath.row)
@@ -141,12 +141,12 @@ extension AddNewConsumeCategoryViewController {
 // MARK: UICollectionViewDelegate
 extension AddNewConsumeCategoryViewController {
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let indexPath = collectionView.indexPathsForSelectedItems()?.first
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let indexPath = collectionView.indexPathsForSelectedItems?.first
         self.categoryImage.image = self.addNewConsumeCategoryVM.imageAtIndexPath(indexPath!.row)
     }
     
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentPostion: Int = Int(scrollView.contentOffset.y);
         if (currentPostion - lastPosition > 25) {
             // 上滑

@@ -11,12 +11,12 @@ import UIKit
 
 extension Double {
     func convertToStrWithTwoFractionDigits() -> String {
-        let numberFormat = NSNumberFormatter()
-        numberFormat.numberStyle = .DecimalStyle
+        let numberFormat = NumberFormatter()
+        numberFormat.numberStyle = .decimal
         numberFormat.minimumFractionDigits = 2
         numberFormat.maximumFractionDigits = 2
         
-        return numberFormat.stringFromNumber(NSNumber(double: self))!
+        return numberFormat.string(from: NSNumber(value: self as Double))!
     }
     
 }
@@ -34,21 +34,21 @@ extension UIView {
 //    nil];
 //    [self.view.layer insertSublayer:gradient atIndex:0];
     
-    func setGradientColor(startColor: UIColor, endColor: UIColor) {
+    func setGradientColor(_ startColor: UIColor, endColor: UIColor) {
         let gradient = CAGradientLayer()
         gradient.frame = self.frame
         gradient.colors = [startColor, endColor]
 
-        self.layer.insertSublayer(gradient, atIndex: 0)
+        self.layer.insertSublayer(gradient, at: 0)
     }
     
     func snapshot() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0)
-        self.drawViewHierarchyInRect(self.bounds, afterScreenUpdates: true)
+        self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return image
+        return image!
     }
 }
 

@@ -13,18 +13,18 @@ import SwiftDate
 
 
 enum ChartTimeModel {
-    case Week
-    case Month
-    case Year
+    case week
+    case month
+    case year
 }
 
 class ChartViewModel: NSObject {
     
     var consumeTypeArr: [ConsumeCategory]?
     
-    var currentYear: NSDate
-    var currentWeek: NSDate
-    var currentMonth: NSDate
+    var currentYear: Date
+    var currentWeek: Date
+    var currentMonth: Date
     
     // MARK: - 图形部分变量
     var consumesForPieChart: [FinanceOfCategory]?
@@ -36,41 +36,41 @@ class ChartViewModel: NSObject {
     
     override init() {
         // 变量处理
-        currentMonth = NSDate().startOf(.Month) + 12.hours
-        currentWeek  = NSDate().startOf(.WeekOfYear) + 12.hours
-        currentYear  = NSDate().startOf(.Year) + 12.hours
+        currentMonth = Date().startOf(.Month) + 12.hours
+        currentWeek  = Date().startOf(.WeekOfYear) + 12.hours
+        currentYear  = Date().startOf(.Year) + 12.hours
         
         super.init()
         
         // 获取 category 的数据
         self.gainAllConsumeType()
         
-        self.setConsumesForChart(.Week)
+        self.setConsumesForChart(.week)
     }
     
     
     
     // MARK: - 数据解析
     
-    func setConsumesForChart(model: ChartTimeModel) {
+    func setConsumesForChart(_ model: ChartTimeModel) {
         
         switch model {
-        case .Week:
+        case .week:
             self.perpareConsumesForChart(currentWeek, model: model)
-        case .Month:
+        case .month:
             self.perpareConsumesForChart(currentMonth, model: model)
-        case .Year:
+        case .year:
             self.perpareConsumesForChart(currentYear, model: model)
         }
     }
     
-    func setCurrentTime(model: ChartTimeModel) -> String {
+    func setCurrentTime(_ model: ChartTimeModel) -> String {
         switch model {
-        case .Week:
+        case .week:
             return "\(currentWeek.year)年-\(currentWeek.month)月  第\(currentWeek.weekOfYear)周"
-        case .Month:
+        case .month:
             return "\(currentMonth.year)年-\(currentMonth.month)月"
-        case .Year:
+        case .year:
             return "\(currentYear.year)年"
         }
     }
@@ -80,7 +80,7 @@ class ChartViewModel: NSObject {
         return (self.consumesForPieChart?.count)!
     }
     
-    func gainFinanceCategoryAt(index: NSInteger) -> FinanceOfCategory {
+    func gainFinanceCategoryAt(_ index: NSInteger) -> FinanceOfCategory {
         return self.consumesForPieChart![index]
     }
     
@@ -88,7 +88,7 @@ class ChartViewModel: NSObject {
     // MARK: - 图上数据配置操作
     
     // 创建 图 的数据实例
-    func createDataEntries(dataPointLengths: Int, values: [Double]) -> [ChartDataEntry] {
+    func createDataEntries(_ dataPointLengths: Int, values: [Double]) -> [ChartDataEntry] {
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPointLengths {
@@ -132,7 +132,7 @@ class ChartViewModel: NSObject {
      - returns: 当月总消费额
      */
     func gainTotalExpense() ->Double {
-        return consumesForPieChart!.reduce(0.0, combine: {
+        return consumesForPieChart!.reduce(0.0, {
             $0 + $1.categoryMoney
         })
     }
@@ -162,12 +162,12 @@ class ChartViewModel: NSObject {
         return colors.copy() as! [NSUIColor]
     }
     
-    func setPieChartCenterText(centerStr: String) -> NSAttributedString {
+    func setPieChartCenterText(_ centerStr: String) -> NSAttributedString {
         // 设置所需要的格式
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = NSTextAlignment.Center
+        paragraphStyle.alignment = NSTextAlignment.center
                 
-        let attribute2 = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        let attribute2 = [NSForegroundColorAttributeName: UIColor.white]
         
         let centerText: NSMutableAttributedString = NSMutableAttributedString(string: centerStr)
         centerText.addAttributes(attribute2, range: NSMakeRange(0, centerText.length))
@@ -176,7 +176,7 @@ class ChartViewModel: NSObject {
     }
     
     // 创建 柱状图数据
-    func createBarChartDataSet(lineName: String, dataEntries: [BarChartDataEntry]) -> BarChartDataSet {
+    func createBarChartDataSet(_ lineName: String, dataEntries: [BarChartDataEntry]) -> BarChartDataSet {
         let barChartDataSet = BarChartDataSet(yVals: dataEntries, label: lineName)
         barChartDataSet.setColors(self.setColorWithPie(), alpha: 1.0)
         return barChartDataSet
@@ -190,7 +190,7 @@ class ChartViewModel: NSObject {
     
     // MARK: - 私有函数：数据的获取
     // 数据设置
-    private func perpareConsumesForChart(date: NSDate,model: ChartTimeModel) {
+    fileprivate func perpareConsumesForChart(_ date: Date,model: ChartTimeModel) {
         // 配置饼图数据
         self.dealConsumesForPieChart(self.gainConsumeFetchedResultsController(date, model: model))
         // 配置柱状图数据
@@ -202,7 +202,7 @@ class ChartViewModel: NSObject {
      
      - parameter consumeFetchedResultsController: 所被处理的消费数据
      */
-    private func dealConsumesForPieChart(consumeFetchedResultsController: NSFetchedResultsController) {
+    fileprivate func dealConsumesForPieChart(_ consumeFetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>) {
         self.consumesForPieChart = []
         
         for section in consumeFetchedResultsController.sections! {
@@ -233,14 +233,14 @@ class ChartViewModel: NSObject {
         }
     }
     
-    private func gainConsumeFetchedResultsController(date: NSDate, model: ChartTimeModel) -> NSFetchedResultsController {
+    fileprivate func gainConsumeFetchedResultsController(_ date: Date, model: ChartTimeModel) -> NSFetchedResultsController<NSFetchRequestResult> {
         
         switch model {
-        case .Week:
+        case .week:
             return SingleConsume.fetchConsumeWithCategoryGroupInWeek(date)
-        case .Month:
+        case .month:
             return SingleConsume.fetchConsumeWithCategoryGroupInMonth(date)
-        case .Year:
+        case .year:
             return SingleConsume.fetchConsumeWithCategoryGroupInYear(date)
         }
     }
@@ -251,22 +251,22 @@ class ChartViewModel: NSObject {
      
      - returns: 含 每天的消费 数组
      */
-    private func gainConsumesForBarChart(today: NSDate, model: ChartTimeModel) -> [Double] {
+    fileprivate func gainConsumesForBarChart(_ today: Date, model: ChartTimeModel) -> [Double] {
         
         switch model {
-        case .Week:            
+        case .week:            
             return (0..<7).map({
                 SingleConsume.fetchConsumeRecordInThisDay(today + $0.days).reduce(0.0, combine: {
                     $0 + $1.money!.doubleValue
                 })
             })
-        case .Month:
+        case .month:
             return (0..<today.monthDays).map({
                 SingleConsume.fetchConsumeRecordInThisDay(today + $0.days).reduce(0.0, combine: {
                     $0 + $1.money!.doubleValue
                 })
             })
-        case .Year:
+        case .year:
             return (0..<12).map({
                 SingleConsume.fetchConsumeRecordInThisMonth(today + $0.months).reduce(0.0, combine: {
                     $0 + $1.money!.doubleValue
@@ -279,9 +279,9 @@ class ChartViewModel: NSObject {
     /**
      获取 所有的 Consume-Category
      */
-    private func gainAllConsumeType() {
+    fileprivate func gainAllConsumeType() {
         consumeTypeArr = Category.fetchAllConsumeCategoryWithUsed().map { (category: Category) in
-             ConsumeCategory(id: (category.id?.intValue)!, name: category.name!, icon: category.iconData!)
+             ConsumeCategory(id: (category.id?.int32Value)!, name: category.name!, icon: category.iconData!)
         }
         
         consumeTypeArr?.append(ConsumeCategory(id: 10000, name: "新增", icon: UIImagePNGRepresentation(UIImage(named: "AddCustomType")!)!))

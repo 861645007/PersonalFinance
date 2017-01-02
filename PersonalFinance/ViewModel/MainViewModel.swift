@@ -24,11 +24,11 @@ class MainViewModel: NSObject {
         return self.baseInfo.monthBudget() == 0.0 ? 0.0 : CGFloat(self.baseInfo.monthExpense() / self.baseInfo.monthBudget()) * 100
     }
     
-    func gainProgressColor(value: CGFloat) -> UIColor {
+    func gainProgressColor(_ value: CGFloat) -> UIColor {
         if(value >= 35 && value < 70) {
-            return UIColor.greenColor()
+            return UIColor.green
         }else if(value >= 70) {
-            return UIColor.redColor()
+            return UIColor.red
         }else {
             return UIColor(red:0.317, green:0.662, blue:1, alpha:1)
         }
@@ -59,12 +59,12 @@ class MainViewModel: NSObject {
     
     
     // MARK: - 跳转
-    func monthOrWeekConsumesVM(state: MonthOrWeekVCState) -> MonthConsumeViewModel {
-        return MonthConsumeViewModel(state: state, today: NSDate())
+    func monthOrWeekConsumesVM(_ state: MonthOrWeekVCState) -> MonthConsumeViewModel {
+        return MonthConsumeViewModel(state: state, today: Date())
     }
     
     
     func newDetailConsumeVM() -> AddNewCustomViewModel {
-        return AddNewCustomViewModel(state: ConsumeOperationStatus.EditConsumeDetail, consume: SingleConsume.fetchLastConsumeRecord())
+        return AddNewCustomViewModel(state: ConsumeOperationStatus.editConsumeDetail, consume: SingleConsume.fetchLastConsumeRecord())
     }
 }

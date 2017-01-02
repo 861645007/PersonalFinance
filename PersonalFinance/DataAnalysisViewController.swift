@@ -131,13 +131,13 @@ class DataAnalysisViewController: UIViewController {
                     })
                 
             }else {
-                thirdMonthCategoryView.hidden = true
+                thirdMonthCategoryView.isHidden = true
                 secondMonthSplitView.hidden = true
             }
         }else {
-            thirdMonthCategoryView.hidden = true
+            thirdMonthCategoryView.isHidden = true
             secondMonthSplitView.hidden = true
-            secondMonthCategoryView.hidden = true
+            secondMonthCategoryView.isHidden = true
             firstMonthSplitView.hidden = true
         }
     }

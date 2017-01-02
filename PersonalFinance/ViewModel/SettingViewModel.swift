@@ -55,11 +55,11 @@ class SettingViewModel: NSObject {
         return settingData.count
     }    
     
-    func numberOfItemsInSection(section: NSInteger) -> NSInteger {
+    func numberOfItemsInSection(_ section: NSInteger) -> NSInteger {
         return settingData[section].count
     }
     
-    func titleAtIndexPath(indexPath: NSIndexPath) -> SettingModel {
+    func titleAtIndexPath(_ indexPath: IndexPath) -> SettingModel {
         return settingData[indexPath.section][indexPath.row]
     }
     
@@ -70,7 +70,7 @@ class SettingViewModel: NSObject {
     // MARK: - 判断上季度有没有数据
     func hasDataInLastQuarter() -> Bool {
         
-        let quarterCategorysFetchedResultsController: NSFetchedResultsController = SingleConsume.fetchConsumeWithCategoryGroupInQuarter(NSDate())
+        let quarterCategorysFetchedResultsController: NSFetchedResultsController = SingleConsume.fetchConsumeWithCategoryGroupInQuarter(Date())
         
         return quarterCategorysFetchedResultsController.fetchedObjects?.count == 0 ? false : true
     }

@@ -21,24 +21,24 @@ struct RAC  {
         self.nilValue = nilValue
     }
         
-    func assignSignal(signal : RACSignal) {
+    func assignSignal(_ signal : RACSignal) {
         signal.setKeyPath(self.keyPath, onObject: self.target, nilValue: self.nilValue)
     }
 }
 
 extension NSObject {
-    func RACObserve(target: NSObject!,_ keyPath: String) -> RACSignal{
+    func RACObserve(_ target: NSObject!,_ keyPath: String) -> RACSignal{
         return target.rac_valuesForKeyPath(keyPath, observer: self)
     }
 }
 
 
-infix operator <~ {}
+infix operator <~
 func <~ (rac: RAC, signal: RACSignal) {
     rac.assignSignal(signal)
 }
 
-infix operator ~> {}
+infix operator ~>
 func ~> (signal: RACSignal, rac: RAC) {
     rac.assignSignal(signal)
 }

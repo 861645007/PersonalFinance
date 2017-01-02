@@ -15,8 +15,8 @@ private let DayExpense = "DayExpense"
 
 class ShareWithGroupOperation: NSObject {
     
-    private let userDefault: NSUserDefaults = {
-        return NSUserDefaults(suiteName: "group.PersonalFinanceSharedDefaults")
+    fileprivate let userDefault: UserDefaults = {
+        return UserDefaults(suiteName: "group.PersonalFinanceSharedDefaults")
     }()!
     
     // 设置 单例
@@ -25,7 +25,7 @@ class ShareWithGroupOperation: NSObject {
     }
     
     // MARK: - 每月支出
-    func saveNewMonthExpense(value: Double) {
+    func saveNewMonthExpense(_ value: Double) {
         saveMoneyInfo(value, key: MonthExpense)
     }
     
@@ -34,7 +34,7 @@ class ShareWithGroupOperation: NSObject {
     }
     
     // MARK: - 每日支出    
-    func saveNewDayExpense(value: Double) {
+    func saveNewDayExpense(_ value: Double) {
         self.saveMoneyInfo(value, key: DayExpense)
     }
     
@@ -46,12 +46,12 @@ class ShareWithGroupOperation: NSObject {
 
 // MARK: - NSUserDefault 操作
 extension ShareWithGroupOperation {
-    private func saveMoneyInfo(value: Double, key: String) {
-        self.userDefault.setDouble(value, forKey: key)
+    fileprivate func saveMoneyInfo(_ value: Double, key: String) {
+        self.userDefault.set(value, forKey: key)
         self.userDefault.synchronize()
     }
     
-    private func getMoneyInfo(key: String) ->Double {
-        return self.userDefault.doubleForKey(key)
+    fileprivate func getMoneyInfo(_ key: String) ->Double {
+        return self.userDefault.double(forKey: key)
     }
 }

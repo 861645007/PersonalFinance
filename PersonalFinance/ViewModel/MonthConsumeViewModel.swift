@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 enum MonthOrWeekVCState {
-    case Month
-    case Week
+    case month
+    case week
 }
 
 class MonthConsumeViewModel: NSObject {
@@ -22,18 +22,18 @@ class MonthConsumeViewModel: NSObject {
     var sectionIsShow: [Bool] = []
     var consumesMoney: Double = 0.0
     
-    var vcState: MonthOrWeekVCState = .Month
+    var vcState: MonthOrWeekVCState = .month
     
-    let today: NSDate
+    let today: Date
     
     override init() {
-        today = NSDate()
+        today = Date()
         
         super.init()
         self.initData()
     }
     
-    init(state: MonthOrWeekVCState, today: NSDate) {
+    init(state: MonthOrWeekVCState, today: Date) {
         self.today = today
         self.vcState = state
         
@@ -54,21 +54,21 @@ class MonthConsumeViewModel: NSObject {
         return (singleConsumes?.count)!
     }
     
-    func numberOfCellsInSection(section: NSInteger) -> NSInteger {
+    func numberOfCellsInSection(_ section: NSInteger) -> NSInteger {
         return sectionIsShow[section] ? (singleConsumes![section].dayConsumeArr?.count)! : 0
     }
     
     
-    func conusmeInfoAtIndexPath(indexPath: NSIndexPath) -> SingleConsume {
+    func conusmeInfoAtIndexPath(_ indexPath: IndexPath) -> SingleConsume {
         return singleConsumes![indexPath.section].dayConsumeArr![indexPath.row]
     }
     
-    func titleWithTimeForSection(section: NSInteger) -> String {
+    func titleWithTimeForSection(_ section: NSInteger) -> String {
         return singleConsumes![section].dateStr
     }
     
     
-    func titleWithMoneyForSection(section: NSInteger) -> String {
+    func titleWithMoneyForSection(_ section: NSInteger) -> String {
         return "￥" + singleConsumes![section].dayExpense.convertToStrWithTwoFractionDigits()
     }
     
@@ -77,7 +77,7 @@ class MonthConsumeViewModel: NSObject {
      
      - parameter section: section 的 index
      */
-    func setCellIsShowOfSection(section: NSInteger) {
+    func setCellIsShowOfSection(_ section: NSInteger) {
         self.sectionIsShow[section] = !self.sectionIsShow[section]
     }
     
@@ -88,8 +88,8 @@ class MonthConsumeViewModel: NSObject {
      
      - returns: 今日所有的消费信息
      */
-    private func gainConsumesInfo() ->[DayConsumeInfo] {
-        let singleConsumeWithFetchArr:[SingleConsume] = (self.vcState == .Month) ? SingleConsume.fetchConsumeRecordInThisMonth(NSDate()) : SingleConsume.fetchConsumeRecordInThisWeek(NSDate())
+    fileprivate func gainConsumesInfo() ->[DayConsumeInfo] {
+        let singleConsumeWithFetchArr:[SingleConsume] = (self.vcState == .month) ? SingleConsume.fetchConsumeRecordInThisMonth(Date()) : SingleConsume.fetchConsumeRecordInThisWeek(Date())
         
         var newConsumeArr: [DayConsumeInfo] = []
         
@@ -120,11 +120,11 @@ class MonthConsumeViewModel: NSObject {
         return newConsumeArr
     }
     
-    private func gainConsumesMoney() -> Double {
-        return (self.vcState == .Month) ? SingleConsume.fetchExpensesInThisMonth(NSDate()) : SingleConsume.fetchExpensesInThisWeek(NSDate())
+    fileprivate func gainConsumesMoney() -> Double {
+        return (self.vcState == .month) ? SingleConsume.fetchExpensesInThisMonth(Date()) : SingleConsume.fetchExpensesInThisWeek(Date())
     }
     
-    private func initSectionIsShow() -> [Bool] {
+    fileprivate func initSectionIsShow() -> [Bool] {
         return self.singleConsumes!.map {_ in 
             false
         }

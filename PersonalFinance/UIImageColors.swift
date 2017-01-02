@@ -28,23 +28,23 @@ class PCCountedColor {
 extension UIColor {
     
     public var isDarkColor: Bool {
-        let RGB = CGColorGetComponents(self.CGColor)
+        let RGB = self.cgColor.components
         return (0.2126 * RGB[0] + 0.7152 * RGB[1] + 0.0722 * RGB[2]) < 0.5
     }
     
     public var isBlackOrWhite: Bool {
-        let RGB = CGColorGetComponents(self.CGColor)
-        return (RGB[0] > 0.91 && RGB[1] > 0.91 && RGB[2] > 0.91) || (RGB[0] < 0.09 && RGB[1] < 0.09 && RGB[2] < 0.09)
+        let RGB = self.cgColor.components
+        return (RGB![0] > 0.91 && RGB![1] > 0.91 && RGB![2] > 0.91) || (RGB![0] < 0.09 && RGB![1] < 0.09 && RGB![2] < 0.09)
     }
     
-    public func isDistinct(compareColor: UIColor) -> Bool {
-        let bg = CGColorGetComponents(self.CGColor)
-        let fg = CGColorGetComponents(compareColor.CGColor)
+    public func isDistinct(_ compareColor: UIColor) -> Bool {
+        let bg = self.cgColor.components
+        let fg = compareColor.cgColor.components
         let threshold: CGFloat = 0.25
         
-        if fabs(bg[0] - fg[0]) > threshold || fabs(bg[1] - fg[1]) > threshold || fabs(bg[2] - fg[2]) > threshold {
-            if fabs(bg[0] - bg[1]) < 0.03 && fabs(bg[0] - bg[2]) < 0.03 {
-                if fabs(fg[0] - fg[1]) < 0.03 && fabs(fg[0] - fg[2]) < 0.03 {
+        if fabs((bg?[0])! - (fg?[0])!) > threshold || fabs((bg?[1])! - (fg?[1])!) > threshold || fabs((bg?[2])! - (fg?[2])!) > threshold {
+            if fabs((bg?[0])! - (bg?[1])!) < 0.03 && fabs((bg?[0])! - (bg?[2])!) < 0.03 {
+                if fabs((fg?[0])! - (fg?[1])!) < 0.03 && fabs((fg?[0])! - (fg?[2])!) < 0.03 {
                     return false
                 }
             }
@@ -53,7 +53,7 @@ extension UIColor {
         return false
     }
     
-    public func colorWithMinimumSaturation(minSaturation: CGFloat) -> UIColor {
+    public func colorWithMinimumSaturation(_ minSaturation: CGFloat) -> UIColor {
         var hue: CGFloat = 0.0
         var saturation: CGFloat = 0.0
         var brightness: CGFloat = 0.0
@@ -67,9 +67,9 @@ extension UIColor {
         }
     }
     
-    public func isContrastingColor(compareColor: UIColor) -> Bool {
-        let bg = CGColorGetComponents(self.CGColor)
-        let fg = CGColorGetComponents(compareColor.CGColor)
+    public func isContrastingColor(_ compareColor: UIColor) -> Bool {
+        let bg = self.cgColor.components
+        let fg = compareColor.cgColor.components
         
         let bgLum = 0.2126 * bg[0] + 0.7152 * bg[1] + 0.0722 * bg[2]
         let fgLum = 0.2126 * fg[0] + 0.7152 * fg[1] + 0.0722 * fg[2]
@@ -82,55 +82,55 @@ extension UIColor {
 
 extension UIImage {
     
-    public func resize(newSize: CGSize) -> UIImage {
+    public func resize(_ newSize: CGSize) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0)
-        self.drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        self.draw(in: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return result
+        return result!
     }
     
-    public func getColors(completionHandler: (UIImageColors) -> Void) {
+    public func getColors(_ completionHandler: @escaping (UIImageColors) -> Void) {
         let ratio = self.size.width/self.size.height
         let r_width: CGFloat = 250
         
-        self.getColors(CGSizeMake(r_width, r_width/ratio), completionHandler: completionHandler)
+        self.getColors(CGSize(width: r_width, height: r_width/ratio), completionHandler: completionHandler)
     }
     
-    public func getColors(scaleDownSize: CGSize, completionHandler: (UIImageColors) -> Void) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+    public func getColors(_ scaleDownSize: CGSize, completionHandler: @escaping (UIImageColors) -> Void) {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async {
             var result = UIImageColors()
             
-            let cgImage = self.resize(scaleDownSize).CGImage
-            let width = CGImageGetWidth(cgImage)
-            let height = CGImageGetHeight(cgImage)
+            let cgImage = self.resize(scaleDownSize).cgImage
+            let width = cgImage?.width
+            let height = cgImage?.height
             
             let bytesPerPixel: Int = 4
-            let bytesPerRow: Int = width * bytesPerPixel
+            let bytesPerRow: Int = width! * bytesPerPixel
             let bitsPerComponent: Int = 8
-            let randomColorsThreshold = Int(CGFloat(height)*0.01)
-            let sortedColorComparator: NSComparator = { (main, other) -> NSComparisonResult in
+            let randomColorsThreshold = Int(CGFloat(height!)*0.01)
+            let sortedColorComparator: Comparator = { (main, other) -> ComparisonResult in
                 let m = main as! PCCountedColor, o = other as! PCCountedColor
                 if m.count < o.count {
-                    return NSComparisonResult.OrderedDescending
+                    return ComparisonResult.orderedDescending
                 } else if m.count == o.count {
-                    return NSComparisonResult.OrderedSame
+                    return ComparisonResult.orderedSame
                 } else {
-                    return NSComparisonResult.OrderedAscending
+                    return ComparisonResult.orderedAscending
                 }
             }
             let blackColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
             let whiteColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
             
             let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let raw = malloc(bytesPerRow * height)
-            let bitmapInfo = CGImageAlphaInfo.PremultipliedFirst.rawValue
-            let ctx = CGBitmapContextCreate(raw, width, height, bitsPerComponent, bytesPerRow, colorSpace, bitmapInfo)
-            CGContextDrawImage(ctx, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), cgImage)
-            let data = UnsafePointer<UInt8>(CGBitmapContextGetData(ctx))
+            let raw = malloc(bytesPerRow * height!)
+            let bitmapInfo = CGImageAlphaInfo.premultipliedFirst.rawValue
+            let ctx = CGContext(data: raw, width: width!, height: height!, bitsPerComponent: bitsPerComponent, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+            ctx?.draw(cgImage!, in: CGRect(x: 0, y: 0, width: CGFloat(width!), height: CGFloat(height!)))
+            let data = UnsafePointer<UInt8>(ctx?.data)
             
-            let leftEdgeColors = NSCountedSet(capacity: height)
-            let imageColors = NSCountedSet(capacity: width * height)
+            let leftEdgeColors = NSCountedSet(capacity: height!)
+            let imageColors = NSCountedSet(capacity: width! * height!)
             
             for x in 0..<width {
                 for y in 0..<height {
@@ -144,10 +144,10 @@ extension UIImage {
                     
                     // A lot of albums have white or black edges from crops, so ignore the first few pixels
                     if 5 <= x && x <= 10 {
-                        leftEdgeColors.addObject(color)
+                        leftEdgeColors.add(color)
                     }
                     
-                    imageColors.addObject(color)
+                    imageColors.add(color)
                 }
             }
             
@@ -155,23 +155,23 @@ extension UIImage {
             var enumerator = leftEdgeColors.objectEnumerator()
             var sortedColors = NSMutableArray(capacity: leftEdgeColors.count)
             while let kolor = enumerator.nextObject() as? UIColor {
-                let colorCount = leftEdgeColors.countForObject(kolor)
+                let colorCount = leftEdgeColors.count(for: kolor)
                 if randomColorsThreshold < colorCount  {
-                    sortedColors.addObject(PCCountedColor(color: kolor, count: colorCount))
+                    sortedColors.add(PCCountedColor(color: kolor, count: colorCount))
                 }
             }
-            sortedColors.sortUsingComparator(sortedColorComparator)
+            sortedColors.sort(comparator: sortedColorComparator)
             
             var proposedEdgeColor: PCCountedColor
             if 0 < sortedColors.count {
-                proposedEdgeColor = sortedColors.objectAtIndex(0) as! PCCountedColor
+                proposedEdgeColor = sortedColors.object(at: 0) as! PCCountedColor
             } else {
                 proposedEdgeColor = PCCountedColor(color: blackColor, count: 1)
             }
             
             if proposedEdgeColor.color.isBlackOrWhite && 0 < sortedColors.count {
                 for i in 1..<sortedColors.count {
-                    let nextProposedEdgeColor = sortedColors.objectAtIndex(i) as! PCCountedColor
+                    let nextProposedEdgeColor = sortedColors.object(at: i) as! PCCountedColor
                     if (CGFloat(nextProposedEdgeColor.count)/CGFloat(proposedEdgeColor.count)) > 0.3 {
                         if !nextProposedEdgeColor.color.isBlackOrWhite {
                             proposedEdgeColor = nextProposedEdgeColor
@@ -193,11 +193,11 @@ extension UIImage {
             while var kolor = enumerator.nextObject() as? UIColor {
                 kolor = kolor.colorWithMinimumSaturation(0.15)
                 if kolor.isDarkColor == findDarkTextColor {
-                    let colorCount = imageColors.countForObject(kolor)
-                    sortedColors.addObject(PCCountedColor(color: kolor, count: colorCount))
+                    let colorCount = imageColors.count(for: kolor)
+                    sortedColors.add(PCCountedColor(color: kolor, count: colorCount))
                 }
             }
-            sortedColors.sortUsingComparator(sortedColorComparator)
+            sortedColors.sort(comparator: sortedColorComparator)
             
             for curContainer in sortedColors {
                 let kolor = (curContainer as! PCCountedColor).color
@@ -239,7 +239,7 @@ extension UIImage {
             // Release the allocated memory
             free(raw)
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 completionHandler(result)
             }
         }

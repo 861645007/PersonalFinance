@@ -23,12 +23,12 @@ class DayConsumeTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
         if selected && lastSelectedState == false {
-            self.selectedFlagView.hidden = false
+            self.selectedFlagView.isHidden = false
             self.cellisSelectedAnimation()
             
             self.backgroundColor = UIColor(red:170/255.0, green:138/255.0, blue:179/255.0, alpha:0.35)
@@ -39,16 +39,16 @@ class DayConsumeTableViewCell: UITableViewCell {
             if lastSelectedState {
                 self.cellisCanceledAnimation()
             }
-            self.backgroundColor = UIColor.clearColor()
+            self.backgroundColor = UIColor.clear
             
             lastSelectedState = false
         }
     }
     
-    func prepareCollectionCellForConsumeView(consume: SingleConsume) {
+    func prepareCollectionCellForConsumeView(_ consume: SingleConsume) {
         self.categoryName.text = consume.consumeCategory?.name
         self.categoryMoney.text = "￥" + (consume.money?.doubleValue.convertToStrWithTwoFractionDigits())!
-        self.categoryIcon.image = UIImage(data: (consume.consumeCategory?.iconData)!)
+        self.categoryIcon.image = UIImage(data: (consume.consumeCategory?.iconData)! as Data)
         
         // 将选中指示调颜色 改为图片主要颜色
         self.categoryIcon.image?.getColors({[unowned self] (colors) in
@@ -57,22 +57,22 @@ class DayConsumeTableViewCell: UITableViewCell {
     }
     
     func cellisSelectedAnimation() {
-        self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 0.01)
+        self.selectedFlagView.transform = CGAffineTransform(scaleX: 1.0, y: 0.01)
         
-        UIView.animateWithDuration(1.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: { [unowned self] in
-            self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        UIView.animate(withDuration: 1.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [.curveEaseIn], animations: { [unowned self] in
+            self.selectedFlagView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             
             }, completion: nil)
     }
     
     func cellisCanceledAnimation() {
-        self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        self.selectedFlagView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         
-        UIView.animateWithDuration(0.75, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: [.CurveEaseIn], animations: { [unowned self] in
-            self.selectedFlagView.transform = CGAffineTransformMakeScale(1.0, 0.000001)
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: [.curveEaseIn], animations: { [unowned self] in
+            self.selectedFlagView.transform = CGAffineTransform(scaleX: 1.0, y: 0.000001)
             
         }) { [unowned self] _ in
-            self.selectedFlagView.hidden = true
+            self.selectedFlagView.isHidden = true
         }
     }
 

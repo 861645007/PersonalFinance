@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
 //        UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
+        UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
         
         // 配置 Core Data
 //        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance.sqlite")
@@ -31,11 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             magicalRecordSetupFinished = true
         }
         while !magicalRecordSetupFinished {
-            NSRunLoop.currentRunLoop().runMode(NSDefaultRunLoopMode, beforeDate: NSDate.distantFuture())
+            RunLoop.current.run(mode: RunLoopMode.defaultRunLoopMode, before: Date.distantFuture)
         }
         
         // 注册一个通知: 当有数据从云端导入的时候，会进入这个 通知的回调函数
-        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: NSPersistentStoreCoordinator.MR_defaultStoreCoordinator(), queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
+        NotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: NSPersistentStoreCoordinator.MR_defaultStoreCoordinator(), queue: OperationQueue.mainQueue()) { (notification: Notification) in
             
             NSManagedObjectContext.MR_defaultContext().performBlock({ 
                 NSManagedObjectContext.MR_defaultContext().mergeChangesFromContextDidSaveNotification(notification)
@@ -80,9 +80,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreInitialImportCompleted(_:)), name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
 //        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreDidChange(_:)), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
+        NotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreDidChange(_:)), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
 //
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreWillChange(_:)), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: nil)
+        NotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreWillChange(_:)), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: nil)
         
         
         // 配置 NSUserDefaults iCloud Sync
@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self])
         
         // 配置密码锁
-        let infoDictionary = NSBundle.mainBundle().infoDictionary
+        let infoDictionary = Bundle.main.infoDictionary
         
         VENTouchLock.sharedInstance().setKeychainService("com.wanghuanqiang.PersonalFinance", keychainAccount: (infoDictionary!["CFBundleDisplayName"] as! String), touchIDReason: "通过Home键验证已有的手机指纹", passcodeAttemptLimit: 10, splashViewControllerClass: SampleSplashViewController().classForCoder)
         
@@ -114,17 +114,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // 判断所存的时间是不是今天（新的一天），不是的话，进行操作
-        self.judgeTimeWhenFirstUseInEveryDay(NSDate())
+        self.judgeTimeWhenFirstUseInEveryDay(Date())
         
         return true
     }
     
     
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if url.scheme == "AppUrlType" {
             if url.host == "open" {
-                NSNotificationCenter.defaultCenter().postNotificationName(AddNewConsumeInWidgetNotification, object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: AddNewConsumeInWidgetNotification), object: nil)
             }
             return true
         }
@@ -133,12 +133,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // MARK: - 接受通知事件
-    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, for notification: UILocalNotification, completionHandler: @escaping () -> Void) {
         
         if identifier == PercentInMonthBudgetWorkAction {
-            NSNotificationCenter.defaultCenter().postNotificationName(ShowMonthConsumesVCNotification, object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: ShowMonthConsumesVCNotification), object: nil)
         }else if (identifier == ModifyMonthBudgetWorkAction) {
-            NSNotificationCenter.defaultCenter().postNotificationName(ShowModifyMonthBudgetVCNotification, object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: ShowModifyMonthBudgetVCNotification), object: nil)
         }
         
         
@@ -146,36 +146,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // 通知回调函数
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
         PrepareLocalNotification.sharedInstance.removeBadgeNumber()
         print("点击了按钮 didReceiveLocalNotification")
     }
     
     
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
         
         PrepareLocalNotification.sharedInstance.removeBadgeNumber()
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         
         
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
@@ -185,7 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = OnBoardPageManager.onBoardPageManager.configOnboardVC()
     }
     
-    func persistentStoreDidChange(notification: NSNotification) {
+    func persistentStoreDidChange(_ notification: Notification) {
         print("Persistent Store Coordinator Stores Did Change Notification")
         
         let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
@@ -201,7 +201,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     }
     
-    func persistentStoreWillChange(notification: NSNotification) {
+    func persistentStoreWillChange(_ notification: Notification) {
         
         let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
         // 当 InitialImportCompleted 的时候导入初始化数据
@@ -214,7 +214,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func persistentStoreInitialImportCompleted(notification: NSNotification) {
+    func persistentStoreInitialImportCompleted(_ notification: Notification) {
         
         NSManagedObjectContext.MR_defaultContext().performBlock({
             NSManagedObjectContext.MR_defaultContext().mergeChangesFromContextDidSaveNotification(notification)
@@ -233,7 +233,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      
      - parameter date: 被判断的时间
      */
-    func judgeTimeWhenFirstUseInEveryDay(date: NSDate) {
+    func judgeTimeWhenFirstUseInEveryDay(_ date: Date) {
         if !BaseInfo.sharedBaseInfo.isCurrentMonth(date) || !BaseInfo.sharedBaseInfo.isToday(date) {
             if !BaseInfo.sharedBaseInfo.isCurrentMonth(date) {
                 // 注册每月预算通知

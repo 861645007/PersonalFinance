@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import VENTouchLock
 
 class SettingViewController: UIViewController {
 
@@ -48,16 +46,16 @@ class SettingViewController: UIViewController {
 
 extension SettingViewController: UITableViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.settingVM.numberOfSection()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.settingVM.numberOfItemsInSection(section)
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: SettingTableViewCell = tableView.dequeueReusableCellWithIdentifier("SettingCell") as! SettingTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: SettingTableViewCell = tableView.dequeueReusableCell(withIdentifier: "SettingCell") as! SettingTableViewCell
         
         cell.prepareCollectionCell(self.settingVM.titleAtIndexPath(indexPath))
         
@@ -68,8 +66,8 @@ extension SettingViewController: UITableViewDataSource {
 
 extension SettingViewController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0 {
             if indexPath.row == 0 {
@@ -86,19 +84,19 @@ extension SettingViewController: UITableViewDelegate {
                     })
                 }
             }else if indexPath.row == 1 {
-                let monthBudgetVC = self.storyboard?.instantiateViewControllerWithIdentifier("MonthBudgetViewController") as! MonthBudgetViewController
+                let monthBudgetVC = self.storyboard?.instantiateViewController(withIdentifier: "MonthBudgetViewController") as! MonthBudgetViewController
                 
-                monthBudgetVC.modalPresentationStyle = .OverCurrentContext                
-                self.presentViewController(monthBudgetVC, animated: true, completion: {
+                monthBudgetVC.modalPresentationStyle = .overCurrentContext                
+                self.present(monthBudgetVC, animated: true, completion: {
                     //
                 })
             }else if indexPath.row == 2 {
-                let dataAnalysisVC = self.storyboard?.instantiateViewControllerWithIdentifier("DataAnalysisViewController") as! DataAnalysisViewController
+                let dataAnalysisVC = self.storyboard?.instantiateViewController(withIdentifier: "DataAnalysisViewController") as! DataAnalysisViewController
                 self.navigationController?.pushViewController(dataAnalysisVC, animated: true)
             }
         }else {
             if indexPath.row == 1 {
-                let aboutSelfVC = self.storyboard?.instantiateViewControllerWithIdentifier("AboutSelfViewController") as! AboutSelfViewController
+                let aboutSelfVC = self.storyboard?.instantiateViewController(withIdentifier: "AboutSelfViewController") as! AboutSelfViewController
                 self.navigationController?.pushViewController(aboutSelfVC, animated: true)
             }
         }

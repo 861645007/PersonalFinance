@@ -15,32 +15,32 @@ class SingleConsume: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
     // MARK: - 新增消费记录
-    class func addNewSingleCustom(category: Int32, photo: NSData, comment: String, money: Double, time: NSDate) {
+    class func addNewSingleCustom(_ category: Int32, photo: Data, comment: String, money: Double, time: Date) {
         
         let singleConsume: SingleConsume = SingleConsume.MR_createEntity()!
         
         singleConsume.id       = NSNumber(int: Int32(SingleConsume.MR_countOfEntities()) + 1)
-        singleConsume.category = NSNumber(int: category)
+        singleConsume.category = NSNumber(value: category as Int32)
         singleConsume.photo    = photo
         singleConsume.comment  = comment
-        singleConsume.money    = NSNumber(double: money)
+        singleConsume.money    = NSNumber(value: money as Double)
         singleConsume.time     = time
-        singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(int: category))
+        singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(value: category as Int32))
         
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         
     }
     
     // MARK: - 修改消费信息    
-    class func modifySingleCustom(id: Int32, category: Int32, photo: NSData, comment: String, money: Double, time: NSDate){
+    class func modifySingleCustom(_ id: Int32, category: Int32, photo: Data, comment: String, money: Double, time: Date){
         let singleConsume: SingleConsume = SingleConsume.MR_findFirstByAttribute("id", withValue: NSNumber(int: id))!
         
-        singleConsume.category = NSNumber(int: category)
+        singleConsume.category = NSNumber(value: category as Int32)
         singleConsume.photo    = photo
         singleConsume.comment  = comment
-        singleConsume.money    = NSNumber(double: money)
+        singleConsume.money    = NSNumber(value: money as Double)
         singleConsume.time     = time
-        singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(int: category))
+        singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(value: category as Int32))
         
         NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
     }
@@ -54,7 +54,7 @@ class SingleConsume: NSManagedObject {
      
      - returns: 一个 NSFetchedResultsController 的实例数据
      */
-    class func fetchConsumeWithCategoryGroupInWeek(date: NSDate) ->NSFetchedResultsController {
+    class func fetchConsumeWithCategoryGroupInWeek(_ date: Date) ->NSFetchedResultsController<NSFetchRequestResult> {
         return self.fetchCustomWithRangeDate(date.weekBegin(), dateEnd: date.weekEnd())
     }
     
@@ -63,7 +63,7 @@ class SingleConsume: NSManagedObject {
      
      - returns: 一个 NSFetchedResultsController 的实例数据
      */
-    class func fetchConsumeWithCategoryGroupInMonth(date: NSDate) ->NSFetchedResultsController {
+    class func fetchConsumeWithCategoryGroupInMonth(_ date: Date) ->NSFetchedResultsController<NSFetchRequestResult> {
         return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
     }
     /**
@@ -71,12 +71,12 @@ class SingleConsume: NSManagedObject {
      
      - returns: 一个 NSFetchedResultsController 的实例数据
      */
-    class func fetchConsumeWithCategoryGroupInYear(date: NSDate) ->NSFetchedResultsController {
+    class func fetchConsumeWithCategoryGroupInYear(_ date: Date) ->NSFetchedResultsController<NSFetchRequestResult> {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
     // 季度
-    class func fetchConsumeWithCategoryGroupInQuarter(date: NSDate) ->NSFetchedResultsController {
+    class func fetchConsumeWithCategoryGroupInQuarter(_ date: Date) ->NSFetchedResultsController<NSFetchRequestResult> {
         return self.fetchCustomWithRangeDate(date.quarterBegin(), dateEnd: date.quarterEnd())
     }
     
@@ -88,19 +88,19 @@ class SingleConsume: NSManagedObject {
      
      - returns: 返回一个 NSFetchedResultsController 类型，以便 TableView 使用
      */
-    class func fetchConsumeRecordInThisDay(date: NSDate) ->[SingleConsume] {
+    class func fetchConsumeRecordInThisDay(_ date: Date) ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(date.dayBegin(), dateEnd: date.dayEnd())
     }
     
-    class func fetchConsumeRecordInThisWeek(date: NSDate) ->[SingleConsume] {
+    class func fetchConsumeRecordInThisWeek(_ date: Date) ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(date.weekBegin(), dateEnd: date.weekEnd())
     }
     
-    class func fetchConsumeRecordInThisMonth(date: NSDate) ->[SingleConsume] {
+    class func fetchConsumeRecordInThisMonth(_ date: Date) ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(date.monthBegin(), dateEnd: date.monthEnd())
     }
     
-    class func fetchConsumeRecordInThisYear(date: NSDate) ->[SingleConsume] {
+    class func fetchConsumeRecordInThisYear(_ date: Date) ->[SingleConsume] {
         return self.fetchCustomWithRangeDate(date.yearBegin(), dateEnd: date.yearEnd())
     }
     
@@ -119,20 +119,20 @@ class SingleConsume: NSManagedObject {
      
      - returns: 指定日期内的消费总额
      */
-    class func fetchExpensesInThisDay(day: NSDate) -> Double {
-        return SingleConsume.fetchConsumeRecordInThisDay(day).reduce(0.0, combine: {
+    class func fetchExpensesInThisDay(_ day: Date) -> Double {
+        return SingleConsume.fetchConsumeRecordInThisDay(day).reduce(0.0, {
             $0 + $1.money!.doubleValue
         })
     }
     
-    class func fetchExpensesInThisWeek(day: NSDate) -> Double {
-        return SingleConsume.fetchConsumeRecordInThisWeek(day).reduce(0.0, combine: {
+    class func fetchExpensesInThisWeek(_ day: Date) -> Double {
+        return SingleConsume.fetchConsumeRecordInThisWeek(day).reduce(0.0, {
             $0 + $1.money!.doubleValue
         })
     }
     
-    class func fetchExpensesInThisMonth(day: NSDate) -> Double {
-        return SingleConsume.fetchConsumeRecordInThisMonth(day).reduce(0.0, combine: {
+    class func fetchExpensesInThisMonth(_ day: Date) -> Double {
+        return SingleConsume.fetchConsumeRecordInThisMonth(day).reduce(0.0, {
             $0 + $1.money!.doubleValue
         })
     }
@@ -150,7 +150,7 @@ class SingleConsume: NSManagedObject {
      
      - returns: 一段时间内的 消费记录（NSFetchedResultsController）
      */
-    private static func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->NSFetchedResultsController {
+    fileprivate static func fetchCustomWithRangeDate(_ dateBegin: Date, dateEnd: Date) ->NSFetchedResultsController<NSFetchRequestResult> {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
         return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "category,money", ascending: true)
     }
@@ -163,7 +163,7 @@ class SingleConsume: NSManagedObject {
      
      - returns: 一段时间内的 消费记录
      */
-    private static func fetchCustomWithRangeDate(dateBegin: NSDate, dateEnd: NSDate) ->[SingleConsume] {
+    fileprivate static func fetchCustomWithRangeDate(_ dateBegin: Date, dateEnd: Date) ->[SingleConsume] {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
         
         return SingleConsume.MR_findAllSortedBy("time", ascending: true, withPredicate: predicate) as! [SingleConsume]
@@ -177,7 +177,7 @@ class SingleConsume: NSManagedObject {
      
      - returns: 正则表达式
      */
-    private static func createPredicateWithRangeDate(dateBegin :NSDate, dateEnd: NSDate) -> NSPredicate {
-        return NSPredicate(format: "time >= %@ AND time <= %@", dateBegin, dateEnd)
+    fileprivate static func createPredicateWithRangeDate(_ dateBegin :Date, dateEnd: Date) -> NSPredicate {
+        return NSPredicate(format: "time >= %@ AND time <= %@", dateBegin as CVarArg, dateEnd as CVarArg)
     }
 }

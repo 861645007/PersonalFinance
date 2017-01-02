@@ -23,7 +23,7 @@ class AboutSelfViewController: UIViewController {
         appIconImageView.layer.masksToBounds = true
         appIconImageView.layer.cornerRadius  = 28.0
         
-        versionLabel.text = "v " + "\(NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String)"
+        versionLabel.text = "v " + "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String)"
     }
 
     override func didReceiveMemoryWarning() {

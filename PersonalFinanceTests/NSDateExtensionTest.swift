@@ -29,14 +29,14 @@ class NSDateExtensionTest: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
     
     
     func testFirstDayWithNextWeek() {
-        let nextWeek = NSDate().firstDayWithNextWeek(8)
+        let nextWeek = Date().firstDayWithNextWeek(8)
         let currentWeek = nextWeek - 7.days
         
         XCTAssert(nextWeek.month == 5 && nextWeek.day == 1, "Good")

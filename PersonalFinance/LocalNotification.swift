@@ -19,11 +19,11 @@ let ModifyMonthBudgetNotification        = "ModifyMonthBudgetNotification"
 class LocalNotification: NSObject {
     
     static let sharedInstance = LocalNotification()
-    private let prepareLocalNotication = PrepareLocalNotification.sharedInstance
-    private let baseInfo = BaseInfo.sharedBaseInfo
+    fileprivate let prepareLocalNotication = PrepareLocalNotification.sharedInstance
+    fileprivate let baseInfo = BaseInfo.sharedBaseInfo
     
     
-    private override init() {
+    fileprivate override init() {
         super.init()
     }
     
@@ -34,7 +34,7 @@ class LocalNotification: NSObject {
         let relaxAction = NotificationAction(name: "知道了", id: "MonthBudgetRelaxAction")
         
         // 设置触发时间为下个月1号8点NSDate().firstDayWithNextMonth(9)
-        let notification = prepareLocalNotication.createLocalNotificationWithTwoAction("您的本月预算为：\(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())", fireDate: NSDate(timeInterval: 60.0 * 30, sinceDate: NSDate()), categoryID: PercentInMonthBudgetNotificationWith, workAction: workAction, relaxAction: relaxAction)
+        let notification = prepareLocalNotication.createLocalNotificationWithTwoAction("您的本月预算为：\(baseInfo.monthBudget().convertToStrWithTwoFractionDigits())", fireDate: Date(timeInterval: 60.0 * 30, since: Date()), categoryID: PercentInMonthBudgetNotificationWith, workAction: workAction, relaxAction: relaxAction)
         
         // 设置 通知
         prepareLocalNotication.scheduleLocalNotification(notification)
@@ -43,10 +43,10 @@ class LocalNotification: NSObject {
     // 每周一提醒上周的消费情况
     func createShowLastWeekExpenseNotification() {
         // 设置触发时间为下个星期第一天的8点
-        let notification = prepareLocalNotication.createLocalNotification("%您上周的消费报表已经生成了，快来查看吧！", fireDate: NSDate().firstDayWithNextWeek(9))
+        let notification = prepareLocalNotication.createLocalNotification("%您上周的消费报表已经生成了，快来查看吧！", fireDate: Date().firstDayWithNextWeek(9))
         
         // 设置触发周期为：每周
-        notification.repeatInterval = .WeekOfYear
+        notification.repeatInterval = .weekOfYear
         
         // 设置 通知
         prepareLocalNotication.scheduleLocalNotification(notification)
@@ -60,9 +60,9 @@ class LocalNotification: NSObject {
      * 忽视
      * 查看：点击后直接跳转至当月消费情况列表
      */
-    func createPercentWithMonthBudgetNotification(percent: Double) {
-        let today = NSDate()
-        let fireDate = NSDate(year: today.year, month: today.month, day: today.day, hour: 8) + 1.days
+    func createPercentWithMonthBudgetNotification(_ percent: Double) {
+        let today = Date()
+        let fireDate = Date(year: today.year, month: today.month, day: today.day, hour: 8) + 1.days
         
         let dayExpense = (baseInfo.monthBudget() - baseInfo.monthExpense()) / Double(fireDate.monthDays - fireDate.day)
         
@@ -84,7 +84,7 @@ class LocalNotification: NSObject {
      * 忽视
      * 查看详情：点击后跳转至页面： 显示这两个月的消费情况（雷达图）
      */
-    func createContrastWithLastAndCurrentMonthNotification(percent: String) {
+    func createContrastWithLastAndCurrentMonthNotification(_ percent: String) {
         
     }
 }

@@ -18,8 +18,8 @@ extension SingleConsume {
     @NSManaged var comment: String?
     @NSManaged var id: NSNumber?
     @NSManaged var money: NSNumber?
-    @NSManaged var photo: NSData?
-    @NSManaged var time: NSDate?
+    @NSManaged var photo: Data?
+    @NSManaged var time: Date?
     @NSManaged var consumeCategory: Category?
 
 }

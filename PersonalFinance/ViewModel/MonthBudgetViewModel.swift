@@ -25,13 +25,13 @@ class MonthBudgetViewModel: NSObject {
      
      - returns: 处理好的数字文本
      */
-    func dealWithDecimalMoney(text: String) -> String {
+    func dealWithDecimalMoney(_ text: String) -> String {
         return dealMoneyFormat.dealWithDecimalMoney(text)
     }
     
     
-    func saveMonthBudget(money: Double) {
-        baseInfo.saveMonthBudget(NSNumber(double: money))
+    func saveMonthBudget(_ money: Double) {
+        baseInfo.saveMonthBudget(NSNumber(value: money as Double))
     }
     
     func gainMonthBudget() -> String {

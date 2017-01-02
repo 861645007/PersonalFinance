@@ -26,11 +26,11 @@ class DayConsumeInfo: NSObject {
         self.dayExpense = money
     }
     
-    func setDayConsumeInfoArr(consume: SingleConsume) {
+    func setDayConsumeInfoArr(_ consume: SingleConsume) {
         self.dayConsumeArr?.append(consume)
     }
     
-    func addDayExpense(money: Double) {
+    func addDayExpense(_ money: Double) {
         self.dayExpense += money
     }
     

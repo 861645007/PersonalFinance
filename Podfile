@@ -10,16 +10,16 @@ target "PersonalFinance" do
 	pod 'Fabric'
 	pod 'Crashlytics' 
 # ReactiveCocoa
-	pod 'ReactiveCocoa', '~> 4.0.4-alpha-4'
+	pod 'ReactiveCocoa', '5.0.0-rc.1'
 # Core Data
 	pod 'MagicalRecord'
 	pod 'MagicalRecord/CocoaLumberjack'
 # 网络图片操作
-	pod 'SDWebImage', '~> 3.7.4'
+	pod 'SDWebImage', '~> 3.8'
 # 空页面视图填充
-	pod 'DZNEmptyDataSet', '~> 1.7.3'
+	pod 'DZNEmptyDataSet'
 # 动画效果
-	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift2'
+	pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift3'
 # NSDate 操作工具
 	pod 'SwiftDate'
 # 引导页

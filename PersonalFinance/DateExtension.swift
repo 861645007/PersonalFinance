@@ -9,49 +9,49 @@
 import Foundation
 import SwiftDate
 
-extension NSDate {
-    func yearBegin() ->NSDate {
+extension Date {
+    func yearBegin() ->Date {
         return self.startOf(.Year)
     }
     
-    func yearEnd() ->NSDate {
+    func yearEnd() ->Date {
         return self.endOf(.Year)
     }
     
-    func monthBegin() ->NSDate {
+    func monthBegin() ->Date {
         return self.startOf(.Month)
     }
     
-    func monthEnd() ->NSDate {
+    func monthEnd() ->Date {
         return self.endOf(.Month)
     }
     
-    func weekBegin() ->NSDate {
+    func weekBegin() ->Date {
         return self.firstDayWithNextWeek(0) - 7.days
     }
     
     // 把下周的第一天的开始时间作为上一周的结束时间
-    func weekEnd() ->NSDate {
+    func weekEnd() ->Date {
         return self.firstDayWithNextWeek(0)
     }
     
-    func dayBegin() ->NSDate {
+    func dayBegin() ->Date {
         return self.startOf(.Day)
     }
     
-    func dayEnd() ->NSDate {
+    func dayEnd() ->Date {
         return self.endOf(.Day)
     }
     
-    func quarterBegin() -> NSDate {
+    func quarterBegin() -> Date {
         return self.startOf(.Quarter) - 3.months
     }
     
-    func quarterEnd() -> NSDate {
+    func quarterEnd() -> Date {
         return self.startOf(.Quarter)
     }
     
-    func isLaterWithNewTime(newTime: NSDate) ->Bool {
+    func isLaterWithNewTime(_ newTime: Date) ->Bool {
         if self > newTime {
             return true
         }else {
@@ -66,7 +66,7 @@ extension NSDate {
      
      - returns: 是返回true，不是返回false
      */
-    func isThisDay(date: NSDate) ->Bool {
+    func isThisDay(_ date: Date) ->Bool {
         if date.dayBegin() < self && self < date.dayEnd() {
             return true
         }else {
@@ -81,7 +81,7 @@ extension NSDate {
      
      - returns: 是返回true，不是返回false
      */
-    func isInThisMonth(date: NSDate) ->Bool {
+    func isInThisMonth(_ date: Date) ->Bool {
         if date.monthBegin() < self && self < date.monthEnd() {
             return true
         }else {
@@ -94,10 +94,10 @@ extension NSDate {
      
      - returns: 返回一个当前时间的时间
      */
-    func tolocalTime() -> NSDate {
-        let tz = NSTimeZone.localTimeZone()
-        let seconds: NSInteger = tz.secondsFromGMTForDate(self)
-        return NSDate(timeInterval: Double(seconds), sinceDate: self)
+    func tolocalTime() -> Date {
+        let tz = TimeZone.autoupdatingCurrent
+        let seconds: NSInteger = tz.secondsFromGMT(for: self)
+        return Date(timeInterval: Double(seconds), since: self)
     }
     
     /**
@@ -107,11 +107,11 @@ extension NSDate {
      
      - returns: 下月一号的 x 时
      */
-    func firstDayWithNextMonth(hour: Int) -> NSDate {
+    func firstDayWithNextMonth(_ hour: Int) -> Date {
         if self.month == 12 {
-            return NSDate(year: self.year + 1, month: 1, day: 1, hour: hour)
+            return Date(year: self.year + 1, month: 1, day: 1, hour: hour)
         }else {
-            return NSDate(year: self.year, month:self.month + 1, day: 1, hour: hour)
+            return Date(year: self.year, month:self.month + 1, day: 1, hour: hour)
         }
     }
     
@@ -122,7 +122,7 @@ extension NSDate {
      
      - returns: 下个星期第一天的 x 时
      */
-    func firstDayWithNextWeek(hour: Int) -> NSDate {
+    func firstDayWithNextWeek(_ hour: Int) -> Date {
         let firstDayOfThisWeek = self.firstDayOfWeek()
         let lastDayOfThisWeek = self.lastDayOfWeek()
         
@@ -130,12 +130,12 @@ extension NSDate {
             // 如果 这个星期的最后一天小于第一天的值，说明跨月了
             if self.month == 12 {
                 // 如果这个月是12月，说明跨年了
-                return NSDate(year: self.year + 1, month: 1, day: lastDayOfThisWeek! + 1, hour: hour)
+                return Date(year: self.year + 1, month: 1, day: lastDayOfThisWeek! + 1, hour: hour)
             }else {
-                return NSDate(year: self.year, month: self.month + 1, day: lastDayOfThisWeek! + 1, hour: hour)
+                return Date(year: self.year, month: self.month + 1, day: lastDayOfThisWeek! + 1, hour: hour)
             }
         }else {
-            return NSDate(year: self.year, month: self.month, day: lastDayOfThisWeek!, hour: hour) + 1.days
+            return Date(year: self.year, month: self.month, day: lastDayOfThisWeek!, hour: hour) + 1.days
         }
     }
 }

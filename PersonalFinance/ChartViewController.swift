@@ -21,7 +21,7 @@ class ChartViewController: UIViewController {
     
     // 普通实例变量
     let chartVM: ChartViewModel = ChartViewModel()
-    var currentTimeModel: ChartTimeModel = .Week
+    var currentTimeModel: ChartTimeModel = .week
     
     // 控制视图 实例变量
     
@@ -46,7 +46,7 @@ class ChartViewController: UIViewController {
     @IBOutlet weak var thirdWeeksChartView: LineChartView!
     
     
-    let screenWidth = CGRectGetWidth(UIScreen.mainScreen().bounds)
+    let screenWidth = UIScreen.main.bounds.width
     
     
     override func viewDidLoad() {
@@ -63,17 +63,17 @@ class ChartViewController: UIViewController {
         self.categoryTableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.prepareChartView()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         switch currentTimeModel {
-        case .Week:
+        case .week:
             self.moveTimeIndicatorAnimation(self.showWeekConsumesBtn.center.x)
-        case .Month:
+        case .month:
             self.moveTimeIndicatorAnimation(self.showMonthConsumesBtn.center.x)
-        case .Year:
+        case .year:
             self.moveTimeIndicatorAnimation(self.showYearConsumesBtn.center.x)
         }
     }
@@ -98,13 +98,13 @@ class ChartViewController: UIViewController {
     // 手势 操作
     
     // 向右滑动， 查看以前的内容
-    @IBAction func rightSwipe(sender: AnyObject) {
+    @IBAction func rightSwipe(_ sender: AnyObject) {
         switch currentTimeModel {
-        case .Week:
+        case .week:
             self.chartVM.setWeekToPre()
-        case .Month:
+        case .month:
             self.chartVM.setMonthToPre()
-        case .Year:
+        case .year:
             self.chartVM.setYearToPre()
         }
         
@@ -115,13 +115,13 @@ class ChartViewController: UIViewController {
     }
     
     
-    @IBAction func leftSwipe(sender: AnyObject) {
+    @IBAction func leftSwipe(_ sender: AnyObject) {
         switch currentTimeModel {
-        case .Week:
+        case .week:
             self.chartVM.setWeekToNext()
-        case .Month:
+        case .month:
             self.chartVM.setMonthToNext()
-        case .Year:
+        case .year:
             self.chartVM.setYearToNext()
         }
         
@@ -133,7 +133,7 @@ class ChartViewController: UIViewController {
     
     
     // 滑动动画
-    func swipeAnimation(isRight: Bool, completion: () -> ()) {
+    func swipeAnimation(_ isRight: Bool, completion: () -> ()) {
         // 创建一个 MainView 的截屏图片 作为假假面，再把真的图层移除界面，再做成一个动画
         let animationImage = UIImageView(frame: self.chartBGView.frame)
         animationImage.image = self.chartBGView.snapshot()
@@ -166,8 +166,8 @@ class ChartViewController: UIViewController {
     
     
     // MARK: - 按钮功能
-    @IBAction func showWeekConsumes(sender: AnyObject) {
-        currentTimeModel = .Week
+    @IBAction func showWeekConsumes(_ sender: AnyObject) {
+        currentTimeModel = .week
         
         self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
         
@@ -179,8 +179,8 @@ class ChartViewController: UIViewController {
     }
     
     
-    @IBAction func showMonthConsumes(sender: AnyObject) {
-        currentTimeModel = .Month
+    @IBAction func showMonthConsumes(_ sender: AnyObject) {
+        currentTimeModel = .month
         
         self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
         
@@ -192,8 +192,8 @@ class ChartViewController: UIViewController {
     }
     
     
-    @IBAction func showYearConsumes(sender: AnyObject) {
-        currentTimeModel = .Year
+    @IBAction func showYearConsumes(_ sender: AnyObject) {
+        currentTimeModel = .year
         
         self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
         
@@ -211,13 +211,13 @@ class ChartViewController: UIViewController {
     
     
     // Animation
-    func moveTimeIndicatorAnimation(centerX: CGFloat) {
-        UIView.animateWithDuration(0.75, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10.0, options: [.CurveEaseInOut], animations: {
+    func moveTimeIndicatorAnimation(_ centerX: CGFloat) {
+        UIView.animate(withDuration: 0.75, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10.0, options: UIViewAnimationOptions(), animations: {
             self.timeIndicatorView.center.x = centerX
             }, completion: nil)
     }
     
-    func changeChartsModelAnimation(completion: () -> ()) {
+    func changeChartsModelAnimation(_ completion: () -> ()) {
         
         // 创建一个 MainView 的截屏图片 作为假的主视图
         let animationImage = UIImageView(frame: self.chartBGView.frame)
@@ -269,7 +269,7 @@ class ChartViewController: UIViewController {
     }
     
     // 创建一个环形图
-    private func createPieChart(dataPoints: [String], values: [Double]) {
+    fileprivate func createPieChart(_ dataPoints: [String], values: [Double]) {
         let dataEntries: [ChartDataEntry] = self.chartVM.createDataEntries(dataPoints.count, values: values)
 
         let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "消费类别图")
@@ -302,30 +302,30 @@ class ChartViewController: UIViewController {
      
      - parameter text: 需要被设置的文字内容
      */
-    func setCategoryChartCenterText(text: String) {
+    func setCategoryChartCenterText(_ text: String) {
         categoryChartView.centerAttributedText = self.chartVM.setPieChartCenterText(text)
     }
     
     // MARK: - 创建 柱状图    
     func prepareBarChart() {
-        if self.chartVM.consumesForBarChart.maxElement() == 0.0 {
+        if self.chartVM.consumesForBarChart.max() == 0.0 {
             sevenDaysChartView.data = nil
             sevenDaysChartView.noDataText            = "尚未记录消费"
             sevenDaysChartView.noDataTextDescription = ""
         }else {
             switch currentTimeModel {
-            case .Week:
+            case .week:
                 createBarChart(self.chartVM.weekdays, values: self.chartVM.consumesForBarChart)
-            case .Month:
+            case .month:
                 createBarChart(self.chartVM.gainDaysWithMonth(), values: self.chartVM.consumesForBarChart)
-            case .Year:
+            case .year:
                 createBarChart(self.chartVM.months, values: self.chartVM.consumesForBarChart)
             }
         }
     }
     
     // 创建七天消费柱状图
-    private func createBarChart(dataPoints: [String], values: [Double]) {
+    fileprivate func createBarChart(_ dataPoints: [String], values: [Double]) {
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
@@ -360,15 +360,15 @@ class ChartViewController: UIViewController {
     
     
     // 点击柱状图 跳转到相应的详细页面
-    private func showDetailViewWithBar(day: NSDate, isMonth: Bool) {
+    fileprivate func showDetailViewWithBar(_ day: Date, isMonth: Bool) {
         let detailView: UIViewController
         
         if isMonth {
-            detailView = self.storyboard?.instantiateViewControllerWithIdentifier("MonthConsumeViewController") as! MonthConsumeViewController
-            (detailView as! MonthConsumeViewController).monthConsumeVM = MonthConsumeViewModel(state: .Month, today: day)
+            detailView = self.storyboard?.instantiateViewController(withIdentifier: "MonthConsumeViewController") as! MonthConsumeViewController
+            (detailView as! MonthConsumeViewController).monthConsumeVM = MonthConsumeViewModel(state: .month, today: day)
             detailView.title = "\(day.year)年\(day.month)月"
         }else {
-            detailView = self.storyboard?.instantiateViewControllerWithIdentifier("DayConsumeViewController") as! DayConsumeViewController
+            detailView = self.storyboard?.instantiateViewController(withIdentifier: "DayConsumeViewController") as! DayConsumeViewController
             detailView.title = "\(day.month)月\(day.day)日"
             (detailView as! DayConsumeViewController).dayConsumeVM = DayConsumeViewModel(today: day)
         }
@@ -381,12 +381,12 @@ class ChartViewController: UIViewController {
 // MARK: - TableView 数据源协议
 extension ChartViewController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.chartVM.gainNumberOfSection()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCellWithIdentifier("FinanceCategoryCell") as! FinanceOfCategoryTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: FinanceOfCategoryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FinanceCategoryCell") as! FinanceOfCategoryTableViewCell
         
         cell.prepareCollectionCellForChartView(self.chartVM.gainFinanceCategoryAt(indexPath.row))
         
@@ -397,7 +397,7 @@ extension ChartViewController: UITableViewDataSource {
 // MARK: - TableView 操作协议
 extension ChartViewController: UITableViewDelegate {
    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // 使对应的环形图中的那个扇片高亮， 如果已经高亮就将其恢复常态
         let highlighteds = self.categoryChartView.highlighted
@@ -420,20 +420,20 @@ extension ChartViewController: UITableViewDelegate {
 extension ChartViewController: ChartViewDelegate {
     
     // 当 有元素被选中了
-    func chartValueSelected(chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
         if chartView == categoryChartView {            
             // 设置扇形的中心文字
             self.setCategoryChartCenterText("\((entry.value * 100).convertToStrWithTwoFractionDigits())%")
             
             // 设置 tableView 中 对应的那一行被选中，如果已经被选中就不需要执行选中操作
-            let indexpath = NSIndexPath(forRow: entry.xIndex, inSection: 0)
+            let indexpath = IndexPath(forRow: entry.xIndex, inSection: 0)
             let cell = self.categoryTableView.cellForRowAtIndexPath(indexpath)
             
             if cell == nil {
                 self.categoryTableView.scrollToRowAtIndexPath(indexpath, atScrollPosition: .Middle, animated: true)
             }else {
                 if !cell!.selected {
-                    self.categoryTableView.selectRowAtIndexPath(NSIndexPath(forRow: entry.xIndex, inSection: 0), animated: false, scrollPosition: .Middle)
+                    self.categoryTableView.selectRowAtIndexPath(IndexPath(forRow: entry.xIndex, inSection: 0), animated: false, scrollPosition: .Middle)
                 }
             }
         }else if chartView == sevenDaysChartView {
@@ -443,18 +443,18 @@ extension ChartViewController: ChartViewDelegate {
             }
             
             switch currentTimeModel {
-            case .Week:
+            case .week:
                 self.showDetailViewWithBar(self.chartVM.currentWeek + (entry.xIndex).days, isMonth: false)
-            case .Month:
+            case .month:
                 self.showDetailViewWithBar(self.chartVM.currentMonth + (entry.xIndex).days, isMonth: false)
-            case .Year:
+            case .year:
                 self.showDetailViewWithBar(self.chartVM.currentYear + (entry.xIndex).months, isMonth: true)
             }
         }
     }
     
     
-    func chartValueNothingSelected(chartView: ChartViewBase) {
+    func chartValueNothingSelected(_ chartView: ChartViewBase) {
         if chartView == categoryChartView {
             self.setCategoryChartCenterText("")
             
@@ -463,7 +463,7 @@ extension ChartViewController: ChartViewDelegate {
                 return
             }
             
-            self.categoryTableView.deselectRowAtIndexPath(indexPath, animated: true)
+            self.categoryTableView.deselectRow(at: indexPath, animated: true)
         }
     }
 }
@@ -472,15 +472,15 @@ extension ChartViewController: ChartViewDelegate {
 extension ChartViewController: UIScrollViewDelegate {
     
     // 在点击扇形的高亮的后，如果是非可见cell，我们要先把cell滑动出来后再处理 cell 的选择（在滑动动画结束之后操作）
-    func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         let index = self.categoryChartView.highlighted.first!.xIndex
         
-        let indexpath = NSIndexPath(forRow: index, inSection: 0)
+        let indexpath = IndexPath(forRow: index, inSection: 0)
         
         let cell = self.categoryTableView.cellForRowAtIndexPath(indexpath)
         
         if !cell!.selected {
-            self.categoryTableView.selectRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0), animated: false, scrollPosition: .Middle)
+            self.categoryTableView.selectRowAtIndexPath(IndexPath(forRow: index, inSection: 0), animated: false, scrollPosition: .Middle)
         }
     }
 }
@@ -491,11 +491,11 @@ extension ChartViewController: UIScrollViewDelegate {
 // MARK: - DZNEmptyDataSetSource 数据源协议
 extension ChartViewController: DZNEmptyDataSetSource {
     // 设置图片
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func imageForEmptyDataSet(_ scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "NoMoney")
     }
     
-    func imageAnimationForEmptyDataSet(scrollView: UIScrollView!) -> CAAnimation! {
+    func imageAnimationForEmptyDataSet(_ scrollView: UIScrollView!) -> CAAnimation! {
         let animation = CABasicAnimation(keyPath: "opacity")
         
         animation.fromValue  = 0.0
@@ -508,7 +508,7 @@ extension ChartViewController: DZNEmptyDataSetSource {
 
 // MARK: - DZNEmptyDataSetDelegate 操作协议
 extension ChartViewController: DZNEmptyDataSetDelegate {
-    func emptyDataSetShouldAnimateImageView(scrollView: UIScrollView!) -> Bool {
+    func emptyDataSetShouldAnimateImageView(_ scrollView: UIScrollView!) -> Bool {
         return true
     }
 }
