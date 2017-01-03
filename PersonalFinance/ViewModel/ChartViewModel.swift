@@ -36,9 +36,9 @@ class ChartViewModel: NSObject {
     
     override init() {
         // 变量处理
-        currentMonth = Date().startOf(.Month) + 12.hours
-        currentWeek  = Date().startOf(.WeekOfYear) + 12.hours
-        currentYear  = Date().startOf(.Year) + 12.hours
+        currentMonth = Date().startOf(component: .month) + 12.hours
+        currentWeek  = Date().startOf(component: .weekOfYear) + 12.hours
+        currentYear  = Date().startOf(component: .year) + 12.hours
         
         super.init()
         
@@ -92,7 +92,7 @@ class ChartViewModel: NSObject {
         var dataEntries: [ChartDataEntry] = []
         
         for i in 0..<dataPointLengths {
-            let dataEntry = ChartDataEntry(value: values[i], xIndex: i)
+            let dataEntry = ChartDataEntry(x: values[i], y: Double(i))
             dataEntries.append(dataEntry)
         }
         
@@ -154,10 +154,10 @@ class ChartViewModel: NSObject {
     // 设置颜色
     func setColorWithPie() -> [NSUIColor]{
         let colors: NSMutableArray = NSMutableArray()
-        colors.addObjectsFromArray(ChartColorTemplates.joyful())
-        colors.addObjectsFromArray(ChartColorTemplates.colorful())
-        colors.addObjectsFromArray(ChartColorTemplates.liberty())
-        colors.addObjectsFromArray(ChartColorTemplates.pastel())
+        colors.addObjects(from: ChartColorTemplates.joyful())
+        colors.addObjects(from: ChartColorTemplates.colorful())
+        colors.addObjects(from: ChartColorTemplates.liberty())
+        colors.addObjects(from: ChartColorTemplates.pastel())
         
         return colors.copy() as! [NSUIColor]
     }
@@ -177,7 +177,7 @@ class ChartViewModel: NSObject {
     
     // 创建 柱状图数据
     func createBarChartDataSet(_ lineName: String, dataEntries: [BarChartDataEntry]) -> BarChartDataSet {
-        let barChartDataSet = BarChartDataSet(yVals: dataEntries, label: lineName)
+        let barChartDataSet = BarChartDataSet(values: dataEntries, label: lineName)
         barChartDataSet.setColors(self.setColorWithPie(), alpha: 1.0)
         return barChartDataSet
     }
@@ -256,19 +256,19 @@ class ChartViewModel: NSObject {
         switch model {
         case .week:            
             return (0..<7).map({
-                SingleConsume.fetchConsumeRecordInThisDay(today + $0.days).reduce(0.0, combine: {
+                SingleConsume.fetchConsumeRecordInThisDay(today + $0.days).reduce(0.0, {
                     $0 + $1.money!.doubleValue
                 })
             })
         case .month:
             return (0..<today.monthDays).map({
-                SingleConsume.fetchConsumeRecordInThisDay(today + $0.days).reduce(0.0, combine: {
+                SingleConsume.fetchConsumeRecordInThisDay(today + $0.days).reduce(0.0, {
                     $0 + $1.money!.doubleValue
                 })
             })
         case .year:
             return (0..<12).map({
-                SingleConsume.fetchConsumeRecordInThisMonth(today + $0.months).reduce(0.0, combine: {
+                SingleConsume.fetchConsumeRecordInThisMonth(today + $0.months).reduce(0.0, {
                     $0 + $1.money!.doubleValue
                 })
             })

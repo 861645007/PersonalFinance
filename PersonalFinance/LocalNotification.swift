@@ -61,8 +61,8 @@ class LocalNotification: NSObject {
      * 查看：点击后直接跳转至当月消费情况列表
      */
     func createPercentWithMonthBudgetNotification(_ percent: Double) {
-        let today = Date()
-        let fireDate = Date(year: today.year, month: today.month, day: today.day, hour: 8) + 1.days
+        
+        let fireDate = try! Date().atTime(hour: 8, minute: 0, second: 0) + 1.days
         
         let dayExpense = (baseInfo.monthBudget() - baseInfo.monthExpense()) / Double(fireDate.monthDays - fireDate.day)
         

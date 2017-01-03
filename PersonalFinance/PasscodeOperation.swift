@@ -28,18 +28,18 @@ class PasscodeOperation: NSObject {
         let createPasscodeVC: VENTouchLockCreatePasscodeViewController = VENTouchLockCreatePasscodeViewController()
         
         createPasscodeVC.willFinishWithResult = { finished in
-            createPasscodeVC.dismissViewControllerAnimated(true, completion: {
+            createPasscodeVC.dismiss(animated: true, completion: {
                 handler()
             })
         }
         
-        vc.presentViewController(createPasscodeVC.embeddedInNavigationController(), animated: true, completion: nil)
+        vc.present(createPasscodeVC.embeddedInNavigationController(), animated: true, completion: nil)
     }
     
     func showPasscode(_ vc: UIViewController) {
         if self.hasPasscodeExist() {
             let showPasscodeVC: VENTouchLockEnterPasscodeViewController = VENTouchLockEnterPasscodeViewController()
-            vc.presentViewController(showPasscodeVC.embeddedInNavigationController(), animated: true, completion: nil)
+            vc.present(showPasscodeVC.embeddedInNavigationController(), animated: true, completion: nil)
         }else {
             vc.showSimpleAlertWithOneBtn("密码不存在", msg: "请先设置一个密码", handler: { (action) in
             })

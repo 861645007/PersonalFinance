@@ -18,14 +18,14 @@ class Category: NSManagedObject {
     class func insertNewConsumeCategory(_ name: String, iconData: Data, beUsed: Bool) {
         
         let id = Category.gainCategoryCount() + 1
-        let category: Category = Category.MR_createEntity()!
+        let category: Category = Category.mr_createEntity()!
         
         category.id = NSNumber(value: id as Int32)
         category.name = name
         category.iconData = iconData
         category.beUsed = NSNumber(value: beUsed as Bool)
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()
     }
     
     /**
@@ -51,7 +51,7 @@ class Category: NSManagedObject {
     
     // MARK: - 查询
     class func fetchAllConsumeCategoryWithoutUsed() ->[Category] {
-        return Category.MR_findAllSortedBy("id", ascending: true, withPredicate: self.createPredicateWithBeUsed(false)) as! [Category]
+        return Category.mr_findAllSorted(by: "id", ascending: true, with: self.createPredicateWithBeUsed(false)) as! [Category]
     }
     
     /*
@@ -60,12 +60,12 @@ class Category: NSManagedObject {
     - returns: 返回 Category 表中的所有数据
     */
     class func fetchAllConsumeCategoryWithUsed() ->[Category] {
-        return Category.MR_findAllSortedBy("id", ascending: true, withPredicate: self.createPredicateWithBeUsed(true)) as! [Category]
+        return Category.mr_findAllSorted(by: "id", ascending: true, with: self.createPredicateWithBeUsed(true)) as! [Category]
     }
     
     
     class func fetchConsumeCategoryWithId(_ id: NSNumber) -> Category? {
-        return Category.MR_findFirstByAttribute("id", withValue: id)
+        return Category.mr_findFirst(byAttribute: "id", withValue: id)
     }
     
     // 修改
@@ -74,21 +74,21 @@ class Category: NSManagedObject {
         
         category?.name = name
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()
     }
     
     // MARK: - 删除
     class func removeAllCategoryForICloud() {
-        for category in Category.MR_findAll()! {
-            category.MR_deleteEntity()
+        for category in Category.mr_findAll()! {
+            category.mr_deleteEntity()
         }
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()
     }
     
     
     // 私有方法
     fileprivate static func gainCategoryCount() ->Int32 {
-        return Category.MR_numberOfEntities().intValue
+        return Category.mr_numberOfEntities().int32Value
     }
     
     fileprivate static func createPredicateWithBeUsed(_ beUsed: Bool) -> NSPredicate {

@@ -17,7 +17,7 @@ class TopAlert: NSObject {
     - parameter alertInfo:  alertView 显示的信息
     - parameter parentView: alertVeiw 所显示的视图
     */
-    func createSuccessTopAlert(_ alertInfo: String, parentView: UIView, dismissBlock: @escaping ()->()? = nil) {
+    func createSuccessTopAlert(_ alertInfo: String, parentView: UIView, dismissBlock: (()->Void)! = nil) {
         let topAlertView = self.createBaseTopAlert(MozAlertTypeSuccess, alertInfo: alertInfo, parentView: parentView)
         topAlertView.dismissBlock = dismissBlock
     }

@@ -23,15 +23,13 @@ class MonthBudgetViewController: UIViewController {
         
         monthBudgetTextField.text = "￥\(self.monthBudgetVM.gainMonthBudget())"
         
-        // 金额处理
-        monthBudgetTextField.rac_textSignal().filter({ (object: AnyObject!) -> Bool in
-            let text = object as! String
-            return text != "￥0.00"
-        }).map {[unowned self]  (object: AnyObject!) -> AnyObject! in
-            
-            return self.monthBudgetVM.dealWithDecimalMoney(object as! String)
-            }.subscribeNext {[unowned self] (object: AnyObject!) -> Void in
-                self.monthBudgetTextField.text = object as? String
+        // 金额处理        
+        monthBudgetTextField.reactive.continuousTextValues.filter({ (object: String?) -> Bool in
+            return object! != "￥0.00"
+        }).map {[unowned self] (object: String?) -> String in
+                return self.monthBudgetVM.dealWithDecimalMoney(object! as String)
+            }.observeValues {[unowned self] (object: String?) -> Void in
+                self.monthBudgetTextField.text = object!
         }
     }
     

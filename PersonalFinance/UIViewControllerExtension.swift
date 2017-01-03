@@ -28,29 +28,30 @@ extension UIViewController {
     
     
     // MARK: - Simple 框架的 Alert
-    func showSimpleAlertWithOneBtn(_ title: String, msg: String, handler: ((SimpleAlert.Action?) -> Void)? = nil) {
+    func showSimpleAlertWithOneBtn(_ title: String, msg: String, handler: ((SimpleAlert.AlertAction?) -> Void)? = nil) {
         let alert = self.createSimpleAlert(title, msg: msg, cancelHandler: nil, okHandler: handler)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func showSimpleAlertWithTwoBtn(_ title: String, msg: String, cancelHandler: ((SimpleAlert.Action?) -> Void)? = nil, okHandler: ((SimpleAlert.Action?) -> Void)? = nil) {
+    func showSimpleAlertWithTwoBtn(_ title: String, msg: String, cancelHandler: ((SimpleAlert.AlertAction?) -> Void)? = nil, okHandler: ((SimpleAlert.AlertAction?) -> Void)? = nil) {
         let alert = self.createSimpleAlert(title, msg: msg, cancelHandler: cancelHandler, okHandler: okHandler)
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func showCustomViewAlert(_ cusView: UIView, cancelTitle: String? = nil, oKTitle: String, cancelHandler: ((SimpleAlert.Action?) -> Void)? = nil, okHandler:  ((SimpleAlert.Action?) -> Void)? = nil) {
-        let alert = SimpleAlert.Controller(view: cusView, style: .Alert)
+    func showCustomViewAlert(_ cusView: UIView, cancelTitle: String? = nil, oKTitle: String, cancelHandler: ((SimpleAlert.AlertAction?) -> Void)? = nil, okHandler:  ((SimpleAlert.AlertAction?) -> Void)? = nil) {
+        let alert = AlertController(view: cusView, style: .alert)
         
         if cancelTitle != nil {
             if cancelHandler == nil {
-                alert.addAction(SimpleAlert.Action(title: cancelTitle!, style: .Destructive))
+                alert.addAction(AlertAction(title: cancelTitle!, style: .destructive))
             }else {
-                alert.addAction(SimpleAlert.Action(title: cancelTitle!, style: .Destructive, handler: cancelHandler))
+                alert.addAction(AlertAction(title: cancelTitle!, style: .destructive, handler: cancelHandler))
             }            
         }        
-        alert.addAction(SimpleAlert.Action(title: "确定", style: .OK, handler: okHandler))
+        alert.addAction(AlertAction(title: "确定", style: .ok, handler: okHandler))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - 系统风格的Alert
@@ -66,15 +67,15 @@ extension UIViewController {
     }
     
     // MARK: - 私有函数
-    fileprivate func createSimpleAlert(_ title: String, msg: String, cancelHandler: ((SimpleAlert.Action!) -> Void)? = nil, okHandler: ((SimpleAlert.Action!) -> Void)? = nil) ->SimpleAlert.Controller {
-        let alert = SimpleAlert.Controller(title: title, message: msg, style: .Alert)
+    fileprivate func createSimpleAlert(_ title: String, msg: String, cancelHandler: ((SimpleAlert.AlertAction?) -> Void)? = nil, okHandler: ((SimpleAlert.AlertAction?) -> Void)? = nil) ->AlertController {
+        let alert = AlertController(title: title, message: msg, style: .alert)
         
         // 可以没有取消按钮，但是一定有确定按钮
         if cancelHandler != nil {
-            alert.addAction(SimpleAlert.Action(title: "取消", style: .Destructive, handler: cancelHandler))
+            alert.addAction(AlertAction(title: "取消", style: .destructive, handler: cancelHandler))
         }
         
-        alert.addAction(SimpleAlert.Action(title: "确定", style: .OK, handler: okHandler))
+        alert.addAction(AlertAction(title: "确定", style: .ok, handler: okHandler))
         
         return alert
     }

@@ -35,13 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         // 注册一个通知: 当有数据从云端导入的时候，会进入这个 通知的回调函数
-        NotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: NSPersistentStoreCoordinator.MR_defaultStoreCoordinator(), queue: OperationQueue.mainQueue()) { (notification: Notification) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSPersistentStoreDidImportUbiquitousContentChanges, object: NSPersistentStoreCoordinator.mr_default(), queue: OperationQueue.main) { (notification: Notification) in
             
-            NSManagedObjectContext.MR_defaultContext().performBlock({ 
-                NSManagedObjectContext.MR_defaultContext().mergeChangesFromContextDidSaveNotification(notification)
+            NSManagedObjectContext.mr_default().perform({ 
+                NSManagedObjectContext.mr_default().mergeChanges(fromContextDidSave: notification)
             })
             
-            print(notification.userInfo)
+            print(notification.userInfo!)
         }
         
 //        NSNotificationCenter.defaultCenter().addObserverForName(NSPersistentStoreCoordinatorStoresDidChangeNotification, object: NSPersistentStoreCoordinator.MR_defaultStoreCoordinator(), queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
@@ -80,9 +80,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreInitialImportCompleted(_:)), name: NSPersistentStoreDidImportUbiquitousContentChangesNotification, object: nil)
 //        
-        NotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreDidChange(_:)), name: NSPersistentStoreCoordinatorStoresDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(persistentStoreDidChange(_:)), name: NSNotification.Name.NSPersistentStoreCoordinatorStoresDidChange, object: nil)
 //
-        NotificationCenter.defaultCenter().addObserver(self, selector: #selector(persistentStoreWillChange(_:)), name: NSPersistentStoreCoordinatorStoresWillChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(persistentStoreWillChange(_:)), name: NSNotification.Name.NSPersistentStoreCoordinatorStoresWillChange, object: nil)
         
         
         // 配置 NSUserDefaults iCloud Sync
@@ -190,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
         // 当 InitialImportCompleted 的时候导入初始化数据
-        if type == NSPersistentStoreUbiquitousTransitionType.InitialImportCompleted.rawValue {
+        if type == NSPersistentStoreUbiquitousTransitionType.initialImportCompleted.rawValue {
             print("InitialImportCompleted")
             
             if Category.fetchAllConsumeCategoryWithUsed().count == 0 {
@@ -205,7 +205,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let type = notification.userInfo![NSPersistentStoreUbiquitousTransitionTypeKey] as? UInt
         // 当 InitialImportCompleted 的时候导入初始化数据
-        if type == NSPersistentStoreUbiquitousTransitionType.InitialImportCompleted.rawValue {
+        if type == NSPersistentStoreUbiquitousTransitionType.initialImportCompleted.rawValue {
             print("Will Change: InitialImportCompleted")
             if Category.fetchAllConsumeCategoryWithUsed().count != 0 {
                 print("Category has data")
@@ -216,13 +216,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func persistentStoreInitialImportCompleted(_ notification: Notification) {
         
-        NSManagedObjectContext.MR_defaultContext().performBlock({
-            NSManagedObjectContext.MR_defaultContext().mergeChangesFromContextDidSaveNotification(notification)
+        NSManagedObjectContext.mr_default().perform({
+            NSManagedObjectContext.mr_default().mergeChanges(fromContextDidSave: notification)
         })
-        
-        print(notification.userInfo)
-        
-        print(notification.userInfo?.keys)
     }
     
     

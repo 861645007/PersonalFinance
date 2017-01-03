@@ -20,22 +20,22 @@ class SampleSplashViewController: VENTouchLockSplashViewController {
             if success {
                 var logString = "Sample App Unlocked ";
                 switch unlockType {
-                case .TouchID:
-                    logString.appendContentsOf(" with Touch ID.")
-                case .Passcode:
-                    logString.appendContentsOf(" with Passcode.")
+                case .touchID:
+                    logString.append(" with Touch ID.")
+                case .passcode:
+                    logString.append(" with Passcode.")
                 default:
                     break;
                 }
                 
                 print(logString)
             }else {                
-                let alert = SimpleAlert.Controller(title: "超出限制", message: "你已经超出了尝试次数", style: .Alert)
+                let alert = AlertController(title: "超出限制", message: "你已经超出了尝试次数", style: .alert)
                 
-                alert.addAction(SimpleAlert.Action(title: "确定", style: .OK){ action in
+                alert.addAction(AlertAction(title: "确定", style: .ok){ action in
                     
                     })
-                self!.presentViewController(alert, animated: true, completion: nil)
+                self!.present(alert, animated: true, completion: nil)
             }
         }
         
@@ -75,7 +75,7 @@ class SampleSplashViewController: VENTouchLockSplashViewController {
 
     
     @IBAction func UserTapPassword(_ sender: AnyObject) {
-        self.showPasscodeAnimated(true)
+        self.showPasscode(animated: true)
     }
     
 }

@@ -33,7 +33,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(_ completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed

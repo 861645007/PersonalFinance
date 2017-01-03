@@ -102,43 +102,50 @@ class DataAnalysisViewController: UIViewController {
         firstMonthCategoryImageView.image   = self.dataAnalysusVM.quarterCategorysTop3[0].categoryIcon
         firstMonthCategoryNameLabel.text     = self.dataAnalysusVM.quarterCategorysTop3[0].categoryName
         firstMonthCategoryDescribeLabel.text = self.dataAnalysusVM.quarterCategorysTop3[0].categoryDescribe
-        self.dataAnalysusVM.quarterCategorysTop3[0].categoryIcon.getColors({[unowned self] (colors) in
+        self.dataAnalysusVM.quarterCategorysTop3[0].categoryIcon.getColors(completionHandler: {[unowned self] (colors) in
             self.firstMonthCategoryProgressBar.progressColor = colors.primaryColor
             self.firstMonthCategoryProgressBar.progressStrokeColor = colors.primaryColor
-            self.firstMonthCategoryProgressBar.setValue(CGFloat(self.dataAnalysusVM.quarterCategorysTop3[0].categoryProgressValue), animateWithDuration: 1.5)
+            
+            UIView.animate(withDuration: 1.5, animations: { 
+                self.firstMonthCategoryProgressBar.value = CGFloat(self.dataAnalysusVM.quarterCategorysTop3[0].categoryProgressValue)
             })
+        })
         
         
         if self.dataAnalysusVM.quarterCategorysTop3.count > 1 {
             secondMonthCategoryImageView.image = self.dataAnalysusVM.quarterCategorysTop3[1].categoryIcon
             secondMonthCategoryNameLabel.text = self.dataAnalysusVM.quarterCategorysTop3[1].categoryName
             secondMonthCategoryDescribeLabel.text = self.dataAnalysusVM.quarterCategorysTop3[1].categoryDescribe
-            self.dataAnalysusVM.quarterCategorysTop3[1].categoryIcon.getColors({[unowned self] (colors) in
+            self.dataAnalysusVM.quarterCategorysTop3[1].categoryIcon.getColors(completionHandler: {[unowned self] (colors) in
                 self.secondMonthCategoryProgressBar.progressColor = colors.primaryColor
                 self.secondMonthCategoryProgressBar.progressStrokeColor = colors.primaryColor
-                self.secondMonthCategoryProgressBar.setValue(CGFloat(self.dataAnalysusVM.quarterCategorysTop3[1].categoryProgressValue), animateWithDuration: 1.5)
+                UIView.animate(withDuration: 1.5, animations: {
+                    self.firstMonthCategoryProgressBar.value = CGFloat(self.dataAnalysusVM.quarterCategorysTop3[1].categoryProgressValue)
                 })
+            })
             
             if self.dataAnalysusVM.quarterCategorysTop3.count >= 3 {
                 thirdMonthCategoryImageView.image = self.dataAnalysusVM.quarterCategorysTop3[2].categoryIcon
                 thirdMonthCategoryNameLabel.text = self.dataAnalysusVM.quarterCategorysTop3[2].categoryName
                 thirdMonthCategoryDescribeLabel.text = self.dataAnalysusVM.quarterCategorysTop3[2].categoryDescribe
                 
-                self.dataAnalysusVM.quarterCategorysTop3[2].categoryIcon.getColors({[unowned self] (colors) in
+                self.dataAnalysusVM.quarterCategorysTop3[2].categoryIcon.getColors(completionHandler: {[unowned self] (colors) in
                     self.thirdMonthCategoryProgressBar.progressColor = colors.primaryColor
                     self.thirdMonthCategoryProgressBar.progressStrokeColor = colors.primaryColor
-                    self.thirdMonthCategoryProgressBar.setValue(CGFloat(self.dataAnalysusVM.quarterCategorysTop3[2].categoryProgressValue), animateWithDuration: 1.5)
+                    UIView.animate(withDuration: 1.5, animations: {
+                        self.firstMonthCategoryProgressBar.value = CGFloat(self.dataAnalysusVM.quarterCategorysTop3[2].categoryProgressValue)
                     })
+                })
                 
             }else {
                 thirdMonthCategoryView.isHidden = true
-                secondMonthSplitView.hidden = true
+                secondMonthSplitView.isHidden = true
             }
         }else {
             thirdMonthCategoryView.isHidden = true
-            secondMonthSplitView.hidden = true
+            secondMonthSplitView.isHidden = true
             secondMonthCategoryView.isHidden = true
-            firstMonthSplitView.hidden = true
+            firstMonthSplitView.isHidden = true
         }
     }
     

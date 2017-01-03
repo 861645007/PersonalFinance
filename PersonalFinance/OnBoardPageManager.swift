@@ -18,7 +18,7 @@ class OnBoardPageManager {
     }
 
     func configOnboardVC() ->OnboardingViewController {
-        let onboardVC = OnboardingViewController(backgroundImage: UIImage(named: "onBoardBg"), contents: self.generateOnBoardPage())
+        let onboardVC = OnboardingViewController(backgroundImage: UIImage(named: "onBoardBg"), contents: self.generateOnBoardPage())!
         
         onboardVC.shouldMaskBackground = false
         

@@ -50,10 +50,10 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.todayExpenseLabel.fn_setNumber(self.mainVM.gainDayExpense(), format: "￥%.2f")
-        self.monthExpenseLabel.fn_setNumber(self.mainVM.gainMonthExpense(), format: "￥%.2f")
-        self.newExpenseLabel.fn_setNumber(self.mainVM.gainNewExpense(), format: "￥%.2f")
-        self.weekExpenseLabel.fn_setNumber(self.mainVM.gainWeekExpense(), format: "￥%.2f")
+        self.todayExpenseLabel.fn_setNumber(NSNumber(value: self.mainVM.gainDayExpense()), format: "￥%.2f")
+        self.monthExpenseLabel.fn_setNumber(NSNumber(value: self.mainVM.gainMonthExpense()), format: "￥%.2f")
+        self.newExpenseLabel.fn_setNumber(NSNumber(value: self.mainVM.gainNewExpense()), format: "￥%.2f")
+        self.weekExpenseLabel.fn_setNumber(NSNumber(value: self.mainVM.gainWeekExpense()), format: "￥%.2f")
 
         // 设置进度条
         self.setProgressBar(self.mainVM.configureProgressBarPercent())
@@ -61,11 +61,14 @@ class ViewController: UIViewController {
     
     // 设置进度条
     func setProgressBar(_ value: CGFloat) {
-        self.percentProgressBar.setValue(value > 100.0 ? 100.0 : value , animateWithDuration: Double(value) * 3.0 / 100.0)
-
-        // 根据值得大小不同设置 进度条的颜色
-        self.percentProgressBar.progressColor       = self.mainVM.gainProgressColor(value)
-        self.percentProgressBar.progressStrokeColor = self.mainVM.gainProgressColor(value)
+        
+        UIView.animate(withDuration: Double(value) * 3.0 / 100.0) { 
+            self.percentProgressBar.value = value > 100.0 ? 100.0 : value
+            
+            // 根据值得大小不同设置 进度条的颜色
+            self.percentProgressBar.progressColor       = self.mainVM.gainProgressColor(value)
+            self.percentProgressBar.progressStrokeColor = self.mainVM.gainProgressColor(value)
+        }
     }
     
     

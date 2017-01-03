@@ -54,7 +54,7 @@ private let formatName = "format"
 private let frequency = 1.0/30.0
 
 public extension UILabel {
-     /**
+    /**
      Flicker a number without other effects.
      
      - parameter number: The number for flicker animation, can't be `nil`.
@@ -63,7 +63,7 @@ public extension UILabel {
         self.fn_setNumber(number, format: nil)
     }
     
-     /**
+    /**
      Flicker a number with number-formatter style. You can use the `NSNumberFormatterCurrencyStyle` number-formatter style, the number will flicker animation as `$1,023.12`.
      
      - parameter number:    The number for flicker animation.
@@ -73,7 +73,7 @@ public extension UILabel {
         self.fn_setNumber(number, formatter:formatter, attributes: nil)
     }
     
-     /**
+    /**
      Flicker a number in during time.
      
      - parameter number:   The number for flicker animation.
@@ -82,8 +82,8 @@ public extension UILabel {
     public func fn_setNumber(_ number: NSNumber, duration: TimeInterval) {
         self.fn_setNumber(number, duration: duration, format: nil)
     }
-
-     /**
+    
+    /**
      Flicker a number in during time with number-formatter style.
      
      - parameter number:    The number for flicker animation.
@@ -126,7 +126,7 @@ public extension UILabel {
     }
     
     /**
-      Flicker a number with number-formatter style & attributed(s) property.
+     Flicker a number with number-formatter style & attributed(s) property.
      
      - parameter number:     The number for flicker animation.
      - parameter formatter:  The number-formatter style.
@@ -216,7 +216,7 @@ public extension UILabel {
             self.fn_setNumber(number, duration: duration, format: nil, numberFomatter: formatter, attributes: attributes)
         }
     }
-
+    
     /**
      Flicker a number in during time with effects except number-formatter style.
      
@@ -250,7 +250,7 @@ public extension UILabel {
         var durationTime : TimeInterval = fabs(duration) < 0.3 ? 0.3 : fabs(duration)
         
         self.fn_timer?.invalidate()
-
+        
         //initialize useinfo dict
         let userDict: NSMutableDictionary = NSMutableDictionary()
         
@@ -266,9 +266,9 @@ public extension UILabel {
         
         set_fnNumber(0)
         var endNumber: Int64 = number.int64Value;
-
+        
         //get multiple if number is float & double type
-        let multiple = self.getTheMultipleFromNumber(number, formatString: format)
+        let multiple = self.multipleForNumber(number, formatString: format)
         
         if multiple > 0 {
             endNumber = Int64(number.doubleValue * Double(multiple))
@@ -298,10 +298,10 @@ public extension UILabel {
         }
         
         fn_setTimer(Timer.scheduledTimer(timeInterval: frequency,
-            target: self,
-            selector: #selector(UILabel.flickerAnimation(_:)),
-            userInfo: userDict,
-            repeats: true))
+                                                           target: self,
+                                                           selector: #selector(UILabel.flickerAnimation(_:)),
+                                                           userInfo: userDict,
+                                                           repeats: true))
         
         RunLoop.current.add(self.fn_timer!, forMode: RunLoopMode.commonModes)
     }
@@ -381,7 +381,7 @@ public extension UILabel {
         }
         let flickerNumber = (self.fn_number?.doubleValue)! / Double(multiple)
         
-        self.text = self.fn_finalNumber(NSNumber(flickerNumber), format:formatStr, numberFormatter: self.fn_formatter)
+        self.text = self.fn_finalNumber(NSNumber(value: flickerNumber), format:formatStr, numberFormatter: self.fn_formatter)
         
         let attributes = (timer.userInfo as AnyObject).value(forKey: attributeName)
         
@@ -407,7 +407,7 @@ public extension UILabel {
     
     //Get the string from number with number-formatter style.
     fileprivate func fn_stringFromNumber(_ number: NSNumber, numberFormatter: NumberFormatter) -> String? {
-           return numberFormatter.string(from: number)
+        return numberFormatter.string(from: number)
     }
     
     //Get the result string to do animation.
@@ -428,11 +428,11 @@ public extension UILabel {
     
     //Add the attributes into the mutable attributed string.
     fileprivate func drawAttributes(_ attributes: AnyObject) -> Void {
-        if attributes.isKind(of: NSDictionary) {
+        if attributes.isKind(of: NSDictionary.self) {
             let range = (attributes.value(forKey: fnRangeName) as AnyObject).rangeValue
             let attribute = attributes.value(forKey: fnAttributeName)
             self.addAttributes(attribute! as AnyObject, range : range!)
-        } else if attributes.isKind(of: NSArray) {
+        } else if attributes.isKind(of: NSArray.self) {
             for attribute in attributes as! NSArray {
                 let range = ((attribute as AnyObject).value(forKey: fnRangeName) as AnyObject).rangeValue
                 let attri = (attribute as AnyObject).value(forKey: fnAttributeName)
@@ -457,7 +457,7 @@ public extension UILabel {
      
      - returns: The multiple of the number.
      */
-    fileprivate func getTheMultipleFromNumber(_ number: NSNumber, formatString: String?) -> Int {
+    fileprivate func multipleForNumber(_ number: NSNumber, formatString: String?) -> Int {
         var newNumber = number;
         if formatString != nil && formatString!.range(of: "%@") == nil {
             
@@ -466,21 +466,22 @@ public extension UILabel {
             }
             
             let fStr: String = self.regexNumberFormat(formatString!)
-            let formatNumberStr: String = String(fStr, number.floatValue)
+            let formatNumberStr: String = String(format: fStr, number.floatValue)
             if formatNumberStr.range(of: ".") != nil {
                 let fn_range = formatNumberStr.range(of: ".")
-                let index = <#T##String.CharacterView corresponding to your index##String.CharacterView#>.index((fn_range?.lowerBound)!, offsetBy: 1)
+                
+                let index = formatNumberStr.index((fn_range?.lowerBound)!, offsetBy: 1)
                 let subStr: String = formatNumberStr.substring(from: index)
                 let length: Int = subStr.characters.count < 6 ? subStr.characters.count : 6
                 let padding = log10f(Float(length))
-                newNumber = (formatNumberStr as NSString).floatValue + padding
+                newNumber = NSNumber(value: (formatNumberStr as NSString).floatValue + padding)
             }
         }
         
         let resultStr = String(format: "%@", newNumber)
         if resultStr.range(of: ".") != nil {
             let re_range = resultStr.range(of: ".")
-            let index = <#T##String.CharacterView corresponding to your index##String.CharacterView#>.index((re_range?.lowerBound)!, offsetBy: 1)
+            let index = resultStr.index((re_range?.lowerBound)!, offsetBy: 1)
             let subStr: String = resultStr.substring(from: index)
             // Max Multiple is 6
             let length : Int = subStr.characters.count >= 6 ? 6 : subStr.characters.count

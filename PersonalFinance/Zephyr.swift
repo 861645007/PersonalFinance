@@ -378,9 +378,6 @@ private extension Zephyr {
         if let value = value {
             ubiquitousStore.set(value, forKey: key)
             Zephyr.printKeySyncStatus(key, value: value, destination: .remote)
-        } else {
-            ubiquitousStore.set(nil, forKey: key)
-            Zephyr.printKeySyncStatus(key, value: value, destination: .remote)
         }
 
         if Zephyr.syncUbiquitousStoreKeyValueStoreOnChange {

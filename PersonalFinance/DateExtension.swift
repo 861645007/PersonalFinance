@@ -11,19 +11,19 @@ import SwiftDate
 
 extension Date {
     func yearBegin() ->Date {
-        return self.startOf(.Year)
+        return self.startOf(component: .year)
     }
     
     func yearEnd() ->Date {
-        return self.endOf(.Year)
+        return self.endOf(component: .year)
     }
     
     func monthBegin() ->Date {
-        return self.startOf(.Month)
+        return self.startOf(component: .month)
     }
     
     func monthEnd() ->Date {
-        return self.endOf(.Month)
+        return self.endOf(component: .month)
     }
     
     func weekBegin() ->Date {
@@ -36,19 +36,19 @@ extension Date {
     }
     
     func dayBegin() ->Date {
-        return self.startOf(.Day)
+        return self.startOf(component: .day)
     }
     
     func dayEnd() ->Date {
-        return self.endOf(.Day)
+        return self.endOf(component: .day)
     }
     
     func quarterBegin() -> Date {
-        return self.startOf(.Quarter) - 3.months
+        return self.startOf(component: .quarter) - 3.months
     }
     
     func quarterEnd() -> Date {
-        return self.startOf(.Quarter)
+        return self.startOf(component: .quarter)
     }
     
     func isLaterWithNewTime(_ newTime: Date) ->Bool {
@@ -108,35 +108,27 @@ extension Date {
      - returns: 下月一号的 x 时
      */
     func firstDayWithNextMonth(_ hour: Int) -> Date {
-        if self.month == 12 {
-            return Date(year: self.year + 1, month: 1, day: 1, hour: hour)
-        }else {
-            return Date(year: self.year, month:self.month + 1, day: 1, hour: hour)
-        }
+        return (self + 1.months).startOf(component: .month)
+    }
+    
+    func firstDayOfWeek() -> Date {
+        return self.startOf(component: .weekday)
+    }
+    
+    
+    func lastDayOfWeek() -> Date {
+        return self.endOf(component: .weekday)
     }
     
     /**
-     获取下个星期第一天的 x 时
+     获取下个星期第一天的 x-8 时
      
      - parameter hour: 指定的小时
      
-     - returns: 下个星期第一天的 x 时
+     - returns: 下个星期第一天的 x-8 时
      */
     func firstDayWithNextWeek(_ hour: Int) -> Date {
-        let firstDayOfThisWeek = self.firstDayOfWeek()
-        let lastDayOfThisWeek = self.lastDayOfWeek()
-        
-        if lastDayOfThisWeek < firstDayOfThisWeek {
-            // 如果 这个星期的最后一天小于第一天的值，说明跨月了
-            if self.month == 12 {
-                // 如果这个月是12月，说明跨年了
-                return Date(year: self.year + 1, month: 1, day: lastDayOfThisWeek! + 1, hour: hour)
-            }else {
-                return Date(year: self.year, month: self.month + 1, day: lastDayOfThisWeek! + 1, hour: hour)
-            }
-        }else {
-            return Date(year: self.year, month: self.month, day: lastDayOfThisWeek!, hour: hour) + 1.days
-        }
+        return (self + 1.weeks).startOf(component: .weekday)
     }
 }
 

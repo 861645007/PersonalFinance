@@ -27,7 +27,7 @@ class DayConsumeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.totalMoneyLabel.fn_setNumber(self.dayConsumeVM.dayConsumeMoney, format: "￥%.2f")
+        self.totalMoneyLabel.fn_setNumber(NSNumber(value: self.dayConsumeVM.dayConsumeMoney), format: "￥%.2f")
         
         self.dayConsumeVM.initData()
         self.dayConsumeTableView.reloadData()        
@@ -78,18 +78,18 @@ extension DayConsumeViewController: UITableViewDelegate {
 // MARK: - DZNEmptyDataSetSource 数据源协议
 extension DayConsumeViewController: DZNEmptyDataSetSource {
     // 设置图片
-    func imageForEmptyDataSet(_ scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "NoMoney")
     }
     
     // 设置文字
-    func titleForEmptyDataSet(_ scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let attribute = [NSFontAttributeName: UIFont.systemFont(ofSize: 13.0),
                          NSForegroundColorAttributeName: UIColor(red:0.894, green:0.827, blue:0.882, alpha:1)]
         return NSAttributedString(string: "今天尚未记账，快来记一笔吧", attributes: attribute)
     }
     
-    func imageAnimationForEmptyDataSet(_ scrollView: UIScrollView!) -> CAAnimation! {
+    func imageAnimation(forEmptyDataSet scrollView: UIScrollView!) -> CAAnimation! {
         let animation = CABasicAnimation(keyPath: "opacity")
         
         animation.fromValue  = 0.0
@@ -106,7 +106,7 @@ extension DayConsumeViewController: DZNEmptyDataSetSource {
 //        return NSAttributedString(string: "今日首记", attributes: attribute)
 //    }
     
-    func buttonImageForEmptyDataSet(_ scrollView: UIScrollView!, forState state: UIControlState) -> UIImage! {
+    func buttonImage(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> UIImage! {
         return UIImage(named: "rightArrowToNextVC")
     }
 

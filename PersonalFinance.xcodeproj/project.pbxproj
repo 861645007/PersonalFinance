@@ -71,7 +71,6 @@
 		7ABCA7E11CBE8A5D008973E0 /* DayConsumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */; };
 		7ABCA7E61CBE8B4D008973E0 /* DayConsumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */; };
 		7AC393311C5CF25000A03DAC /* OnBoardPageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */; };
-		7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACEF50B1C5A340600EF2200 /* RAC.swift */; };
 		7AD844A91CD0CABA003FEE05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A7EB3B31C58F07F009AD0A7 /* Assets.xcassets */; };
 		7ADF859A1CBD19FA008FCEA1 /* BaseDataInfoExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */; };
 		7AEE21191CB622A400BC9985 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEE21181CB622A400BC9985 /* ChartViewController.swift */; };
@@ -79,6 +78,7 @@
 		7AF0736B1C5DA75200221F17 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF073691C5DA75200221F17 /* TYWaveProgressView.m */; };
 		7AF0736E1C5DA8AB00221F17 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF0736D1C5DA8AB00221F17 /* MainViewModel.swift */; };
 		8C4FC65A1E1A0DC70023B24C /* PersonalFinanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4FC6591E1A0DC70023B24C /* PersonalFinanceTests.swift */; };
+		AD7859E8300C1A15D62C5D43 /* Pods_PersonalFinanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78AE748320E1860650B5E260 /* Pods_PersonalFinanceTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,7 +199,6 @@
 		7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayConsumeViewController.swift; sourceTree = "<group>"; };
 		7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DayConsumeViewModel.swift; path = ViewModel/DayConsumeViewModel.swift; sourceTree = "<group>"; };
 		7AC393301C5CF25000A03DAC /* OnBoardPageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardPageManager.swift; sourceTree = "<group>"; };
-		7ACEF50B1C5A340600EF2200 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		7ADF85991CBD19FA008FCEA1 /* BaseDataInfoExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseDataInfoExtension.swift; sourceTree = "<group>"; };
 		7AEE21181CB622A400BC9985 /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		7AF0735C1C5D9CCE00221F17 /* PersonalFinance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalFinance-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -244,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD7859E8300C1A15D62C5D43 /* Pods_PersonalFinanceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,7 +461,6 @@
 				7A47B8561C6B3AE500F63D9A /* Operate Plist */,
 				7A614FC71C5C796F00BEE1B8 /* Base Info */,
 				7A244C011C5CE33200B46CC9 /* OnBoard */,
-				7ACEF50A1C5A33A400EF2200 /* RACSwift */,
 				7A614FC41C5C77E100BEE1B8 /* Extension */,
 			);
 			name = Other;
@@ -616,14 +615,6 @@
 				7ABCA7E51CBE8B4D008973E0 /* DayConsumeViewModel.swift */,
 			);
 			name = "Day Consume";
-			sourceTree = "<group>";
-		};
-		7ACEF50A1C5A33A400EF2200 /* RACSwift */ = {
-			isa = PBXGroup;
-			children = (
-				7ACEF50B1C5A340600EF2200 /* RAC.swift */,
-			);
-			name = RACSwift;
 			sourceTree = "<group>";
 		};
 		7ACEF50F1C5A398500EF2200 /* Resource */ = {
@@ -791,9 +782,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8C4FC65E1E1A0DC70023B24C /* Build configuration list for PBXNativeTarget "PersonalFinanceTests" */;
 			buildPhases = (
+				A079095C6962DA5B4D180120 /* [CP] Check Pods Manifest.lock */,
 				8C4FC6531E1A0DC70023B24C /* Sources */,
 				8C4FC6541E1A0DC70023B24C /* Frameworks */,
 				8C4FC6551E1A0DC70023B24C /* Resources */,
+				8F79BCB08AC163C2BAF57609 /* [CP] Embed Pods Frameworks */,
+				C9A6BFE4DA3150FB7F3B97FD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -812,7 +806,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "王焕强";
 				TargetAttributes = {
 					7A47C0A11CC8BA210003F25A = {
@@ -955,6 +949,51 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" e4c25b01bb57b919a9e340d50e1312232401ec00 fd32cc426a4ca29df8d025953988d65748ad93fb75c39ec26cb51c334b497a67";
 		};
+		8F79BCB08AC163C2BAF57609 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalFinanceTests/Pods-PersonalFinanceTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A079095C6962DA5B4D180120 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C9A6BFE4DA3150FB7F3B97FD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalFinanceTests/Pods-PersonalFinanceTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FE1D936279AF8F9BFC55573C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1011,7 +1050,6 @@
 				7A2845B01CCB596200770DB0 /* LocalNotification.swift in Sources */,
 				7A7EB3AD1C58F07F009AD0A7 /* AppDelegate.swift in Sources */,
 				7A294E6E1CDAEDFB00C139E0 /* MonthBudgetViewModel.swift in Sources */,
-				7ACEF50C1C5A340600EF2200 /* RAC.swift in Sources */,
 				7A92C46C1CC3C6E50035CF0A /* Category.swift in Sources */,
 				7A65625D1CE06B8C002ADE0F /* UILabel+FlickerNumber.swift in Sources */,
 				7A34DB701CFC6CF8000D8B16 /* DataAnalysisViewModel.swift in Sources */,
@@ -1156,8 +1194,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1200,8 +1240,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1220,6 +1262,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1228,13 +1271,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AAB1C211C86D7D9C5516300F /* Pods-PersonalFinance.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PersonalFinance/PersonalFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1252,12 +1295,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 823CF2E3237EE2E51685D6DD /* Pods-PersonalFinance.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PersonalFinance/PersonalFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1298,6 +1341,7 @@
 		};
 		8C4FC65F1E1A0DC70023B24C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 938315E4D1AA3910ACA32CEC /* Pods-PersonalFinanceTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1317,6 +1361,7 @@
 		};
 		8C4FC6601E1A0DC70023B24C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BD336D15876E02EBED6DBB7 /* Pods-PersonalFinanceTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1380,6 +1425,7 @@
 				8C4FC6601E1A0DC70023B24C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

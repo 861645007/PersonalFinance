@@ -13,7 +13,7 @@ target "PersonalFinance" do
 	pod 'ReactiveCocoa', '5.0.0-rc.1'
 # Core Data
 	pod 'MagicalRecord'
-	pod 'MagicalRecord/CocoaLumberjack'
+#   pod 'MagicalRecord/CocoaLumberjack'
 # 网络图片操作
 	pod 'SDWebImage', '~> 3.8'
 # 空页面视图填充

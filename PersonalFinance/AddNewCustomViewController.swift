@@ -119,15 +119,14 @@ class AddNewCustomViewController: UIViewController {
     
     // MARK: - 数字 输入处理
     func filterInput() {
-        self.numberTextField.rac_textSignal().filter({ (object: AnyObject!) -> Bool in
-            return (object as! String) != "￥0.00"
-            }).map { (object: AnyObject!) -> AnyObject! in
-                let text = object as! String
-
-                return self.addNewCustomVM.dealWithDecimalMoney(text)
-                }.subscribeNext { (object: AnyObject!) -> Void in
-                    self.numberTextField.text = object as? String
+        self.numberTextField.reactive.textValues.filter({ (object: String?) -> Bool in
+            return (object! as String) != "￥0.00"
+        }).map({ (object: String?) -> String in
+                return self.addNewCustomVM.dealWithDecimalMoney(object!)
+        }).observeValues { (object: String!) -> Void in
+            self.numberTextField.text = object
         }
+        
     }
     
     // MARK: - 配置数字键盘
@@ -239,23 +238,24 @@ class AddNewCustomViewController: UIViewController {
             // 设置时间选择器的开始和结束时间
             var offsetComponents = DateComponents()
             offsetComponents.month = 2
-            pdtCalendar!.lastDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: Date(), options: .WrapComponents)
+            pdtCalendar!.lastDate = pdtCalendar?.calendar.date(byAdding: offsetComponents, to: Date(), wrappingComponents: true)
+
             
             offsetComponents.month = -4
-            pdtCalendar!.firstDate = pdtCalendar!.calendar.dateByAddingComponents(offsetComponents, toDate: Date(), options: .WrapComponents)
+            pdtCalendar!.firstDate = pdtCalendar!.calendar.date(byAdding: offsetComponents, to: Date(), wrappingComponents: true)
             
             PDTSimpleCalendarViewCell.appearance().circleTodayColor = UIColor(red:200/255.0, green:200/255.0, blue:200/255.0, alpha:1.0)
             PDTSimpleCalendarViewCell.appearance().circleSelectedColor = UIColor(red:49/255.0, green:97/255.0, blue:157/255.0, alpha:255/255.0)
             
             // 默认显示当前日期
             pdtCalendar?.selectedDate = Date()
-            pdtCalendar?.scrollToDate(Date(), animated: true)
+            pdtCalendar?.scroll(to: Date(), animated: true)
             
             // 设置时间选择器的View 距上为0（据 NavigationController）
-            pdtCalendar?.edgesForExtendedLayout = .None
+            pdtCalendar?.edgesForExtendedLayout = []
             
             pdtCalendar?.title = "选择时间"
-            pdtCalendar?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .Done, target: self, action: #selector(selectDateDone))
+            pdtCalendar?.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完成", style: .done, target: self, action: #selector(selectDateDone))
         }
         
         // 实现跳转
@@ -265,10 +265,10 @@ class AddNewCustomViewController: UIViewController {
     // 关闭 时间选择器
     func selectDateDone() {
         // 返回原界面
-        pdtCalendar?.navigationController?.popViewControllerAnimated(true)
+        pdtCalendar?.navigationController?.popViewController(animated: true)
         // 获取所选择的时间
         let time = "\(consumeDate.month)月\(consumeDate.day)日"
-        self.selectTimeBtn.setTitle(time, forState: .Normal)
+        self.selectTimeBtn.setTitle(time, for: .normal)
     }
 
     // MARK: - 配置一个弹出框    
@@ -296,11 +296,11 @@ class AddNewCustomViewController: UIViewController {
             [weak self] (action) in
             if textView.text != "" {
                 self!.commentString = textView.text
-                self!.commentBtn.setTitle("已有备注", forState: .Normal)
-                self!.commentBtn.layer.borderColor = UIColor.blueColor().CGColor
+                self!.commentBtn.setTitle("已有备注", for: .normal)
+                self!.commentBtn.layer.borderColor = UIColor.blue.cgColor
             }else {
-                self!.commentBtn.setTitle("写备注", forState: .Normal)
-                self!.commentBtn.layer.borderColor = UIColor.grayColor().CGColor
+                self!.commentBtn.setTitle("写备注", for: .normal)
+                self!.commentBtn.layer.borderColor = UIColor.gray.cgColor
             }
         }
     }
@@ -319,8 +319,8 @@ class AddNewCustomViewController: UIViewController {
         layer.repeatCount           = 1         // 动画只显示一次
         layer.position              = self.categoryImage.center
         
-        categoryIcon.getColors({(colors) in
-            layer.backgroundColor = colors.primaryColor.CGColor
+        categoryIcon.getColors(completionHandler: {(colors) in
+            layer.backgroundColor = colors.primaryColor.cgColor
         })
         
         layer.start()
@@ -408,7 +408,7 @@ extension AddNewCustomViewController: MMNumberKeyboardDelegate {
 
 
 extension AddNewCustomViewController: PDTSimpleCalendarViewDelegate {
-    func simpleCalendarViewController(_ controller: PDTSimpleCalendarViewController!, didSelectDate date: Date!) {
+    func simpleCalendarViewController(_ controller: PDTSimpleCalendarViewController!, didSelect date: Date!) {
         consumeDate = date.tolocalTime()
     }
 }

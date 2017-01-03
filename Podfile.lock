@@ -2,23 +2,12 @@ PODS:
   - Charts (3.0.1):
     - Charts/Core (= 3.0.1)
   - Charts/Core (3.0.1)
-  - CocoaLumberjack (2.4.0):
-    - CocoaLumberjack/Default (= 2.4.0)
-    - CocoaLumberjack/Extensions (= 2.4.0)
-  - CocoaLumberjack/Core (2.4.0)
-  - CocoaLumberjack/Default (2.4.0):
-    - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.4.0):
-    - CocoaLumberjack/Default
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
   - Fabric (1.6.11)
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
-  - MagicalRecord/CocoaLumberjack (2.3.2):
-    - CocoaLumberjack (~> 2.0)
-    - MagicalRecord/Core
   - MagicalRecord/Core (2.3.2)
   - MBCircularProgressBar (0.3.5)
   - MMNumberKeyboard (0.1.5)
@@ -46,7 +35,6 @@ DEPENDENCIES:
   - DZNEmptyDataSet
   - Fabric
   - MagicalRecord
-  - MagicalRecord/CocoaLumberjack
   - MBCircularProgressBar
   - MMNumberKeyboard
   - Onboard
@@ -71,7 +59,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Charts: 0e84f4418e87dad6a9edde221fba37ebb51d3ba7
-  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
@@ -91,6 +78,6 @@ SPEC CHECKSUMS:
   SwiftDate: efdff69cf3750c2e4ef4fb9f0461e22b40c4c942
   VENTouchLock: f3145d6fbff243d6692dfb1107b88db06dc216c9
 
-PODFILE CHECKSUM: d014bf49ee47308a73b0574c33abd6876ace6840
+PODFILE CHECKSUM: 17ef7f9704f92d5bba856514f8552ebfac83d0ec
 
 COCOAPODS: 1.1.1

@@ -51,9 +51,10 @@ class DayConsumeTableViewCell: UITableViewCell {
         self.categoryIcon.image = UIImage(data: (consume.consumeCategory?.iconData)! as Data)
         
         // 将选中指示调颜色 改为图片主要颜色
-        self.categoryIcon.image?.getColors({[unowned self] (colors) in
+        
+        self.categoryIcon.image?.getColors(completionHandler: {[unowned self]  (colors) in
             self.selectedFlagView.backgroundColor = colors.primaryColor
-            })
+        })
     }
     
     func cellisSelectedAnimation() {

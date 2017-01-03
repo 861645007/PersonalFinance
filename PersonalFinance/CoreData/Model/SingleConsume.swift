@@ -9,7 +9,6 @@
 
 import Foundation
 import CoreData
-import MagicalRecord
 
 class SingleConsume: NSManagedObject {
 
@@ -17,9 +16,9 @@ class SingleConsume: NSManagedObject {
     // MARK: - 新增消费记录
     class func addNewSingleCustom(_ category: Int32, photo: Data, comment: String, money: Double, time: Date) {
         
-        let singleConsume: SingleConsume = SingleConsume.MR_createEntity()!
+        let singleConsume: SingleConsume = SingleConsume.mr_createEntity()!
         
-        singleConsume.id       = NSNumber(int: Int32(SingleConsume.MR_countOfEntities()) + 1)
+        singleConsume.id       = NSNumber(value: Int32(SingleConsume.mr_countOfEntities()) + 1)
         singleConsume.category = NSNumber(value: category as Int32)
         singleConsume.photo    = photo
         singleConsume.comment  = comment
@@ -27,13 +26,13 @@ class SingleConsume: NSManagedObject {
         singleConsume.time     = time
         singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(value: category as Int32))
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()
         
     }
     
     // MARK: - 修改消费信息    
     class func modifySingleCustom(_ id: Int32, category: Int32, photo: Data, comment: String, money: Double, time: Date){
-        let singleConsume: SingleConsume = SingleConsume.MR_findFirstByAttribute("id", withValue: NSNumber(int: id))!
+        let singleConsume: SingleConsume = SingleConsume.mr_findFirst(byAttribute: "id", withValue: NSNumber(value: id))!
         
         singleConsume.category = NSNumber(value: category as Int32)
         singleConsume.photo    = photo
@@ -42,7 +41,7 @@ class SingleConsume: NSManagedObject {
         singleConsume.time     = time
         singleConsume.consumeCategory = Category.fetchConsumeCategoryWithId(NSNumber(value: category as Int32))
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        NSManagedObjectContext.mr_default().mr_saveToPersistentStoreAndWait()
     }
     
     // MARK: - 查询消费记录
@@ -106,7 +105,7 @@ class SingleConsume: NSManagedObject {
     
     
     class func fetchLastConsumeRecord() ->SingleConsume? {        
-        return SingleConsume.MR_findFirstWithPredicate(nil, sortedBy: "time", ascending: false)
+        return SingleConsume.mr_findFirst(with: nil, sortedBy: "time", ascending: false)
     }
     
     
@@ -152,7 +151,7 @@ class SingleConsume: NSManagedObject {
      */
     fileprivate static func fetchCustomWithRangeDate(_ dateBegin: Date, dateEnd: Date) ->NSFetchedResultsController<NSFetchRequestResult> {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
-        return SingleConsume.MR_fetchAllGroupedBy("category", withPredicate: predicate, sortedBy: "category,money", ascending: true)
+        return SingleConsume.mr_fetchAllGrouped(by: "category", with: predicate, sortedBy: "category,money", ascending: true)
     }
     
     /**
@@ -166,7 +165,7 @@ class SingleConsume: NSManagedObject {
     fileprivate static func fetchCustomWithRangeDate(_ dateBegin: Date, dateEnd: Date) ->[SingleConsume] {
         let predicate = self.createPredicateWithRangeDate(dateBegin, dateEnd: dateEnd)
         
-        return SingleConsume.MR_findAllSortedBy("time", ascending: true, withPredicate: predicate) as! [SingleConsume]
+        return SingleConsume.mr_findAllSorted(by: "time", ascending: true, with: predicate) as! [SingleConsume]
     }
     
     /**

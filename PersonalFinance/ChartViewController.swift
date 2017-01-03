@@ -149,7 +149,7 @@ class ChartViewController: UIViewController {
         // 等主视图被移除屏幕了之后再 进行数据加载
         completion()
         
-        UIImageView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [.CurveEaseInOut], animations: { [unowned self] in
+        UIImageView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [.curveEaseInOut], animations: { [unowned self] in
             
             if isRight {
                 self.chartBGView.center.x += self.screenWidth
@@ -169,7 +169,7 @@ class ChartViewController: UIViewController {
     @IBAction func showWeekConsumes(_ sender: AnyObject) {
         currentTimeModel = .week
         
-        self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
+        self.categoryChartView.highlightValue(nil, callDelegate: true)
         
         self.moveTimeIndicatorAnimation(sender.center.x)
         self.changeChartsModelAnimation { [unowned self] in
@@ -182,7 +182,7 @@ class ChartViewController: UIViewController {
     @IBAction func showMonthConsumes(_ sender: AnyObject) {
         currentTimeModel = .month
         
-        self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
+        self.categoryChartView.highlightValue(nil, callDelegate: true)
         
         self.moveTimeIndicatorAnimation(sender.center.x)
         self.changeChartsModelAnimation { [unowned self] in
@@ -195,7 +195,7 @@ class ChartViewController: UIViewController {
     @IBAction func showYearConsumes(_ sender: AnyObject) {
         currentTimeModel = .year
         
-        self.categoryChartView.highlightValue(highlight: nil, callDelegate: true)
+        self.categoryChartView.highlightValue(nil, callDelegate: true)
         
         self.moveTimeIndicatorAnimation(sender.center.x)
         self.changeChartsModelAnimation { [unowned self] in
@@ -233,10 +233,10 @@ class ChartViewController: UIViewController {
 //                                  options: [.TransitionFlipFromLeft, .CurveEaseInOut]) { _ in
 //                                    animationImage.removeFromSuperview()
 //        }
-        UIView.transitionFromView(animationImage,
-                                  toView: self.chartBGView,
+        UIView.transition(from: animationImage,
+                                  to: self.chartBGView,
                                   duration: 1.0,
-                                  options: [.TransitionCurlUp, .CurveEaseInOut]) { _ in
+                                  options: [.transitionCurlUp, .curveEaseInOut]) { _ in
                                     animationImage.removeFromSuperview()
         }
         
@@ -259,7 +259,7 @@ class ChartViewController: UIViewController {
         if self.chartVM.gainTotalExpense() == 0 {
             categoryChartView.data = nil
             categoryChartView.noDataText            = "尚未记录消费"
-            categoryChartView.noDataTextDescription = ""
+//            categoryChartView.noDataTextDescription = ""
         }else {
             createPieChart(self.chartVM.gainCategoryNamesWithPie(), values: self.chartVM.gainCategoryRatioWithPie())
         }
@@ -272,7 +272,7 @@ class ChartViewController: UIViewController {
     fileprivate func createPieChart(_ dataPoints: [String], values: [Double]) {
         let dataEntries: [ChartDataEntry] = self.chartVM.createDataEntries(dataPoints.count, values: values)
 
-        let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "消费类别图")
+        let pieChartDataSet = PieChartDataSet(values: dataEntries, label: "消费类别图")
         // 设置颜色
         pieChartDataSet.colors = self.chartVM.setColorWithPie()
         
@@ -280,21 +280,22 @@ class ChartViewController: UIViewController {
         pieChartDataSet.sliceSpace        = 2.0         // 设置每个扇片之间的间隔
         pieChartDataSet.drawValuesEnabled = false       // 去掉图上的文字
         
-        let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+       
+        let pieChartData = PieChartData(dataSet: pieChartDataSet)
         
-        categoryChartView.descriptionText = ""
+//        categoryChartView.descriptionText = ""
         categoryChartView.data            = pieChartData
-        categoryChartView.holeColor       = UIColor.clearColor()
+        categoryChartView.holeColor       = UIColor.clear
 
         categoryChartView.usePercentValuesEnabled = true        // 使数乘100
         categoryChartView.rotationAngle           = 0.0
         categoryChartView.rotationEnabled         = true
         categoryChartView.drawHoleEnabled         = true
 
-        categoryChartView.drawSliceTextEnabled    = false       // 去掉图上的文字
+        categoryChartView.drawEntryLabelsEnabled    = false       // 去掉图上的文字
         categoryChartView.legend.enabled          = false       // 隐藏色彩说明
         
-        categoryChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .EaseOutBack)
+        categoryChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .easeOutBack)
     }
     
     /**
@@ -311,7 +312,7 @@ class ChartViewController: UIViewController {
         if self.chartVM.consumesForBarChart.max() == 0.0 {
             sevenDaysChartView.data = nil
             sevenDaysChartView.noDataText            = "尚未记录消费"
-            sevenDaysChartView.noDataTextDescription = ""
+//            sevenDaysChartView.noDataTextDescription = ""
         }else {
             switch currentTimeModel {
             case .week:
@@ -329,27 +330,28 @@ class ChartViewController: UIViewController {
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(value: values[i], xIndex: i)
+            let dataEntry = BarChartDataEntry(x: values[i], y: Double(i))
             dataEntries.append(dataEntry)
         }
         let barChartDataSet = self.chartVM.createBarChartDataSet("七天消费柱状图", dataEntries: dataEntries)
         // 设置每个柱之前的宽度比例
-        barChartDataSet.barSpace = 0.45
-        barChartDataSet.valueTextColor = UIColor.whiteColor()
-        barChartDataSet.valueFont = UIFont.systemFontOfSize(11.0)
+        barChartDataSet.valueTextColor = UIColor.white
+        barChartDataSet.valueFont = UIFont.systemFont(ofSize: 11.0)
         
-        sevenDaysChartView.data = BarChartData(xVals: dataPoints, dataSets: [barChartDataSet])
-        sevenDaysChartView.data?.highlightEnabled = false               // 设置Bar选中之后不再高亮
+        let barCharData = BarChartData(dataSets: [barChartDataSet])
+        barCharData.barWidth = 0.45                        // 设置每个柱之前的宽度比例
+        barCharData.highlightEnabled = false               // 设置Bar选中之后不再高亮
+        sevenDaysChartView.data = barCharData
         
-        sevenDaysChartView.descriptionText               = ""
-        sevenDaysChartView.xAxis.labelPosition           = .Bottom
+        sevenDaysChartView.chartDescription?.text        = ""
+        sevenDaysChartView.xAxis.labelPosition           = .bottom
         sevenDaysChartView.xAxis.drawGridLinesEnabled    = false        // 除去图中的竖线
-        sevenDaysChartView.xAxis.labelTextColor          = UIColor.whiteColor()
+        sevenDaysChartView.xAxis.labelTextColor          = UIColor.white
         sevenDaysChartView.leftAxis.drawGridLinesEnabled = false        // 除去图中的横线
-        sevenDaysChartView.leftAxis.labelTextColor       = UIColor.whiteColor()
+        sevenDaysChartView.leftAxis.labelTextColor       = UIColor.white
 //        sevenDaysChartView.leftAxis.enabled              = false        // 隐藏左侧的坐标轴
         sevenDaysChartView.rightAxis.enabled             = false        // 隐藏右侧的坐标轴
-        sevenDaysChartView.leftAxis.axisMinValue         = 0.0;         // 使柱状的和x坐标轴紧贴
+        sevenDaysChartView.leftAxis.axisMinimum         = 0.0;         // 使柱状的和x坐标轴紧贴
         
         sevenDaysChartView.fitScreen()
         sevenDaysChartView.setVisibleXRangeMaximum(15)                  // 设置一个屏幕的最多柱状图的柱数
@@ -402,14 +404,16 @@ extension ChartViewController: UITableViewDelegate {
         // 使对应的环形图中的那个扇片高亮， 如果已经高亮就将其恢复常态
         let highlighteds = self.categoryChartView.highlighted
         
-        if !highlighteds.isEmpty && highlighteds.first?.xIndex == indexPath.row {
+        
+        
+        if !highlighteds.isEmpty && Int((highlighteds.first?.y)!) == indexPath.row {
             self.setCategoryChartCenterText("")
-            self.categoryChartView.highlightValue(highlight: nil, callDelegate: false)
+            self.categoryChartView.highlightValue(nil, callDelegate: false)
         }else {
             // 设置扇形的中心文字
             
             self.setCategoryChartCenterText("\((self.chartVM.gainFinanceCategoryAt(indexPath.row).categoryRatio * 100).convertToStrWithTwoFractionDigits())%")
-            self.categoryChartView.highlightValue(xIndex: indexPath.row, dataSetIndex: 0, callDelegate: true)
+            self.categoryChartView.highlightValue(x: Double(indexPath.row), dataSetIndex: 0, callDelegate: true)
         }
         
     }
@@ -420,35 +424,35 @@ extension ChartViewController: UITableViewDelegate {
 extension ChartViewController: ChartViewDelegate {
     
     // 当 有元素被选中了
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: ChartHighlight) {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, dataSetIndex: Int, highlight: Highlight) {
         if chartView == categoryChartView {            
             // 设置扇形的中心文字
-            self.setCategoryChartCenterText("\((entry.value * 100).convertToStrWithTwoFractionDigits())%")
+            self.setCategoryChartCenterText("\((entry.x * 100).convertToStrWithTwoFractionDigits())%")
             
             // 设置 tableView 中 对应的那一行被选中，如果已经被选中就不需要执行选中操作
-            let indexpath = IndexPath(forRow: entry.xIndex, inSection: 0)
-            let cell = self.categoryTableView.cellForRowAtIndexPath(indexpath)
+            let indexpath = IndexPath(row: Int(entry.y), section: 0)
+            let cell = self.categoryTableView.cellForRow(at: indexpath)
             
             if cell == nil {
-                self.categoryTableView.scrollToRowAtIndexPath(indexpath, atScrollPosition: .Middle, animated: true)
+                self.categoryTableView.scrollToRow(at: indexpath, at: .middle, animated: true)
             }else {
-                if !cell!.selected {
-                    self.categoryTableView.selectRowAtIndexPath(IndexPath(forRow: entry.xIndex, inSection: 0), animated: false, scrollPosition: .Middle)
+                if !cell!.isSelected {
+                    self.categoryTableView.selectRow(at: IndexPath(row: Int(entry.y), section: 0), animated: false, scrollPosition: .middle)
                 }
             }
         }else if chartView == sevenDaysChartView {
             
-            if entry.value == 0.0 {
+            if entry.x == 0.0 {
                 return
             }
             
             switch currentTimeModel {
             case .week:
-                self.showDetailViewWithBar(self.chartVM.currentWeek + (entry.xIndex).days, isMonth: false)
+                self.showDetailViewWithBar(self.chartVM.currentWeek + (Int(entry.y)).days, isMonth: false)
             case .month:
-                self.showDetailViewWithBar(self.chartVM.currentMonth + (entry.xIndex).days, isMonth: false)
+                self.showDetailViewWithBar(self.chartVM.currentMonth + (Int(entry.y)).days, isMonth: false)
             case .year:
-                self.showDetailViewWithBar(self.chartVM.currentYear + (entry.xIndex).months, isMonth: true)
+                self.showDetailViewWithBar(self.chartVM.currentYear + (Int(entry.y)).months, isMonth: true)
             }
         }
     }
@@ -473,14 +477,14 @@ extension ChartViewController: UIScrollViewDelegate {
     
     // 在点击扇形的高亮的后，如果是非可见cell，我们要先把cell滑动出来后再处理 cell 的选择（在滑动动画结束之后操作）
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        let index = self.categoryChartView.highlighted.first!.xIndex
+        let index = self.categoryChartView.highlighted.first!.y
         
-        let indexpath = IndexPath(forRow: index, inSection: 0)
+        let indexpath = IndexPath(row: Int(index), section: 0)
         
-        let cell = self.categoryTableView.cellForRowAtIndexPath(indexpath)
+        let cell = self.categoryTableView.cellForRow(at: indexpath)
         
-        if !cell!.selected {
-            self.categoryTableView.selectRowAtIndexPath(IndexPath(forRow: index, inSection: 0), animated: false, scrollPosition: .Middle)
+        if !cell!.isSelected {
+            self.categoryTableView.selectRow(at: IndexPath(row: Int(index), section: 0), animated: false, scrollPosition: .middle)
         }
     }
 }
@@ -491,11 +495,11 @@ extension ChartViewController: UIScrollViewDelegate {
 // MARK: - DZNEmptyDataSetSource 数据源协议
 extension ChartViewController: DZNEmptyDataSetSource {
     // 设置图片
-    func imageForEmptyDataSet(_ scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: "NoMoney")
     }
     
-    func imageAnimationForEmptyDataSet(_ scrollView: UIScrollView!) -> CAAnimation! {
+    func imageAnimation(forEmptyDataSet scrollView: UIScrollView!) -> CAAnimation! {
         let animation = CABasicAnimation(keyPath: "opacity")
         
         animation.fromValue  = 0.0
