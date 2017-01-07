@@ -41,7 +41,7 @@ class AddNewConsumeCategoryViewController: UICollectionViewController {
         
         // 保存操作
         if self.addNewConsumeCategoryVM.saveNewCategory(categoryNameTextField.text!, image: self.categoryImage.image!) {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }else {
             TopAlert().createFailureTopAlert("请输入类型名称", parentView: self.view)
             return

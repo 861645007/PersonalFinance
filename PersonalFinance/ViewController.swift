@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ReactiveCocoa
 import MBCircularProgressBar
 
 let AddNewConsumeInWidgetNotification   = "com.huanqiang.PersonalFinance.AddNewConsumeInWidgetNotification"
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
     // 设置进度条
     func setProgressBar(_ value: CGFloat) {
         
-        UIView.animate(withDuration: Double(value) * 3.0 / 100.0) { 
+        UIView.animate(withDuration: Double(value) * 2.0 / 100.0) {
             self.percentProgressBar.value = value > 100.0 ? 100.0 : value
             
             // 根据值得大小不同设置 进度条的颜色
@@ -107,7 +106,6 @@ class ViewController: UIViewController {
         addNewConsumeVC.addNewCustomVM = self.mainVM.newDetailConsumeVM()
         self.navigationController?.pushViewController(addNewConsumeVC, animated: true)
     }
-    
     
     
     func showAddNewConsumeVC() {

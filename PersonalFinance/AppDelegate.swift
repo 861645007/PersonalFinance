@@ -21,7 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
 //        UIApplication.sharedApplication().statusBarStyle = .LightContent
-        UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+//        UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         
         // 配置 Core Data
 //        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("PersonalFinance.sqlite")

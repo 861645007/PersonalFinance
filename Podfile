@@ -10,6 +10,7 @@ target "PersonalFinance" do
 	pod 'Fabric'
 	pod 'Crashlytics' 
 # ReactiveCocoa
+	pod 'ReactiveSwift', '~> 1.0.0'
 	pod 'ReactiveCocoa', '5.0.0-rc.1'
 # Core Data
 	pod 'MagicalRecord'

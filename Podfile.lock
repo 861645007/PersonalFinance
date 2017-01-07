@@ -41,6 +41,7 @@ DEPENDENCIES:
   - PDTSimpleCalendar (~> 0.9.1)
   - PulsingHalo
   - ReactiveCocoa (= 5.0.0-rc.1)
+  - ReactiveSwift (~> 1.0.0)
   - SDWebImage (~> 3.8)
   - SimpleAlert
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift3`)
@@ -78,6 +79,6 @@ SPEC CHECKSUMS:
   SwiftDate: efdff69cf3750c2e4ef4fb9f0461e22b40c4c942
   VENTouchLock: f3145d6fbff243d6692dfb1107b88db06dc216c9
 
-PODFILE CHECKSUM: 17ef7f9704f92d5bba856514f8552ebfac83d0ec
+PODFILE CHECKSUM: 55b523b4a59805af933801ee01aae4a7270513e1
 
 COCOAPODS: 1.1.1

@@ -12,11 +12,20 @@ import NotificationCenter
 class TodayViewController: UIViewController, NCWidgetProviding {
     
     
+    @IBOutlet weak var dayExpenseDescriptionLabel: UILabel!
     @IBOutlet weak var dayExpenseLabel: UILabel!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
+        
+        if #available(iOSApplicationExtension 10.0, *) {
+            dayExpenseDescriptionLabel.textColor = UIColor.black
+            dayExpenseLabel.textColor = UIColor.black
+        }else {
+            dayExpenseDescriptionLabel.textColor = UIColor.white
+            dayExpenseLabel.textColor = UIColor.white
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

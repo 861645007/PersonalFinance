@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import ReactiveCocoa
 import MMNumberKeyboard
 import PDTSimpleCalendar
 import SimpleAlert
 import PulsingHalo
+import ReactiveSwift
+import ReactiveCocoa
 
 // ConsumeCategory 结构体
 struct ConsumeCategory {
@@ -89,7 +90,7 @@ class AddNewCustomViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if Category.fetchAllConsumeCategoryWithUsed().count == 0 {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
             return
         }
         
@@ -119,10 +120,10 @@ class AddNewCustomViewController: UIViewController {
     
     // MARK: - 数字 输入处理
     func filterInput() {
-        self.numberTextField.reactive.textValues.filter({ (object: String?) -> Bool in
+        self.numberTextField.reactive.continuousTextValues.filter({ (object: String?) -> Bool in
             return (object! as String) != "￥0.00"
         }).map({ (object: String?) -> String in
-                return self.addNewCustomVM.dealWithDecimalMoney(object!)
+            return self.addNewCustomVM.dealWithDecimalMoney(object!)
         }).observeValues { (object: String!) -> Void in
             self.numberTextField.text = object
         }
@@ -265,7 +266,7 @@ class AddNewCustomViewController: UIViewController {
     // 关闭 时间选择器
     func selectDateDone() {
         // 返回原界面
-        pdtCalendar?.navigationController?.popViewController(animated: true)
+        _ = pdtCalendar?.navigationController?.popViewController(animated: true)
         // 获取所选择的时间
         let time = "\(consumeDate.month)月\(consumeDate.day)日"
         self.selectTimeBtn.setTitle(time, for: .normal)
@@ -401,7 +402,7 @@ extension AddNewCustomViewController: MMNumberKeyboardDelegate {
         self.addNewCustomVM.saveConsumeInfo(consumeCategoryID, photo: Data(), comment: commentString!, money: money, time: consumeDate)
         
         // 返回主页面
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
         return true
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 
 class MonthBudgetViewController: UIViewController {
 
@@ -23,7 +23,7 @@ class MonthBudgetViewController: UIViewController {
         
         monthBudgetTextField.text = "￥\(self.monthBudgetVM.gainMonthBudget())"
         
-        // 金额处理        
+        // 金额处理
         monthBudgetTextField.reactive.continuousTextValues.filter({ (object: String?) -> Bool in
             return object! != "￥0.00"
         }).map {[unowned self] (object: String?) -> String in
