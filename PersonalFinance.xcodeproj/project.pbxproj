@@ -275,7 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				7A01C1201CBF3F6500D3EC90 /* MonthConsumeViewController.swift */,
-				7A8DE9461CE2096B00013EB6 /* DayConsumeTableViewCell.swift */,
 			);
 			name = "MonthConsume View Controller";
 			sourceTree = "<group>";
@@ -605,6 +604,7 @@
 			isa = PBXGroup;
 			children = (
 				7ABCA7E01CBE8A5D008973E0 /* DayConsumeViewController.swift */,
+				7A8DE9461CE2096B00013EB6 /* DayConsumeTableViewCell.swift */,
 			);
 			name = "DayConsume VIew Controller";
 			sourceTree = "<group>";
@@ -821,7 +821,7 @@
 					};
 					7A7EB3A81C58F07F009AD0A7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = EYK6J4JA87;
+						DevelopmentTeam = ESV52K77D5;
 						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1278,8 +1278,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ESV52K77D5;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huanqiang.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1301,8 +1302,9 @@
 				CODE_SIGN_ENTITLEMENTS = PersonalFinance/PersonalFinance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ESV52K77D5;
 				INFOPLIST_FILE = PersonalFinance/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.huanqiang.PersonalFinance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
